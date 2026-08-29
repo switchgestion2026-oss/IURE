@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IURE — Marketing Jurídico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #0F1923; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #B8946A; text-decoration: none; }
+  a:hover { color: #F5F2EC; }
+  input, textarea, button, select { font-family: 'Barlow', sans-serif; }
+  ::selection { background: #B8946A; color: #0F1923; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</helmet>
+
+<div style="background:#0F1923;font-family:'Barlow',sans-serif;color:#F5F2EC;overflow-x:hidden">
+
+  <header style="position:sticky;top:0;z-index:80;background:rgba(15,25,35,.95);border-bottom:1px solid rgba(184,148,106,.16)">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);height:76px;display:flex;align-items:center;gap:clamp(18px,4vw,56px)">
+      <a href="#top" style="display:block;line-height:1">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;letter-spacing:.06em;color:#B8946A;line-height:1">IURE</div>
+        <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.3em;color:rgba(245,242,236,.55);margin-top:2px">MARKETING JURÍDICO</div>
+      </a>
+      <nav style="display:flex;gap:clamp(14px,2.2vw,30px);margin-left:auto;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.19em;text-transform:uppercase">
+        <a href="#top" style="color:#F5F2EC;padding-bottom:4px;border-bottom:1px solid #B8946A">Inicio</a>
+        <a href="#servicios" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Servicios</a>
+        <a href="#proceso" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Cómo trabajamos</a>
+        <a href="#casos" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Casos</a>
+        <a href="#nosotros" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Nosotros</a>
+        <a href="#faq" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">FAQ</a>
+      </nav>
+      <a href="#contacto" style="border:1px solid #B8946A;color:#B8946A;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:11px 22px;border-radius:2px;transition:background .3s,color .3s" style-hover="background:#B8946A;color:#0F1923">Contacto</a>
+    </div>
+  </header>
+
+  <section id="top" style="position:relative;padding:clamp(56px,8vw,104px) 0 clamp(48px,6vw,84px);overflow:hidden">
+    <div style="position:absolute;top:-8%;right:-6%;width:52%;height:120%;background:radial-gradient(60% 50% at 60% 40%, rgba(184,148,106,.13), transparent 70%);pointer-events:none"></div>
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(320px,1fr) minmax(300px,1.05fr);gap:clamp(24px,4vw,56px);align-items:center;position:relative">
+      <div>
+        <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A;display:flex;align-items:center;gap:12px">
+          <span style="width:26px;height:1px;background:#B8946A;display:block"></span>Tu estudio también comunica
+        </div>
+        <h1 data-reveal data-delay="90" style="opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(44px,6.4vw,92px);line-height:.9;letter-spacing:-.01em;text-transform:uppercase;margin:22px 0 0;text-wrap:balance">
+          No necesitás<br>publicar más.<br><span style="color:#B8946A">Necesitás<br>comunicar mejor.</span>
+        </h1>
+        <p data-reveal data-delay="180" style="opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-weight:300;font-size:clamp(16px,1.3vw,19px);line-height:1.6;color:rgba(245,242,236,.66);max-width:34ch;margin:26px 0 0">
+          Estrategia, identidad y presencia digital para profesionales del derecho.
+        </p>
+        <div data-reveal data-delay="260" style="opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);display:flex;align-items:center;gap:clamp(16px,3vw,34px);flex-wrap:wrap;margin-top:38px">
+          <a href="#contacto" style="display:flex;align-items:center;gap:12px;background:#B8946A;color:#0F1923;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:16px 26px;border-radius:2px;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-2px)">
+            Hablar con IURE <span style="font-family:'Barlow',sans-serif;font-size:15px">→</span>
+          </a>
+          <a href="#servicios" style="display:flex;align-items:center;gap:14px;color:rgba(245,242,236,.7);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase" style-hover="color:#F5F2EC">
+            Ver lo que hacemos <span style="width:clamp(28px,5vw,64px);height:1px;background:rgba(184,148,106,.7);display:block"></span>
+          </a>
+        </div>
+      </div>
+
+      <div data-reveal data-delay="120" style="opacity:0;transform:translateY(30px);transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.2,.7,.2,1);position:relative;min-height:clamp(360px,46vw,620px)">
+        <div style="position:absolute;left:0;top:8%;width:min(58%,300px);border:1px solid rgba(184,148,106,.28);background:rgba(21,33,44,.9);padding:16px;z-index:2">
+          <div style="display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;color:rgba(245,242,236,.5)">
+            <span style="width:16px;height:16px;border:1px solid rgba(184,148,106,.5);border-radius:50%;display:block"></span>ESTUDIO JURÍDICO
+          </div>
+          <div style="margin-top:12px;height:clamp(96px,12vw,132px);background:repeating-linear-gradient(135deg,rgba(184,148,106,.12) 0 6px,rgba(15,25,35,0) 6px 12px);border:1px solid rgba(245,242,236,.08);display:flex;align-items:flex-end;padding:14px">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(15px,1.5vw,20px);line-height:1.05;text-transform:uppercase;color:#F5F2EC">Tu experiencia<br>también es tu mejor<br>carta de presentación</div>
+          </div>
+          <div style="display:flex;gap:14px;margin-top:12px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;color:rgba(245,242,236,.4)">
+            <span>♡ 214</span><span>◌ 38</span><span>↗ 12</span>
+          </div>
+        </div>
+        <div style="position:absolute;right:2%;top:2%;width:min(42%,208px);border:1px solid rgba(184,148,106,.28);background:rgba(21,33,44,.9);padding:14px 16px;z-index:3;display:grid;gap:10px;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:rgba(245,242,236,.62)">
+          <div style="display:flex;justify-content:space-between"><span>+ CONSULTAS</span><span style="color:#B8946A">↗</span></div>
+          <div style="height:1px;background:rgba(245,242,236,.08)"></div>
+          <div style="display:flex;justify-content:space-between"><span>+ ENGAGEMENT</span><span style="color:#B8946A">↗</span></div>
+          <div style="height:1px;background:rgba(245,242,236,.08)"></div>
+          <div style="display:flex;justify-content:space-between"><span>+ POSICIONAMIENTO</span><span style="color:#B8946A">↗</span></div>
+        </div>
+        <img data-parallax="0.05" src="assets/personaje-david-celular.png" alt="Escultura clásica mirando un celular" style="position:relative;z-index:4;display:block;width:100%;max-width:620px;margin-left:auto;filter:drop-shadow(0 40px 70px rgba(0,0,0,.55))">
+      </div>
+    </div>
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);margin-top:clamp(24px,4vw,48px);display:flex;flex-direction:column;align-items:center;gap:14px">
+      <div style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.28em;color:rgba(245,242,236,.4)">DESLIZÁ PARA DESCUBRIR MÁS</div>
+      <div style="width:1px;height:52px;background:linear-gradient(to bottom,rgba(184,148,106,.8),transparent)"></div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid rgba(184,148,106,.14);padding:clamp(64px,8vw,120px) 0;position:relative;overflow:hidden">
+    <img src="assets/columna.png" alt="" data-parallax="0.07" style="position:absolute;right:-4%;top:-10%;height:118%;opacity:.07;pointer-events:none;user-select:none">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);position:relative;display:grid;grid-template-columns:minmax(280px,.85fr) minmax(320px,1.3fr);gap:clamp(32px,5vw,72px);align-items:start">
+      <div>
+        <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">El problema</div>
+        <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(34px,4.4vw,62px);line-height:.94;text-transform:uppercase;margin:18px 0 0">Tus redes también<br>hablan de vos.</h2>
+        <p data-reveal data-delay="150" style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-weight:300;font-size:17px;line-height:1.7;color:rgba(245,242,236,.6);max-width:38ch;margin:22px 0 0">Aunque tu trabajo sea excelente, si no lo comunicás, nadie lo ve. Esto es lo que suele pasar:</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))">
+        <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);padding:0 clamp(16px,2vw,28px);border-left:1px solid rgba(184,148,106,.22)">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(40px,4.2vw,58px);line-height:1;color:#B8946A">01</div>
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.02em;text-transform:uppercase;margin:14px 0 10px">No tenés tiempo</h3>
+          <p style="font-weight:300;font-size:15px;line-height:1.65;color:rgba(245,242,236,.55);margin:0">Tu práctica profesional ocupa tu agenda. La comunicación queda siempre para después.</p>
+        </div>
+        <div data-reveal data-delay="120" style="opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);padding:clamp(28px,3vw,44px) clamp(16px,2vw,28px) 0;border-left:1px solid rgba(184,148,106,.22)">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(40px,4.2vw,58px);line-height:1;color:#B8946A">02</div>
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.02em;text-transform:uppercase;margin:14px 0 10px">No sabés qué publicar</h3>
+          <p style="font-weight:300;font-size:15px;line-height:1.65;color:rgba(245,242,236,.55);margin:0">Publicar por publicar no construye posicionamiento.</p>
+        </div>
+        <div data-reveal data-delay="240" style="opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);padding:clamp(56px,5vw,84px) clamp(16px,2vw,28px) 0;border-left:1px solid rgba(184,148,106,.22)">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(40px,4.2vw,58px);line-height:1;color:#B8946A">03</div>
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.02em;text-transform:uppercase;margin:14px 0 10px">No querés sonar<br>como cualquier marca</h3>
+          <p style="font-weight:300;font-size:15px;line-height:1.65;color:rgba(245,242,236,.55);margin:0">La comunicación jurídica necesita criterio, contexto y límites profesionales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" style="border-top:1px solid rgba(184,148,106,.14);padding:clamp(64px,8vw,120px) 0;position:relative;overflow:hidden">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(240px,.72fr) minmax(320px,1.6fr);gap:clamp(28px,4vw,64px);align-items:start">
+      <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1);position:relative;align-self:stretch;min-height:280px">
+        <img data-parallax="0.04" src="assets/personaje-filosofo-laptop.png" alt="Escultura clásica trabajando en una laptop" style="display:block;width:100%;max-width:520px;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))">
+        <div style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.26em;line-height:2.4;color:rgba(184,148,106,.85);margin-top:8px">ESTRATEGIA<br>DISEÑO<br>CONTENIDO<br>RESULTADOS</div>
+      </div>
+      <div>
+        <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Qué hacemos</div>
+        <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,3.9vw,56px);line-height:.96;text-transform:uppercase;margin:18px 0 0">Convertimos tu presencia<br>digital en una herramienta.</h2>
+        <p data-reveal data-delay="140" style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-weight:300;font-size:17px;line-height:1.7;color:rgba(245,242,236,.6);max-width:56ch;margin:20px 0 0">Estrategia, diseño y contenido para que tu marca se vea, se entienda y genere consultas.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:clamp(14px,1.6vw,22px);margin-top:clamp(30px,4vw,48px)">
+          <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1),border-color .35s;border:1px solid rgba(184,148,106,.2);padding:22px;display:flex;flex-direction:column;gap:12px;background:rgba(255,255,255,.012)" style-hover="border-color:rgba(184,148,106,.75);background:rgba(184,148,106,.05)">
+            <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B8946A">01</div>
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:21px;letter-spacing:.03em;text-transform:uppercase;margin:0">Redes sociales</h3>
+            <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(245,242,236,.55);margin:0">Estrategia, contenido y gestión mensual con criterio jurídico.</p>
+            <div style="margin-top:auto;padding-top:14px;display:flex;justify-content:flex-end;color:#B8946A;font-size:16px">→</div>
+          </div>
+          <div data-reveal data-delay="70" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1),border-color .35s;border:1px solid rgba(184,148,106,.2);padding:22px;display:flex;flex-direction:column;gap:12px;background:rgba(255,255,255,.012)" style-hover="border-color:rgba(184,148,106,.75);background:rgba(184,148,106,.05)">
+            <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B8946A">02</div>
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:21px;letter-spacing:.03em;text-transform:uppercase;margin:0">Identidad visual</h3>
+            <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(245,242,236,.55);margin:0">Una identidad coherente con tu posicionamiento y tu especialidad.</p>
+            <div style="margin-top:auto;padding-top:14px;display:flex;justify-content:flex-end;color:#B8946A;font-size:16px">→</div>
+          </div>
+          <div data-reveal data-delay="140" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1),border-color .35s;border:1px solid rgba(184,148,106,.2);padding:22px;display:flex;flex-direction:column;gap:12px;background:rgba(255,255,255,.012)" style-hover="border-color:rgba(184,148,106,.75);background:rgba(184,148,106,.05)">
+            <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B8946A">03</div>
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:21px;letter-spacing:.03em;text-transform:uppercase;margin:0">Diseño web</h3>
+            <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(245,242,236,.55);margin:0">Sitios profesionales, rápidos y pensados para convertir visitas en consultas.</p>
+            <div style="margin-top:auto;padding-top:14px;display:flex;justify-content:flex-end;color:#B8946A;font-size:16px">→</div>
+          </div>
+          <div data-reveal data-delay="210" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1),border-color .35s;border:1px solid rgba(184,148,106,.2);padding:22px;display:flex;flex-direction:column;gap:12px;background:rgba(255,255,255,.012)" style-hover="border-color:rgba(184,148,106,.75);background:rgba(184,148,106,.05)">
+            <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B8946A">04</div>
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:21px;letter-spacing:.03em;text-transform:uppercase;margin:0">Estrategia digital</h3>
+            <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(245,242,236,.55);margin:0">Ordenamos qué comunicar, cómo y para quién.</p>
+            <div style="margin-top:auto;padding-top:14px;display:flex;justify-content:flex-end;color:#B8946A;font-size:16px">→</div>
+          </div>
+          <div data-reveal data-delay="280" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1),border-color .35s;border:1px solid rgba(184,148,106,.2);padding:22px;display:flex;flex-direction:column;gap:12px;background:rgba(255,255,255,.012)" style-hover="border-color:rgba(184,148,106,.75);background:rgba(184,148,106,.05)">
+            <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B8946A">05</div>
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:21px;letter-spacing:.03em;text-transform:uppercase;margin:0">Contenido</h3>
+            <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(245,242,236,.55);margin:0">Piezas pensadas para informar, posicionar y generar confianza.</p>
+            <div style="margin-top:auto;padding-top:14px;display:flex;justify-content:flex-end;color:#B8946A;font-size:16px">→</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#F5F2EC;color:#0F1923;padding:clamp(64px,8vw,116px) 0;position:relative;overflow:hidden">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(260px,.8fr) minmax(320px,1.35fr);gap:clamp(32px,5vw,72px);align-items:start">
+      <div>
+        <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#9A7847">Empecemos por vos</div>
+        <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,4vw,58px);line-height:.96;text-transform:uppercase;margin:18px 0 0;color:#0F1923">¿En qué momento<br>está tu marca?</h2>
+        <p data-reveal data-delay="140" style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-weight:300;font-size:17px;line-height:1.7;color:rgba(15,25,35,.68);max-width:36ch;margin:20px 0 0">No todos necesitan lo mismo. Por eso no empezamos vendiéndote un paquete.</p>
+        <div data-reveal data-delay="200" style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);margin-top:clamp(28px,4vw,48px);display:flex;align-items:flex-end;gap:20px">
+          <img src="assets/columna.png" alt="" style="height:clamp(140px,18vw,240px);opacity:.9">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;line-height:2.2;color:rgba(15,25,35,.55);padding-bottom:10px">TU MARCA<br>TAMBIÉN ES TU<br>MEJOR PRESENTACIÓN</div>
+        </div>
+      </div>
+      <div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(14px,1.6vw,20px)">
+          <div onClick="{{ pickMoment0 }}" style="{{ momentStyle0 }}">
+            <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A7847">01</div>
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:20px;letter-spacing:.03em;text-transform:uppercase;margin:12px 0 8px">Estoy empezando</h3>
+            <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(15,25,35,.62);margin:0">Tengo una marca o una idea y necesito construir mi presencia.</p>
+            <div style="margin-top:18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#9A7847;display:flex;align-items:center;gap:8px">Ver qué necesito →</div>
+          </div>
+          <div onClick="{{ pickMoment1 }}" style="{{ momentStyle1 }}">
+            <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A7847">02</div>
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:20px;letter-spacing:.03em;text-transform:uppercase;margin:12px 0 8px">Ya tengo redes</h3>
+            <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(15,25,35,.62);margin:0">Publico, pero no estoy consiguiendo el resultado que esperaba.</p>
+            <div style="margin-top:18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#9A7847;display:flex;align-items:center;gap:8px">Analizar mi situación →</div>
+          </div>
+          <div onClick="{{ pickMoment2 }}" style="{{ momentStyle2 }}">
+            <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A7847">03</div>
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:20px;letter-spacing:.03em;text-transform:uppercase;margin:12px 0 8px">Soy un estudio</h3>
+            <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(15,25,35,.62);margin:0">Necesitamos ordenar y profesionalizar nuestra comunicación.</p>
+            <div style="margin-top:18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#9A7847;display:flex;align-items:center;gap:8px">Ver soluciones →</div>
+          </div>
+          <div onClick="{{ pickMoment3 }}" style="{{ momentStyle3 }}">
+            <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;color:#9A7847">04</div>
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:20px;letter-spacing:.03em;text-transform:uppercase;margin:12px 0 8px">Necesito una web</h3>
+            <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(15,25,35,.62);margin:0">Quiero un sitio profesional que represente realmente mi estudio.</p>
+            <div style="margin-top:18px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#9A7847;display:flex;align-items:center;gap:8px">Ver desarrollo web →</div>
+          </div>
+        </div>
+        <div style="{{ momentCtaStyle }}">
+          <div style="font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9A7847">Recomendación</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(20px,2.2vw,28px);line-height:1.1;text-transform:uppercase;margin:10px 0 0">{{ momentCtaTitle }}</div>
+          <p style="font-weight:300;font-size:15px;line-height:1.65;color:rgba(15,25,35,.66);margin:10px 0 0;max-width:52ch">{{ momentCtaBody }}</p>
+          <a href="#contacto" style="align-self:flex-start;margin-top:18px;background:#0F1923;color:#F5F2EC;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:14px 24px;border-radius:2px" style-hover="background:#B8946A;color:#0F1923">Quiero avanzar con esto →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(64px,8vw,116px) 0;border-bottom:1px solid rgba(184,148,106,.14)">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+      <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Diferencial</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(28px,4vw,64px);margin-top:20px;align-items:start">
+        <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,4vw,58px);line-height:.96;text-transform:uppercase;margin:0">Esto no es<br>marketing genérico<br><span style="color:#B8946A">aplicado al derecho.</span></h2>
+        <div style="display:grid;gap:26px">
+          <div data-reveal data-delay="100" style="opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start">
+            <span style="width:20px;height:1px;background:#B8946A;margin-top:12px;display:block"></span>
+            <div>
+              <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:20px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px">Hablamos tu lenguaje</h3>
+              <p style="font-weight:300;font-size:15.5px;line-height:1.68;color:rgba(245,242,236,.58);margin:0">Entendemos de qué se trata tu práctica, así el contenido no simplifica lo que no se puede simplificar.</p>
+            </div>
+          </div>
+          <div data-reveal data-delay="180" style="opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start">
+            <span style="width:20px;height:1px;background:#B8946A;margin-top:12px;display:block"></span>
+            <div>
+              <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:20px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px">Conocemos los límites</h3>
+              <p style="font-weight:300;font-size:15.5px;line-height:1.68;color:rgba(245,242,236,.58);margin:0">No prometemos resultados, no comparamos con colegas y resguardamos la confidencialidad. Siempre.</p>
+            </div>
+          </div>
+          <div data-reveal data-delay="260" style="opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start">
+            <span style="width:20px;height:1px;background:#B8946A;margin-top:12px;display:block"></span>
+            <div>
+              <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:20px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px">Criterio antes que volumen</h3>
+              <p style="font-weight:300;font-size:15.5px;line-height:1.68;color:rgba(245,242,236,.58);margin:0">Menos piezas, mejor pensadas. La confianza profesional no se construye con ruido.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso" style="padding:clamp(64px,8vw,116px) 0">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+      <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Cómo trabajamos</div>
+      <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,4vw,58px);line-height:.96;text-transform:uppercase;margin:18px 0 clamp(38px,5vw,64px);max-width:20ch">Un proceso claro,<br>sin sorpresas.</h2>
+      <div data-timeline style="position:relative">
+        <div style="position:absolute;left:0;right:0;top:28px;height:1px;background:rgba(184,148,106,.18)"></div>
+        <div data-timeline-fill style="position:absolute;left:0;top:28px;height:1px;width:0%;background:#B8946A;transition:width .25s linear"></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(184px,1fr));gap:clamp(16px,2vw,28px);position:relative">
+          <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">01</div>
+            <div style="width:9px;height:9px;background:#B8946A;border-radius:50%;margin:14px 0 20px"></div>
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px">Diagnóstico</h3>
+            <p style="font-weight:300;font-size:14.5px;line-height:1.62;color:rgba(245,242,236,.55);margin:0">Miramos tu práctica, tu audiencia y lo que hoy comunicás.</p>
+          </div>
+          <div data-reveal data-delay="90" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">02</div>
+            <div style="width:9px;height:9px;background:#B8946A;border-radius:50%;margin:14px 0 20px"></div>
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px">Estrategia</h3>
+            <p style="font-weight:300;font-size:14.5px;line-height:1.62;color:rgba(245,242,236,.55);margin:0">Definimos qué decir, en qué canales y con qué tono.</p>
+          </div>
+          <div data-reveal data-delay="180" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">03</div>
+            <div style="width:9px;height:9px;background:#B8946A;border-radius:50%;margin:14px 0 20px"></div>
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px">Diseño</h3>
+            <p style="font-weight:300;font-size:14.5px;line-height:1.62;color:rgba(245,242,236,.55);margin:0">Armamos el sistema visual y las piezas base de tu marca.</p>
+          </div>
+          <div data-reveal data-delay="270" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">04</div>
+            <div style="width:9px;height:9px;background:#B8946A;border-radius:50%;margin:14px 0 20px"></div>
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px">Aprobación</h3>
+            <p style="font-weight:300;font-size:14.5px;line-height:1.62;color:rgba(245,242,236,.55);margin:0">Nada se publica sin que lo veas y lo apruebes antes.</p>
+          </div>
+          <div data-reveal data-delay="360" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">05</div>
+            <div style="width:9px;height:9px;background:#B8946A;border-radius:50%;margin:14px 0 20px"></div>
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px">Gestión y ajuste</h3>
+            <p style="font-weight:300;font-size:14.5px;line-height:1.62;color:rgba(245,242,236,.55);margin:0">Publicamos, medimos y corregimos el rumbo mes a mes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="casos" style="padding:clamp(64px,8vw,116px) 0;border-top:1px solid rgba(184,148,106,.14)">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between">
+        <div>
+          <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Casos</div>
+          <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,4vw,58px);line-height:.96;text-transform:uppercase;margin:18px 0 0">Trabajo publicado.</h2>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;color:rgba(245,242,236,.4);max-width:30ch;line-height:1.9">SELECCIÓN 2024—2026<br>IDENTIDAD · REDES · WEB</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,1.8vw,24px);margin-top:clamp(34px,4vw,56px)">
+        <figure data-reveal style="opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);grid-column:span 7;margin:0">
+          <div style="aspect-ratio:16/10;border:1px solid rgba(184,148,106,.22);background:repeating-linear-gradient(135deg,rgba(184,148,106,.1) 0 8px,rgba(255,255,255,.015) 8px 16px);display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.24em;color:rgba(245,242,236,.45);text-align:center">CASO 01 · IMAGEN 1600×1000<br>IDENTIDAD + REDES</span>
+          </div>
+          <figcaption style="display:flex;justify-content:space-between;gap:16px;margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;color:rgba(245,242,236,.5);text-transform:uppercase"><span>Estudio de familia · Identidad + redes</span><span style="color:#B8946A">01</span></figcaption>
+        </figure>
+        <figure data-reveal data-delay="120" style="opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);grid-column:span 5;margin:0;align-self:end">
+          <div style="aspect-ratio:4/5;border:1px solid rgba(184,148,106,.22);background:repeating-linear-gradient(135deg,rgba(184,148,106,.1) 0 8px,rgba(255,255,255,.015) 8px 16px);display:flex;align-items:center;justify-content:center">
+            <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.24em;color:rgba(245,242,236,.45);text-align:center">CASO 02 · IMAGEN 1000×1250<br>CONTENIDO</span>
+          </div>
+          <figcaption style="display:flex;justify-content:space-between;gap:16px;margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;color:rgba(245,242,236,.5);text-transform:uppercase"><span>Laboralista · Contenido mensual</span><span style="color:#B8946A">02</span></figcaption>
+        </figure>
+        <figure data-reveal data-delay="60" style="opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);grid-column:span 4;margin:0">
+          <div style="aspect-ratio:1/1;border:1px solid rgba(184,148,106,.22);background:repeating-linear-gradient(135deg,rgba(184,148,106,.1) 0 8px,rgba(255,255,255,.015) 8px 16px);display:flex;align-items:center;justify-content:center">
+            <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.24em;color:rgba(245,242,236,.45);text-align:center">CASO 03 · 1200×1200</span>
+          </div>
+          <figcaption style="display:flex;justify-content:space-between;gap:16px;margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;color:rgba(245,242,236,.5);text-transform:uppercase"><span>Penalista · Identidad</span><span style="color:#B8946A">03</span></figcaption>
+        </figure>
+        <figure data-reveal data-delay="140" style="opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);grid-column:span 8;margin:0">
+          <div style="aspect-ratio:2/1;border:1px solid rgba(184,148,106,.22);background:repeating-linear-gradient(135deg,rgba(184,148,106,.1) 0 8px,rgba(255,255,255,.015) 8px 16px);display:flex;align-items:center;justify-content:center">
+            <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.24em;color:rgba(245,242,236,.45);text-align:center">CASO 04 · IMAGEN 1800×900 · SITIO WEB</span>
+          </div>
+          <figcaption style="display:flex;justify-content:space-between;gap:16px;margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;color:rgba(245,242,236,.5);text-transform:uppercase"><span>Estudio corporativo · Sitio web</span><span style="color:#B8946A">04</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(72px,9vw,128px) 0;background:linear-gradient(180deg,#0F1923,#0C141C)">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+      <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A;margin-bottom:clamp(24px,3vw,44px)">Lo que sostiene el trabajo</div>
+      <div style="display:grid;gap:0;border-top:1px solid rgba(184,148,106,.16)">
+        <div style="display:grid;grid-template-columns:minmax(160px,1fr) minmax(220px,1.1fr);gap:clamp(16px,3vw,48px);align-items:baseline;padding:clamp(18px,2.4vw,30px) 0;border-bottom:1px solid rgba(184,148,106,.16)">
+          <div data-reveal data-reveal-fill="#F5F2EC" style="opacity:0;color:transparent;-webkit-text-stroke:1px rgba(245,242,236,.32);transition:opacity .9s ease,color .9s ease,-webkit-text-stroke .9s ease;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(38px,6vw,86px);line-height:.9;text-transform:uppercase">Diseño</div>
+          <p data-reveal data-delay="120" style="opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease;font-weight:300;font-size:15.5px;line-height:1.68;color:rgba(245,242,236,.55);margin:0">La primera lectura de tu profesionalismo ocurre antes de la primera palabra.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(160px,1fr) minmax(220px,1.1fr);gap:clamp(16px,3vw,48px);align-items:baseline;padding:clamp(18px,2.4vw,30px) 0;border-bottom:1px solid rgba(184,148,106,.16)">
+          <div data-reveal data-reveal-fill="#F5F2EC" style="opacity:0;color:transparent;-webkit-text-stroke:1px rgba(245,242,236,.32);transition:opacity .9s ease,color .9s ease,-webkit-text-stroke .9s ease;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(38px,6vw,86px);line-height:.9;text-transform:uppercase">Criterio</div>
+          <p data-reveal data-delay="120" style="opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease;font-weight:300;font-size:15.5px;line-height:1.68;color:rgba(245,242,236,.55);margin:0">Decidir qué no publicar es parte del trabajo.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(160px,1fr) minmax(220px,1.1fr);gap:clamp(16px,3vw,48px);align-items:baseline;padding:clamp(18px,2.4vw,30px) 0;border-bottom:1px solid rgba(184,148,106,.16)">
+          <div data-reveal data-reveal-fill="#B8946A" style="opacity:0;color:transparent;-webkit-text-stroke:1px rgba(184,148,106,.4);transition:opacity .9s ease,color .9s ease,-webkit-text-stroke .9s ease;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(38px,6vw,86px);line-height:.9;text-transform:uppercase">Estrategia</div>
+          <p data-reveal data-delay="120" style="opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease;font-weight:300;font-size:15.5px;line-height:1.68;color:rgba(245,242,236,.55);margin:0">Cada pieza responde a un objetivo, no a un calendario vacío.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(160px,1fr) minmax(220px,1.1fr);gap:clamp(16px,3vw,48px);align-items:baseline;padding:clamp(18px,2.4vw,30px) 0;border-bottom:1px solid rgba(184,148,106,.16)">
+          <div data-reveal data-reveal-fill="#F5F2EC" style="opacity:0;color:transparent;-webkit-text-stroke:1px rgba(245,242,236,.32);transition:opacity .9s ease,color .9s ease,-webkit-text-stroke .9s ease;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(38px,6vw,86px);line-height:.9;text-transform:uppercase">Claridad</div>
+          <p data-reveal data-delay="120" style="opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease;font-weight:300;font-size:15.5px;line-height:1.68;color:rgba(245,242,236,.55);margin:0">Si tu cliente no entiende, no consulta. Traducimos sin banalizar.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(160px,1fr) minmax(220px,1.1fr);gap:clamp(16px,3vw,48px);align-items:baseline;padding:clamp(18px,2.4vw,30px) 0;border-bottom:1px solid rgba(184,148,106,.16)">
+          <div data-reveal data-reveal-fill="#F5F2EC" style="opacity:0;color:transparent;-webkit-text-stroke:1px rgba(245,242,236,.32);transition:opacity .9s ease,color .9s ease,-webkit-text-stroke .9s ease;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(38px,6vw,86px);line-height:.9;text-transform:uppercase">Confianza</div>
+          <p data-reveal data-delay="120" style="opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease;font-weight:300;font-size:15.5px;line-height:1.68;color:rgba(245,242,236,.55);margin:0">El objetivo final no es alcance: es que te elijan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros" style="padding:clamp(64px,8vw,116px) 0;border-top:1px solid rgba(184,148,106,.14)">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,4vw,64px);align-items:start">
+        <div>
+          <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Nosotros</div>
+          <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,4vw,58px);line-height:.96;text-transform:uppercase;margin:18px 0 0">Un equipo chico,<br>con criterio propio.</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:clamp(16px,2vw,26px)">
+          <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)">
+            <div style="aspect-ratio:3/4;border:1px solid rgba(184,148,106,.22);background:repeating-linear-gradient(135deg,rgba(184,148,106,.1) 0 8px,rgba(255,255,255,.015) 8px 16px);display:flex;align-items:center;justify-content:center"><span style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:rgba(245,242,236,.42);text-align:center">FOTO<br>900×1200</span></div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.03em;text-transform:uppercase;margin-top:14px">Nombre Apellido</div>
+            <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#B8946A;margin-top:5px">Dirección de arte</div>
+          </div>
+          <div data-reveal data-delay="100" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)">
+            <div style="aspect-ratio:3/4;border:1px solid rgba(184,148,106,.22);background:repeating-linear-gradient(135deg,rgba(184,148,106,.1) 0 8px,rgba(255,255,255,.015) 8px 16px);display:flex;align-items:center;justify-content:center"><span style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:rgba(245,242,236,.42);text-align:center">FOTO<br>900×1200</span></div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.03em;text-transform:uppercase;margin-top:14px">Nombre Apellido</div>
+            <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#B8946A;margin-top:5px">Contenido y estrategia</div>
+          </div>
+          <div data-reveal data-delay="200" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)">
+            <div style="aspect-ratio:3/4;border:1px solid rgba(184,148,106,.22);background:repeating-linear-gradient(135deg,rgba(184,148,106,.1) 0 8px,rgba(255,255,255,.015) 8px 16px);display:flex;align-items:center;justify-content:center"><span style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:rgba(245,242,236,.42);text-align:center">FOTO<br>900×1200</span></div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.03em;text-transform:uppercase;margin-top:14px">Nombre Apellido</div>
+            <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#B8946A;margin-top:5px">Desarrollo web</div>
+          </div>
+        </div>
+      </div>
+
+      <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);margin-top:clamp(48px,6vw,88px);border-top:1px solid rgba(184,148,106,.16);padding-top:clamp(28px,3vw,44px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,4vw,64px)">
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Ética</div>
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(26px,2.8vw,38px);line-height:1.02;text-transform:uppercase;margin:14px 0 0">Comunicación<br>profesional responsable.</h3>
+        </div>
+        <p style="font-weight:300;font-size:16px;line-height:1.72;color:rgba(245,242,236,.58);margin:0;max-width:52ch">Trabajamos dentro de los límites que la profesión exige: no prometemos resultados, no comparamos con colegas y resguardamos la confidencialidad de cada caso. La confianza se construye así, no con promesas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="padding:clamp(64px,8vw,116px) 0;border-top:1px solid rgba(184,148,106,.14)">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(220px,.65fr) minmax(320px,1.7fr);gap:clamp(28px,4vw,64px);align-items:start">
+      <div>
+        <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">FAQ</div>
+        <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,48px);line-height:.98;text-transform:uppercase;margin:18px 0 0">Preguntas<br>frecuentes.</h2>
+      </div>
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);border-top:1px solid rgba(184,148,106,.16)">
+        <div style="border-bottom:1px solid rgba(184,148,106,.16)">
+          <div onClick="{{ faqToggle0 }}" style="display:flex;gap:20px;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer" style-hover="color:#B8946A">
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(18px,1.7vw,23px);letter-spacing:.02em;text-transform:uppercase;margin:0">¿Quién escribe y diseña el contenido?</h3>
+            <span style="{{ faqIcon0 }}">+</span>
+          </div>
+          <div style="{{ faqBody0 }}"><p style="font-weight:300;font-size:15.5px;line-height:1.72;color:rgba(245,242,236,.58);margin:0 0 22px;max-width:66ch">Todo el contenido lo armamos nosotras, adaptado a tu especialidad y tu forma de comunicar. Vos no tenés que escribir nada — solo aprobar antes de que se publique.</p></div>
+        </div>
+        <div style="border-bottom:1px solid rgba(184,148,106,.16)">
+          <div onClick="{{ faqToggle1 }}" style="display:flex;gap:20px;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer" style-hover="color:#B8946A">
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(18px,1.7vw,23px);letter-spacing:.02em;text-transform:uppercase;margin:0">¿Puedo pedir cambios si algo no me gusta?</h3>
+            <span style="{{ faqIcon1 }}">+</span>
+          </div>
+          <div style="{{ faqBody1 }}"><p style="font-weight:300;font-size:15.5px;line-height:1.72;color:rgba(245,242,236,.58);margin:0 0 22px;max-width:66ch">Por supuesto. Antes de publicar cualquier pieza, te la enviamos para tu aprobación. Si algo no te representa, lo ajustamos hasta que estés conforme.</p></div>
+        </div>
+        <div style="border-bottom:1px solid rgba(184,148,106,.16)">
+          <div onClick="{{ faqToggle2 }}" style="display:flex;gap:20px;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer" style-hover="color:#B8946A">
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(18px,1.7vw,23px);letter-spacing:.02em;text-transform:uppercase;margin:0">¿En cuánto tiempo empiezo a ver resultados?</h3>
+            <span style="{{ faqIcon2 }}">+</span>
+          </div>
+          <div style="{{ faqBody2 }}"><p style="font-weight:300;font-size:15.5px;line-height:1.72;color:rgba(245,242,236,.58);margin:0 0 22px;max-width:66ch">Como toda estrategia de redes, los primeros resultados de posicionamiento y alcance se empiezan a notar entre el primer y segundo mes. Las consultas concretas dependen de varios factores (especialidad, zona, competencia), pero el objetivo desde el día uno es construir una presencia que genere confianza y, con el tiempo, consultas reales.</p></div>
+        </div>
+        <div style="border-bottom:1px solid rgba(184,148,106,.16)">
+          <div onClick="{{ faqToggle3 }}" style="display:flex;gap:20px;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer" style-hover="color:#B8946A">
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(18px,1.7vw,23px);letter-spacing:.02em;text-transform:uppercase;margin:0">¿El contenido respeta las normas de publicidad de la abogacía?</h3>
+            <span style="{{ faqIcon3 }}">+</span>
+          </div>
+          <div style="{{ faqBody3 }}"><p style="font-weight:300;font-size:15.5px;line-height:1.72;color:rgba(245,242,236,.58);margin:0 0 22px;max-width:66ch">Sí. Conocemos los límites éticos de la profesión (no prometer resultados, no comparar con colegas, resguardar la confidencialidad) y todo el contenido se arma respetándolos.</p></div>
+        </div>
+        <div style="border-bottom:1px solid rgba(184,148,106,.16)">
+          <div onClick="{{ faqToggle4 }}" style="display:flex;gap:20px;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer" style-hover="color:#B8946A">
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(18px,1.7vw,23px);letter-spacing:.02em;text-transform:uppercase;margin:0">¿Necesito tener ya una identidad de marca para empezar?</h3>
+            <span style="{{ faqIcon4 }}">+</span>
+          </div>
+          <div style="{{ faqBody4 }}"><p style="font-weight:300;font-size:15.5px;line-height:1.72;color:rgba(245,242,236,.58);margin:0 0 22px;max-width:66ch">No es obligatorio. Si todavía no la tenés, podemos armarla como parte del servicio de Identidad Visual antes de arrancar con el contenido, o trabajar con una estética simple mientras tanto.</p></div>
+        </div>
+        <div style="border-bottom:1px solid rgba(184,148,106,.16)">
+          <div onClick="{{ faqToggle5 }}" style="display:flex;gap:20px;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer" style-hover="color:#B8946A">
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(18px,1.7vw,23px);letter-spacing:.02em;text-transform:uppercase;margin:0">¿Qué pasa si no tengo tiempo para grabar videos?</h3>
+            <span style="{{ faqIcon5 }}">+</span>
+          </div>
+          <div style="{{ faqBody5 }}"><p style="font-weight:300;font-size:15.5px;line-height:1.72;color:rgba(245,242,236,.58);margin:0 0 22px;max-width:66ch">No hay problema — muchos de nuestros clientes no graban nada. Armamos el contenido en formato posteable (imágenes, gráficos, textos) sin necesidad de que aparezcas en cámara, salvo que quieras sumarlo más adelante.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" style="background:#F5F2EC;color:#0F1923;padding:clamp(64px,8vw,120px) 0;overflow:hidden">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(280px,1fr) minmax(320px,1.05fr);gap:clamp(32px,5vw,72px);align-items:center">
+      <div>
+        <div data-reveal style="opacity:0;transform:translateY(26px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)">
+          <img data-parallax="0.03" src="assets/personaje-filosofo-laptop.png" alt="Escultura clásica trabajando en una laptop" style="display:block;width:100%;max-width:560px;filter:drop-shadow(0 30px 50px rgba(15,25,35,.18))">
+        </div>
+        <div data-reveal data-delay="200" style="opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease;margin-top:20px">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#9A7847">Hablemos</div>
+          <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,52px);line-height:.98;text-transform:uppercase;margin:14px 0 0">Contanos qué querés<br>comunicar mejor.</h2>
+        </div>
+      </div>
+      <form data-reveal data-delay="320" onSubmit="{{ onSubmit }}" style="opacity:0;transform:translateY(26px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1);display:grid;gap:18px;border:1px solid rgba(15,25,35,.14);background:#FFFDF9;padding:clamp(22px,3vw,40px)">
+        <label style="display:grid;gap:8px">
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(15,25,35,.55)">Nombre</span>
+          <input type="text" placeholder="Tu nombre y apellido" style="border:0;border-bottom:1px solid rgba(15,25,35,.22);background:transparent;padding:10px 0;font-size:16px;font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
+        </label>
+        <label style="display:grid;gap:8px">
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(15,25,35,.55)">Email</span>
+          <input type="email" placeholder="nombre@estudio.com" style="border:0;border-bottom:1px solid rgba(15,25,35,.22);background:transparent;padding:10px 0;font-size:16px;font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
+        </label>
+        <label style="display:grid;gap:8px">
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(15,25,35,.55)">Especialidad</span>
+          <input type="text" placeholder="Familia, laboral, penal…" style="border:0;border-bottom:1px solid rgba(15,25,35,.22);background:transparent;padding:10px 0;font-size:16px;font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
+        </label>
+        <label style="display:grid;gap:8px">
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(15,25,35,.55)">Qué necesitás</span>
+          <textarea rows="3" placeholder="Contanos brevemente en qué estás" style="border:0;border-bottom:1px solid rgba(15,25,35,.22);background:transparent;padding:10px 0;font-size:16px;font-weight:300;color:#0F1923;outline:none;resize:vertical" style-focus="border-bottom:1px solid #B8946A"></textarea>
+        </label>
+        <button type="submit" style="margin-top:6px;justify-self:start;background:#0F1923;color:#F5F2EC;border:0;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:16px 28px;border-radius:2px;cursor:pointer;transition:background .3s,color .3s" style-hover="background:#B8946A;color:#0F1923">{{ submitLabel }}</button>
+        <div style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:rgba(15,25,35,.45);line-height:1.8">RESPONDEMOS EN 24—48 H HÁBILES</div>
+      </form>
+    </div>
+  </section>
+
+  <footer style="background:#0F1923;border-top:1px solid rgba(184,148,106,.16);padding:clamp(44px,5vw,72px) 0 36px">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(24px,3.2vw,44px);line-height:1;text-transform:uppercase;color:#F5F2EC;max-width:22ch">El diseño también <span style="color:#B8946A">comunica.</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-end;margin-top:clamp(30px,4vw,54px);padding-top:24px;border-top:1px solid rgba(184,148,106,.14)">
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;letter-spacing:.06em;color:#B8946A;line-height:1">IURE</div>
+          <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.3em;color:rgba(245,242,236,.45);margin-top:3px">MARKETING JURÍDICO</div>
+        </div>
+        <div style="display:flex;gap:24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase">
+          <a href="#servicios" style="color:rgba(245,242,236,.55)" style-hover="color:#B8946A">Servicios</a>
+          <a href="#casos" style="color:rgba(245,242,236,.55)" style-hover="color:#B8946A">Casos</a>
+          <a href="#faq" style="color:rgba(245,242,236,.55)" style-hover="color:#B8946A">FAQ</a>
+          <a href="#contacto" style="color:rgba(245,242,236,.55)" style-hover="color:#B8946A">Contacto</a>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.16em;color:rgba(245,242,236,.32)">© 2026 IURE</div>
+      </div>
+    </div>
+  </footer>
+
+  <div style="{{ chatPanelStyle }}">
+    <div style="display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid rgba(184,148,106,.2)">
+      <span style="width:26px;height:26px;border:1px solid rgba(184,148,106,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;color:#B8946A">I</span>
+      <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#F5F2EC">IURE</span>
+      <span onClick="{{ closeChat }}" style="margin-left:auto;cursor:pointer;color:rgba(245,242,236,.5);font-size:16px;line-height:1;padding:2px 4px" style-hover="color:#F5F2EC">×</span>
+    </div>
+    <div style="padding:16px 18px 18px;display:grid;gap:10px">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.02em;text-transform:uppercase;color:#F5F2EC">¿Qué necesitás mejorar?</div>
+      <div onClick="{{ pickChat0 }}" style="{{ chatOpt0 }}">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#F5F2EC">Redes</div>
+        <div style="font-weight:300;font-size:13px;color:rgba(245,242,236,.5);margin-top:3px">Quiero mejorar mi comunicación.</div>
+      </div>
+      <div onClick="{{ pickChat1 }}" style="{{ chatOpt1 }}">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#F5F2EC">Web</div>
+        <div style="font-weight:300;font-size:13px;color:rgba(245,242,236,.5);margin-top:3px">Quiero una página web.</div>
+      </div>
+      <div onClick="{{ pickChat2 }}" style="{{ chatOpt2 }}">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#F5F2EC">Identidad</div>
+        <div style="font-weight:300;font-size:13px;color:rgba(245,242,236,.5);margin-top:3px">Necesito una identidad visual.</div>
+      </div>
+      <div onClick="{{ pickChat3 }}" style="{{ chatOpt3 }}">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#F5F2EC">No sé por dónde empezar</div>
+        <div style="font-weight:300;font-size:13px;color:rgba(245,242,236,.5);margin-top:3px">Quiero hablar con alguien.</div>
+      </div>
+      <div style="{{ chatReplyStyle }}">
+        <p style="font-weight:300;font-size:13.5px;line-height:1.6;color:rgba(245,242,236,.72);margin:0">{{ chatReply }}</p>
+        <a href="#contacto" onClick="{{ closeChat }}" style="display:inline-block;margin-top:12px;background:#B8946A;color:#0F1923;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:11px 18px;border-radius:2px">Seguir por acá →</a>
+      </div>
+    </div>
+  </div>
+  <div onClick="{{ openChat }}" style="{{ chatButtonStyle }}">
+    <span style="font-size:17px;line-height:1">✎</span>
+  </div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showChatbot&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;chatDefaultOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;enableMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
+class Component extends DCLogic {
+  state = { moment: null, faq: null, chatOpen: null, chatChoice: null, sent: false };
+
+  get reduced() {
+    return !this.motionOn || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
+  get motionOn() { return this.props.enableMotion !== false; }
+
+  componentDidMount() {
+    this.seen = new WeakSet();
+    this.tick = this.tick.bind(this);
+    window.addEventListener('scroll', this.tick, { passive: true });
+    window.addEventListener('resize', this.tick);
+    this.tick();
+    let n = 0;
+    this.timer = setInterval(() => { this.tick(); if (++n > 60) clearInterval(this.timer); }, 250);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    window.removeEventListener('scroll', this.tick);
+    window.removeEventListener('resize', this.tick);
+  }
+
+  tick() {
+    const vh = window.innerHeight, reduced = this.reduced;
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      if (this.seen.has(el)) return;
+      const r = el.getBoundingClientRect();
+      if (reduced || (r.top < vh * 0.9 && r.bottom > -80)) {
+        this.seen.add(el);
+        const d = reduced ? 0 : parseInt(el.dataset.delay || '0', 10);
+        el.style.transitionDelay = d + 'ms';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        if (el.dataset.revealFill) {
+          el.style.color = el.dataset.revealFill;
+          el.style.webkitTextStroke = '0px transparent';
+        }
+      }
+    });
+    if (!reduced) {
+      document.querySelectorAll('[data-parallax]').forEach(el => {
+        const r = el.getBoundingClientRect();
+        const f = parseFloat(el.dataset.parallax) || 0;
+        const off = (r.top + r.height / 2 - vh / 2) * -f;
+        el.style.transform = 'translate3d(0,' + off.toFixed(1) + 'px,0)';
+      });
+    }
+    const tl = document.querySelector('[data-timeline]');
+    const fill = tl && tl.querySelector('[data-timeline-fill]');
+    if (tl && fill) {
+      const r = tl.getBoundingClientRect();
+      const p = reduced ? 1 : (vh * 0.85 - r.top) / Math.max(r.height * 0.7, 1);
+      fill.style.width = Math.max(0, Math.min(1, p)) * 100 + '%';
+    }
+  }
+
+  momentStyle(i) {
+    const on = this.state.moment === i;
+    return 'cursor:pointer;padding:22px;border:1px solid ' + (on ? '#B8946A' : 'rgba(15,25,35,.14)') +
+      ';background:' + (on ? 'rgba(184,148,106,.1)' : '#FFFDF9') +
+      ';transition:border-color .3s,background .3s,transform .3s;transform:translateY(' + (on ? '-2px' : '0') + ')';
+  }
+  chatOptStyle(i) {
+    const on = this.state.chatChoice === i;
+    return 'cursor:pointer;padding:12px 14px;border:1px solid ' + (on ? '#B8946A' : 'rgba(184,148,106,.24)') +
+      ';background:' + (on ? 'rgba(184,148,106,.12)' : 'rgba(255,255,255,.02)') + ';transition:border-color .3s,background .3s';
+  }
+  faqBody(i) {
+    const on = this.state.faq === i;
+    return 'overflow:hidden;max-height:' + (on ? '420px' : '0') + ';opacity:' + (on ? 1 : 0) +
+      ';transition:max-height .5s cubic-bezier(.2,.7,.2,1),opacity .4s ease';
+  }
+  faqIcon(i) {
+    const on = this.state.faq === i;
+    return "font-family:'Barlow',sans-serif;font-size:20px;font-weight:300;color:#B8946A;line-height:1;transition:transform .35s ease;transform:rotate(" + (on ? '45deg' : '0deg') + ')';
+  }
+
+  renderVals() {
+    const v = {};
+    [0, 1, 2, 3].forEach(i => {
+      v['momentStyle' + i] = this.momentStyle(i);
+      v['pickMoment' + i] = () => this.setState({ moment: i });
+      v['chatOpt' + i] = this.chatOptStyle(i);
+      v['pickChat' + i] = () => this.setState({ chatChoice: i });
+    });
+    [0, 1, 2, 3, 4, 5].forEach(i => {
+      v['faqBody' + i] = this.faqBody(i);
+      v['faqIcon' + i] = this.faqIcon(i);
+      v['faqToggle' + i] = () => this.setState(s => ({ faq: s.faq === i ? null : i }));
+    });
+
+    const cta = [
+      { t: 'Identidad + primeros contenidos', b: 'Armamos la base: identidad visual, tono y las primeras piezas para que tu presencia arranque ordenada.' },
+      { t: 'Diagnóstico + estrategia de redes', b: 'Revisamos lo que ya publicás, detectamos qué no está funcionando y reordenamos la estrategia.' },
+      { t: 'Sistema de comunicación para estudios', b: 'Un sistema único para todo el estudio: criterios, plantillas y calendario, con aprobación interna clara.' },
+      { t: 'Desarrollo web profesional', b: 'Un sitio rápido y claro, pensado para que la visita entienda qué hacés y consulte.' }
+    ];
+    const m = this.state.moment;
+    v.momentCtaStyle = m === null
+      ? 'display:none'
+      : 'display:flex;flex-direction:column;margin-top:clamp(18px,2vw,26px);border:1px solid #B8946A;background:rgba(184,148,106,.08);padding:clamp(20px,2.4vw,30px)';
+    v.momentCtaTitle = m === null ? '' : cta[m].t;
+    v.momentCtaBody = m === null ? '' : cta[m].b;
+
+    const replies = [
+      'Perfecto. Trabajamos estrategia, contenido y gestión mensual pensados para tu especialidad.',
+      'Buenísimo. Diseñamos sitios claros y rápidos, orientados a convertir visitas en consultas.',
+      'Podemos armar tu identidad visual completa antes de arrancar con el contenido.',
+      'Tranquila/o: empezamos con un diagnóstico corto y te decimos qué conviene primero.'
+    ];
+    const open = this.state.chatOpen === null ? this.props.chatDefaultOpen !== false : this.state.chatOpen;
+    const show = this.props.showChatbot !== false;
+    v.chatPanelStyle = 'position:fixed;right:clamp(12px,2vw,26px);bottom:clamp(12px,2vw,26px);width:min(300px,calc(100vw - 24px));z-index:90;background:rgba(18,29,39,.98);border:1px solid rgba(184,148,106,.3);box-shadow:0 24px 60px rgba(0,0,0,.5);transition:opacity .4s ease,transform .4s cubic-bezier(.2,.7,.2,1);' +
+      (show && open ? 'opacity:1;transform:translateY(0);pointer-events:auto' : 'opacity:0;transform:translateY(14px);pointer-events:none');
+    v.chatButtonStyle = 'position:fixed;right:clamp(12px,2vw,26px);bottom:clamp(12px,2vw,26px);width:50px;height:50px;border-radius:50%;background:#B8946A;color:#0F1923;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:89;transition:opacity .4s ease,transform .3s ease;' +
+      (show && !open ? 'opacity:1;pointer-events:auto' : 'opacity:0;pointer-events:none');
+    const c = this.state.chatChoice;
+    v.chatReplyStyle = c === null ? 'display:none' : 'display:block;border-top:1px solid rgba(184,148,106,.2);padding-top:14px;margin-top:4px';
+    v.chatReply = c === null ? '' : replies[c];
+    v.openChat = () => this.setState({ chatOpen: true });
+    v.closeChat = () => this.setState({ chatOpen: false });
+
+    v.submitLabel = this.state.sent ? 'Mensaje enviado ✓' : 'Enviar consulta →';
+    v.onSubmit = e => { e.preventDefault(); this.setState({ sent: true }); };
+    return v;
+  }
+}
+
+</script>
+</body>
+</html>
