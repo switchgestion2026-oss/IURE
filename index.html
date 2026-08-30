@@ -209,7 +209,11 @@
         <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,3.9vw,56px);line-height:.96;text-transform:uppercase;margin:18px 0 0">Convertimos tu presencia<br>digital en una herramienta.</h2>
         <p data-reveal data-delay="140" style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-weight:300;font-size:17px;line-height:1.7;color:rgba(245,242,236,.6);max-width:56ch;margin:20px 0 0">Estrategia, diseño y contenido para que tu marca se vea, se entienda y genere consultas.</p>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:clamp(14px,1.6vw,22px);margin-top:clamp(30px,4vw,48px)">
+        <div onClick="{{ toggleServicios }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;margin-top:clamp(22px,3vw,30px);font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#B8946A" style-hover="color:#F5F2EC">
+  <span>{{ servicesToggleLabel }}</span><span style="{{ servicesIconStyle }}">+</span>
+</div>
+<div style="{{ servicesBodyStyle }}">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:clamp(14px,1.6vw,22px);margin-top:clamp(18px,2.4vw,26px)">
           <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1),border-color .35s;border:1px solid rgba(184,148,106,.2);padding:22px;display:flex;flex-direction:column;gap:12px;background:rgba(255,255,255,.012)" style-hover="border-color:rgba(184,148,106,.75);background:rgba(184,148,106,.05)">
             <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;color:#B8946A">01</div>
             <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:21px;letter-spacing:.03em;text-transform:uppercase;margin:0">Redes sociales</h3>
@@ -240,6 +244,7 @@
             <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(245,242,236,.55);margin:0">Piezas pensadas para informar, posicionar y generar confianza.</p>
             <div style="margin-top:auto;padding-top:14px;display:flex;justify-content:flex-end;color:#B8946A;font-size:16px">→</div>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -375,9 +380,12 @@
           <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Casos</div>
           <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,4vw,58px);line-height:.96;text-transform:uppercase;margin:18px 0 0">Trabajo publicado.</h2>
         </div>
-        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;color:rgba(245,242,236,.4);max-width:30ch;line-height:1.9">SELECCIÓN 2024—2026<br>IDENTIDAD · REDES · WEB</div>
+        <div onClick="{{ toggleCasos }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;color:#B8946A;text-transform:uppercase" style-hover="color:#F5F2EC">
+          <span>{{ casosToggleLabel }}</span><span style="{{ casosIconStyle }}">+</span>
+        </div>
       </div>
 
+      <div style="{{ casosBodyStyle }}">
       <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,1.8vw,24px);margin-top:clamp(34px,4vw,56px)">
         <figure data-reveal style="opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);grid-column:span 7;margin:0">
           <div style="aspect-ratio:16/10;border:1px solid rgba(184,148,106,.22);background:repeating-linear-gradient(135deg,rgba(184,148,106,.1) 0 8px,rgba(255,255,255,.015) 8px 16px);display:flex;align-items:center;justify-content:center;overflow:hidden">
@@ -404,12 +412,19 @@
           <figcaption style="display:flex;justify-content:space-between;gap:16px;margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;color:rgba(245,242,236,.5);text-transform:uppercase"><span>Estudio corporativo · Sitio web</span><span style="color:#B8946A">04</span></figcaption>
         </figure>
       </div>
+      </div>
     </div>
   </section>
 
   <section style="padding:clamp(72px,9vw,128px) 0;background:linear-gradient(180deg,#0F1923,#0C141C)">
     <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
-      <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A;margin-bottom:clamp(24px,3vw,44px)">Lo que sostiene el trabajo</div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:clamp(24px,3vw,44px)">
+        <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Lo que sostiene el trabajo</div>
+        <div onClick="{{ toggleSostiene }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;color:#B8946A;text-transform:uppercase" style-hover="color:#F5F2EC">
+          <span>{{ sostieneToggleLabel }}</span><span style="{{ sostieneIconStyle }}">+</span>
+        </div>
+      </div>
+      <div style="{{ sostieneBodyStyle }}">
       <div style="display:grid;gap:0;border-top:1px solid rgba(184,148,106,.16)">
         <div style="display:grid;grid-template-columns:minmax(160px,1fr) minmax(220px,1.1fr);gap:clamp(16px,3vw,48px);align-items:baseline;padding:clamp(18px,2.4vw,30px) 0;border-bottom:1px solid rgba(184,148,106,.16)">
           <div data-reveal data-reveal-fill="#F5F2EC" style="opacity:0;color:transparent;-webkit-text-stroke:1px rgba(245,242,236,.32);transition:opacity .9s ease,color .9s ease,-webkit-text-stroke .9s ease;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(38px,6vw,86px);line-height:.9;text-transform:uppercase">Diseño</div>
@@ -432,16 +447,22 @@
           <p data-reveal data-delay="120" style="opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease;font-weight:300;font-size:15.5px;line-height:1.68;color:rgba(245,242,236,.55);margin:0">El objetivo final no es alcance: es que te elijan.</p>
         </div>
       </div>
+      </div>
     </div>
   </section>
 
   <section id="nosotros" style="padding:clamp(64px,8vw,116px) 0;border-top:1px solid rgba(184,148,106,.14)">
     <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,4vw,64px);align-items:start">
-        <div>
-          <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Nosotros</div>
-          <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,4vw,58px);line-height:.96;text-transform:uppercase;margin:18px 0 0">Un equipo chico,<br>con criterio propio.</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+        <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Nosotros</div>
+        <div onClick="{{ toggleNosotros }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;color:#B8946A;text-transform:uppercase" style-hover="color:#F5F2EC">
+          <span>{{ nosotrosToggleLabel }}</span><span style="{{ nosotrosIconStyle }}">+</span>
         </div>
+      </div>
+      <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,4vw,58px);line-height:.96;text-transform:uppercase;margin:18px 0 0">Un equipo chico,<br>con criterio propio.</h2>
+
+      <div style="{{ nosotrosBodyStyle }}">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(28px,4vw,64px);align-items:start;margin-top:clamp(22px,3vw,30px)">
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:clamp(16px,2vw,26px)">
           <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)">
             <div style="aspect-ratio:3/4;border:1px solid rgba(184,148,106,.22);background:repeating-linear-gradient(135deg,rgba(184,148,106,.1) 0 8px,rgba(255,255,255,.015) 8px 16px);display:flex;align-items:center;justify-content:center"><span style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.22em;color:rgba(245,242,236,.42);text-align:center">FOTO<br>900×1200</span></div>
@@ -468,6 +489,7 @@
         </div>
         <p style="font-weight:300;font-size:16px;line-height:1.72;color:rgba(245,242,236,.58);margin:0;max-width:52ch">Trabajamos dentro de los límites que la profesión exige: no prometemos resultados, no comparamos con colegas y resguardamos la confidencialidad de cada caso. La confianza se construye así, no con promesas.</p>
       </div>
+      </div>
     </div>
   </section>
 
@@ -476,7 +498,11 @@
       <div>
         <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">FAQ</div>
         <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,48px);line-height:.98;text-transform:uppercase;margin:18px 0 0">Preguntas<br>frecuentes.</h2>
+        <div onClick="{{ toggleFaqSection }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;margin-top:clamp(18px,2.4vw,26px);font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#B8946A" style-hover="color:#F5F2EC">
+          <span>{{ faqSectionToggleLabel }}</span><span style="{{ faqSectionIconStyle }}">+</span>
+        </div>
       </div>
+      <div style="{{ faqSectionBodyStyle }}">
       <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);border-top:1px solid rgba(184,148,106,.16)">
         <div style="border-bottom:1px solid rgba(184,148,106,.16)">
           <div onClick="{{ faqToggle0 }}" style="display:flex;gap:20px;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer" style-hover="color:#B8946A">
@@ -520,6 +546,7 @@
           </div>
           <div style="{{ faqBody5 }}"><p style="font-weight:300;font-size:15.5px;line-height:1.72;color:rgba(245,242,236,.58);margin:0 0 22px;max-width:66ch">No hay problema — muchos de nuestros clientes no graban nada. Armamos el contenido en formato posteable (imágenes, gráficos, textos) sin necesidad de que aparezcas en cámara, salvo que quieras sumarlo más adelante.</p></div>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -623,7 +650,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showChatbot&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;chatDefaultOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;enableMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
 class Component extends DCLogic {
-  state = { moment: null, faq: null, chatOpen: null, chatChoice: null, sent: false, service: null };
+  state = { moment: null, faq: null, chatOpen: null, chatChoice: null, sent: false, service: null, sections: {} };
 
   get reduced() {
     return !this.motionOn || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -756,6 +783,31 @@ class Component extends DCLogic {
       v['faqIcon' + i] = this.faqIcon(i);
       v['faqToggle' + i] = () => this.setState(s => ({ faq: s.faq === i ? null : i }));
     });
+
+    v.servicesBodyStyle = this.sectionBodyStyle('servicios');
+    v.servicesIconStyle = this.sectionIconStyle('servicios');
+    v.servicesToggleLabel = this.sectionLabel('servicios', 'Ver servicios', 'Ocultar servicios');
+    v.toggleServicios = this.toggleSection('servicios');
+
+    v.casosBodyStyle = this.sectionBodyStyle('casos');
+    v.casosIconStyle = this.sectionIconStyle('casos');
+    v.casosToggleLabel = this.sectionLabel('casos', 'Ver casos', 'Ocultar casos');
+    v.toggleCasos = this.toggleSection('casos');
+
+    v.sostieneBodyStyle = this.sectionBodyStyle('sostiene');
+    v.sostieneIconStyle = this.sectionIconStyle('sostiene');
+    v.sostieneToggleLabel = this.sectionLabel('sostiene', 'Ver más', 'Ocultar');
+    v.toggleSostiene = this.toggleSection('sostiene');
+
+    v.nosotrosBodyStyle = this.sectionBodyStyle('nosotros');
+    v.nosotrosIconStyle = this.sectionIconStyle('nosotros');
+    v.nosotrosToggleLabel = this.sectionLabel('nosotros', 'Conocer al equipo', 'Ocultar');
+    v.toggleNosotros = this.toggleSection('nosotros');
+
+    v.faqSectionBodyStyle = this.sectionBodyStyle('faq');
+    v.faqSectionIconStyle = this.sectionIconStyle('faq');
+    v.faqSectionToggleLabel = this.sectionLabel('faq', 'Ver preguntas frecuentes', 'Ocultar preguntas');
+    v.toggleFaqSection = this.toggleSection('faq');
 
     const cta = [
       { t: 'Identidad + primeros contenidos', b: 'Armamos la base: identidad visual, tono y las primeras piezas para que tu presencia arranque ordenada.' },
