@@ -28,7 +28,9 @@
   .radial { position: static !important; display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 20px !important; aspect-ratio: auto !important; margin-top: 40px !important; }
   .radial-line, .radial-circle, .radial-center { display: none !important; }
   .radial-item { position: static !important; width: 100% !important; text-align: center !important; }
-  .radial-item img { max-height: 120px !important; margin: 0 auto !important; }
+  .radial-item-inner { flex-direction: column !important; text-align: center !important; }
+  .radial-item-inner > div { text-align: center !important; }
+  .radial-item img { max-height: 140px !important; width: auto !important; max-width: 78% !important; margin: 0 auto !important; }
   .radial-mobile-title { display: block !important; }
 }
 </style>
@@ -117,9 +119,9 @@
       <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.24em;color:rgba(245,242,236,.5);margin-top:4px">MARKETING JURÍDICO</div>
     </div>
 
-    <div data-reveal data-delay="150" class="radial" style="opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);position:relative;max-width:560px;margin:clamp(20px,3vw,32px) auto 0;aspect-ratio:1/0.92">
+    <div data-reveal data-delay="150" class="radial" style="opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);position:relative;max-width:780px;margin:clamp(24px,3.5vw,40px) auto 0;aspect-ratio:1/0.76">
 
-      <div class="radial-circle" style="position:absolute;left:50%;top:50%;width:clamp(120px,16vw,160px);height:clamp(120px,16vw,160px);transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(184,148,106,.32);z-index:2"></div>
+      <div class="radial-circle" style="position:absolute;left:50%;top:50%;width:clamp(170px,20vw,230px);height:clamp(170px,20vw,230px);transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(184,148,106,.32);z-index:2"></div>
 
       <div class="radial-line" style="{{ radialLine0 }}"></div>
       <div class="radial-line" style="{{ radialLine1 }}"></div>
@@ -127,32 +129,48 @@
       <div class="radial-line" style="{{ radialLine3 }}"></div>
 
       <div class="radial-center" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;z-index:5">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(18px,2vw,24px);letter-spacing:.04em;color:#B8946A;line-height:1">IURE</div>
-        <div style="font-family:'DM Mono',monospace;font-size:7.5px;letter-spacing:.2em;color:rgba(245,242,236,.5);margin-top:3px;white-space:nowrap">MARKETING JURÍDICO</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,30px);letter-spacing:.04em;color:#B8946A;line-height:1">IURE</div>
+        <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.2em;color:rgba(245,242,236,.5);margin-top:4px;white-space:nowrap">MARKETING JURÍDICO</div>
       </div>
 
       <div class="radial-item" onMouseEnter="{{ hoverService0 }}" onMouseLeave="{{ clearService }}" style="{{ itemStyle0 }}">
-        <img src="assets/personaje-redes.png" alt="Redes sociales" style="width:100%;max-height:clamp(100px,13vw,145px);object-fit:contain;display:block;margin:0 auto;filter:{{ imgFilter0 }};transition:filter .35s ease">
-        <div style="{{ labelStyle0 }}">01 — Redes sociales</div>
-        <p style="{{ descStyle0 }}">Estrategia, contenido y gestión para construir presencia y generar confianza.</p>
+        <div class="radial-item-inner" style="display:flex;align-items:center;gap:clamp(8px,1.2vw,14px);flex-direction:row">
+          <img src="assets/personaje-redes.png" alt="Redes sociales" style="height:clamp(120px,14vw,175px);width:auto;max-width:60%;flex:0 0 auto;object-fit:contain;display:block;filter:{{ imgFilter0 }};transition:filter .35s ease">
+          <div style="text-align:left">
+            <div style="{{ labelStyle0 }}">01 — Redes sociales</div>
+            <p style="{{ descStyle0 }}">Estrategia, contenido y gestión para construir presencia y generar confianza.</p>
+          </div>
+        </div>
       </div>
 
       <div class="radial-item" onMouseEnter="{{ hoverService1 }}" onMouseLeave="{{ clearService }}" style="{{ itemStyle1 }}">
-        <img src="assets/personaje-identidad.png" alt="Identidad visual" style="width:100%;max-height:clamp(100px,13vw,145px);object-fit:contain;display:block;margin:0 auto;filter:{{ imgFilter1 }};transition:filter .35s ease">
-        <div style="{{ labelStyle1 }}">02 — Identidad visual</div>
-        <p style="{{ descStyle1 }}">Diseñamos identidades que comunican profesionalismo, valores y posicionamiento.</p>
+        <div class="radial-item-inner" style="display:flex;align-items:center;gap:clamp(8px,1.2vw,14px);flex-direction:row-reverse">
+          <img src="assets/personaje-identidad.png" alt="Identidad visual" style="height:clamp(120px,14vw,175px);width:auto;max-width:60%;flex:0 0 auto;object-fit:contain;display:block;filter:{{ imgFilter1 }};transition:filter .35s ease">
+          <div style="text-align:right">
+            <div style="{{ labelStyle1 }}">02 — Identidad visual</div>
+            <p style="{{ descStyle1 }}">Diseñamos identidades que comunican profesionalismo, valores y posicionamiento.</p>
+          </div>
+        </div>
       </div>
 
       <div class="radial-item" onMouseEnter="{{ hoverService2 }}" onMouseLeave="{{ clearService }}" style="{{ itemStyle2 }}">
-        <img src="assets/personaje-web.png" alt="Diseño web" style="width:100%;max-height:clamp(100px,13vw,145px);object-fit:contain;display:block;margin:0 auto;filter:{{ imgFilter2 }};transition:filter .35s ease">
-        <div style="{{ labelStyle2 }}">03 — Diseño web</div>
-        <p style="{{ descStyle2 }}">Sitios web profesionales, rápidos y pensados para convertir visitas en consultas.</p>
+        <div class="radial-item-inner" style="display:flex;align-items:center;gap:clamp(8px,1.2vw,14px);flex-direction:row-reverse">
+          <img src="assets/personaje-web.png" alt="Diseño web" style="height:clamp(120px,14vw,175px);width:auto;max-width:60%;flex:0 0 auto;object-fit:contain;display:block;filter:{{ imgFilter2 }};transition:filter .35s ease">
+          <div style="text-align:right">
+            <div style="{{ labelStyle2 }}">03 — Diseño web</div>
+            <p style="{{ descStyle2 }}">Sitios web profesionales, rápidos y pensados para convertir visitas en consultas.</p>
+          </div>
+        </div>
       </div>
 
       <div class="radial-item" onMouseEnter="{{ hoverService3 }}" onMouseLeave="{{ clearService }}" style="{{ itemStyle3 }}">
-        <img src="assets/personaje-estrategia.png" alt="Estrategia digital" style="width:100%;max-height:clamp(100px,13vw,145px);object-fit:contain;display:block;margin:0 auto;filter:{{ imgFilter3 }};transition:filter .35s ease">
-        <div style="{{ labelStyle3 }}">04 — Estrategia digital</div>
-        <p style="{{ descStyle3 }}">Ordenamos qué comunicar, cómo y para quién. Enfocamos recursos en lo que importa.</p>
+        <div class="radial-item-inner" style="display:flex;align-items:center;gap:clamp(8px,1.2vw,14px);flex-direction:row">
+          <img src="assets/personaje-estrategia.png" alt="Estrategia digital" style="height:clamp(120px,14vw,175px);width:auto;max-width:60%;flex:0 0 auto;object-fit:contain;display:block;filter:{{ imgFilter3 }};transition:filter .35s ease">
+          <div style="text-align:left">
+            <div style="{{ labelStyle3 }}">04 — Estrategia digital</div>
+            <p style="{{ descStyle3 }}">Ordenamos qué comunicar, cómo y para quién. Enfocamos recursos en lo que importa.</p>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -690,16 +708,16 @@ class Component extends DCLogic {
 
   radialPos(i) {
     return [
-      'left:2%;top:0;text-align:left',
-      'right:2%;top:0;text-align:right',
-      'right:2%;bottom:0;text-align:right',
-      'left:2%;bottom:0;text-align:left'
+      'left:0;top:2%',
+      'right:0;top:2%',
+      'right:0;bottom:2%',
+      'left:0;bottom:2%'
     ][i];
   }
   itemStyle(i) {
     const active = this.state.service === i;
     const dim = this.state.service !== null && !active;
-    return 'position:absolute;width:clamp(108px,14vw,150px);cursor:pointer;z-index:3;transition:transform .4s cubic-bezier(.2,.7,.2,1),opacity .4s ease;' +
+    return 'position:absolute;width:clamp(230px,30vw,340px);cursor:pointer;z-index:3;transition:transform .4s cubic-bezier(.2,.7,.2,1),opacity .4s ease;' +
       this.radialPos(i) + ';transform:scale(' + (active ? 1.06 : 1) + ');opacity:' + (dim ? 0.32 : 1);
   }
   imgFilter(i) {
@@ -709,13 +727,13 @@ class Component extends DCLogic {
   }
   labelStyle(i) {
     const active = this.state.service === i;
-    return "font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;margin-top:10px;transition:color .3s ease,font-weight .3s ease;color:" +
+    return "font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;transition:color .3s ease,font-weight .3s ease;color:" +
       (active ? '#F5F2EC' : '#B8946A') + ';font-weight:' + (active ? '600' : '400');
   }
   descStyle(i) {
     const active = this.state.service === i;
-    return 'overflow:hidden;font-weight:300;font-size:13px;line-height:1.55;color:rgba(245,242,236,.6);transition:max-height .4s ease,opacity .3s ease,margin .3s ease;max-height:' +
-      (active ? '90px' : '0') + ';opacity:' + (active ? 1 : 0) + ';margin-top:' + (active ? '6px' : '0');
+    return 'overflow:hidden;max-width:23ch;font-weight:300;font-size:13.5px;line-height:1.5;color:rgba(245,242,236,.62);transition:max-height .4s ease,opacity .3s ease,margin .3s ease;max-height:' +
+      (active ? '110px' : '0') + ';opacity:' + (active ? 1 : 0) + ';margin-top:' + (active ? '7px' : '0');
   }
   radialLine(i) {
     const active = this.state.service === i;
