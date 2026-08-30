@@ -524,7 +524,7 @@
   </section>
 
   <section id="contacto" style="background:#F5F2EC;color:#0F1923;padding:clamp(64px,8vw,120px) 0">
-    <div class="g2" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);width:100%;display:grid;grid-template-columns:minmax(240px,.62fr) minmax(380px,1.25fr);gap:clamp(20px,3vw,48px);align-items:center">
+    <div class="g2" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);width:100%;display:grid;grid-template-columns:minmax(220px,.5fr) minmax(420px,1.4fr);gap:clamp(16px,2.4vw,40px);align-items:center">
 
       <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)">
         <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#9A7847">Hablemos</div>
@@ -534,30 +534,30 @@
       </div>
 
       <div data-reveal data-delay="150" style="opacity:0;transform:translateY(24px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1);display:flex;justify-content:center;padding:clamp(8px,1.4vw,20px) 0">
-        <div style="position:relative;width:min(100%,760px);aspect-ratio:903/1064;margin:0 auto">
+        <div style="position:relative;width:min(100%,960px);aspect-ratio:903/1064;margin:0 auto">
           <img src="assets/personaje-formulario.png" alt="Escultura clásica sosteniendo una placa de mármol" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;filter:drop-shadow(0 30px 50px rgba(15,25,35,.16))">
 
           <!-- Zona de la placa: ajustar left/top/width/height si no coincide con el mármol real -->
           <div style="position:absolute;left:27%;top:19%;width:50%;height:58%;display:flex;align-items:center;justify-content:center;padding:9% 11%;box-sizing:border-box">
-            <form onSubmit="{{ onSubmit }}" style="width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;gap:clamp(5px,1vw,9px)">
+            <form onSubmit="{{ onSubmit }}" style="width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;gap:clamp(7px,1.3vw,13px)">
               <label style="display:grid;gap:2px">
-                <span style="font-family:'DM Mono',monospace;font-size:clamp(6px,.6vw,7.5px);letter-spacing:.14em;text-transform:uppercase;color:rgba(15,25,35,.5)">Nombre</span>
-                <input type="text" placeholder="Tu nombre y apellido" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:2px 0;font-size:clamp(9px,.9vw,11.5px);font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
+                <span style="font-family:'DM Mono',monospace;font-size:clamp(8px,.8vw,10.5px);letter-spacing:.14em;text-transform:uppercase;color:rgba(15,25,35,.5)">Nombre</span>
+                <input type="text" placeholder="Tu nombre y apellido" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:3px 0;font-size:clamp(12px,1.15vw,15px);font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
               </label>
               <label style="display:grid;gap:2px">
-                <span style="font-family:'DM Mono',monospace;font-size:clamp(6px,.6vw,7.5px);letter-spacing:.14em;text-transform:uppercase;color:rgba(15,25,35,.5)">Email</span>
-                <input type="email" placeholder="nombre@estudio.com" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:2px 0;font-size:clamp(9px,.9vw,11.5px);font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
+                <span style="font-family:'DM Mono',monospace;font-size:clamp(8px,.8vw,10.5px);letter-spacing:.14em;text-transform:uppercase;color:rgba(15,25,35,.5)">Email</span>
+                <input type="email" placeholder="nombre@estudio.com" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:3px 0;font-size:clamp(12px,1.15vw,15px);font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
               </label>
               <label style="display:grid;gap:2px">
-                <span style="font-family:'DM Mono',monospace;font-size:clamp(6px,.6vw,7.5px);letter-spacing:.14em;text-transform:uppercase;color:rgba(15,25,35,.5)">Especialidad</span>
-                <input type="text" placeholder="Familia, laboral, penal…" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:2px 0;font-size:clamp(9px,.9vw,11.5px);font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
+                <span style="font-family:'DM Mono',monospace;font-size:clamp(8px,.8vw,10.5px);letter-spacing:.14em;text-transform:uppercase;color:rgba(15,25,35,.5)">Especialidad</span>
+                <input type="text" placeholder="Familia, laboral, penal…" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:3px 0;font-size:clamp(12px,1.15vw,15px);font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
               </label>
               <label style="display:grid;gap:2px">
-                <span style="font-family:'DM Mono',monospace;font-size:clamp(6px,.6vw,7.5px);letter-spacing:.14em;text-transform:uppercase;color:rgba(15,25,35,.5)">Qué necesitás</span>
-                <textarea rows="1" placeholder="Contanos brevemente en qué estás" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:2px 0;font-size:clamp(9px,.9vw,11.5px);font-weight:300;color:#0F1923;outline:none;resize:none" style-focus="border-bottom:1px solid #B8946A"></textarea>
+                <span style="font-family:'DM Mono',monospace;font-size:clamp(8px,.8vw,10.5px);letter-spacing:.14em;text-transform:uppercase;color:rgba(15,25,35,.5)">Qué necesitás</span>
+                <textarea rows="1" placeholder="Contanos brevemente en qué estás" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:3px 0;font-size:clamp(12px,1.15vw,15px);font-weight:300;color:#0F1923;outline:none;resize:none" style-focus="border-bottom:1px solid #B8946A"></textarea>
               </label>
-              <button type="submit" style="margin-top:clamp(3px,.8vw,6px);justify-self:start;background:#0F1923;color:#F5F2EC;border:0;font-family:'DM Mono',monospace;font-size:clamp(7px,.7vw,9px);letter-spacing:.14em;text-transform:uppercase;padding:clamp(5px,.8vw,10px) clamp(10px,1.3vw,18px);border-radius:2px;cursor:pointer;transition:background .3s,color .3s" style-hover="background:#B8946A;color:#0F1923">{{ submitLabel }}</button>
-              <div style="font-family:'DM Mono',monospace;font-size:clamp(5.5px,.52vw,7px);letter-spacing:.08em;color:rgba(15,25,35,.42)">RESPONDEMOS EN 24–48 H HÁBILES</div>
+              <button type="submit" style="margin-top:clamp(4px,1vw,8px);justify-self:start;background:#0F1923;color:#F5F2EC;border:0;font-family:'DM Mono',monospace;font-size:clamp(9px,.9vw,11.5px);letter-spacing:.14em;text-transform:uppercase;padding:clamp(7px,1vw,12px) clamp(14px,1.6vw,22px);border-radius:2px;cursor:pointer;transition:background .3s,color .3s" style-hover="background:#B8946A;color:#0F1923">{{ submitLabel }}</button>
+              <div style="font-family:'DM Mono',monospace;font-size:clamp(7px,.65vw,9px);letter-spacing:.08em;color:rgba(15,25,35,.42)">RESPONDEMOS EN 24–48 H HÁBILES</div>
             </form>
           </div>
         </div>
