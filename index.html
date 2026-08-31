@@ -554,7 +554,7 @@
                 <span style="font-family:'DM Mono',monospace;font-size:clamp(8px,.8vw,10.5px);letter-spacing:.14em;text-transform:uppercase;color:rgba(15,25,35,.5)">Qué necesitás</span>
                 <textarea rows="1" name="mensaje" placeholder="Contanos brevemente" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:3px 0;font-size:clamp(12px,1.15vw,15px);font-weight:300;color:#0F1923;outline:none;resize:none;overflow:hidden;white-space:nowrap;text-overflow:ellipsis" style-focus="border-bottom:1px solid #B8946A"></textarea>
               </label>
-              <button type="submit" style="margin-top:clamp(4px,1vw,8px);justify-self:start;background:#0F1923;color:#F5F2EC;border:0;font-family:'DM Mono',monospace;font-size:clamp(9px,.9vw,11.5px);letter-spacing:.14em;text-transform:uppercase;padding:clamp(7px,1vw,12px) clamp(14px,1.6vw,22px);border-radius:2px;cursor:pointer;transition:background .3s,color .3s" style-hover="background:#B8946A;color:#0F1923">{{ submitLabel }}</button>
+              <button type="submit" style="{{ submitBtnStyle }}" style-hover="background:#B8946A;color:#0F1923">{{ submitLabel }}</button>
               <div style="font-family:'DM Mono',monospace;font-size:clamp(7px,.65vw,9px);letter-spacing:.08em;color:rgba(15,25,35,.42)">RESPONDEMOS EN 24–48 H HÁBILES</div>
             </form>
           </div>
@@ -614,8 +614,8 @@
     <span style="font-size:17px;line-height:1">✎</span>
   </div>
   <div style="{{ confirmModalStyle }}">
-    <div style="max-width:520px;width:100%;background:#0F1923 url('assets/columnas-referencia.png') center/cover no-repeat;border:1px solid rgba(184,148,106,.35);padding:clamp(36px,5vw,56px) clamp(24px,3.6vw,36px);text-align:center;position:relative;overflow:hidden">
-      <div style="position:absolute;inset:0;background:rgba(15,25,35,.55)"></div>
+    <div style="max-width:600px;width:100%;aspect-ratio:1536/815;background:#0F1923 url('assets/columnas-referencia.png') center/cover no-repeat;border:1px solid rgba(184,148,106,.35);display:flex;align-items:center;justify-content:center;padding:clamp(20px,3vw,32px);text-align:center;position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background:rgba(15,25,35,.4)"></div>
       <div style="position:relative;z-index:1">
         <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,30px);text-transform:uppercase;color:#F5F2EC;margin-bottom:14px">Recibimos tu mensaje</div>
         <p style="font-weight:300;font-size:15px;line-height:1.6;color:rgba(245,242,236,.65);margin:0 0 26px">Te responderemos en 24–48 hs hábiles.</p>
@@ -626,7 +626,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showChatbot&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;chatDefaultOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;enableMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
 class Component extends DCLogic {
-  state = { moment: null, faq: null, chatOpen: null, chatChoice: null, sent: false, showConfirm: false, service: null, sections: {} };
+  state = { moment: null, faq: null, chatOpen: null, chatChoice: null, sent: false, showConfirm: false, sending: false, service: null, sections: {} };
 
   get reduced() {
     return !this.motionOn || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -833,8 +833,8 @@ class Component extends DCLogic {
     v.openChat = () => this.setState({ chatOpen: true });
     v.closeChat = () => this.setState({ chatOpen: false });
 
-    v.submitLabel = this.state.sent ? 'Mensaje enviado ✓' : 'Enviar consulta →';
-    v.onSubmit = e => {       e.preventDefault();       const form = e.target;       const fd = new FormData(form);       fetch('https://script.google.com/macros/s/AKfycbzXwXgFAfK1CmN1D_2bJ5VR0OMRzQ-ElaW-GTVzTzej8F22BW7NjL9i8SXa369UzmV9/exec', { method: 'POST', mode: 'no-cors', body: fd })         .finally(() => { form.reset(); this.setState({ sent: true, showConfirm: true }); });     };     v.confirmModalStyle = 'position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(15,25,35,.75);backdrop-filter:blur(4px);transition:opacity .3s ease;' +       (this.state.showConfirm ? 'opacity:1;pointer-events:auto' : 'opacity:0;pointer-events:none');     v.closeConfirm = () => this.setState({ showConfirm: false });
+    v.submitLabel = this.state.sending ? 'Enviando…' : 'Enviar consulta →';
+    v.onSubmit = e => {       e.preventDefault();       if (this.state.sending) return;       const form = e.target;       const fd = new FormData(form);       this.setState({ sending: true });       fetch('https://script.google.com/macros/s/AKfycbzXwXgFAfK1CmN1D_2bJ5VR0OMRzQ-ElaW-GTVzTzej8F22BW7NjL9i8SXa369UzmV9/exec', { method: 'POST', mode: 'no-cors', body: fd })         .finally(() => { form.reset(); this.setState({ sending: false, sent: true, showConfirm: true }); });     };     v.submitBtnStyle = 'margin-top:clamp(4px,1vw,8px);justify-self:start;background:#0F1923;color:#F5F2EC;border:0;font-family:\'DM Mono\',monospace;font-size:clamp(9px,.9vw,11.5px);letter-spacing:.14em;text-transform:uppercase;padding:clamp(7px,1vw,12px) clamp(14px,1.6vw,22px);border-radius:2px;transition:background .3s,color .3s,opacity .3s;' +       (this.state.sending ? 'opacity:.5;pointer-events:none;cursor:default' : 'cursor:pointer');     v.confirmModalStyle = 'position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(15,25,35,.75);backdrop-filter:blur(4px);transition:opacity .3s ease;' +       (this.state.showConfirm ? 'opacity:1;pointer-events:auto' : 'opacity:0;pointer-events:none');     v.closeConfirm = () => this.setState({ showConfirm: false });
     return v;
   }
 }
