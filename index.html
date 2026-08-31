@@ -19,7 +19,7 @@
   * { box-sizing: border-box; }
   a { color: #B8946A; text-decoration: none; }
   a:hover { color: #F5F2EC; }
-  input, textarea, button, select { font-family: 'Barlow', sans-serif; }
+  input, textarea, button, select { font-family: 'Barlow', sans-serif; } input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill {   -webkit-box-shadow: 0 0 0 1000px transparent inset !important;   -webkit-text-fill-color: #0F1923 !important;   transition: background-color 9999s ease-in-out 0s; }
   ::selection { background: #B8946A; color: #0F1923; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } } .contact-statue { transform: scale(1.8) translateY(-25%) !important; transform-origin: top center; }
 @media (max-width: 860px) {
@@ -613,10 +613,21 @@
   <div onClick="{{ openChat }}" style="{{ chatButtonStyle }}">
     <span style="font-size:17px;line-height:1">✎</span>
   </div>
+  <div style="{{ confirmModalStyle }}">
+    <div style="max-width:460px;width:100%;background:#0F1923;border:1px solid rgba(184,148,106,.35);padding:clamp(28px,4vw,44px) clamp(24px,3.6vw,36px);text-align:center;position:relative;overflow:hidden">
+      <img src="assets/columna.png" alt="" style="position:absolute;left:-8%;top:-10%;height:120%;opacity:.35;pointer-events:none;user-select:none">
+      <img src="assets/columna.png" alt="" style="position:absolute;right:-8%;top:-10%;height:120%;opacity:.35;pointer-events:none;user-select:none;transform:scaleX(-1)">
+      <div style="position:relative;z-index:1">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,30px);text-transform:uppercase;color:#F5F2EC;margin-bottom:14px">Recibimos tu mensaje</div>
+        <p style="font-weight:300;font-size:15px;line-height:1.6;color:rgba(245,242,236,.65);margin:0 0 26px">Te responderemos en 24–48 hs hábiles.</p>
+        <div onClick="{{ closeConfirm }}" style="cursor:pointer;display:inline-block;background:#B8946A;color:#0F1923;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:13px 26px;border-radius:2px" style-hover="background:#F5F2EC">Cerrar</div>
+      </div>
+    </div>
+  </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showChatbot&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;chatDefaultOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;enableMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
 class Component extends DCLogic {
-  state = { moment: null, faq: null, chatOpen: null, chatChoice: null, sent: false, service: null, sections: {} };
+  state = { moment: null, faq: null, chatOpen: null, chatChoice: null, sent: false, showConfirm: false, service: null, sections: {} };
 
   get reduced() {
     return !this.motionOn || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -824,7 +835,7 @@ class Component extends DCLogic {
     v.closeChat = () => this.setState({ chatOpen: false });
 
     v.submitLabel = this.state.sent ? 'Mensaje enviado ✓' : 'Enviar consulta →';
-    v.onSubmit = e => {       e.preventDefault();       const fd = new FormData(e.target);       fetch('https://script.google.com/macros/s/AKfycbzXwXgFAfK1CmN1D_2bJ5VR0OMRzQ-ElaW-GTVzTzej8F22BW7NjL9i8SXa369UzmV9/exec', { method: 'POST', mode: 'no-cors', body: fd })         .finally(() => this.setState({ sent: true }));     };
+    v.onSubmit = e => {       e.preventDefault();       const form = e.target;       const fd = new FormData(form);       fetch('https://script.google.com/macros/s/AKfycbzXwXgFAfK1CmN1D_2bJ5VR0OMRzQ-ElaW-GTVzTzej8F22BW7NjL9i8SXa369UzmV9/exec', { method: 'POST', mode: 'no-cors', body: fd })         .finally(() => { form.reset(); this.setState({ sent: true, showConfirm: true }); });     };     v.confirmModalStyle = 'position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(15,25,35,.75);backdrop-filter:blur(4px);transition:opacity .3s ease;' +       (this.state.showConfirm ? 'opacity:1;pointer-events:auto' : 'opacity:0;pointer-events:none');     v.closeConfirm = () => this.setState({ showConfirm: false });
     return v;
   }
 }
