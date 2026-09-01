@@ -49,7 +49,7 @@
         <a href="#top" style="color:#F5F2EC;padding-bottom:4px;border-bottom:1px solid #B8946A">Inicio</a>
         <a href="#servicios" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Servicios</a>
         <a href="#proceso" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Cómo trabajamos</a>
-        <a href="#casos" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Casos</a>
+        <a href="casos.html" target="_blank" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Casos</a>
         <a href="nosotros.html" target="_blank" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Nosotros</a>
         <a href="faq.html" target="_blank" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">FAQ</a>
       </nav>
@@ -367,47 +367,7 @@
       </div>
     </div>
   </section>
-  <section id="casos" style="padding:clamp(64px,8vw,116px) 0;border-top:1px solid rgba(184,148,106,.14)">
-    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
-      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between">
-        <div>
-          <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Casos</div>
-          <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,4vw,58px);line-height:.96;text-transform:uppercase;margin:18px 0 0">Trabajo publicado.</h2>
-        </div>
-        <div onClick="{{ toggleCasos }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;color:#B8946A;text-transform:uppercase" style-hover="color:#F5F2EC">
-          <span>{{ casosToggleLabel }}</span><span style="{{ casosIconStyle }}">+</span>
-        </div>
-      </div>
-      <div style="{{ casosBodyStyle }}">
-      <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,1.8vw,24px);margin-top:clamp(34px,4vw,56px)">
-        <figure data-reveal style="opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);grid-column:span 7;margin:0">
-          <div style="aspect-ratio:16/10;border:1px solid rgba(184,148,106,.22);background:repeating-linear-gradient(135deg,rgba(184,148,106,.1) 0 8px,rgba(255,255,255,.015) 8px 16px);display:flex;align-items:center;justify-content:center;overflow:hidden">
-            <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.24em;color:rgba(245,242,236,.45);text-align:center">CASO 01 · IMAGEN 1600×1000<br>IDENTIDAD + REDES</span>
-          </div>
-          <figcaption style="display:flex;justify-content:space-between;gap:16px;margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;color:rgba(245,242,236,.5);text-transform:uppercase"><span>Estudio de familia · Identidad + redes</span><span style="color:#B8946A">01</span></figcaption>
-        </figure>
-        <figure data-reveal data-delay="120" style="opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);grid-column:span 5;margin:0;align-self:end">
-          <div style="aspect-ratio:4/5;border:1px solid rgba(184,148,106,.22);background:repeating-linear-gradient(135deg,rgba(184,148,106,.1) 0 8px,rgba(255,255,255,.015) 8px 16px);display:flex;align-items:center;justify-content:center">
-            <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.24em;color:rgba(245,242,236,.45);text-align:center">CASO 02 · IMAGEN 1000×1250<br>CONTENIDO</span>
-          </div>
-          <figcaption style="display:flex;justify-content:space-between;gap:16px;margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;color:rgba(245,242,236,.5);text-transform:uppercase"><span>Laboralista · Contenido mensual</span><span style="color:#B8946A">02</span></figcaption>
-        </figure>
-        <figure data-reveal data-delay="60" style="opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);grid-column:span 4;margin:0">
-          <div style="aspect-ratio:1/1;border:1px solid rgba(184,148,106,.22);background:repeating-linear-gradient(135deg,rgba(184,148,106,.1) 0 8px,rgba(255,255,255,.015) 8px 16px);display:flex;align-items:center;justify-content:center">
-            <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.24em;color:rgba(245,242,236,.45);text-align:center">CASO 03 · 1200×1200</span>
-          </div>
-          <figcaption style="display:flex;justify-content:space-between;gap:16px;margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;color:rgba(245,242,236,.5);text-transform:uppercase"><span>Penalista · Identidad</span><span style="color:#B8946A">03</span></figcaption>
-        </figure>
-        <figure data-reveal data-delay="140" style="opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);grid-column:span 8;margin:0">
-          <div style="aspect-ratio:2/1;border:1px solid rgba(184,148,106,.22);background:repeating-linear-gradient(135deg,rgba(184,148,106,.1) 0 8px,rgba(255,255,255,.015) 8px 16px);display:flex;align-items:center;justify-content:center">
-            <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.24em;color:rgba(245,242,236,.45);text-align:center">CASO 04 · IMAGEN 1800×900 · SITIO WEB</span>
-          </div>
-          <figcaption style="display:flex;justify-content:space-between;gap:16px;margin-top:14px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;color:rgba(245,242,236,.5);text-transform:uppercase"><span>Estudio corporativo · Sitio web</span><span style="color:#B8946A">04</span></figcaption>
-        </figure>
-      </div>
-      </div>
-    </div>
-  </section>
+
   <section style="padding:clamp(72px,9vw,128px) 0;background:linear-gradient(180deg,#0F1923,#0C141C)">
     <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
       <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:clamp(24px,3vw,44px)">
@@ -492,7 +452,7 @@
         </div>
         <div style="display:flex;gap:24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase">
           <a href="#servicios" style="color:rgba(245,242,236,.55)" style-hover="color:#B8946A">Servicios</a>
-          <a href="#casos" style="color:rgba(245,242,236,.55)" style-hover="color:#B8946A">Casos</a>
+          <a href="casos.html" target="_blank" style="color:rgba(245,242,236,.55)" style-hover="color:#B8946A">Casos</a>
           <a href="#faq" style="color:rgba(245,242,236,.55)" style-hover="color:#B8946A">FAQ</a>
           <a href="#contacto" style="color:rgba(245,242,236,.55)" style-hover="color:#B8946A">Contacto</a>
         </div>
