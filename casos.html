@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: #0F1923; color: #F5F2EC; font-family: 'Barlow', sans-serif; -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: #0F1923; color: #F5F2EC; font-family: 'Barlow', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   * { box-sizing: border-box; }
   a { color: #B8946A; text-decoration: none; }
   a:hover { color: #F5F2EC; }
@@ -18,12 +18,92 @@
   header .inner { height: 76px; display: flex; align-items: center; }
   .logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 30px; letter-spacing: .06em; color: #B8946A; line-height: 1; }
   .sub { font-family: 'DM Mono', monospace; font-size: 8.5px; letter-spacing: .3em; color: rgba(245,242,236,.55); margin-top: 2px; }
-  main { padding: clamp(90px,14vw,160px) 0; text-align: center; }
-  .eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: #B8946A; }
-  h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: clamp(32px,4.4vw,58px); line-height: .98; text-transform: uppercase; margin: 18px 0 0; }
-  p { font-weight: 300; font-size: 16px; line-height: 1.7; color: rgba(245,242,236,.6); max-width: 46ch; margin: 20px auto 0; }
-  .back { display: inline-block; margin-top: clamp(40px,6vw,64px); font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; }
   footer { border-top: 1px solid rgba(184,148,106,.16); padding: 28px 0; font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: .16em; color: rgba(245,242,236,.32); }
+
+  /* ---- Casos portfolio ---- */
+  .eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .24em; color: #B8946A; display: flex; align-items: center; gap: 16px; }
+  .eyebrow .rule { width: 44px; height: 1px; background: rgba(184,148,106,.5); }
+  .eyebrow .dim { color: #7E8899; }
+
+  .hero { position: relative; padding: 120px 0 70px; border-bottom: 1px solid rgba(184,148,106,.12); }
+  .hero::before { content:''; position:absolute; inset:0; background: radial-gradient(1100px 420px at 22% -10%, rgba(184,148,106,.10), transparent 70%); pointer-events:none; }
+  .hero h1 { position:relative; font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:clamp(40px,6.6vw,90px); line-height:.96; letter-spacing:-.01em; margin:26px 0 0; max-width:16em; text-transform:none; }
+  .hero h1 span { color:#B8946A; }
+  .hero p { margin:26px 0 0; max-width:56ch; font-size:16.5px; line-height:1.65; color:#9AA3B2; }
+
+  .filters { display:flex; flex-wrap:wrap; gap:24px; align-items:center; margin-top:48px; padding-top:20px; border-top:1px solid rgba(184,148,106,.12); }
+  .filters .lbl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.2em; color:#5F6979; }
+  .filters button { background:none; border:0; padding:6px 0; cursor:pointer; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.16em; color:#7E8899; border-bottom:1px solid transparent; transition:color .25s, border-color .25s; }
+  .filters button:hover { color:#F5F2EC; }
+  .filters button.active { color:#F5F2EC; border-bottom-color:#B8946A; }
+
+  section.block { padding: 90px 0; border-bottom: 1px solid rgba(184,148,106,.09); }
+  .block-head { display:flex; justify-content:space-between; align-items:flex-end; gap:32px; flex-wrap:wrap; margin-bottom:52px; }
+  .block-head h2 { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:clamp(28px,3.6vw,46px); line-height:1; margin:14px 0 0; text-transform:none; }
+  .block-head .meta { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.12em; color:#7E8899; text-align:right; }
+
+  /* Notebook mockup */
+  .notebook { border:1px solid rgba(245,242,236,.14); border-radius:13px 13px 4px 4px; padding:11px 11px 18px; background:linear-gradient(178deg,#182230,#0C131C); box-shadow:0 40px 84px -52px rgba(0,0,0,.9); }
+  .notebook .screen { position:relative; aspect-ratio:16/10; overflow:hidden; border-radius:3px; background:#000; }
+  .notebook .screen iframe { position:absolute; top:0; left:0; width:1440px; height:900px; border:0; transform-origin:top left; pointer-events:none; }
+  .notebook .screen .fallback { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:20px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; color:#5F6979; background:#0B1119; }
+  .notebook .base { width:116%; margin-left:-8%; height:12px; clip-path:polygon(1.6% 0,98.4% 0,100% 100%,0 100%); background:linear-gradient(180deg,#1F2A38,#0B1118); border-radius:0 0 9px 9px; }
+  .notebook .hinge { margin-top:10px; height:3px; width:52px; margin-left:auto; margin-right:auto; border-radius:2px; background:rgba(245,242,236,.10); }
+
+  /* Trio */
+  .trio { display:flex; align-items:center; justify-content:center; gap:clamp(0px,1.2vw,16px); row-gap:56px; margin-top:20px; perspective:1700px; flex-wrap:wrap; }
+  .trio-item { flex:0 1 31%; min-width:220px; cursor:pointer; transition:flex-basis .5s ease, transform .5s ease, filter .5s ease; }
+  .trio-item.active { flex-basis:42%; transform:translateY(-6px); filter:brightness(1); z-index:5; }
+  .trio-item:not(.active) { filter:brightness(.62) saturate(.75); }
+  .trio-label { display:flex; align-items:center; justify-content:center; gap:10px; margin-top:16px; font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.16em; color:#7E8899; }
+  .trio-item.active .trio-label { color:#B8946A; }
+
+  /* Case rows (websites, detailed) */
+  .case-row { display:grid; grid-template-columns: 1fr 1.15fr; gap:64px; align-items:center; }
+  .case-num { font-family:'Barlow Condensed',sans-serif; font-size:70px; line-height:.8; font-weight:300; color:transparent; -webkit-text-stroke:1px rgba(184,148,106,.5); }
+  .case-title { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:clamp(28px,3.2vw,42px); line-height:1.02; margin:22px 0 0; text-transform:none; }
+  .case-tag { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.14em; color:#B8946A; margin-top:12px; }
+  .case-desc { margin:20px 0 0; font-size:15.5px; line-height:1.7; color:#9AA3B2; max-width:52ch; }
+  .case-list { margin-top:30px; }
+  .case-list .lbl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.2em; color:#5F6979; padding-bottom:12px; border-bottom:1px solid rgba(245,242,236,.09); }
+  .case-list .item { display:flex; gap:14px; padding:13px 0; border-bottom:1px solid rgba(245,242,236,.06); font-size:14.5px; color:#D8D3C8; }
+  .case-list .item span { color:#B8946A; font-family:'DM Mono',monospace; font-size:11px; padding-top:2px; }
+  .case-cta { display:inline-flex; align-items:center; gap:10px; margin-top:30px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.18em; padding-bottom:7px; border-bottom:1px solid rgba(184,148,106,.4); }
+  .case-cta:hover { border-color:#B8946A; }
+
+  /* Instagram phone mockup — ANTES (chico, secundario) / DESPUÉS (grande, protagonista) */
+  .phone-wrap { display:flex; align-items:flex-end; justify-content:center; gap:clamp(20px,4vw,56px); flex-wrap:wrap; }
+  .phone { border:1px solid rgba(245,242,236,.18); border-radius:34px; padding:9px; background:linear-gradient(170deg,#1B2531,#0B1119); box-shadow:0 34px 68px -40px rgba(0,0,0,.9); width:100%; }
+  .phone .screen { position:relative; aspect-ratio:9/19; overflow:hidden; border-radius:26px; background:#000; }
+  .phone .screen img { width:100%; height:100%; object-fit:cover; display:block; }
+  .phone .screen .fallback { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:16px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.06em; color:#5F6979; background:#0B1119; }
+  .phone-lbl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.2em; text-align:center; margin-bottom:12px; }
+
+  .ig-case { display:flex; align-items:flex-end; justify-content:center; gap:clamp(24px,5vw,72px); }
+  .ig-antes { flex:1 1 0; min-width:0; width:100%; max-width:150px; }
+  .ig-antes .phone { border-radius:26px; filter:saturate(.25); opacity:.55; transition:filter .5s ease, opacity .5s ease; }
+  .ig-antes:hover .phone { filter:saturate(1); opacity:1; }
+  .ig-antes .phone .screen { border-radius:19px; }
+  .ig-antes .phone-lbl { color:#5F6979; }
+
+  .ig-despues { flex:1.6 1 0; min-width:0; width:100%; max-width:260px; position:relative; }
+  .ig-despues .phone-lbl { color:#C7A667; }
+  .ig-despues .phone { box-shadow:0 40px 80px -46px rgba(0,0,0,.95); }
+
+  .cta-final { display:flex; justify-content:space-between; align-items:flex-end; gap:44px; flex-wrap:wrap; padding:80px 0; }
+  .cta-final h2 { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:clamp(30px,4.2vw,54px); line-height:1; margin:0; max-width:18ch; text-transform:none; }
+  .cta-final p { margin:20px 0 0; max-width:48ch; font-size:15.5px; line-height:1.7; color:#9AA3B2; }
+  .cta-btn { display:inline-flex; align-items:center; gap:12px; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.18em; color:#0F1923; background:#B8946A; padding:18px 30px; transition:background .25s; }
+  .cta-btn:hover { background:#D8B788; color:#0F1923; }
+
+  @media (max-width: 860px) {
+    .case-row { grid-template-columns: 1fr; gap:40px; }
+    .phone-wrap { flex-direction:column; align-items:center; }
+    .trio-item { flex-basis:100% !important; }
+  }
+
+  [data-reveal] { opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+  [data-reveal].in { opacity:1; transform:none; }
 </style>
 </head>
 <body>
@@ -33,12 +113,252 @@
       <div class="sub">MARKETING JURÍDICO</div>
     </a>
   </div></header>
-  <main class="wrap">
-    <div class="eyebrow">Casos</div>
-    <h1>Página en construcción.</h1>
-    <p>Estamos preparando esta sección con nuestro trabajo publicado. Muy pronto vas a poder verlo acá.</p>
-    <a class="back" href="index.html">← Volver al inicio</a>
+
+  <main>
+    <section class="hero wrap">
+      <div class="eyebrow"><span>CASOS</span><span class="rule"></span><span class="dim">TRABAJO REAL</span></div>
+      <h1>ANTES ERA UNA PRESENCIA.<br><span>AHORA ES UNA MARCA.</span></h1>
+      <p>Una selección de identidades, sitios web y sistemas de comunicación desarrollados para profesionales del ámbito jurídico.</p>
+      <div class="filters">
+        <span class="lbl">FILTRAR</span>
+        <button type="button" class="active" data-filter="TODOS">TODOS</button>
+        <button type="button" data-filter="WEB">SITIOS WEB</button>
+        <button type="button" data-filter="REDES">REDES</button>
+      </div>
+    </section>
+
+    <!-- ===== SITIOS WEB — TRÍO ===== -->
+    <section class="block" data-cat="WEB">
+      <div class="wrap">
+        <div class="block-head" data-reveal>
+          <div>
+            <div class="eyebrow"><span>SITIOS WEB</span></div>
+            <h2>TRES ESTUDIOS, TRES SITIOS EN VIVO</h2>
+          </div>
+          <div class="meta">Click para traer al frente</div>
+        </div>
+
+        <div class="trio" data-reveal>
+          <div class="trio-item active" data-site="0" onclick="pickSite(0)">
+            <div class="notebook">
+              <div class="screen" data-frame-box>
+                <iframe data-live src="https://estudiojuridicosarrio.com.ar" loading="lazy" title="Estudio Jurídico Sarrio" onerror="this.closest('.screen').querySelector('.fallback').style.display='flex'"></iframe>
+                <div class="fallback" style="display:none">Vista previa no disponible<br>— reemplazar con captura estática</div>
+              </div>
+              <div class="hinge"></div>
+            </div>
+            <div class="base"></div>
+            <div class="trio-label">ESTUDIO SARRIO</div>
+          </div>
+
+          <div class="trio-item" data-site="1" onclick="pickSite(1)">
+            <div class="notebook">
+              <div class="screen" data-frame-box>
+                <iframe data-live src="https://estudiojuridicocejas.com.ar" loading="lazy" title="Estudio Jurídico Cejas" onerror="this.closest('.screen').querySelector('.fallback').style.display='flex'"></iframe>
+                <div class="fallback" style="display:none">Vista previa no disponible<br>— reemplazar con captura estática</div>
+              </div>
+              <div class="hinge"></div>
+            </div>
+            <div class="base"></div>
+            <div class="trio-label">ESTUDIO CEJAS</div>
+          </div>
+
+          <div class="trio-item" data-site="2" onclick="pickSite(2)">
+            <div class="notebook">
+              <div class="screen" data-frame-box>
+                <iframe data-live src="https://switchgestion2026-oss.github.io/leguizamon-web/" loading="lazy" title="Leguizamón" onerror="this.closest('.screen').querySelector('.fallback').style.display='flex'"></iframe>
+                <div class="fallback" style="display:none">Vista previa no disponible<br>— reemplazar con captura estática</div>
+              </div>
+              <div class="hinge"></div>
+            </div>
+            <div class="base"></div>
+            <div class="trio-label">LEGUIZAMÓN</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CASO — SARRIO ===== -->
+    <section class="block" data-cat="WEB">
+      <div class="wrap case-row" data-reveal>
+        <div>
+          <div class="case-num">01</div>
+          <h3 class="case-title">ESTUDIO JURÍDICO SARRIO</h3>
+          <div class="case-tag">SITIO WEB</div>
+          <p class="case-desc"><!-- EDITAR: descripción real del caso Sarrio --></p>
+          <div class="case-list">
+            <div class="lbl">QUÉ HICIMOS</div>
+            <div class="item"><span>01</span>Diseño y desarrollo del sitio</div>
+            <div class="item"><span>02</span><!-- EDITAR --></div>
+          </div>
+          <a href="https://estudiojuridicosarrio.com.ar" target="_blank" class="case-cta">VER SITIO <span>→</span></a>
+        </div>
+        <div class="notebook">
+          <div class="screen" data-frame-box>
+            <iframe data-live src="https://estudiojuridicosarrio.com.ar" loading="lazy" title="Estudio Jurídico Sarrio" onerror="this.closest('.screen').querySelector('.fallback').style.display='flex'"></iframe>
+            <div class="fallback" style="display:none">Vista previa no disponible<br>— reemplazar con captura estática</div>
+          </div>
+          <div class="hinge"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CASO — CEJAS ===== -->
+    <section class="block" data-cat="WEB">
+      <div class="wrap case-row" data-reveal>
+        <div class="notebook" style="order:2">
+          <div class="screen" data-frame-box>
+            <iframe data-live src="https://estudiojuridicocejas.com.ar" loading="lazy" title="Estudio Jurídico Cejas" onerror="this.closest('.screen').querySelector('.fallback').style.display='flex'"></iframe>
+            <div class="fallback" style="display:none">Vista previa no disponible<br>— reemplazar con captura estática</div>
+          </div>
+          <div class="hinge"></div>
+        </div>
+        <div style="order:1">
+          <div class="case-num">02</div>
+          <h3 class="case-title">ESTUDIO JURÍDICO CEJAS</h3>
+          <div class="case-tag">SITIO WEB</div>
+          <p class="case-desc"><!-- EDITAR: descripción real del caso Cejas --></p>
+          <div class="case-list">
+            <div class="lbl">QUÉ HICIMOS</div>
+            <div class="item"><span>01</span>Diseño y desarrollo del sitio</div>
+            <div class="item"><span>02</span><!-- EDITAR --></div>
+          </div>
+          <a href="https://estudiojuridicocejas.com.ar" target="_blank" class="case-cta">VER SITIO <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CASO — LEGUIZAMÓN ===== -->
+    <section class="block" data-cat="WEB">
+      <div class="wrap case-row" data-reveal>
+        <div>
+          <div class="case-num">03</div>
+          <h3 class="case-title">LEGUIZAMÓN</h3>
+          <div class="case-tag">SITIO WEB</div>
+          <p class="case-desc"><!-- EDITAR: descripción real del caso Leguizamón --></p>
+          <div class="case-list">
+            <div class="lbl">QUÉ HICIMOS</div>
+            <div class="item"><span>01</span>Diseño y desarrollo del sitio</div>
+            <div class="item"><span>02</span><!-- EDITAR --></div>
+          </div>
+          <a href="https://switchgestion2026-oss.github.io/leguizamon-web/" target="_blank" class="case-cta">VER SITIO <span>→</span></a>
+        </div>
+        <div class="notebook">
+          <div class="screen" data-frame-box>
+            <iframe data-live src="https://switchgestion2026-oss.github.io/leguizamon-web/" loading="lazy" title="Leguizamón" onerror="this.closest('.screen').querySelector('.fallback').style.display='flex'"></iframe>
+            <div class="fallback" style="display:none">Vista previa no disponible<br>— reemplazar con captura estática</div>
+          </div>
+          <div class="hinge"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== REDES / INSTAGRAM ===== -->
+    <section class="block" data-cat="REDES">
+      <div class="wrap">
+        <div class="block-head" data-reveal>
+          <div>
+            <div class="eyebrow"><span>REDES</span></div>
+            <h2>PERFILES QUE HOY GENERAN CONSULTAS</h2>
+          </div>
+        </div>
+
+        <div class="ig-case" data-reveal style="margin-bottom:70px">
+          <div class="ig-antes">
+            <div class="phone-lbl">ANTES</div>
+            <div class="phone"><div class="screen">
+              <!-- EDITAR: reemplazar por captura real del perfil antes de la gestión -->
+              <div class="fallback">Falta captura<br>"antes"</div>
+            </div></div>
+          </div>
+          <div class="ig-despues">
+            <div class="phone-lbl">DESPUÉS — @ENMODOABOGADA</div>
+            <div class="phone"><div class="screen"><img src="assets/casos/ig-rivero-despues.jpg" alt="Perfil Instagram Dra. Sabrina Rivero"></div></div>
+          </div>
+        </div>
+
+        <div class="ig-case" data-reveal style="margin-bottom:70px">
+          <div class="ig-antes">
+            <div class="phone-lbl">ANTES</div>
+            <div class="phone"><div class="screen">
+              <!-- EDITAR: reemplazar por captura real del perfil antes de la gestión -->
+              <div class="fallback">Falta captura<br>"antes"</div>
+            </div></div>
+          </div>
+          <div class="ig-despues">
+            <div class="phone-lbl">DESPUÉS — @DRA.BEJARANOFLORENCIA</div>
+            <div class="phone"><div class="screen"><img src="assets/casos/ig-bejarano-despues.jpg" alt="Perfil Instagram Dra. Bejarano Florencia"></div></div>
+          </div>
+        </div>
+
+        <div class="ig-case" data-reveal>
+          <div class="ig-antes">
+            <div class="phone-lbl">ANTES</div>
+            <div class="phone"><div class="screen">
+              <!-- EDITAR: reemplazar por captura real del perfil antes de la gestión -->
+              <div class="fallback">Falta captura<br>"antes"</div>
+            </div></div>
+          </div>
+          <div class="ig-despues">
+            <div class="phone-lbl">DESPUÉS — @AIMO.DEMARCO.ABOGADAS</div>
+            <div class="phone"><div class="screen"><img src="assets/casos/ig-aimodemarco-despues.jpg" alt="Perfil Instagram Aimo & Demarco"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="cta-final" data-reveal style="border-top:1px solid rgba(184,148,106,.12)">
+        <div>
+          <h2>¿TENÉS UN PROYECTO EN MENTE?</h2>
+          <p>Hablemos y llevemos tu presencia profesional al siguiente nivel.</p>
+        </div>
+        <a href="index.html#contacto" class="cta-btn">CONTACTAR <span>→</span></a>
+      </div>
+    </section>
   </main>
+
   <footer><div class="wrap">© 2026 IURE</div></footer>
+
+<script>
+  // Escala los iframes de 1440px a el ancho real del contenedor
+  function scaleFrames() {
+    document.querySelectorAll('[data-frame-box]').forEach(box => {
+      const f = box.querySelector('iframe');
+      const w = box.clientWidth;
+      if (f && w) f.style.transform = 'scale(' + (w / 1440) + ')';
+    });
+  }
+  window.addEventListener('resize', scaleFrames);
+  window.addEventListener('load', scaleFrames);
+  scaleFrames();
+  new ResizeObserver(scaleFrames).observe(document.body);
+
+  // Trío: click para traer al frente
+  function pickSite(i) {
+    document.querySelectorAll('.trio-item').forEach((el, idx) => {
+      el.classList.toggle('active', idx === i);
+    });
+    scaleFrames();
+  }
+
+  // Reveal on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .1, rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+  // Filtros
+  document.querySelectorAll('.filters button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('[data-cat]').forEach(sec => {
+        sec.style.display = (f === 'TODOS' || sec.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+</script>
 </body>
 </html>
