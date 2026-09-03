@@ -879,7 +879,7 @@ function summaryHTML(s){
     <div class="send-panel">
       <div class="to">Destino: <strong>iuremarketingjuridico@gmail.com</strong></div>
       <div class="send-actions">
-        <button class="btn brick" id="sendBtn">Copiar y abrir email para enviar</button>
+        <button class="btn brick" id="sendBtn">Enviar respuestas</button>
         <button class="btn ghost" id="copyBtn">Copiar respuestas</button>
         <button class="btn ghost" id="downloadBtn">Descargar .txt</button>
       </div>
@@ -938,16 +938,28 @@ function bindSummaryEvents(){
   });
 
   document.getElementById('sendBtn').addEventListener('click', ()=>{
+    const btn = document.getElementById('sendBtn');
     const text = buildPlainText();
-    copyText(text);
     const studio = get('q3','') || get('q2','') || 'estudio';
-    const subject = encodeURIComponent(`Cuestionario de onboarding — ${studio}`);
-    const body = encodeURIComponent(
-      `Hola, adjunto mis respuestas al cuestionario de onboarding.\n\n` +
-      `Ya quedaron copiadas al portapapeles — pegalas acá abajo con Ctrl+V (o Cmd+V) antes de enviar:\n\n`
-    );
-    window.location.href = `mailto:iuremarketingjuridico@gmail.com?subject=${subject}&body=${body}`;
-    showToast('Respuestas copiadas ✓ Se abrió tu programa de email — pegá el contenido (Ctrl+V) en el cuerpo del mensaje y enviá.');
+    const serviciosArr = get('q1', []);
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    fetch('https://script.google.com/macros/s/AKfycbzXwXgFAfK1CmN1D_2bJ5VR0OMRzQ-ElaW-GTVzTzej8F22BW7NjL9i8SXa369UzmV9/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams({
+        tipo: 'onboarding',
+        estudio: studio,
+        profesional: get('q2',''),
+        servicios: Array.isArray(serviciosArr) ? serviciosArr.join(', ') : '',
+        detalle: text
+      })
+    }).then(()=> showToast('Respuestas enviadas ✓'))
+      .catch(()=> showToast('No se pudo enviar. Copiá las respuestas y mandalas por WhatsApp.'))
+      .finally(()=>{ btn.disabled = false; btn.textContent = 'Enviar respuestas'; });
   });
 }
 
