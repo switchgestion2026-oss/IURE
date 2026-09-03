@@ -31,6 +31,8 @@
     --brick-tint:var(--oro-tint);
     --gold:var(--oro);
     --ok:#3E6B4F;
+    --warn:#9C5A2E;
+    --warn-tint:#F5E4D3;
     --radius:3px;
 
     --font-title:'Barlow Condensed',sans-serif;
@@ -118,7 +120,7 @@
   }
 
   /* RAIL / STEP LIST */
-  .rail{position:sticky; top:24px;}
+  .rail{position:sticky; top:24px; max-height:calc(100vh - 48px); overflow-y:auto;}
   .rail-step{
     display:flex;
     gap:10px;
@@ -136,6 +138,7 @@
     min-width:20px;
     padding-top:1px;
   }
+  .rail-step .label-wrap{flex:1; min-width:0;}
   .rail-step .label{
     font-family:var(--font-body);
     font-size:13.5px;
@@ -143,11 +146,20 @@
     color:var(--crema-soft);
     line-height:1.3;
   }
+  .rail-step .badge{
+    font-family:var(--font-label);
+    font-size:10px;
+    color:var(--crema-soft);
+    opacity:0.6;
+    margin-top:2px;
+    display:block;
+  }
   .rail-step.active{border-left-color:var(--oro);}
   .rail-step.active .label{color:var(--crema); font-weight:500;}
   .rail-step.active .num{color:var(--oro);}
   .rail-step.done .num::after{content:"✓"; margin-left:2px; color:var(--oro);}
   .rail-step.disabled{opacity:0.35; cursor:not-allowed;}
+  .rail-step.complete .badge{color:var(--oro); opacity:0.9;}
 
   .mobile-progress{display:none; margin-bottom:20px;}
   .mobile-progress .track{height:3px; background:var(--crema-line); border-radius:2px; overflow:hidden;}
@@ -164,7 +176,10 @@
   @media(max-width:600px){ .card{padding:20px 16px;} }
 
   .step-head{margin-bottom:26px; border-bottom:1px solid var(--line-soft); padding-bottom:18px;}
+  .step-head .kicker-row{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;}
   .step-head .kicker{font-family:var(--font-label); font-size:11px; color:var(--oro-dark); font-weight:500; letter-spacing:0.04em; text-transform:uppercase;}
+  .step-head .step-progress{font-family:var(--font-label); font-size:11px; color:var(--ink-soft);}
+  .step-head .step-progress.complete{color:var(--ok);}
   .step-head h2{font-size:27px; margin-top:6px;}
   .step-head .desc{color:var(--ink-soft); font-weight:300; font-size:13.5px; margin-top:8px; max-width:640px;}
 
@@ -178,6 +193,7 @@
     display:block;
   }
   .field-label .qn{font-family:var(--font-label); color:var(--oro-dark); font-weight:500; margin-right:6px; font-size:12.5px;}
+  .field-label .opt-tag{font-family:var(--font-label); font-size:10.5px; color:var(--ink-soft); opacity:0.65; font-weight:400; margin-left:6px;}
   .field-hint{font-size:12.5px; font-weight:300; color:var(--ink-soft); margin-bottom:10px;}
   .field-hint.warn{color:var(--brick);}
 
@@ -254,6 +270,21 @@
   .other-input{margin-top:8px; max-width:340px;}
   @media(max-width:480px){ .other-input{max-width:100%;} }
 
+  /* AVISO DE SECCIÓN INCOMPLETA */
+  .step-warn{
+    display:none;
+    align-items:center;
+    gap:10px;
+    background:var(--warn-tint);
+    border:1px solid rgba(156,90,46,0.25);
+    border-radius:var(--radius);
+    padding:10px 14px;
+    margin-top:18px;
+    font-size:13px;
+    color:var(--warn);
+  }
+  .step-warn.show{display:flex;}
+
   /* NAV */
   .nav{
     display:flex;
@@ -279,6 +310,7 @@
   .btn.ghost:hover{border-color:var(--noche); opacity:1;}
   .btn:disabled{opacity:0.3; cursor:not-allowed;}
   .btn.brick{background:var(--oro); border-color:var(--oro); color:var(--noche);}
+  .btn.warn{background:var(--warn); border-color:var(--warn); color:#fff;}
 
   .step-counter{font-family:var(--font-label); font-size:11.5px; color:var(--ink-soft);}
 
@@ -335,6 +367,7 @@
   }
   .toast.show{display:block;}
   .toast.ok{background:#E7F0EA; color:var(--ok); border:1px solid #C6DBCC;}
+  .toast.err{background:#F5E4D3; color:var(--warn); border:1px solid #E4C6A6;}
 
   .checklist{display:flex; flex-direction:column; gap:8px;}
   .checklist label{display:flex; align-items:center; gap:9px; font-size:13.5px; cursor:pointer;}
@@ -373,6 +406,25 @@
 
 <script>
 /* ---------------------------------------------------------
+   ENDPOINT DE ENVÍO (Apps Script — mismo backend que index.html)
+--------------------------------------------------------- */
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzXwXgFAfK1CmN1D_2bJ5VR0OMRzQ-ElaW-GTVzTzej8F22BW7NjL9i8SXa369UzmV9/exec';
+
+/* ---------------------------------------------------------
+   CATÁLOGOS REUTILIZABLES (para convertir texto libre en selector)
+--------------------------------------------------------- */
+const ESPECIALIDADES = [
+  'Civil','Familia','Laboral','Penal','Comercial','Sucesiones',
+  'Amparos','Derecho del Consumidor','Previsional','Inmobiliario','Otra'
+];
+const TIPOS_CLIENTE = [
+  'Particulares','Empresas / PyMEs','Otros profesionales (derivación)','Organismos públicos','Todo tipo de cliente','Otro'
+];
+const DIFERENCIALES = [
+  'Experiencia','Especialización','Cercanía','Rapidez','Confianza','Atención personalizada','Trayectoria','Resultados','Claridad','Otro'
+];
+
+/* ---------------------------------------------------------
    DATA MODEL
 --------------------------------------------------------- */
 const answers = {}; // id -> value (string, array, or {selected, other})
@@ -391,7 +443,9 @@ function serviceIncludesGoogleAds(){ return serviceIncludes('Google Ads'); }
 function serviceIncludesMetaAds(){ return serviceIncludes('Meta Ads'); }
 
 /* Field type helpers used inside sections:
-   text, textarea, radio, checkbox (with optional max), checklist
+   text, textarea, radio, checkbox (con max opcional), checklist, note-static
+   Todos los pasos quedan con máximo ~6 preguntas reales (Ley de Miller) —
+   los pasos que en la versión anterior tenían más, se partieron en dos.
 */
 
 const sections = [
@@ -416,120 +470,168 @@ const sections = [
     fields:[
       {id:'q2', type:'text', label:'Nombre y apellido profesional'},
       {id:'q3', type:'text', label:'Nombre del estudio / marca'},
-      {id:'q4', type:'text', label:'Especialidad/es jurídicas'},
+      {id:'q4', type:'checkbox', label:'Especialidad/es jurídicas', hint:'Marcá todas las que apliquen.', options: ESPECIALIDADES, other:true},
       {id:'q5', type:'text', label:'Ciudad/es donde atendés'},
       {id:'q6', type:'radio', label:'Modalidad de atención', options:['Presencial','Online','Ambas']},
-      {id:'q7', type:'text', label:'WhatsApp que querés utilizar como contacto'},
-      {id:'q8', type:'text', label:'Email profesional'},
-      {id:'q9', type:'text', label:'Instagram / redes sociales actuales', hint:'Indicá usuario o enlace.'},
-      {id:'q10', type:'text', label:'Página web actual, si existe', hint:'Indicá el enlace.'}
+      {id:'q7', type:'text', label:'WhatsApp que querés utilizar como contacto'}
+    ]
+  },
+  {
+    key:'info2',
+    label:'Contacto y redes',
+    kicker:'Paso 3',
+    title:'Contacto y presencia digital',
+    desc:'Para poder linkear tu web/redes actuales, si ya tenés.',
+    fields:[
+      {id:'q8', type:'text', label:'Email profesional', optional:true, hint:'Opcional — si usás solo WhatsApp, podés dejarlo vacío.'},
+      {id:'q9', type:'text', label:'Instagram / redes sociales actuales', optional:true, hint:'Opcional. Indicá usuario o enlace si ya tenés.'},
+      {id:'q10', type:'text', label:'Página web actual, si existe', optional:true, hint:'Opcional. Indicá el enlace si ya tenés.'}
     ]
   },
   {
     key:'negocio',
-    label:'Negocio y objetivos',
-    kicker:'Paso 3',
-    title:'Negocio y objetivos',
-    desc:'Para entender qué querés lograr con el proyecto.',
+    label:'Servicios y promoción',
+    kicker:'Paso 4',
+    title:'Qué ofrecés y qué querés promocionar',
+    desc:'Para entender el foco comercial del proyecto.',
     fields:[
-      {id:'q11a', type:'textarea', label:'¿Qué servicios jurídicos ofrecés actualmente?'},
-      {id:'q12', type:'text', label:'¿Qué servicios querés promocionar principalmente?', hint:'Indicá hasta 3, separados por coma.'},
-      {id:'q13', type:'text', label:'¿Qué tipo de consultas querés recibir más?'},
-      {id:'q14', type:'textarea', label:'¿Qué tipo de clientes querés atraer?', hint:'Describí brevemente a la persona que querés que te consulte.'},
-      {id:'q15', type:'text', label:'¿Qué tipo de consultas o clientes NO querés atraer?'},
-      {id:'q16', type:'radio', label:'¿Cuál es actualmente tu principal fuente de nuevos clientes?', options:['Recomendaciones','Instagram','Facebook','Google','Página web','Publicidad','Otro'], other:true},
+      {id:'q11a', type:'textarea', label:'¿Qué servicios jurídicos ofrecés actualmente?', optional:true},
+      {id:'q12', type:'checkbox', max:3, label:'¿Qué servicios querés promocionar principalmente?', hint:'Elegí hasta 3.', options: ESPECIALIDADES, other:true},
+      {id:'q13', type:'text', label:'¿Qué tipo de consultas querés recibir más?', optional:true}
+    ]
+  },
+  {
+    key:'objetivos',
+    label:'Objetivos del proyecto',
+    kicker:'Paso 5',
+    title:'Objetivos y tipo de cliente',
+    desc:'Para saber qué querés lograr y a quién le hablamos.',
+    fields:[
+      {id:'q14', type:'checkbox', label:'¿Qué tipo de clientes querés atraer?', hint:'Podés elegir más de uno.', options: TIPOS_CLIENTE, other:true},
+      {id:'q15', type:'text', label:'¿Qué tipo de consultas o clientes NO querés atraer?', optional:true},
+      {id:'q16', type:'radio', label:'¿Cuál es actualmente tu principal fuente de nuevos clientes?', options:['Recomendaciones','Instagram','Facebook','Google','Página web','Publicidad','Otro'], other:true, optional:true},
       {id:'q17', type:'checkbox', max:2, label:'¿Qué querés conseguir principalmente con este proyecto?', hint:'Elegí hasta 2.', options:['Más consultas','Más clientes','Posicionamiento profesional','Mejor imagen del estudio','Promocionar una especialidad','Tener una presencia digital profesional']},
-      {id:'q18', type:'text', label:'¿Qué servicio o área debería tener mayor protagonismo durante los próximos meses?'}
+      {id:'q18', type:'radio', label:'¿Qué servicio o área debería tener mayor protagonismo durante los próximos meses?', options: ESPECIALIDADES, other:true}
     ]
   },
   {
     key:'diferencial',
     label:'Diferencial y posicionamiento',
-    kicker:'Paso 4',
+    kicker:'Paso 6',
     title:'Diferencial y posicionamiento',
     desc:'Lo que te distingue de otros estudios.',
     fields:[
-      {id:'q19', type:'textarea', label:'¿Por qué debería elegirte un cliente en lugar de otro abogado que ofrece el mismo servicio?'},
+      {id:'q19', type:'checkbox', label:'¿Por qué debería elegirte un cliente en lugar de otro abogado que ofrece el mismo servicio?', hint:'Elegí lo que más aplique, o contalo con tus palabras en "Otro".', options: DIFERENCIALES, other:true, optional:true},
       {id:'q20', type:'checkbox', max:4, label:'¿Qué fortalezas querés que perciba una persona cuando conoce tu estudio?', hint:'Elegí hasta 4.', options:['Experiencia','Especialización','Cercanía','Rapidez','Confianza','Atención personalizada','Trayectoria','Resultados','Claridad','Otro'], other:true},
-      {id:'q21', type:'textarea', label:'¿Qué NO querés transmitir con tu marca?', hint:'Por ejemplo: demasiado formal, frío, genérico, agresivo, etc.'},
-      {id:'q22', type:'textarea', label:'Escribí una frase que describa qué hacés y para quién.', hint:'Si no tenés una, podés dejarla vacía.'}
+      {id:'q21', type:'textarea', label:'¿Qué NO querés transmitir con tu marca?', hint:'Por ejemplo: demasiado formal, frío, genérico, agresivo, etc.', optional:true},
+      {id:'q22', type:'textarea', label:'Escribí una frase que describa qué hacés y para quién.', hint:'Si no tenés una, podés dejarla vacía.', optional:true}
     ]
   },
   {
     key:'cliente',
     label:'Cliente y comunicación',
-    kicker:'Paso 5',
+    kicker:'Paso 7',
     title:'Cliente y comunicación',
     desc:'Cómo piensan y qué necesitan tus clientes.',
     fields:[
-      {id:'q23', type:'textarea', label:'¿Cuáles son las 5 preguntas que más te hacen tus clientes?'},
-      {id:'q24', type:'textarea', label:'¿Cuáles son los 5 problemas o situaciones por los que más te consultan?'},
-      {id:'q25', type:'textarea', label:'¿Qué errores comete habitualmente tu cliente antes de consultarte?'},
-      {id:'q26', type:'textarea', label:'¿Qué información te gustaría que tus potenciales clientes conozcan antes de contactarte?'}
+      {id:'q23', type:'textarea', label:'¿Cuáles son las 5 preguntas que más te hacen tus clientes?', optional:true},
+      {id:'q24', type:'textarea', label:'¿Cuáles son los 5 problemas o situaciones por los que más te consultan?', optional:true},
+      {id:'q25', type:'textarea', label:'¿Qué errores comete habitualmente tu cliente antes de consultarte?', optional:true},
+      {id:'q26', type:'textarea', label:'¿Qué información te gustaría que tus potenciales clientes conozcan antes de contactarte?', optional:true}
     ]
   },
   {
-    key:'rrss',
-    label:'Gestión de Redes Sociales',
-    kicker:'Paso 6 · Aplica si contrataste Redes',
-    title:'Gestión de Redes Sociales',
+    key:'rrss1',
+    label:'Redes — Formato',
+    kicker:'Paso · Aplica si contrataste Redes',
+    title:'Gestión de Redes Sociales — Formato',
     desc:'Esta sección aparece porque tu servicio incluye gestión de redes sociales.',
     showIf: serviceIncludesRRSS,
     fields:[
       {id:'q27_note', type:'note-static', label:'Trabajamos principalmente Instagram, y ese mismo contenido se replica automáticamente en Facebook.'},
-      {id:'q27', type:'checkbox', label:'¿Querés sumar alguna red adicional?', hint:'Instagram y Facebook ya están incluidos por defecto. Marcá solo si querés algo más.', options:['LinkedIn','TikTok','Otra'], other:true},
-      {id:'q28', type:'textarea', label:'¿Qué temas jurídicos querés trabajar en redes?', hint:'Indicá temas concretos.'},
-      {id:'q29', type:'text', label:'¿Hay temas jurídicos que NO quieras comunicar?'},
+      {id:'q27', type:'checkbox', label:'¿Querés sumar alguna red adicional?', hint:'Instagram y Facebook ya están incluidos por defecto. Marcá solo si querés algo más.', options:['Ninguna, con Instagram y Facebook alcanza','LinkedIn','TikTok','Otra'], other:true, optional:true},
       {id:'q30', type:'radio', label:'¿Estás dispuesto/a a aparecer en videos?', options:['Sí','No','Algunas veces']},
       {id:'q31', type:'checkbox', label:'¿Qué formato te resulta más cómodo?', options:['Hablar a cámara','Videos educativos','Entrevistas','Voz en off','Mostrar el estudio','Otro','No quiero aparecer'], other:true},
-      {id:'q32', type:'checkbox', label:'¿Qué material tenés disponible actualmente?', options:['Fotografías profesionales','Fotografías del estudio','Videos','Logo','Identidad visual','Ninguno']},
-      {id:'q33', type:'textarea', label:'¿Qué cuentas de abogados o marcas te gustan visualmente?', hint:'Compartí hasta 3 enlaces.'},
-      {id:'q34', type:'text', label:'¿Qué NO te gusta de las redes de otros abogados?'},
-      {id:'q35', type:'textarea', label:'¿Hay algún contenido o formato que quieras incorporar sí o sí?'},
-      {id:'q36', type:'radio', label:'¿Quién responderá los mensajes y consultas que lleguen por redes?', options:['Yo','Una persona del estudio','La agencia','Otro'], other:true}
+      {id:'q32', type:'checkbox', label:'¿Qué material tenés disponible actualmente?', options:['Fotografías profesionales','Fotografías del estudio','Videos','Logo','Identidad visual','Ninguno']}
     ]
   },
   {
-    key:'web',
-    label:'Página Web',
-    kicker:'Paso 7 · Aplica si contrataste Web',
-    title:'Página Web',
+    key:'rrss2',
+    label:'Redes — Contenido',
+    kicker:'Paso · Aplica si contrataste Redes',
+    title:'Gestión de Redes Sociales — Contenido y referencias',
+    desc:'Temas a trabajar, referencias visuales y quién responde consultas.',
+    showIf: serviceIncludesRRSS,
+    fields:[
+      {id:'q28', type:'textarea', label:'¿Qué temas jurídicos querés trabajar en redes?', hint:'Indicá temas concretos.', optional:true},
+      {id:'q29', type:'text', label:'¿Hay temas jurídicos que NO quieras comunicar?', optional:true},
+      {id:'q33', type:'textarea', label:'¿Qué cuentas de abogados o marcas te gustan visualmente?', hint:'Compartí hasta 3 enlaces.', optional:true},
+      {id:'q34', type:'text', label:'¿Qué NO te gusta de las redes de otros abogados?', optional:true},
+      {id:'q35', type:'textarea', label:'¿Hay algún contenido o formato que quieras incorporar sí o sí?', optional:true},
+      {id:'q36', type:'radio', label:'¿Quién responderá los mensajes y consultas que lleguen por redes?', options:['Yo','Una persona del estudio','La agencia','Otro'], other:true, optional:true}
+    ]
+  },
+  {
+    key:'web1',
+    label:'Web — Objetivo',
+    kicker:'Paso · Aplica si contrataste Web',
+    title:'Página Web — Objetivo y contenido',
     desc:'Esta sección aparece porque tu servicio incluye página web.',
     showIf: serviceIncludesWeb,
     fields:[
       {id:'q37', type:'radio', label:'¿Cuál es el objetivo principal de la página web?', options:['Generar consultas','Presentar el estudio','Presentar servicios','Posicionamiento profesional','Recibir consultas desde Google','Otro'], other:true},
-      {id:'q38', type:'textarea', label:'¿Qué servicios deben aparecer sí o sí en la web?'},
-      {id:'q39', type:'textarea', label:'¿Qué información debería encontrar una persona antes de contactarte?'},
+      {id:'q38', type:'textarea', label:'¿Qué servicios deben aparecer sí o sí en la web?', optional:true},
       {id:'q40', type:'checkbox', label:'¿Qué secciones considerás necesarias?', options:['Inicio','Sobre mí / Estudio','Servicios','Especialidades','Preguntas frecuentes','Testimonios','Casos / experiencia','Artículos','Contacto']},
-      {id:'q41', type:'radio', label:'¿Cuál debería ser la acción principal de la web?', options:['Contactar por WhatsApp','Completar formulario','Solicitar consulta','Llamar','Otra'], other:true},
-      {id:'q42', type:'radio', label:'¿Tenés dominio y hosting actualmente?', options:['Sí, ambos','Solo dominio','Solo hosting','Ninguno','No sé']},
-      {id:'q43', type:'textarea', label:'¿Tenés alguna página web como referencia?', hint:'Compartí hasta 3 enlaces.'},
-      {id:'q44', type:'textarea', label:'¿Qué te gusta específicamente de esas referencias?', hint:'Diseño, estructura, animaciones, colores, forma de presentar la información, etc.'},
-      {id:'q45', type:'textarea', label:'¿Hay algo que NO quieras que tenga tu página web?'}
+      {id:'q41', type:'radio', label:'¿Cuál debería ser la acción principal de la web?', options:['Contactar por WhatsApp','Completar formulario','Solicitar consulta','Llamar','Otra'], other:true}
     ]
   },
   {
-    key:'googleads',
-    label:'Google Ads',
+    key:'web2',
+    label:'Web — Técnico y referencias',
+    kicker:'Paso · Aplica si contrataste Web',
+    title:'Página Web — Datos técnicos y referencias',
+    desc:'Dominio, hosting y sitios que te gustan como referencia.',
+    showIf: serviceIncludesWeb,
+    fields:[
+      {id:'q39', type:'textarea', label:'¿Qué información debería encontrar una persona antes de contactarte?', optional:true},
+      {id:'q42', type:'radio', label:'¿Tenés dominio y hosting actualmente?', options:['Sí, ambos','Solo dominio','Solo hosting','Ninguno','No sé']},
+      {id:'q43', type:'textarea', label:'¿Tenés alguna página web como referencia?', hint:'Si no tenés ninguna, dejalo vacío. Si tenés, compartí hasta 3 enlaces.', optional:true},
+      {id:'q44', type:'textarea', label:'¿Qué te gusta específicamente de esas referencias?', hint:'Diseño, estructura, animaciones, colores, forma de presentar la información, etc.', optional:true},
+      {id:'q45', type:'textarea', label:'¿Hay algo que NO quieras que tenga tu página web?', optional:true}
+    ]
+  },
+  {
+    key:'googleads1',
+    label:'Google Ads — Objetivo',
     kicker:'Paso · Aplica si contrataste Google Ads',
-    title:'Google Ads',
+    title:'Google Ads — Objetivo y cuenta',
     desc:'Esta sección aparece porque tu servicio incluye campañas en Google Ads.',
     showIf: serviceIncludesGoogleAds,
     fields:[
       {id:'gads1', type:'radio', label:'¿Cuál es el objetivo principal de las campañas en Google Ads?', options:['Generar consultas por búsqueda','Posicionarte para palabras clave específicas','Recibir llamadas','Tráfico a la web','Otro'], other:true},
       {id:'gads2', type:'text', label:'Presupuesto mensual estimado para invertir en Google Ads'},
       {id:'gads3', type:'radio', label:'¿Tenés una cuenta de Google Ads creada?', options:['Sí','No','No sé']},
+      {id:'gads5', type:'text', label:'¿A qué zona geográfica querés dirigir los anuncios?'}
+    ]
+  },
+  {
+    key:'googleads2',
+    label:'Google Ads — Búsquedas',
+    kicker:'Paso · Aplica si contrataste Google Ads',
+    title:'Google Ads — Palabras clave y destino',
+    desc:'Qué busca la gente y a dónde debería llevarla el anuncio.',
+    showIf: serviceIncludesGoogleAds,
+    fields:[
       {id:'gads4', type:'textarea', label:'¿Qué palabras clave o búsquedas creés que usa la gente para encontrar tu tipo de servicio?'},
-      {id:'gads5', type:'text', label:'¿A qué zona geográfica querés dirigir los anuncios?'},
       {id:'gads6', type:'radio', label:'¿A dónde debería llevar el anuncio al hacer clic?', options:['A la página web','A un formulario de contacto','A WhatsApp','A una landing específica','Otro'], other:true},
       {id:'gads7', type:'textarea', label:'¿Tuviste experiencia previa con Google Ads?', hint:'Contanos qué funcionó y qué no, si aplica.'}
     ]
   },
   {
-    key:'metaads',
-    label:'Meta Ads',
+    key:'metaads1',
+    label:'Meta Ads — Objetivo',
     kicker:'Paso · Aplica si contrataste Meta Ads',
-    title:'Meta Ads',
+    title:'Meta Ads — Plataforma y objetivo',
     desc:'Esta sección aparece porque tu servicio incluye campañas en Facebook e Instagram Ads.',
     showIf: serviceIncludesMetaAds,
     fields:[
@@ -537,7 +639,17 @@ const sections = [
       {id:'mads2', type:'radio', label:'¿Cuál es el objetivo principal de las campañas?', options:['Generar mensajes/consultas','Conseguir leads con formulario','Tráfico a la web','Reconocimiento de marca','Ventas de un servicio puntual','Otro'], other:true},
       {id:'mads3', type:'text', label:'Presupuesto mensual estimado para invertir en Meta Ads'},
       {id:'mads4', type:'radio', label:'¿Tenés Business Manager o cuenta publicitaria creada?', options:['Sí','No','No sé']},
-      {id:'mads5', type:'radio', label:'¿Tenés el Píxel de Meta instalado en tu web?', options:['Sí','No','No tengo web','No sé']},
+      {id:'mads5', type:'radio', label:'¿Tenés el Píxel de Meta instalado en tu web?', options:['Sí','No','No tengo web','No sé']}
+    ]
+  },
+  {
+    key:'metaads2',
+    label:'Meta Ads — Público y creatividades',
+    kicker:'Paso · Aplica si contrataste Meta Ads',
+    title:'Meta Ads — Público, material y mensaje',
+    desc:'A quién le hablamos y con qué material contamos.',
+    showIf: serviceIncludesMetaAds,
+    fields:[
       {id:'mads6', type:'textarea', label:'¿Qué público querés alcanzar?', hint:'Edad, ubicación, intereses o situación. Ej: personas con problemas de herencias en Buenos Aires.'},
       {id:'mads7', type:'checkbox', label:'¿Qué material tenés para las creatividades?', options:['Fotos','Videos','Diseños/gráficas','Ninguno, hay que crearlo']},
       {id:'mads8', type:'text', label:'¿Cuál es el mensaje u oferta principal que querés comunicar?'},
@@ -560,7 +672,7 @@ const sections = [
   {
     key:'material',
     label:'Material del proyecto',
-    kicker:'Paso 9',
+    kicker:'Paso 8',
     title:'Material para el proyecto',
     desc:'Este formulario no adjunta archivos. Marcá qué material tenés disponible y enviánoslo por separado a iuremarketingjuridico@gmail.com o por WhatsApp.',
     fields:[
@@ -573,7 +685,7 @@ const sections = [
   {
     key:'final',
     label:'Información final',
-    kicker:'Paso 10',
+    kicker:'Paso 9',
     title:'Información final',
     desc:'Últimos detalles antes de enviar.',
     fields:[
@@ -586,15 +698,37 @@ const sections = [
     label:'Revisar y enviar',
     kicker:'Paso final',
     title:'Revisá y enviá tus respuestas',
-    desc:'Revisá el resumen. Al enviar, copiamos todo el detalle y abrimos tu programa de email ya dirigido a nosotros — solo tenés que pegar y enviar.',
+    desc:'Revisá el resumen y enviá. Las respuestas se guardan y te llegan por mail automáticamente.',
     isSummary:true
   }
 ];
 
 /* ---------------------------------------------------------
+   PROGRESO POR SECCIÓN (Ley de Zeigarnik — mostrar avance real)
+--------------------------------------------------------- */
+function realFields(sec){
+  // Excluye notas estáticas y campos marcados optional:true del cálculo
+  // de progreso — así el aviso de "faltan N" no cuenta lo que es legítimamente opcional.
+  return sec.fields ? sec.fields.filter(f=>f.type!=='note-static' && !f.optional) : [];
+}
+function isAnswered(f){
+  const val = get(f.id);
+  if(val === undefined || val === '') return false;
+  if(Array.isArray(val)) return val.length > 0;
+  if(typeof val === 'object') return !!val.sel;
+  return true;
+}
+function sectionProgress(sec){
+  const fields = realFields(sec);
+  const answered = fields.filter(isAnswered).length;
+  return {answered, total: fields.length};
+}
+
+/* ---------------------------------------------------------
    STATE
 --------------------------------------------------------- */
 let current = 0;
+let pendingConfirm = false; // true = ya se avisó de campos faltantes en este paso, un 2do click avanza igual
 
 function visibleSections(){
   return sections.filter(s => !s.showIf || s.showIf());
@@ -605,6 +739,7 @@ function goTo(index){
   const target = vis[index];
   if(!target) return;
   current = sections.indexOf(target);
+  pendingConfirm = false;
   render();
   window.scrollTo({top:0, behavior:'smooth'});
 }
@@ -624,9 +759,12 @@ function renderRail(){
   rail.innerHTML = vis.map((s,i) => {
     const isActive = i === curVisIdx;
     const isDone = i < curVisIdx;
-    return `<div class="rail-step ${isActive?'active':''} ${isDone?'done':''}" data-idx="${i}">
+    const prog = s.isSummary ? null : sectionProgress(s);
+    const complete = prog && prog.total > 0 && prog.answered === prog.total;
+    const badge = prog && prog.total > 0 ? `<span class="badge">${prog.answered}/${prog.total}</span>` : '';
+    return `<div class="rail-step ${isActive?'active':''} ${isDone?'done':''} ${complete?'complete':''}" data-idx="${i}">
       <div class="num">${String(i+1).padStart(2,'0')}</div>
-      <div class="label">${s.label}</div>
+      <div class="label-wrap"><div class="label">${s.label}</div>${badge}</div>
     </div>`;
   }).join('');
   rail.querySelectorAll('.rail-step').forEach(el=>{
@@ -637,7 +775,39 @@ function renderRail(){
   const total = vis.length;
   const pct = Math.round(((curVisIdx)/(total-1))*100);
   document.getElementById('mobileFill').style.width = pct+'%';
-  document.getElementById('mobileTxt').textContent = `Paso ${curVisIdx+1} de ${total} — ${vis[curVisIdx].label}`;
+  const curSec = vis[curVisIdx];
+  const curProg = curSec.isSummary ? null : sectionProgress(curSec);
+  const progTxt = curProg && curProg.total > 0 ? ` (${curProg.answered}/${curProg.total})` : '';
+  document.getElementById('mobileTxt').textContent = `Paso ${curVisIdx+1} de ${total} — ${curSec.label}${progTxt}`;
+}
+
+/* Actualiza solo el badge/contador sin re-renderizar los campos —
+   evita perder el foco/cursor cuando se tipea en un input de texto. */
+function updateProgressUI(){
+  const s = sections[current];
+  renderRail();
+  const stepProg = document.getElementById('stepProgress');
+  if(stepProg && !s.isSummary){
+    const prog = sectionProgress(s);
+    if(prog.total > 0){
+      const complete = prog.answered === prog.total;
+      stepProg.textContent = complete ? 'Sección completa ✓' : `${prog.answered} de ${prog.total} respondidas`;
+      stepProg.classList.toggle('complete', complete);
+    }
+  }
+  const warn = document.getElementById('stepWarn');
+  if(warn && warn.classList.contains('show')){
+    const prog = sectionProgress(s);
+    const missing = prog.total - prog.answered;
+    if(missing <= 0){
+      warn.classList.remove('show');
+      pendingConfirm = false;
+      const nextBtn = document.getElementById('nextBtn');
+      if(nextBtn) nextBtn.textContent = nextBtn.dataset.defaultLabel || nextBtn.textContent;
+    } else {
+      warn.querySelector('span').textContent = `Quedan ${missing} pregunta${missing===1?'':'s'} sin responder en esta sección.`;
+    }
+  }
 }
 
 /* ---------------------------------------------------------
@@ -649,6 +819,7 @@ function fieldHTML(f, qIndex){
   }
 
   const val = get(f.id, f.type==='checkbox'||f.type==='checklist' ? [] : (f.type==='radio' && f.other ? {sel:'',other:''} : ''));
+  const maxTag = f.max ? `<span class="opt-tag">hasta ${f.max}</span>` : (f.optional ? `<span class="opt-tag">opcional</span>` : '');
 
   let inner = '';
 
@@ -705,7 +876,7 @@ function fieldHTML(f, qIndex){
   }
 
   return `<div class="field">
-    <label class="field-label"><span class="qn">${qIndex}.</span>${f.label}</label>
+    <label class="field-label"><span class="qn">${qIndex}.</span>${f.label}${maxTag}</label>
     ${f.hint ? `<div class="field-hint">${f.hint}</div>` : ''}
     ${inner}
   </div>`;
@@ -734,19 +905,28 @@ function render(){
     return;
   }
 
+  const prog = sectionProgress(s);
+  const progLabel = prog.total > 0
+    ? (prog.answered === prog.total ? 'Sección completa ✓' : `${prog.answered} de ${prog.total} respondidas`)
+    : '';
+
   card.innerHTML = `
     <div class="step-head">
-      <div class="kicker">Paso ${curVisIdx+1} de ${vis.length}${s.showIf ? ' · Aplica a este servicio' : ''}</div>
+      <div class="kicker-row">
+        <div class="kicker">Paso ${curVisIdx+1} de ${vis.length}${s.showIf ? ' · Aplica a este servicio' : ''}</div>
+        ${progLabel ? `<div class="step-progress ${prog.answered===prog.total?'complete':''}" id="stepProgress">${progLabel}</div>` : ''}
+      </div>
       <h2>${s.title}</h2>
       <div class="desc">${s.desc}</div>
     </div>
     <div class="fields">
       ${(()=>{ let n=0; return s.fields.map(f=>{ if(f.type!=='note-static') n++; return fieldHTML(f, n); }).join(''); })()}
     </div>
+    <div class="step-warn" id="stepWarn"><span></span></div>
     <div class="nav">
       <button class="btn ghost" id="prevBtn" ${curVisIdx===0?'disabled':''}>← Anterior</button>
       <span class="step-counter">Paso ${curVisIdx+1} de ${vis.length}</span>
-      <button class="btn brick" id="nextBtn">${curVisIdx===vis.length-1?'Ir al resumen':'Siguiente →'}</button>
+      <button class="btn brick" id="nextBtn" data-default-label="${curVisIdx===vis.length-1?'Ir al resumen':'Siguiente →'}">${curVisIdx===vis.length-1?'Ir al resumen':'Siguiente →'}</button>
     </div>
   `;
 
@@ -759,6 +939,25 @@ function bindNav(s, curVisIdx, total){
   const next = document.getElementById('nextBtn');
   if(prev) prev.addEventListener('click', ()=> goTo(curVisIdx-1));
   if(next) next.addEventListener('click', ()=>{
+    // Resumen o secciones sin campos: avanzar directo
+    if(s.isSummary){ goTo(total-1); return; }
+
+    const prog = sectionProgress(s);
+    const missing = prog.total - prog.answered;
+
+    if(missing > 0 && !pendingConfirm){
+      pendingConfirm = true;
+      const warn = document.getElementById('stepWarn');
+      if(warn){
+        warn.querySelector('span') || (warn.innerHTML = '<span></span>');
+        warn.querySelector('span').textContent = `Quedan ${missing} pregunta${missing===1?'':'s'} sin responder en esta sección.`;
+        warn.classList.add('show');
+      }
+      next.textContent = 'Continuar de todas formas →';
+      next.classList.add('warn');
+      return;
+    }
+
     if(curVisIdx >= total-1){ goTo(total-1); return; }
     goTo(curVisIdx+1);
   });
@@ -772,6 +971,7 @@ function bindFieldEvents(s){
       const id = e.target.dataset.id;
       const cur = get(id, {sel:'',other:''});
       set(id, {sel: typeof cur==='object'?cur.sel:cur, other: e.target.value});
+      updateProgressUI();
     });
   });
 
@@ -782,12 +982,14 @@ function bindFieldEvents(s){
       arr = arr.filter(x=> !x.startsWith('Otro:'));
       if(e.target.value.trim()) arr.push('Otro: '+e.target.value.trim());
       set(id, arr);
+      updateProgressUI();
     });
   });
 
   card.querySelectorAll('input[type=text]:not([data-kind]), textarea').forEach(inp=>{
     inp.addEventListener('input', e=>{
       set(e.target.dataset.id, e.target.value);
+      updateProgressUI();
     });
   });
 
@@ -835,6 +1037,7 @@ function bindFieldEvents(s){
       if(e.target.checked){ if(!arr.includes(v)) arr.push(v); }
       else { arr = arr.filter(x=>x!==v); }
       set(id, arr);
+      updateProgressUI();
     });
   });
 }
@@ -920,7 +1123,7 @@ function bindSummaryEvents(){
 
   document.getElementById('copyBtn').addEventListener('click', ()=>{
     copyText(buildPlainText());
-    showToast('Respuestas copiadas al portapapeles ✓');
+    showToast('Respuestas copiadas al portapapeles ✓', 'ok');
   });
 
   document.getElementById('downloadBtn').addEventListener('click', ()=>{
@@ -946,7 +1149,7 @@ function bindSummaryEvents(){
     btn.disabled = true;
     btn.textContent = 'Enviando...';
 
-    fetch('https://script.google.com/macros/s/AKfycbzXwXgFAfK1CmN1D_2bJ5VR0OMRzQ-ElaW-GTVzTzej8F22BW7NjL9i8SXa369UzmV9/exec', {
+    fetch(APPS_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: {'Content-Type':'application/x-www-form-urlencoded'},
@@ -957,8 +1160,8 @@ function bindSummaryEvents(){
         servicios: Array.isArray(serviciosArr) ? serviciosArr.join(', ') : '',
         detalle: text
       })
-    }).then(()=> showToast('Respuestas enviadas ✓'))
-      .catch(()=> showToast('No se pudo enviar. Copiá las respuestas y mandalas por WhatsApp.'))
+    }).then(()=> showToast('Respuestas enviadas ✓', 'ok'))
+      .catch(()=> showToast('No se pudo enviar. Copiá las respuestas y mandalas por WhatsApp.', 'err'))
       .finally(()=>{ btn.disabled = false; btn.textContent = 'Enviar respuestas'; });
   });
 }
@@ -979,11 +1182,11 @@ function fallbackCopy(text){
   try{ document.execCommand('copy'); }catch(e){}
   document.body.removeChild(ta);
 }
-function showToast(msg){
+function showToast(msg, kind){
   const t = document.getElementById('toast');
   if(!t) return;
   t.textContent = msg;
-  t.classList.add('show');
+  t.className = 'toast show ' + (kind || 'ok');
 }
 
 /* ---------------------------------------------------------
