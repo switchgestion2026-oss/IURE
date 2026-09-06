@@ -1,0 +1,1111 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0F1923">
+<title>Brújula de Marca — Iure Marketing Jurídico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&family=Lato:wght@400;700&family=Merriweather:wght@400;700&family=Playfair+Display:wght@700&family=Inter:wght@400;700&family=EB+Garamond:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noche:#0F1923;
+    --oro:#B8946A;
+    --oro-dark:#9C7A52;
+    --oro-tint:#EFE4D3;
+    --crema:#F5F2EC;
+    --crema-soft:rgba(245,242,236,0.62);
+    --crema-line:rgba(245,242,236,0.16);
+    --ink:#181410;
+    --ink-soft:#6B6357;
+    --line:#DCD5C4;
+    --radius:3px;
+    --font-title:'Barlow Condensed',sans-serif;
+    --font-body:'Barlow',-apple-system,sans-serif;
+    --font-label:'DM Mono',monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--noche);
+    color:var(--crema);
+    font-family:var(--font-body);
+    font-weight:300;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  .wrap{max-width:780px; margin:0 auto; padding:2.5rem 1.25rem 6rem;}
+  @media(max-width:600px){ .wrap{padding:1.8rem 1rem 5rem;} }
+
+  .eyebrow{
+    font-family:var(--font-label);
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--oro);
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+  }
+  .eyebrow::before{content:"";width:1.4rem;height:1px;background:var(--oro);}
+  h1{
+    font-family:var(--font-title);
+    font-weight:700;
+    text-transform:uppercase;
+    font-size:clamp(2rem, 6vw, 2.9rem);
+    line-height:1.02;
+    margin:0.5rem 0 0.9rem;
+    color:var(--crema);
+    letter-spacing:0.005em;
+  }
+  .lede{
+    font-size:15.5px;
+    font-weight:300;
+    color:var(--crema-soft);
+    max-width:56ch;
+    margin:0;
+  }
+  .lede strong{color:var(--crema); font-weight:600;}
+
+  /* live preview (mientras completa) */
+  .preview{
+    margin:2rem 0 2.6rem;
+    border:1px solid var(--crema-line);
+    border-radius:var(--radius);
+    background:rgba(245,242,236,0.04);
+    padding:1.2rem 1.3rem 1.4rem;
+  }
+  .preview-label{
+    font-family:var(--font-label);
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--crema-soft);
+    margin:0 0 0.75rem;
+  }
+  .preview-body{display:flex; flex-wrap:wrap; gap:1.4rem; align-items:center;}
+  .preview-swatches{display:flex; gap:0; border-radius:2px; overflow:hidden; height:2.6rem; flex:0 0 auto; box-shadow:0 0 0 1px var(--crema-line);}
+  .preview-swatches span{width:1.7rem; height:100%; display:block;}
+  .preview-empty-swatch{width:2.6rem; height:2.6rem; border:1px dashed var(--crema-line); border-radius:2px;}
+  .preview-word{font-size:1.7rem; color:var(--crema); flex:1 1 160px; min-width:140px; font-family:var(--font-title); font-weight:700;}
+  .preview-chips{display:flex; flex-wrap:wrap; gap:0.4rem; width:100%;}
+  .preview-chip{
+    font-family:var(--font-label);
+    font-size:11px;
+    padding:0.25rem 0.6rem;
+    border-radius:var(--radius);
+    background:var(--oro-tint);
+    color:var(--oro-dark);
+  }
+  .preview-placeholder{color:var(--crema-soft); font-size:0.9rem; font-style:italic;}
+
+  /* section */
+  section.q{margin:2.6rem 0;}
+  .q-head{margin-bottom:1.1rem;}
+  .q-num{font-family:var(--font-label); font-size:11px; color:var(--oro); letter-spacing:0.08em;}
+  .q-title{
+    font-family:var(--font-title);
+    font-size:1.5rem;
+    font-weight:700;
+    margin:0.25rem 0 0.3rem;
+    color:var(--crema);
+    text-transform:none;
+  }
+  .q-hint{color:var(--crema-soft); font-size:13px; margin:0;}
+
+  .static-note{
+    font-family:var(--font-body);
+    font-weight:400;
+    font-size:13px;
+    color:var(--oro-dark);
+    background:var(--oro-tint);
+    border-left:3px solid var(--oro);
+    border-radius:var(--radius);
+    padding:10px 14px;
+    margin-top:14px;
+  }
+  .static-note strong{font-weight:700;}
+
+  /* adjetivos */
+  .chip-grid{display:flex; flex-wrap:wrap; gap:0.6rem;}
+  .chip-btn{
+    font-family:var(--font-body);
+    font-weight:500;
+    font-size:13.5px;
+    padding:9px 16px;
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+    background:var(--crema);
+    color:var(--ink);
+    cursor:pointer;
+    transition:border-color .15s, background .15s, color .15s, opacity .15s;
+  }
+  .chip-btn:hover{border-color:var(--oro);}
+  .chip-btn.selected{background:var(--oro); border-color:var(--oro); color:var(--noche); font-weight:600;}
+  .chip-btn:focus-visible{outline:2px solid var(--oro); outline-offset:2px;}
+
+  /* palettes */
+  .palette-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:0.9rem;}
+  .palette-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--crema);
+    padding:0.8rem 0.9rem 0.95rem;
+    cursor:pointer;
+    text-align:left;
+    transition:border-color .15s, box-shadow .15s, opacity .15s;
+    color:var(--ink);
+  }
+  .palette-card:hover{border-color:var(--oro);}
+  .palette-card.selected{border-color:var(--oro); box-shadow:0 0 0 2px var(--oro-tint);}
+  .palette-card.dimmed{opacity:0.4;}
+  .palette-swatches{display:flex; height:2.5rem; border-radius:2px; overflow:hidden; margin-bottom:0.6rem;}
+  .palette-swatches span{flex:1;}
+  .palette-name{font-weight:700; font-size:14px; display:block;}
+  .palette-mood{color:var(--ink-soft); font-size:12.5px;}
+  .palette-card:focus-visible{outline:2px solid var(--oro); outline-offset:2px;}
+
+  /* paleta propia */
+  .custom-palette{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--crema);
+    color:var(--ink);
+    padding:1rem 1.1rem 1.1rem;
+    margin-top:0.9rem;
+  }
+  .custom-palette.dimmed{opacity:0.4;}
+  .custom-row{display:flex; align-items:center; gap:12px; margin-bottom:12px;}
+  .custom-row label{font-size:13px; font-weight:600; min-width:110px;}
+  .custom-row input[type=color]{
+    width:44px; height:36px; border:1px solid var(--line); border-radius:2px; padding:2px; background:#fff; cursor:pointer;
+  }
+  .custom-derived{display:flex; gap:8px; margin-top:2px;}
+  .custom-swatch{width:36px; height:36px; border-radius:2px; border:1px solid var(--line);}
+  .custom-hint{font-size:12px; color:var(--ink-soft); margin:2px 0 10px;}
+  .custom-reroll{
+    font-family:var(--font-body); font-size:12.5px; font-weight:600;
+    background:none; border:1px solid var(--ink-soft); color:var(--ink);
+    padding:7px 13px; border-radius:var(--radius); cursor:pointer;
+  }
+  .custom-reroll:hover{border-color:var(--oro); color:var(--oro-dark);}
+  .custom-palette .field label{color:var(--ink-soft);}
+
+  /* especialidades jurídicas */
+  .esp-grid{display:flex; flex-wrap:wrap; gap:0.6rem;}
+
+  /* type combos */
+  .type-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:0.8rem;}
+  .type-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--crema);
+    padding:1.1rem 1.2rem;
+    cursor:pointer;
+    text-align:left;
+    transition:border-color .15s, box-shadow .15s, background .15s, color .15s;
+    color:var(--ink);
+  }
+  .type-card:hover{border-color:var(--oro);}
+  .type-tag{
+    font-family:var(--font-label); font-size:10px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--oro-dark); display:block; margin-bottom:6px;
+  }
+  .type-sample{font-size:2.5rem; line-height:1.02; display:block;}
+  .type-name{font-family:var(--font-body); font-size:12.5px; font-weight:600; color:var(--ink-soft); display:block; margin-top:8px;}
+  .type-body-sample{margin-top:10px; font-size:13.5px; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:9px;}
+  .type-body-sample b{color:var(--ink); font-weight:600;}
+  .type-card:focus-visible{outline:2px solid var(--oro); outline-offset:2px;}
+
+  /* selección en colores inversos — negro con letras doradas */
+  .type-card.selected{
+    background:var(--noche);
+    border-color:var(--oro);
+    box-shadow:0 0 0 2px var(--oro);
+    color:var(--crema);
+  }
+  .type-card.selected .type-tag{color:var(--oro);}
+  .type-card.selected .type-sample{color:var(--oro);}
+  .type-card.selected .type-name{color:rgba(245,242,236,0.65);}
+  .type-card.selected .type-body-sample{color:rgba(245,242,236,0.7); border-top-color:rgba(184,148,106,0.3);}
+  .type-card.selected .type-body-sample b{color:var(--oro);}
+
+  /* mood tiles con foto */
+  .mood-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); gap:0.9rem;}
+  .mood-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--crema);
+    padding:0;
+    cursor:pointer;
+    overflow:hidden;
+    text-align:left;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  .mood-card:hover{border-color:var(--oro);}
+  .mood-card.selected{border-color:var(--oro); box-shadow:0 0 0 2px var(--oro-tint);}
+  .mood-tile{height:6.5rem; position:relative; background:var(--crema);}
+  .mood-tile img{width:100%; height:100%; object-fit:cover; display:block;}
+  .mood-tile .fallback{
+    position:absolute; inset:0; display:none; align-items:center; justify-content:center;
+    font-family:var(--font-label); font-size:10px; letter-spacing:0.04em; text-align:center;
+    color:var(--ink-soft); padding:8px; background:var(--oro-tint);
+  }
+  .mood-caption{padding:0.55rem 0.7rem 0.65rem; font-size:0.82rem; font-weight:600; color:var(--ink);}
+  .mood-card:focus-visible{outline:2px solid var(--oro); outline-offset:2px;}
+  .mood-card-other{cursor:default;}
+  .mood-other-input{
+    width:calc(100% - 1.4rem); margin:0 0.7rem 0.7rem; padding:0.5rem 0.6rem;
+    border:1px solid var(--line); border-radius:var(--radius); background:#fff;
+    font-family:var(--font-body); font-size:0.82rem; color:var(--ink);
+  }
+  .mood-other-input:focus{outline:none; border-color:var(--oro);}
+
+  /* detalles artísticos */
+  .detail-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(210px,1fr)); gap:0.9rem;}
+  .detail-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--crema);
+    color:var(--ink);
+    padding:0.9rem 1rem;
+    cursor:pointer;
+    text-align:left;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  .detail-card:hover{border-color:var(--oro);}
+  .detail-card.selected{border-color:var(--oro); box-shadow:0 0 0 2px var(--oro-tint);}
+  .detail-name{font-weight:700; font-size:13.5px; display:block; margin-bottom:4px;}
+  .detail-desc{font-size:12px; color:var(--ink-soft); line-height:1.5;}
+
+  /* tone scale */
+  .tone-scale{display:flex; flex-wrap:wrap; gap:0.5rem;}
+  .tone-pill{
+    font-size:13px;
+    font-weight:500;
+    padding:9px 14px;
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+    background:var(--crema);
+    color:var(--ink);
+    cursor:pointer;
+    flex:1 1 auto;
+    text-align:center;
+    transition:border-color .15s, background .15s, color .15s;
+  }
+  .tone-pill:hover{border-color:var(--oro);}
+  .tone-pill.selected{background:var(--oro); border-color:var(--oro); color:var(--noche); font-weight:600;}
+  .tone-pill:focus-visible{outline:2px solid var(--oro); outline-offset:2px;}
+  .tono-example{
+    margin-top:12px; font-size:13px; font-style:italic; color:var(--crema-soft);
+    border-left:2px solid var(--oro); padding-left:10px;
+  }
+
+  /* text inputs */
+  .field{margin-bottom:1rem;}
+  .field label{display:block; font-size:12.5px; font-weight:500; margin-bottom:0.35rem; color:var(--crema-soft);}
+  .field input{
+    width:100%;
+    font-family:inherit;
+    font-size:15px;
+    padding:10px 12px;
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+    background:var(--crema);
+    color:var(--ink);
+  }
+  .field input:focus-visible{outline:2px solid var(--oro); outline-offset:1px;}
+
+  /* submit */
+  .submit-row{margin-top:2.6rem; display:flex; flex-direction:column; gap:0.7rem; align-items:flex-start;}
+  .submit-btn{
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:14px;
+    padding:12px 22px;
+    border-radius:var(--radius);
+    border:1px solid var(--oro);
+    background:var(--oro);
+    color:var(--noche);
+    cursor:pointer;
+    transition:opacity .15s;
+    min-height:44px;
+  }
+  .submit-btn:hover{opacity:0.85;}
+  .submit-btn:active{opacity:0.7;}
+  .submit-note{font-size:12.5px; color:var(--crema-soft);}
+  .submit-note.error{color:#D97A63;}
+
+  .done-card{
+    margin-top:2.6rem;
+    border:1px solid var(--oro);
+    background:rgba(184,148,106,0.08);
+    color:var(--crema);
+    border-radius:var(--radius);
+    padding:1.4rem 1.5rem;
+  }
+  .done-card h2{font-family:var(--font-title); text-transform:uppercase; margin:0 0 0.5rem; font-size:1.4rem; color:var(--crema);}
+  .done-card p{margin:0 0 0.9rem; color:var(--crema-soft); font-size:14px;}
+
+  /* mockup en vivo */
+  .mockup{border:1px solid var(--line); border-radius:6px; overflow:hidden; margin-bottom:1.1rem; background:#fff;}
+  .mockup-nav{display:flex; align-items:center; justify-content:space-between; padding:14px 20px;}
+  .mockup-logo{font-weight:700; font-size:16px;}
+  .mockup-menu{display:flex; gap:16px; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; opacity:0.75;}
+  .mockup-hero{padding:44px 26px; position:relative; overflow:hidden;}
+  .mockup-shape{position:absolute; border-radius:3px; opacity:0.35; pointer-events:none;}
+  .mockup-hero-inner{position:relative; z-index:1; max-width:420px;}
+  .mockup-h1{font-size:clamp(1.6rem,5vw,2.3rem); line-height:1.06; margin:0 0 12px;}
+  .mockup-p{font-size:14px; line-height:1.6; margin:0 0 18px; max-width:38ch;}
+  .mockup-cta{display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; padding:11px 20px; border-radius:2px;}
+  .mockup-hairline{height:1px; opacity:0.5;}
+  .mockup-footer{padding:14px 20px; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.55;}
+
+  .result-box{
+    background:var(--crema);
+    color:var(--ink);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:0.9rem 1rem;
+    white-space:pre-wrap;
+    font-family:var(--font-label);
+    font-size:12.5px;
+    line-height:1.6;
+    margin-bottom:0.9rem;
+  }
+  .done-actions{display:flex; flex-wrap:wrap; gap:0.6rem;}
+  .copy-btn, .redo-btn, .send-btn{
+    font-family:var(--font-body);
+    background:none;
+    border:1px solid var(--oro);
+    color:var(--crema);
+    padding:10px 18px;
+    border-radius:var(--radius);
+    font-weight:600;
+    font-size:13.5px;
+    cursor:pointer;
+    min-height:42px;
+  }
+  .send-btn{background:var(--oro); color:var(--noche);}
+  .send-btn:disabled{opacity:0.5; cursor:not-allowed;}
+  .toast{margin-top:12px; font-size:13px; padding:9px 12px; border-radius:var(--radius); display:none;}
+  .toast.show{display:block;}
+  .toast.ok{background:rgba(184,148,106,0.16); color:var(--oro); border:1px solid rgba(184,148,106,0.4);}
+  .toast.err{background:rgba(217,122,99,0.14); color:#D97A63; border:1px solid rgba(217,122,99,0.4);}
+  [hidden]{display:none !important;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">Iure Marketing Jurídico · identidad visual</p>
+  <h1>¿Cómo se ve tu marca?</h1>
+  <p class="lede">Todavía no tenés una identidad visual definida — <strong>este cuestionario es el punto de partida</strong>. Diez minutos, casi todo a elección múltiple. No hay respuesta correcta: cada clic es una pista para diseñar tu marca.</p>
+
+  <div class="preview" id="preview">
+    <p class="preview-label">Tu perfil, en construcción</p>
+    <div class="preview-body" id="previewBody">
+      <div class="preview-empty-swatch"></div>
+      <span class="preview-word brand-word" style="font-family:var(--font-title);">Tu Estudio</span>
+      <p class="preview-placeholder">Empezá a elegir abajo y acá vas viendo cómo se arma tu estilo.</p>
+    </div>
+  </div>
+
+  <form id="form">
+    <section class="q">
+      <div class="q-head">
+        <span class="q-num">01 / 08</span>
+        <h2 class="q-title">Si tu estudio fuera una persona, ¿cómo es?</h2>
+        <p class="q-hint">Elegí hasta 3 palabras — las que más te representen.</p>
+      </div>
+      <div class="chip-grid" id="adjetivos" data-max="3"></div>
+    </section>
+
+    <section class="q">
+      <div class="q-head">
+        <span class="q-num">02 / 08</span>
+        <h2 class="q-title">¿Con qué paleta te sentís identificada?</h2>
+        <p class="q-hint">Elegí una combinación lista, o armá la tuya con tu color y nosotros calculamos el resto para que combine.</p>
+      </div>
+      <div class="palette-grid" id="paletas"></div>
+      <div class="custom-palette" id="customPalette">
+        <div class="custom-row">
+          <label for="customColor">Tu color principal</label>
+          <input type="color" id="customColor" value="#8C5A2E">
+          <button type="button" class="custom-reroll" id="rerollBtn">🔄 Probar otra combinación</button>
+        </div>
+        <div class="custom-hint" id="customSchemeName">Los otros 3 colores se calculan automáticamente para que combinen — así no arriesgás una paleta que choque.</div>
+        <div class="custom-derived" id="customDerived"></div>
+      </div>
+    </section>
+
+    <section class="q">
+      <div class="q-head">
+        <span class="q-num">03 / 08</span>
+        <h2 class="q-title">¿Qué tipografía te representa?</h2>
+        <p class="q-hint">Cada opción es una combinación pensada para web: una fuente para títulos y otra para el texto.</p>
+      </div>
+      <div class="type-grid" id="tipos"></div>
+      <div class="custom-palette" id="tipoOtherWrap" hidden>
+        <div class="field" style="margin-bottom:10px;">
+          <label for="tipoOtherTitulo">Fuente para títulos (la que ya usás o te gustaría)</label>
+          <input type="text" id="tipoOtherTitulo" placeholder="Ej: Times New Roman, Calibri, Garamond...">
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label for="tipoOtherCuerpo">Fuente para el cuerpo del texto</label>
+          <input type="text" id="tipoOtherCuerpo" placeholder="Ej: Arial, Verdana...">
+        </div>
+      </div>
+      <div class="static-note">
+        <strong>Tips técnicos:</strong> mínimo 16px en el cuerpo del texto para que se lea sin esfuerzo · alto contraste (texto oscuro sobre fondo claro) · si se carga desde Google Fonts, solo los pesos que realmente se usan (Regular y Bold), para no ralentizar la web.
+      </div>
+    </section>
+
+    <section class="q">
+      <div class="q-head">
+        <span class="q-num">04 / 08</span>
+        <h2 class="q-title">¿Qué estilo visual te atrae más?</h2>
+        <p class="q-hint">Son ejemplos reales de webs de estudios — pensá en cómo te gustaría que se vea la tuya.</p>
+      </div>
+      <div class="mood-grid" id="estilos"></div>
+    </section>
+
+    <section class="q">
+      <div class="q-head">
+        <span class="q-num">05 / 08</span>
+        <h2 class="q-title">¿Qué nivel de detalles creativos preferís?</h2>
+        <p class="q-hint">Elementos para darle personalidad a la web y romper la monotonía del texto. Podés elegir más de uno.</p>
+      </div>
+      <div class="detail-grid" id="detalles"></div>
+    </section>
+
+    <section class="q">
+      <div class="q-head">
+        <span class="q-num">06 / 08</span>
+        <h2 class="q-title">¿Cómo le hablás a tus clientes?</h2>
+        <p class="q-hint">De formal a cercana.</p>
+      </div>
+      <div class="tone-scale" id="tono"></div>
+      <p class="tono-example" id="tonoExample" hidden></p>
+    </section>
+
+    <section class="q">
+      <div class="q-head">
+        <span class="q-num">07 / 08</span>
+        <h2 class="q-title">Un par de datos rápidos</h2>
+        <p class="q-hint">Opcional, pero ayuda mucho.</p>
+      </div>
+      <div class="field">
+        <label for="negocio">Nombre de tu estudio / marca</label>
+        <input type="text" id="negocio" maxlength="80" placeholder="Ej: Estudio Pérez, García Abogados...">
+      </div>
+      <div class="field">
+        <label>Especialidad/es jurídicas</label>
+        <div class="esp-grid" id="especialidades"></div>
+        <div class="other-input" id="espOtherWrap" hidden style="margin-top:10px;max-width:340px;">
+          <input type="text" id="espOtherInput" placeholder="Especificá tu especialidad...">
+        </div>
+      </div>
+    </section>
+
+    <div class="submit-row">
+      <button type="submit" class="submit-btn" id="submitBtn">Ver mi perfil visual</button>
+      <p class="submit-note" id="submitNote">Faltan: adjetivos, paleta, tipografía, estilo y tono.</p>
+    </div>
+  </form>
+
+  <div class="done-card" id="doneCard" hidden>
+    <h2>¡Listo!</h2>
+    <p>Así se vería tu web con lo que elegiste. Enviá tu perfil directamente a Iure, o copialo para mandarlo por WhatsApp.</p>
+    <div class="mockup" id="mockup"></div>
+    <div class="result-box" id="resultBox"></div>
+    <div class="done-actions">
+      <button class="send-btn" id="sendBtn" type="button">Contactar para aplicar este diseño</button>
+      <button class="copy-btn" id="copyBtn" type="button">Copiar resumen</button>
+      <button class="redo-btn" id="redoBtn" type="button">Volver a responder</button>
+    </div>
+    <div class="toast ok" id="toast"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzXwXgFAfK1CmN1D_2bJ5VR0OMRzQ-ElaW-GTVzTzej8F22BW7NjL9i8SXa369UzmV9/exec';
+
+  /* -------------------- color helpers (para "armar mi paleta") -------------------- */
+  function hexToHsl(hex){
+    hex = hex.replace('#','');
+    var r = parseInt(hex.substr(0,2),16)/255, g = parseInt(hex.substr(2,2),16)/255, b = parseInt(hex.substr(4,2),16)/255;
+    var max=Math.max(r,g,b), min=Math.min(r,g,b), h,s,l=(max+min)/2;
+    if(max===min){ h=s=0; }
+    else{
+      var d=max-min;
+      s = l>0.5 ? d/(2-max-min) : d/(max+min);
+      if(max===r) h=(g-b)/d+(g<b?6:0);
+      else if(max===g) h=(b-r)/d+2;
+      else h=(r-g)/d+4;
+      h*=60;
+    }
+    return {h:h,s:s*100,l:l*100};
+  }
+  function clamp(v,mn,mx){ return Math.max(mn,Math.min(mx,v)); }
+  function hslToHex(h,s,l){
+    h=((h%360)+360)%360; s=clamp(s,0,100)/100; l=clamp(l,0,100)/100;
+    var c=(1-Math.abs(2*l-1))*s, x=c*(1-Math.abs((h/60)%2-1)), m=l-c/2, r,g,b;
+    if(h<60){r=c;g=x;b=0;} else if(h<120){r=x;g=c;b=0;} else if(h<180){r=0;g=c;b=x;}
+    else if(h<240){r=0;g=x;b=c;} else if(h<300){r=x;g=0;b=c;} else {r=c;g=0;b=x;}
+    function toHex(v){ var n=Math.round((v+m)*255); return ('0'+n.toString(16)).slice(-2); }
+    return '#'+toHex(r)+toHex(g)+toHex(b);
+  }
+  var SCHEMES = [
+    {sec:30, acc:180, name:'Análoga + complementaria'},
+    {sec:-30, acc:150, name:'Análoga fría'},
+    {sec:180, acc:120, name:'Complementaria + triádica'},
+    {sec:150, acc:-150, name:'Triádica'}
+  ];
+  function computeCustomPalette(baseHex, schemeIndex){
+    var hsl = hexToHsl(baseHex);
+    var sch = SCHEMES[schemeIndex % SCHEMES.length];
+    var secundario = hslToHex(hsl.h+sch.sec, clamp(hsl.s,40,70), clamp(hsl.l,35,60));
+    var acento = hslToHex(hsl.h+sch.acc, clamp(hsl.s+10,50,80), clamp(hsl.l-5,30,55));
+    var fondo = hslToHex(hsl.h, Math.min(hsl.s,12), 96);
+    return {colores:[baseHex, secundario, acento, fondo], schemeName:sch.name};
+  }
+
+  var ICONS = {
+    civil: '<path d="M6 3h8l4 4v14H6z"/><path d="M9 9h6M9 13h6M9 17h3"/>',
+    familia: '<circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/><path d="M3 19c0-3 2.2-5 5-5s5 2 5 5"/><path d="M11 19c0-3 2.2-5 5-5s5 2 5 5"/>',
+    laboral: '<rect x="3" y="8" width="18" height="12" rx="1"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',
+    penal: '<path d="M14 3l7 7-2 2-7-7z"/><path d="M12 8l-8 8"/><path d="M2 20h9"/>',
+    comercial: '<rect x="5" y="4" width="14" height="17"/><path d="M9 8h2M13 8h2M9 12h2M13 12h2M9 16h2M13 16h2"/>',
+    sucesiones: '<path d="M6 3h9l3 3v15H6z"/><circle cx="16" cy="15" r="3"/><path d="M9 8h6M9 12h4"/>',
+    amparos: '<path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6z"/>',
+    consumidor: '<path d="M12 3h6a2 2 0 0 1 2 2v6l-9 9-8-8z"/><circle cx="15" cy="8" r="1.5"/>',
+    previsional: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/>',
+    inmobiliario: '<path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/>',
+    otra: '<path d="M12 5v14M5 12h14"/>'
+  };
+
+  var DATA = {
+    adjetivos: ["Confiable","Cercana","Elegante","Rigurosa","Accesible","Moderna","Clásica","Sobria","Empática","Dinámica","Institucional","Minimalista"],
+    paletas: [
+      {id:"institucional", nombre:"Institucional", mood:"seria, con autoridad", colores:["#0F1923","#8C93A0","#B8946A","#F5F2EC"]},
+      {id:"tierra", nombre:"Tierra", mood:"cálida, con raíces", colores:["#4A5D45","#C98B5E","#F1EBDD","#3A2E28"]},
+      {id:"nocturno", nombre:"Nocturno", mood:"elegante, con carácter", colores:["#1B2A4A","#C9A24B","#F4F1E8","#6B2737"]},
+      {id:"pastel", nombre:"Pastel suave", mood:"delicada, en calma", colores:["#E8B4B8","#A8B9A4","#FAF6EF","#7D7568"]},
+      {id:"mono", nombre:"Monocromo cálido", mood:"minimal, editorial", colores:["#1A1A1A","#D9CFC1","#FCFAF7","#B5502E"]},
+      {id:"clasico", nombre:"Clásico cálido", mood:"tradicional, con calidez", colores:["#5C1A22","#C9A24B","#3A332B","#F5F0E6"]}
+    ],
+    tipos: [
+      {id:"corporativo", nombre:"Corporativo / Tecnológico", mood:"sólida, de vanguardia", tag:"Sans-serif",
+        tituloFamily:"'Montserrat', sans-serif", tituloWeight:700, tituloNombre:"Montserrat",
+        cuerpoFamily:"'Open Sans', sans-serif", cuerpoNombre:"Open Sans"},
+      {id:"clasico", nombre:"Clásico / Tradicional", mood:"prestigio legal tradicional", tag:"Serif",
+        tituloFamily:"'Playfair Display', Georgia, serif", tituloWeight:700, tituloNombre:"Playfair Display",
+        cuerpoFamily:"Georgia, serif", cuerpoNombre:"Georgia"},
+      {id:"moderno", nombre:"Moderno / Boutique", mood:"cercana pero profesional", tag:"Sans + Serif",
+        tituloFamily:"'Lato', sans-serif", tituloWeight:700, tituloNombre:"Lato",
+        cuerpoFamily:"'Merriweather', serif", cuerpoNombre:"Merriweather"},
+      {id:"neutral", nombre:"Neutral Corporativo", mood:"neutralidad absoluta, máxima claridad", tag:"Sans-serif",
+        tituloFamily:"'Inter', sans-serif", tituloWeight:700, tituloNombre:"Inter",
+        cuerpoFamily:"'Inter', sans-serif", cuerpoNombre:"Inter"},
+      {id:"pantalla", nombre:"Prestigio en Pantalla", mood:"serifa pensada para leerse en pantalla sin cansar", tag:"Serif",
+        tituloFamily:"Georgia, serif", tituloWeight:700, tituloNombre:"Georgia",
+        cuerpoFamily:"Georgia, serif", cuerpoNombre:"Georgia"},
+      {id:"garamond", nombre:"Elegante Clásico", mood:"elegante, lectura fluida en textos extensos", tag:"Serif",
+        tituloFamily:"'EB Garamond', Georgia, serif", tituloWeight:700, tituloNombre:"EB Garamond",
+        cuerpoFamily:"Georgia, serif", cuerpoNombre:"Georgia"},
+      {id:"baskerville", nombre:"Autoridad Tradicional", mood:"autoridad, estilo tradicional pulido", tag:"Serif",
+        tituloFamily:"'Libre Baskerville', Georgia, serif", tituloWeight:700, tituloNombre:"Libre Baskerville",
+        cuerpoFamily:"'Libre Baskerville', Georgia, serif", cuerpoNombre:"Libre Baskerville"},
+      {id:"sobrio", nombre:"Sobrio Funcional", mood:"estándar corporativo, compatibilidad universal", tag:"Sans-serif",
+        tituloFamily:"'Helvetica Neue', Arial, sans-serif", tituloWeight:700, tituloNombre:"Helvetica Neue",
+        cuerpoFamily:"Arial, sans-serif", cuerpoNombre:"Arial"},
+      {id:"otra", nombre:"Ya uso otra / quiero otra", mood:"escribila vos", isOther:true,
+        tituloFamily:"var(--font-title)", tituloWeight:700, tituloNombre:"(sin especificar)",
+        cuerpoFamily:"var(--font-body)", cuerpoNombre:"(sin especificar)"}
+    ],
+    estilos: [
+      {id:"tradicional", nombre:"Tradicional / Prestigio", mood:"serif elegante, colores profundos (azul marino, vino tinto)"},
+      {id:"institucional", nombre:"Institucional Conservador", mood:"simétrico, blanco y gris con toques dorados"},
+      {id:"corporativo", nombre:"Corporativo High-End", mood:"limpio, pulido, fotografía profesional del equipo"},
+      {id:"minimalista", nombre:"Minimalismo Vanguardista", mood:"espacios amplios, tipografía grande, muy directo"},
+      {id:"legaltech", nombre:"LegalTech / Innovación", mood:"fondo oscuro, tipografía geométrica, acentos vivos"},
+      {id:"cercano", nombre:"Orientado al Cliente", mood:"cálido, colores tierra, fotos reales y cercanas"},
+      {id:"monocromatico", nombre:"Monocromático Alto Contraste", mood:"negro, blanco y un solo color de acento fuerte"},
+      {id:"boutique", nombre:"Boutique Editorial", mood:"estilo revista de lujo, titulares grandes con serifa"},
+      {id:"otro", nombre:"Otro / ninguno de estos", mood:"a definir", isOther:true}
+    ],
+    detalles: [
+      {id:"lineas", nombre:"Líneas finas y texturas editoriales", desc:"Divisores muy delgados y texturas sutiles, sensación de material premium."},
+      {id:"ilustraciones", nombre:"Ilustraciones lineales o grabados", desc:"Dibujos a mano de balanzas, columnas o plumas, en vez de íconos genéricos."},
+      {id:"geometria", nombre:"Formas geométricas y bloques de color", desc:"Figuras abstractas de fondo, superposición de texto sobre fotos."},
+      {id:"animaciones", nombre:"Animaciones y micro-interacciones", desc:"Textos que aparecen al hacer scroll, efectos sutiles al pasar el mouse."}
+    ],
+    tonos: ["Muy formal","Formal","Neutro","Cercano","Muy cercano"],
+    tonoEjemplos: [
+      "Estimado/a, quedamos a su disposición para asesorarlo en el marco de la normativa vigente.",
+      "Buenos días, quedo atento a su consulta para poder asesorarlo de la mejor manera.",
+      "Hola, contame tu situación y vemos juntos cómo podemos encararla.",
+      "¡Hola! Contame con confianza qué te pasa, estoy para ayudarte.",
+      "¡Hola! ¿Todo bien? Tranquilo/a, vamos a poder resolver esto juntos."
+    ],
+    especialidades: [
+      {id:"civil", nombre:"Civil"},
+      {id:"familia", nombre:"Familia"},
+      {id:"laboral", nombre:"Laboral"},
+      {id:"penal", nombre:"Penal"},
+      {id:"comercial", nombre:"Comercial"},
+      {id:"sucesiones", nombre:"Sucesiones"},
+      {id:"amparos", nombre:"Amparos"},
+      {id:"consumidor", nombre:"Derecho del Consumidor"},
+      {id:"previsional", nombre:"Previsional"},
+      {id:"inmobiliario", nombre:"Inmobiliario"},
+      {id:"otra", nombre:"Otra", isOther:true}
+    ]
+  };
+
+  var state = {
+    adjetivos:[], paleta:null, paletaMode:null, customScheme:0,
+    tipo:null, estilo:null, detalles:[], tono:null,
+    especialidades:[], espOtro:'', brandWord:"Tu Estudio"
+  };
+
+  function refreshBrandWord(){
+    var v = document.getElementById("negocio").value.trim();
+    state.brandWord = v || "Tu Estudio";
+    document.querySelectorAll(".brand-word").forEach(function(el){ el.textContent = state.brandWord; });
+  }
+
+  /* ---- 01 adjetivos ---- */
+  var adjetivosEl = document.getElementById("adjetivos");
+  DATA.adjetivos.forEach(function(word){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "chip-btn"; b.textContent = word;
+    b.addEventListener("click", function(){
+      var i = state.adjetivos.indexOf(word);
+      if(i > -1){ state.adjetivos.splice(i,1); b.classList.remove("selected"); }
+      else { if(state.adjetivos.length >= 3) return; state.adjetivos.push(word); b.classList.add("selected"); }
+      update();
+    });
+    adjetivosEl.appendChild(b);
+  });
+
+  /* ---- 02 paletas (predefinidas + propia) ---- */
+  var paletasEl = document.getElementById("paletas");
+  var customPaletteEl = document.getElementById("customPalette");
+  var customColorInput = document.getElementById("customColor");
+  var customDerivedEl = document.getElementById("customDerived");
+  var customSchemeNameEl = document.getElementById("customSchemeName");
+  var rerollBtn = document.getElementById("rerollBtn");
+
+  function dimOtherPaletteOptions(activeMode){
+    Array.prototype.forEach.call(paletasEl.children, function(c){
+      c.classList.toggle("dimmed", activeMode === "custom");
+      if(activeMode !== "custom") c.classList.remove("selected");
+    });
+    customPaletteEl.classList.toggle("dimmed", activeMode === "preset");
+  }
+
+  DATA.paletas.forEach(function(p){
+    var card = document.createElement("button");
+    card.type = "button"; card.className = "palette-card"; card.dataset.id = p.id;
+    var sw = document.createElement("div"); sw.className = "palette-swatches";
+    p.colores.forEach(function(c){ var s=document.createElement("span"); s.style.background=c; sw.appendChild(s); });
+    card.appendChild(sw);
+    var name = document.createElement("span"); name.className="palette-name"; name.textContent=p.nombre;
+    card.appendChild(name); card.appendChild(document.createElement("br"));
+    var mood = document.createElement("span"); mood.className="palette-mood"; mood.textContent=p.mood;
+    card.appendChild(mood);
+    card.addEventListener("click", function(){
+      state.paleta = p; state.paletaMode = "preset";
+      Array.prototype.forEach.call(paletasEl.children, function(c){ c.classList.remove("selected"); });
+      card.classList.add("selected");
+      dimOtherPaletteOptions("preset");
+      update();
+    });
+    paletasEl.appendChild(card);
+  });
+
+  function renderCustomDerived(){
+    var res = computeCustomPalette(customColorInput.value, state.customScheme);
+    customDerivedEl.innerHTML = "";
+    res.colores.forEach(function(c){
+      var s = document.createElement("div"); s.className="custom-swatch"; s.style.background=c;
+      customDerivedEl.appendChild(s);
+    });
+    customSchemeNameEl.textContent = "Esquema: " + res.schemeName + " — los otros 3 colores se calculan automáticamente para que combinen.";
+    state.paleta = {id:"custom", nombre:"Paleta propia", mood:res.schemeName, colores:res.colores};
+    state.paletaMode = "custom";
+  }
+  customColorInput.addEventListener("input", function(){
+    dimOtherPaletteOptions("custom");
+    renderCustomDerived();
+    update();
+  });
+  customColorInput.addEventListener("click", function(){
+    dimOtherPaletteOptions("custom");
+  });
+  rerollBtn.addEventListener("click", function(){
+    state.customScheme = (state.customScheme + 1) % SCHEMES.length;
+    dimOtherPaletteOptions("custom");
+    renderCustomDerived();
+    update();
+  });
+  renderCustomDerived(); // deja precalculado, pero no selecciona hasta que la toquen
+
+  /* ---- 03 tipografías (combos título + cuerpo, + "otra" con texto libre) ---- */
+  var tiposEl = document.getElementById("tipos");
+  var tipoOtherWrap = document.getElementById("tipoOtherWrap");
+  var tipoOtherTitulo = document.getElementById("tipoOtherTitulo");
+  var tipoOtherCuerpo = document.getElementById("tipoOtherCuerpo");
+
+  function selectTipo(t, cardEl){
+    state.tipo = t;
+    Array.prototype.forEach.call(tiposEl.children, function(c){ c.classList.remove("selected"); });
+    cardEl.classList.add("selected");
+    tipoOtherWrap.hidden = !t.isOther;
+    update();
+  }
+
+  DATA.tipos.forEach(function(t){
+    var card = document.createElement("button");
+    card.type = "button"; card.className = "type-card"; card.dataset.id = t.id;
+
+    if(t.isOther){
+      card.innerHTML = '<span class="type-tag">Personalizada</span>' +
+        '<span class="type-sample" style="font-family:var(--font-title);">' + t.nombre + '</span>' +
+        '<span class="type-name">Tu tipografía</span>' +
+        '<div class="type-body-sample">¿Ya usás una tipografía en tu logo o papelería? Contanos cuál — la evaluamos para la web.</div>';
+      card.addEventListener("click", function(){ selectTipo(t, card); });
+      tiposEl.appendChild(card);
+      return;
+    }
+
+    var tag = document.createElement("span"); tag.className = "type-tag"; tag.textContent = t.tag || "";
+    card.appendChild(tag);
+
+    var sample = document.createElement("span");
+    sample.className = "type-sample brand-word";
+    sample.textContent = state.brandWord;
+    sample.style.fontFamily = t.tituloFamily;
+    sample.style.fontWeight = t.tituloWeight;
+    card.appendChild(sample);
+
+    var nm = document.createElement("span"); nm.className="type-name"; nm.textContent = t.nombre;
+    card.appendChild(nm);
+
+    var body = document.createElement("div"); body.className = "type-body-sample";
+    body.style.fontFamily = t.cuerpoFamily;
+    body.innerHTML = '<b>' + t.tituloNombre + '</b> para títulos + <b>' + t.cuerpoNombre + '</b> para el texto — ' + t.mood + '.';
+    card.appendChild(body);
+
+    card.addEventListener("click", function(){ selectTipo(t, card); });
+    tiposEl.appendChild(card);
+  });
+
+  function syncTipoOtro(){
+    if(!state.tipo || !state.tipo.isOther) return;
+    state.tipo.tituloNombre = tipoOtherTitulo.value.trim() || "(sin especificar)";
+    state.tipo.cuerpoNombre = tipoOtherCuerpo.value.trim() || "(sin especificar)";
+    state.tipo.nombre = "Ya uso otra: " + state.tipo.tituloNombre;
+  }
+  tipoOtherTitulo.addEventListener("input", syncTipoOtro);
+  tipoOtherCuerpo.addEventListener("input", syncTipoOtro);
+
+  /* ---- 04 estilos con foto real (webp que subís vos a assets/estilos/) ---- */
+  var estilosEl = document.getElementById("estilos");
+  DATA.estilos.forEach(function(e){
+    if(e.isOther){
+      var card = document.createElement("div");
+      card.className = "mood-card mood-card-other"; card.dataset.id = e.id; card.tabIndex = 0;
+      card.innerHTML =
+        '<div class="mood-tile"><div class="fallback" style="display:flex;">Ninguno de estos me convence del todo</div></div>' +
+        '<div class="mood-caption">Otro / ninguno de estos</div>';
+      var input = document.createElement("input");
+      input.type = "text"; input.className = "mood-other-input";
+      input.placeholder = "Contanos qué estilo tenés en mente (opcional)";
+      card.appendChild(input);
+      function selectOther(){
+        state.estilo = {id:"otro", nombre: input.value.trim() ? ("Otro: " + input.value.trim()) : "Otro / ninguno de estos", mood:"a definir", isOther:true};
+        Array.prototype.forEach.call(estilosEl.children, function(c){ c.classList.remove("selected"); });
+        card.classList.add("selected");
+        update();
+      }
+      card.addEventListener("click", function(ev){ if(ev.target !== input) selectOther(); });
+      input.addEventListener("click", function(ev){ ev.stopPropagation(); });
+      input.addEventListener("input", function(){ if(card.classList.contains("selected")) selectOther(); });
+      estilosEl.appendChild(card);
+      return;
+    }
+    var card = document.createElement("button");
+    card.type = "button"; card.className = "mood-card"; card.dataset.id = e.id;
+    var tile = document.createElement("div"); tile.className = "mood-tile";
+    tile.innerHTML =
+      '<img src="assets/estilos/' + e.id + '.webp" alt="' + e.nombre + '" loading="lazy" ' +
+      'onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'flex\';">' +
+      '<div class="fallback">' + e.mood + '<br>(agregar foto: assets/estilos/' + e.id + '.webp)</div>';
+    card.appendChild(tile);
+    var cap = document.createElement("div"); cap.className = "mood-caption"; cap.textContent = e.nombre;
+    card.appendChild(cap);
+    card.addEventListener("click", function(){
+      state.estilo = e;
+      Array.prototype.forEach.call(estilosEl.children, function(c){ c.classList.remove("selected"); });
+      card.classList.add("selected");
+      update();
+    });
+    estilosEl.appendChild(card);
+  });
+
+  /* ---- 05 detalles artísticos (multi-select) ---- */
+  var detallesEl = document.getElementById("detalles");
+  DATA.detalles.forEach(function(d){
+    var card = document.createElement("button");
+    card.type = "button"; card.className = "detail-card"; card.dataset.id = d.id;
+    card.innerHTML = '<span class="detail-name">' + d.nombre + '</span><span class="detail-desc">' + d.desc + '</span>';
+    card.addEventListener("click", function(){
+      var i = state.detalles.indexOf(d.id);
+      if(i > -1){ state.detalles.splice(i,1); card.classList.remove("selected"); }
+      else { state.detalles.push(d.id); card.classList.add("selected"); }
+      update();
+    });
+    detallesEl.appendChild(card);
+  });
+
+  /* ---- 06 tono ---- */
+  var tonoEl = document.getElementById("tono");
+  var tonoExampleEl = document.getElementById("tonoExample");
+  DATA.tonos.forEach(function(t, idx){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "tone-pill"; b.textContent = t;
+    b.addEventListener("click", function(){
+      state.tono = t;
+      Array.prototype.forEach.call(tonoEl.children, function(c){ c.classList.remove("selected"); });
+      b.classList.add("selected");
+      tonoExampleEl.hidden = false;
+      tonoExampleEl.textContent = '"' + DATA.tonoEjemplos[idx] + '"';
+      update();
+    });
+    tonoEl.appendChild(b);
+  });
+
+  /* ---- 07 especialidades ---- */
+  var espEl = document.getElementById("especialidades");
+  var espOtherWrap = document.getElementById("espOtherWrap");
+  var espOtherInput = document.getElementById("espOtherInput");
+  DATA.especialidades.forEach(function(e){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "esp-btn"; b.dataset.id = e.id;
+    b.innerHTML = '<svg viewBox="0 0 24 24" style="width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;">' + (ICONS[e.id]||'') + '</svg><span>' + e.nombre + '</span>';
+    b.style.cssText = "display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-weight:500;font-size:13.5px;padding:8px 14px;border-radius:var(--radius);border:1px solid var(--line);background:var(--crema);color:var(--ink);cursor:pointer;white-space:nowrap;";
+    b.addEventListener("click", function(){
+      var i = state.especialidades.indexOf(e.id);
+      if(i > -1){ state.especialidades.splice(i,1); b.classList.remove("selected"); b.style.background="var(--crema)"; b.style.borderColor="var(--line)"; b.style.color="var(--ink)"; }
+      else{ state.especialidades.push(e.id); b.classList.add("selected"); b.style.background="var(--oro-tint)"; b.style.borderColor="var(--oro)"; b.style.color="var(--oro-dark)"; }
+      espOtherWrap.hidden = state.especialidades.indexOf('otra') === -1;
+      if(espOtherWrap.hidden){ state.espOtro=''; espOtherInput.value=''; }
+      update();
+    });
+    espEl.appendChild(b);
+  });
+  espOtherInput.addEventListener("input", function(e){ state.espOtro = e.target.value; });
+
+  document.getElementById("negocio").addEventListener("input", refreshBrandWord);
+
+  /* ---------------------------------------------------------
+     LIVE PREVIEW (mientras completa)
+  --------------------------------------------------------- */
+  var previewBody = document.getElementById("previewBody");
+  function update(){
+    previewBody.innerHTML = "";
+    if(state.paleta){
+      var sw = document.createElement("div"); sw.className = "preview-swatches";
+      state.paleta.colores.forEach(function(c){ var s=document.createElement("span"); s.style.background=c; sw.appendChild(s); });
+      previewBody.appendChild(sw);
+    } else {
+      var ph = document.createElement("div"); ph.className = "preview-empty-swatch"; previewBody.appendChild(ph);
+    }
+    var word = document.createElement("span");
+    word.className = "preview-word brand-word";
+    word.textContent = state.brandWord;
+    word.style.fontFamily = state.tipo ? state.tipo.tituloFamily : "var(--font-title)";
+    word.style.fontWeight = state.tipo ? state.tipo.tituloWeight : 700;
+    previewBody.appendChild(word);
+    if(state.adjetivos.length || state.estilo || state.tono){
+      var chips = document.createElement("div"); chips.className = "preview-chips";
+      state.adjetivos.forEach(function(a){ var c=document.createElement("span"); c.className="preview-chip"; c.textContent=a; chips.appendChild(c); });
+      if(state.estilo){ var c2=document.createElement("span"); c2.className="preview-chip"; c2.textContent=state.estilo.nombre; chips.appendChild(c2); }
+      if(state.tono){ var c3=document.createElement("span"); c3.className="preview-chip"; c3.textContent=state.tono; chips.appendChild(c3); }
+      previewBody.appendChild(chips);
+    } else if(!state.paleta && !state.tipo){
+      var p = document.createElement("p"); p.className="preview-placeholder";
+      p.textContent = "Empezá a elegir abajo y acá vas viendo cómo se arma tu estilo.";
+      previewBody.appendChild(p);
+    }
+    updateSubmitState();
+  }
+
+  var submitBtn = document.getElementById("submitBtn");
+  var submitNote = document.getElementById("submitNote");
+  function missing(){
+    var faltan = [];
+    if(!state.adjetivos.length) faltan.push("adjetivos");
+    if(!state.paleta) faltan.push("paleta");
+    if(!state.tipo) faltan.push("tipografía");
+    if(!state.estilo) faltan.push("estilo");
+    if(!state.tono) faltan.push("tono");
+    return faltan;
+  }
+  function updateSubmitState(){
+    var faltan = missing();
+    submitNote.textContent = faltan.length ? ("Falta elegir: " + faltan.join(", ") + ".") : "Todo listo para enviar.";
+    submitNote.classList.remove("error");
+  }
+  updateSubmitState();
+
+  /* ---------------------------------------------------------
+     MOCKUP EN VIVO (pantalla final)
+  --------------------------------------------------------- */
+  function pickTextColor(bgHex){
+    var hsl = hexToHsl(bgHex);
+    return hsl.l > 55 ? "#181410" : "#F5F2EC";
+  }
+  function buildMockup(){
+    var el = document.getElementById("mockup");
+    var pal = state.paleta.colores; // [principal, secundario, acento, fondo]
+    var principal = pal[0], secundario = pal[1], acento = pal[2], fondo = pal[3];
+    var heroTextColor = pickTextColor(fondo);
+    var navTextColor = pickTextColor(principal);
+
+    var shapesHtml = "";
+    if(state.detalles.indexOf("geometria") > -1){
+      shapesHtml =
+        '<div class="mockup-shape" style="width:180px;height:180px;border-radius:50%;background:' + acento + ';top:-60px;right:-60px;"></div>' +
+        '<div class="mockup-shape" style="width:90px;height:90px;background:' + secundario + ';bottom:-20px;right:60px;transform:rotate(12deg);"></div>';
+    }
+    var hairline = state.detalles.indexOf("lineas") > -1
+      ? '<div class="mockup-hairline" style="background:' + acento + ';"></div>' : '';
+
+    el.innerHTML =
+      '<div class="mockup-nav" style="background:' + principal + ';color:' + navTextColor + ';font-family:' + state.tipo.tituloFamily + ';font-weight:' + state.tipo.tituloWeight + ';">' +
+        '<span class="mockup-logo">' + state.brandWord + '</span>' +
+        '<span class="mockup-menu">Servicios · Nosotros · Contacto</span>' +
+      '</div>' +
+      hairline +
+      '<div class="mockup-hero" style="background:' + fondo + ';color:' + heroTextColor + ';">' +
+        shapesHtml +
+        '<div class="mockup-hero-inner">' +
+          '<h3 class="mockup-h1" style="font-family:' + state.tipo.tituloFamily + ';font-weight:' + state.tipo.tituloWeight + ';">Asesoramiento legal claro, cuando lo necesitás.</h3>' +
+          '<p class="mockup-p" style="font-family:' + state.tipo.cuerpoFamily + ';">' + (state.especialidades.length ? especialidadesTexto() : 'Acompañamiento profesional en cada etapa de tu consulta.') + '</p>' +
+          '<span class="mockup-cta" style="background:' + acento + ';color:' + pickTextColor(acento) + ';font-family:' + state.tipo.cuerpoFamily + ';">Consultar ahora</span>' +
+        '</div>' +
+      '</div>' +
+      '<div class="mockup-footer" style="background:' + principal + ';color:' + navTextColor + ';">© ' + state.brandWord + '</div>';
+  }
+
+  /* ---------------------------------------------------------
+     RESUMEN / ENVÍO
+  --------------------------------------------------------- */
+  var form = document.getElementById("form");
+  var doneCard = document.getElementById("doneCard");
+  var resultBox = document.getElementById("resultBox");
+  var redoBtn = document.getElementById("redoBtn");
+  var copyBtn = document.getElementById("copyBtn");
+  var sendBtn = document.getElementById("sendBtn");
+  var toast = document.getElementById("toast");
+
+  function especialidadesTexto(){
+    var nombres = state.especialidades.filter(function(id){ return id !== 'otra'; })
+      .map(function(id){ var e = DATA.especialidades.find(function(x){ return x.id===id; }); return e?e.nombre:id; });
+    if(state.especialidades.indexOf('otra') > -1){
+      nombres.push('Otra' + (state.espOtro ? (': ' + state.espOtro) : ''));
+    }
+    return nombres.length ? nombres.join(", ") : "(sin especificar)";
+  }
+  function detallesTexto(){
+    var nombres = state.detalles.map(function(id){ var d = DATA.detalles.find(function(x){ return x.id===id; }); return d?d.nombre:id; });
+    return nombres.length ? nombres.join(", ") : "(sin preferencia particular)";
+  }
+
+  function buildSummary(){
+    var negocio = document.getElementById("negocio").value.trim() || "(sin nombre)";
+    var lines = [
+      "PERFIL VISUAL — " + negocio,
+      "Especialidad/es: " + especialidadesTexto(),
+      "Adjetivos de marca: " + state.adjetivos.join(", "),
+      "Paleta elegida: " + state.paleta.nombre + " (" + state.paleta.mood + ") — " + state.paleta.colores.join(" / "),
+      "Tipografía: " + state.tipo.nombre + " — títulos: " + state.tipo.tituloNombre + " / cuerpo: " + state.tipo.cuerpoNombre,
+      "Estilo visual: " + state.estilo.nombre,
+      "Detalles creativos: " + detallesTexto(),
+      "Tono de comunicación: " + state.tono
+    ];
+    return lines.join("\n");
+  }
+
+  form.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var faltan = missing();
+    if(faltan.length){
+      submitNote.textContent = "Falta elegir: " + faltan.join(", ") + ".";
+      submitNote.classList.add("error");
+      return;
+    }
+    buildMockup();
+    resultBox.textContent = buildSummary();
+    form.hidden = true;
+    doneCard.hidden = false;
+    window.scrollTo({top: doneCard.offsetTop - 20, behavior:'smooth'});
+  });
+
+  redoBtn.addEventListener("click", function(){ doneCard.hidden = true; form.hidden = false; });
+
+  copyBtn.addEventListener("click", function(){
+    var text = resultBox.textContent;
+    var done = function(){ copyBtn.textContent = "¡Copiado!"; setTimeout(function(){ copyBtn.textContent = "Copiar resumen"; }, 1800); };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text, done); });
+    } else { fallbackCopy(text, done); }
+  });
+  function fallbackCopy(text, done){
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try{ document.execCommand("copy"); }catch(e){}
+    document.body.removeChild(ta);
+    done();
+  }
+
+  sendBtn.addEventListener("click", function(){
+    var negocio = document.getElementById("negocio").value.trim() || "(sin nombre)";
+    sendBtn.disabled = true;
+    sendBtn.textContent = "Enviando...";
+    fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {"Content-Type":"application/x-www-form-urlencoded"},
+      body: new URLSearchParams({
+        tipo: "identidad_visual",
+        estudio: negocio,
+        especialidad: especialidadesTexto(),
+        detalle: resultBox.textContent
+      })
+    }).then(function(){
+      toast.textContent = "Respuestas enviadas ✓";
+      toast.className = "toast show ok";
+    }).catch(function(){
+      toast.textContent = "No se pudo enviar. Copiá el resumen y mandalo por WhatsApp.";
+      toast.className = "toast show err";
+    }).finally(function(){
+      sendBtn.disabled = false;
+      sendBtn.textContent = "Contactar para aplicar este diseño";
+    });
+  });
+
+  update();
+})();
+</script>
+</body>
+</html>
