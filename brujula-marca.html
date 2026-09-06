@@ -145,7 +145,7 @@
     transition:border-color .15s, background .15s, color .15s, opacity .15s;
   }
   .chip-btn:hover{border-color:var(--oro);}
-  .chip-btn.selected{background:var(--oro); border-color:var(--oro); color:var(--noche); font-weight:600;}
+  .chip-btn.selected{background:var(--noche); border-color:var(--oro); color:var(--oro); font-weight:600;}
   .chip-btn:focus-visible{outline:2px solid var(--oro); outline-offset:2px;}
 
   /* palettes */
@@ -161,7 +161,9 @@
     color:var(--ink);
   }
   .palette-card:hover{border-color:var(--oro);}
-  .palette-card.selected{border-color:var(--oro); box-shadow:0 0 0 2px var(--oro-tint);}
+  .palette-card.selected{background:var(--noche); border-color:var(--oro); box-shadow:0 0 0 2px var(--oro); color:var(--crema);}
+  .palette-card.selected .palette-name{color:var(--oro);}
+  .palette-card.selected .palette-mood{color:rgba(245,242,236,0.7);}
   .palette-card.dimmed{opacity:0.4;}
   .palette-swatches{display:flex; height:2.5rem; border-radius:2px; overflow:hidden; margin-bottom:0.6rem;}
   .palette-swatches span{flex:1;}
@@ -201,7 +203,9 @@
   /* type combos */
   .type-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:0.8rem;}
   .type-card{
+    position:relative;
     border:1px solid var(--line);
+    border-top:3px solid var(--tcard-accent, var(--line));
     border-radius:var(--radius);
     background:var(--crema);
     padding:1.1rem 1.2rem;
@@ -211,11 +215,41 @@
     color:var(--ink);
   }
   .type-card:hover{border-color:var(--oro);}
+
+  /* la tipografía toma la paleta de marca ya elegida */
+  .type-grid.palette-applied .type-card:not(.selected){
+    background:var(--palette-bg); color:var(--palette-text); border-color:var(--palette-accent);
+  }
+  .type-grid.palette-applied .type-card:not(.selected):hover{ border-color:var(--palette-accent); box-shadow:0 0 0 1px var(--palette-accent); }
+  .type-grid.palette-applied .type-card:not(.selected) .type-tag{ color:var(--palette-accent); }
+  .type-grid.palette-applied .type-card:not(.selected) .type-tag-dot{ background:var(--palette-accent); }
+  .type-grid.palette-applied .type-card:not(.selected) .type-phrase{ color:inherit; opacity:0.95; }
+  .type-grid.palette-applied .type-card:not(.selected) .type-category{ color:var(--palette-accent); opacity:0.8; }
+  .type-grid.palette-applied .type-card:not(.selected) .type-name{ color:inherit; opacity:0.62; }
+  .type-grid.palette-applied .type-card:not(.selected) .type-body-sample{ color:inherit; opacity:0.82; border-top-color:currentColor; }
+  .type-grid.palette-applied .type-card:not(.selected) .type-body-sample b{ color:var(--palette-accent); opacity:1; }
+  .type-grid.palette-applied .type-card:not(.selected).tono-match{ box-shadow:0 0 0 2px var(--palette-accent); }
+  .type-grid.palette-applied .type-card:not(.selected).tono-match::before{ background:var(--palette-accent); color:var(--palette-accent-text); }
+
+  /* recomendada según el tono elegido */
+  .type-card.tono-match{ box-shadow:0 0 0 2px var(--tcard-accent, var(--oro)); }
+  .type-card.tono-match::before{
+    content:"Va con tu tono"; position:absolute; top:-9px; right:10px;
+    font-family:var(--font-label); font-size:9px; letter-spacing:0.05em; text-transform:uppercase;
+    background:var(--tcard-accent, var(--oro)); color:var(--crema); padding:2px 7px; border-radius:2px;
+  }
+  .type-card.selected.tono-match::before{ background:var(--oro); color:var(--noche); }
   .type-tag{
-    font-family:var(--font-label); font-size:10px; letter-spacing:0.06em; text-transform:uppercase;
-    color:var(--oro-dark); display:block; margin-bottom:6px;
+    font-family:var(--font-body); font-size:13px; font-weight:700; letter-spacing:0.005em;
+    color:var(--tcard-accent, var(--oro-dark)); display:flex; align-items:center; gap:7px; margin-bottom:2px;
+  }
+  .type-tag-dot{width:9px; height:9px; border-radius:50%; background:var(--tcard-accent, var(--line)); flex-shrink:0;}
+  .type-category{
+    font-family:var(--font-label); font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--ink-soft); display:block; margin:0 0 10px 16px;
   }
   .type-sample{font-size:2.5rem; line-height:1.02; display:block;}
+  .type-phrase{font-size:14.5px; line-height:1.4; color:var(--ink); display:block; margin-top:6px;}
   .type-name{font-family:var(--font-body); font-size:12.5px; font-weight:600; color:var(--ink-soft); display:block; margin-top:8px;}
   .type-body-sample{margin-top:10px; font-size:13.5px; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:9px;}
   .type-body-sample b{color:var(--ink); font-weight:600;}
@@ -229,7 +263,9 @@
     color:var(--crema);
   }
   .type-card.selected .type-tag{color:var(--oro);}
+  .type-card.selected .type-category{color:rgba(245,242,236,0.55);}
   .type-card.selected .type-sample{color:var(--oro);}
+  .type-card.selected .type-phrase{color:rgba(245,242,236,0.85);}
   .type-card.selected .type-name{color:rgba(245,242,236,0.65);}
   .type-card.selected .type-body-sample{color:rgba(245,242,236,0.7); border-top-color:rgba(184,148,106,0.3);}
   .type-card.selected .type-body-sample b{color:var(--oro);}
@@ -247,7 +283,8 @@
     transition:border-color .15s, box-shadow .15s;
   }
   .mood-card:hover{border-color:var(--oro);}
-  .mood-card.selected{border-color:var(--oro); box-shadow:0 0 0 2px var(--oro-tint);}
+  .mood-card.selected{border-color:var(--oro); box-shadow:0 0 0 2px var(--oro);}
+  .mood-card.selected .mood-caption{background:var(--noche); color:var(--oro);}
   .mood-tile{height:6.5rem; position:relative; background:var(--crema);}
   .mood-tile img{width:100%; height:100%; object-fit:cover; display:block;}
   .mood-tile .fallback{
@@ -278,7 +315,9 @@
     transition:border-color .15s, box-shadow .15s;
   }
   .detail-card:hover{border-color:var(--oro);}
-  .detail-card.selected{border-color:var(--oro); box-shadow:0 0 0 2px var(--oro-tint);}
+  .detail-card.selected{background:var(--noche); border-color:var(--oro); box-shadow:0 0 0 2px var(--oro); color:var(--crema);}
+  .detail-card.selected .detail-name{color:var(--oro);}
+  .detail-card.selected .detail-desc{color:rgba(245,242,236,0.7);}
   .detail-name{font-weight:700; font-size:13.5px; display:block; margin-bottom:4px;}
   .detail-desc{font-size:12px; color:var(--ink-soft); line-height:1.5;}
 
@@ -298,7 +337,7 @@
     transition:border-color .15s, background .15s, color .15s;
   }
   .tone-pill:hover{border-color:var(--oro);}
-  .tone-pill.selected{background:var(--oro); border-color:var(--oro); color:var(--noche); font-weight:600;}
+  .tone-pill.selected{background:var(--noche); border-color:var(--oro); color:var(--oro); font-weight:600;}
   .tone-pill:focus-visible{outline:2px solid var(--oro); outline-offset:2px;}
   .tono-example{
     margin-top:12px; font-size:13px; font-style:italic; color:var(--crema-soft);
@@ -418,15 +457,27 @@
     <section class="q">
       <div class="q-head">
         <span class="q-num">01 / 08</span>
-        <h2 class="q-title">Si tu estudio fuera una persona, ¿cómo es?</h2>
-        <p class="q-hint">Elegí hasta 3 palabras — las que más te representen.</p>
+        <h2 class="q-title">¿Cómo se llama tu estudio o marca?</h2>
+        <p class="q-hint">Lo vas a ver reflejado en los ejemplos de ahora en más.</p>
       </div>
-      <div class="chip-grid" id="adjetivos" data-max="3"></div>
+      <div class="field" style="margin-bottom:0;">
+        <input type="text" id="negocio" maxlength="80" placeholder="Ej: Estudio Pérez, García Abogados...">
+      </div>
     </section>
 
     <section class="q">
       <div class="q-head">
         <span class="q-num">02 / 08</span>
+        <h2 class="q-title">¿Cómo le hablás a tus clientes?</h2>
+        <p class="q-hint">De formal a cercana — esto también influye en qué tipografía te va a quedar mejor.</p>
+      </div>
+      <div class="tone-scale" id="tono"></div>
+      <p class="tono-example" id="tonoExample" hidden></p>
+    </section>
+
+    <section class="q">
+      <div class="q-head">
+        <span class="q-num">03 / 08</span>
         <h2 class="q-title">¿Con qué paleta te sentís identificada?</h2>
         <p class="q-hint">Elegí una combinación lista, o armá la tuya con tu color y nosotros calculamos el resto para que combine.</p>
       </div>
@@ -444,9 +495,9 @@
 
     <section class="q">
       <div class="q-head">
-        <span class="q-num">03 / 08</span>
+        <span class="q-num">04 / 08</span>
         <h2 class="q-title">¿Qué tipografía te representa?</h2>
-        <p class="q-hint">Cada opción es una combinación pensada para web: una fuente para títulos y otra para el texto.</p>
+        <p class="q-hint">Cada opción es una combinación pensada para web: una fuente para títulos y otra para el texto. Se muestran con tu nombre y tu paleta ya aplicados.</p>
       </div>
       <div class="type-grid" id="tipos"></div>
       <div class="custom-palette" id="tipoOtherWrap" hidden>
@@ -466,7 +517,16 @@
 
     <section class="q">
       <div class="q-head">
-        <span class="q-num">04 / 08</span>
+        <span class="q-num">05 / 08</span>
+        <h2 class="q-title">Si tu estudio fuera una persona, ¿cómo es?</h2>
+        <p class="q-hint">Elegí hasta 3 palabras — las que más te representen.</p>
+      </div>
+      <div class="chip-grid" id="adjetivos" data-max="3"></div>
+    </section>
+
+    <section class="q">
+      <div class="q-head">
+        <span class="q-num">06 / 08</span>
         <h2 class="q-title">¿Qué estilo visual te atrae más?</h2>
         <p class="q-hint">Son ejemplos reales de webs de estudios — pensá en cómo te gustaría que se vea la tuya.</p>
       </div>
@@ -475,7 +535,7 @@
 
     <section class="q">
       <div class="q-head">
-        <span class="q-num">05 / 08</span>
+        <span class="q-num">07 / 08</span>
         <h2 class="q-title">¿Qué nivel de detalles creativos preferís?</h2>
         <p class="q-hint">Elementos para darle personalidad a la web y romper la monotonía del texto. Podés elegir más de uno.</p>
       </div>
@@ -484,26 +544,11 @@
 
     <section class="q">
       <div class="q-head">
-        <span class="q-num">06 / 08</span>
-        <h2 class="q-title">¿Cómo le hablás a tus clientes?</h2>
-        <p class="q-hint">De formal a cercana.</p>
-      </div>
-      <div class="tone-scale" id="tono"></div>
-      <p class="tono-example" id="tonoExample" hidden></p>
-    </section>
-
-    <section class="q">
-      <div class="q-head">
-        <span class="q-num">07 / 08</span>
-        <h2 class="q-title">Un par de datos rápidos</h2>
+        <span class="q-num">08 / 08</span>
+        <h2 class="q-title">Especialidad/es jurídicas</h2>
         <p class="q-hint">Opcional, pero ayuda mucho.</p>
       </div>
       <div class="field">
-        <label for="negocio">Nombre de tu estudio / marca</label>
-        <input type="text" id="negocio" maxlength="80" placeholder="Ej: Estudio Pérez, García Abogados...">
-      </div>
-      <div class="field">
-        <label>Especialidad/es jurídicas</label>
         <div class="esp-grid" id="especialidades"></div>
         <div class="other-input" id="espOtherWrap" hidden style="margin-top:10px;max-width:340px;">
           <input type="text" id="espOtherInput" placeholder="Especificá tu especialidad...">
@@ -575,6 +620,8 @@
     return {colores:[baseHex, secundario, acento, fondo], schemeName:sch.name};
   }
 
+  var TYPE_PHRASE = "Confianza y claridad en cada asesoramiento legal.";
+
   var ICONS = {
     civil: '<path d="M6 3h8l4 4v14H6z"/><path d="M9 9h6M9 13h6M9 17h3"/>',
     familia: '<circle cx="8" cy="7" r="2.5"/><circle cx="16" cy="7" r="2.5"/><path d="M3 19c0-3 2.2-5 5-5s5 2 5 5"/><path d="M11 19c0-3 2.2-5 5-5s5 2 5 5"/>',
@@ -592,36 +639,38 @@
   var DATA = {
     adjetivos: ["Confiable","Cercana","Elegante","Rigurosa","Accesible","Moderna","Clásica","Sobria","Empática","Dinámica","Institucional","Minimalista"],
     paletas: [
-      {id:"institucional", nombre:"Institucional", mood:"seria, con autoridad", colores:["#0F1923","#8C93A0","#B8946A","#F5F2EC"]},
-      {id:"tierra", nombre:"Tierra", mood:"cálida, con raíces", colores:["#4A5D45","#C98B5E","#F1EBDD","#3A2E28"]},
-      {id:"nocturno", nombre:"Nocturno", mood:"elegante, con carácter", colores:["#1B2A4A","#C9A24B","#F4F1E8","#6B2737"]},
-      {id:"pastel", nombre:"Pastel suave", mood:"delicada, en calma", colores:["#E8B4B8","#A8B9A4","#FAF6EF","#7D7568"]},
-      {id:"mono", nombre:"Monocromo cálido", mood:"minimal, editorial", colores:["#1A1A1A","#D9CFC1","#FCFAF7","#B5502E"]},
-      {id:"clasico", nombre:"Clásico cálido", mood:"tradicional, con calidez", colores:["#5C1A22","#C9A24B","#3A332B","#F5F0E6"]}
+      {id:"bordeaux", nombre:"Bordeaux Elegante", mood:"sofisticada, con carácter", colores:["#6D1F2D","#A8878A","#E7DAD1","#FAF9F6"]},
+      {id:"verde-sereno", nombre:"Verde Sereno", mood:"calma, en equilibrio", colores:["#2E4739","#6B8F7A","#D6DCCB","#F9F8F4"]},
+      {id:"monocromatica", nombre:"Monocromática", mood:"neutra, minimal", colores:["#0E0E0E","#3A3A3A","#A7A7A7","#F4F4F4"]},
+      {id:"azul-confiable", nombre:"Azul Confiable", mood:"sólida, institucional", colores:["#0F2D4A","#4F6D8A","#B7C6D9","#F3F6FA"]},
+      {id:"oscuros-crema", nombre:"Oscuros + Crema", mood:"cálida, atemporal", colores:["#1C1B17","#6F6558","#DCCFBF","#F8F4EB"]},
+      {id:"verde-dorado", nombre:"Verde Profundo + Dorado", mood:"prestigiosa, con carácter", colores:["#20382F","#52685C","#B49A68","#F1EBDD"]},
+      {id:"terracota", nombre:"Terracota Sofisticado", mood:"cálida, cercana", colores:["#9A4F3D","#C17B68","#E7D2C8","#F8F3ED"]},
+      {id:"violeta-juridico", nombre:"Violeta Jurídico", mood:"distintiva, con personalidad", colores:["#302640","#665477","#C4B8CF","#F3EFF5"]}
     ],
     tipos: [
-      {id:"corporativo", nombre:"Corporativo / Tecnológico", mood:"sólida, de vanguardia", tag:"Sans-serif",
+      {id:"corporativo", nombre:"Corporativo / Tecnológico", mood:"sólida, de vanguardia", tag:"Sans-serif", accent:"#2C4A6E", personalidad:"Vanguardia y solidez tecnológica", tonoRange:[1,3],
         tituloFamily:"'Montserrat', sans-serif", tituloWeight:700, tituloNombre:"Montserrat",
         cuerpoFamily:"'Open Sans', sans-serif", cuerpoNombre:"Open Sans"},
-      {id:"clasico", nombre:"Clásico / Tradicional", mood:"prestigio legal tradicional", tag:"Serif",
+      {id:"clasico", nombre:"Clásico / Tradicional", mood:"prestigio legal tradicional", tag:"Serif", accent:"#7A1F2B", personalidad:"Autoridad y prestigio tradicional", tonoRange:[0,1],
         tituloFamily:"'Playfair Display', Georgia, serif", tituloWeight:700, tituloNombre:"Playfair Display",
         cuerpoFamily:"Georgia, serif", cuerpoNombre:"Georgia"},
-      {id:"moderno", nombre:"Moderno / Boutique", mood:"cercana pero profesional", tag:"Sans + Serif",
+      {id:"moderno", nombre:"Moderno / Boutique", mood:"cercana pero profesional", tag:"Sans + Serif", accent:"#B8946A", personalidad:"Calidez profesional y cercanía", tonoRange:[2,4],
         tituloFamily:"'Lato', sans-serif", tituloWeight:700, tituloNombre:"Lato",
         cuerpoFamily:"'Merriweather', serif", cuerpoNombre:"Merriweather"},
-      {id:"neutral", nombre:"Neutral Corporativo", mood:"neutralidad absoluta, máxima claridad", tag:"Sans-serif",
+      {id:"neutral", nombre:"Neutral Corporativo", mood:"neutralidad absoluta, máxima claridad", tag:"Sans-serif", accent:"#4A4A48", personalidad:"Claridad y neutralidad absoluta", tonoRange:[1,3],
         tituloFamily:"'Inter', sans-serif", tituloWeight:700, tituloNombre:"Inter",
         cuerpoFamily:"'Inter', sans-serif", cuerpoNombre:"Inter"},
-      {id:"pantalla", nombre:"Prestigio en Pantalla", mood:"serifa pensada para leerse en pantalla sin cansar", tag:"Serif",
+      {id:"pantalla", nombre:"Prestigio en Pantalla", mood:"serifa pensada para leerse en pantalla sin cansar", tag:"Serif", accent:"#5C4A32", personalidad:"Prestigio legible, pensado para pantalla", tonoRange:[0,2],
         tituloFamily:"Georgia, serif", tituloWeight:700, tituloNombre:"Georgia",
         cuerpoFamily:"Georgia, serif", cuerpoNombre:"Georgia"},
-      {id:"garamond", nombre:"Elegante Clásico", mood:"elegante, lectura fluida en textos extensos", tag:"Serif",
+      {id:"garamond", nombre:"Elegante Clásico", mood:"elegante, lectura fluida en textos extensos", tag:"Serif", accent:"#6B3F2E", personalidad:"Elegancia editorial, lectura fluida", tonoRange:[0,1],
         tituloFamily:"'EB Garamond', Georgia, serif", tituloWeight:700, tituloNombre:"EB Garamond",
         cuerpoFamily:"Georgia, serif", cuerpoNombre:"Georgia"},
-      {id:"baskerville", nombre:"Autoridad Tradicional", mood:"autoridad, estilo tradicional pulido", tag:"Serif",
+      {id:"baskerville", nombre:"Autoridad Tradicional", mood:"autoridad, estilo tradicional pulido", tag:"Serif", accent:"#1F2937", personalidad:"Autoridad clásica y pulida", tonoRange:[0,1],
         tituloFamily:"'Libre Baskerville', Georgia, serif", tituloWeight:700, tituloNombre:"Libre Baskerville",
         cuerpoFamily:"'Libre Baskerville', Georgia, serif", cuerpoNombre:"Libre Baskerville"},
-      {id:"sobrio", nombre:"Sobrio Funcional", mood:"estándar corporativo, compatibilidad universal", tag:"Sans-serif",
+      {id:"sobrio", nombre:"Sobrio Funcional", mood:"estándar corporativo, compatibilidad universal", tag:"Sans-serif", accent:"#6B6357", personalidad:"Funcionalidad y compatibilidad universal", tonoRange:[1,3],
         tituloFamily:"'Helvetica Neue', Arial, sans-serif", tituloWeight:700, tituloNombre:"Helvetica Neue",
         cuerpoFamily:"Arial, sans-serif", cuerpoNombre:"Arial"},
       {id:"otra", nombre:"Ya uso otra / quiero otra", mood:"escribila vos", isOther:true,
@@ -671,12 +720,12 @@
   var state = {
     adjetivos:[], paleta:null, paletaMode:null, customScheme:0,
     tipo:null, estilo:null, detalles:[], tono:null,
-    especialidades:[], espOtro:'', brandWord:"Tu Estudio"
+    especialidades:[], espOtro:'', brandWord:"IURE"
   };
 
   function refreshBrandWord(){
     var v = document.getElementById("negocio").value.trim();
-    state.brandWord = v || "Tu Estudio";
+    state.brandWord = v || "IURE";
     document.querySelectorAll(".brand-word").forEach(function(el){ el.textContent = state.brandWord; });
   }
 
@@ -730,7 +779,7 @@
     paletasEl.appendChild(card);
   });
 
-  function renderCustomDerived(){
+  function renderCustomDerived(commit){
     var res = computeCustomPalette(customColorInput.value, state.customScheme);
     customDerivedEl.innerHTML = "";
     res.colores.forEach(function(c){
@@ -738,12 +787,14 @@
       customDerivedEl.appendChild(s);
     });
     customSchemeNameEl.textContent = "Esquema: " + res.schemeName + " — los otros 3 colores se calculan automáticamente para que combinen.";
-    state.paleta = {id:"custom", nombre:"Paleta propia", mood:res.schemeName, colores:res.colores};
-    state.paletaMode = "custom";
+    if(commit){
+      state.paleta = {id:"custom", nombre:"Paleta propia", mood:res.schemeName, colores:res.colores};
+      state.paletaMode = "custom";
+    }
   }
   customColorInput.addEventListener("input", function(){
     dimOtherPaletteOptions("custom");
-    renderCustomDerived();
+    renderCustomDerived(true);
     update();
   });
   customColorInput.addEventListener("click", function(){
@@ -752,10 +803,10 @@
   rerollBtn.addEventListener("click", function(){
     state.customScheme = (state.customScheme + 1) % SCHEMES.length;
     dimOtherPaletteOptions("custom");
-    renderCustomDerived();
+    renderCustomDerived(true);
     update();
   });
-  renderCustomDerived(); // deja precalculado, pero no selecciona hasta que la toquen
+  renderCustomDerived(false); // deja precalculado, pero no selecciona hasta que la toquen
 
   /* ---- 03 tipografías (combos título + cuerpo, + "otra" con texto libre) ---- */
   var tiposEl = document.getElementById("tipos");
@@ -776,7 +827,8 @@
     card.type = "button"; card.className = "type-card"; card.dataset.id = t.id;
 
     if(t.isOther){
-      card.innerHTML = '<span class="type-tag">Personalizada</span>' +
+      card.style.setProperty("--tcard-accent", "var(--oro-dark)");
+      card.innerHTML = '<span class="type-tag"><span class="type-tag-dot"></span>Personalizada</span>' +
         '<span class="type-sample" style="font-family:var(--font-title);">' + t.nombre + '</span>' +
         '<span class="type-name">Tu tipografía</span>' +
         '<div class="type-body-sample">¿Ya usás una tipografía en tu logo o papelería? Contanos cuál — la evaluamos para la web.</div>';
@@ -785,8 +837,16 @@
       return;
     }
 
-    var tag = document.createElement("span"); tag.className = "type-tag"; tag.textContent = t.tag || "";
+    if(t.accent) card.style.setProperty("--tcard-accent", t.accent);
+    var tag = document.createElement("span"); tag.className = "type-tag";
+    var dot = document.createElement("span"); dot.className = "type-tag-dot";
+    tag.appendChild(dot);
+    tag.appendChild(document.createTextNode(t.personalidad || t.mood || ""));
     card.appendChild(tag);
+    if(t.tag){
+      var cat = document.createElement("span"); cat.className = "type-category"; cat.textContent = t.tag;
+      card.appendChild(cat);
+    }
 
     var sample = document.createElement("span");
     sample.className = "type-sample brand-word";
@@ -794,6 +854,11 @@
     sample.style.fontFamily = t.tituloFamily;
     sample.style.fontWeight = t.tituloWeight;
     card.appendChild(sample);
+
+    var phrase = document.createElement("span"); phrase.className = "type-phrase";
+    phrase.style.fontFamily = t.cuerpoFamily;
+    phrase.textContent = TYPE_PHRASE;
+    card.appendChild(phrase);
 
     var nm = document.createElement("span"); nm.className="type-name"; nm.textContent = t.nombre;
     card.appendChild(nm);
@@ -883,6 +948,7 @@
     b.type = "button"; b.className = "tone-pill"; b.textContent = t;
     b.addEventListener("click", function(){
       state.tono = t;
+      state.tonoIndex = idx;
       Array.prototype.forEach.call(tonoEl.children, function(c){ c.classList.remove("selected"); });
       b.classList.add("selected");
       tonoExampleEl.hidden = false;
@@ -904,7 +970,7 @@
     b.addEventListener("click", function(){
       var i = state.especialidades.indexOf(e.id);
       if(i > -1){ state.especialidades.splice(i,1); b.classList.remove("selected"); b.style.background="var(--crema)"; b.style.borderColor="var(--line)"; b.style.color="var(--ink)"; }
-      else{ state.especialidades.push(e.id); b.classList.add("selected"); b.style.background="var(--oro-tint)"; b.style.borderColor="var(--oro)"; b.style.color="var(--oro-dark)"; }
+      else{ state.especialidades.push(e.id); b.classList.add("selected"); b.style.background="var(--noche)"; b.style.borderColor="var(--oro)"; b.style.color="var(--oro)"; }
       espOtherWrap.hidden = state.especialidades.indexOf('otra') === -1;
       if(espOtherWrap.hidden){ state.espOtro=''; espOtherInput.value=''; }
       update();
@@ -919,6 +985,29 @@
      LIVE PREVIEW (mientras completa)
   --------------------------------------------------------- */
   var previewBody = document.getElementById("previewBody");
+  function applyPaletteAndTonoToTypography(){
+    if(!tiposEl) return;
+    if(state.paleta && state.paleta.colores && state.paleta.colores.length){
+      var cols = state.paleta.colores.slice().sort(function(a,b){ return hexToHsl(b).l - hexToHsl(a).l; });
+      var bg = cols[0], dark = cols[cols.length-1];
+      var accent = state.paleta.colores.filter(function(c){ return c!==bg && c!==dark; })[0] || dark;
+      var text = pickTextColor(bg);
+      tiposEl.style.setProperty("--palette-bg", bg);
+      tiposEl.style.setProperty("--palette-text", text);
+      tiposEl.style.setProperty("--palette-accent", accent);
+      tiposEl.style.setProperty("--palette-accent-text", pickTextColor(accent));
+      tiposEl.classList.add("palette-applied");
+    } else {
+      tiposEl.classList.remove("palette-applied");
+    }
+    Array.prototype.forEach.call(tiposEl.children, function(c){
+      var id = c.dataset.id;
+      var t = DATA.tipos.filter(function(x){ return x.id===id; })[0];
+      var recomendada = !!(t && t.tonoRange && state.tonoIndex!=null && state.tonoIndex>=t.tonoRange[0] && state.tonoIndex<=t.tonoRange[1]);
+      c.classList.toggle("tono-match", recomendada);
+    });
+  }
+
   function update(){
     previewBody.innerHTML = "";
     if(state.paleta){
@@ -926,7 +1015,9 @@
       state.paleta.colores.forEach(function(c){ var s=document.createElement("span"); s.style.background=c; sw.appendChild(s); });
       previewBody.appendChild(sw);
     } else {
-      var ph = document.createElement("div"); ph.className = "preview-empty-swatch"; previewBody.appendChild(ph);
+      var sw = document.createElement("div"); sw.className = "preview-swatches preview-swatches-example";
+      ["#0F1923","#B8946A","#9C7A52","#F5F2EC"].forEach(function(c){ var s=document.createElement("span"); s.style.background=c; sw.appendChild(s); });
+      previewBody.appendChild(sw);
     }
     var word = document.createElement("span");
     word.className = "preview-word brand-word";
@@ -945,6 +1036,7 @@
       p.textContent = "Empezá a elegir abajo y acá vas viendo cómo se arma tu estilo.";
       previewBody.appendChild(p);
     }
+    applyPaletteAndTonoToTypography();
     updateSubmitState();
   }
 
