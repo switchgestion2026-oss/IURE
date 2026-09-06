@@ -382,22 +382,24 @@
   .done-card{
     margin-top:2.6rem;
     border:1px solid var(--oro);
-    background:rgba(184,148,106,0.08);
+    background:var(--noche);
     color:var(--crema);
     border-radius:var(--radius);
     padding:1.4rem 1.5rem;
   }
-  .done-card h2{font-family:var(--font-title); text-transform:uppercase; margin:0 0 0.5rem; font-size:1.4rem; color:var(--crema);}
+  .done-card h2{font-family:var(--font-title); text-transform:uppercase; margin:0 0 0.5rem; font-size:1.4rem; color:var(--oro);}
   .done-card p{margin:0 0 0.9rem; color:var(--crema-soft); font-size:14px;}
 
   /* visual del resultado final */
   .result-visual{display:flex; justify-content:center; margin-bottom:1.1rem;}
-  .result-visual img{max-width:min(280px,70%); height:auto; filter:drop-shadow(0 20px 34px rgba(0,0,0,0.35));}
+  .result-visual img{max-width:min(280px,70%); height:auto; filter:drop-shadow(0 20px 34px rgba(0,0,0,0.5));}
+  .send-confirm{display:flex; justify-content:center; margin-top:1rem;}
+  .send-confirm img{max-width:min(220px,60%); height:auto; filter:drop-shadow(0 14px 26px rgba(0,0,0,0.45));}
 
   .result-box{
-    background:var(--crema);
-    color:var(--ink);
-    border:1px solid var(--line);
+    background:var(--noche);
+    color:var(--crema);
+    border:1px solid rgba(184,148,106,0.35);
     border-radius:var(--radius);
     padding:0.9rem 1rem;
     white-space:pre-wrap;
@@ -432,7 +434,7 @@
 <div class="wrap">
   <p class="eyebrow">Iure Marketing Jurídico · identidad visual</p>
   <h1>¿Cómo se ve tu marca?</h1>
-  <p class="lede">Todavía no tenés una identidad visual definida — <strong>este cuestionario es el punto de partida</strong>. Diez minutos, casi todo a elección múltiple. No hay respuesta correcta: cada clic es una pista para diseñar tu marca.</p>
+  <p class="lede">Todavía no tenés una identidad visual definida — <strong>este cuestionario es el punto de partida</strong>. Son pocas preguntas, casi todo a elección múltiple. No hay respuesta correcta: cada clic es una pista para diseñar tu marca.</p>
 
   <div class="preview" id="preview">
     <p class="preview-label">Tu perfil, en construcción</p>
@@ -558,17 +560,19 @@
 
   <div class="done-card" id="doneCard" hidden>
     <h2>¡Listo!</h2>
-    <p>Así se vería tu web con lo que elegiste. Enviá tu perfil directamente a Iure, o copialo para mandarlo por WhatsApp.</p>
+    <p>Preparando tu web con lo que elegiste — este es tu perfil visual.</p>
     <div class="result-visual">
       <img src="assets/personaje-identidad.png" alt="Escultura clásica — identidad visual Iure" loading="lazy">
     </div>
     <div class="result-box" id="resultBox"></div>
     <div class="done-actions">
-      <button class="send-btn" id="sendBtn" type="button">Contactar para aplicar este diseño</button>
-      <button class="copy-btn" id="copyBtn" type="button">Copiar resumen</button>
+      <button class="send-btn" id="sendBtn" type="button">Enviar para crear mi página web</button>
       <button class="redo-btn" id="redoBtn" type="button">Volver a responder</button>
     </div>
     <div class="toast ok" id="toast"></div>
+    <div class="send-confirm" id="sendConfirm" hidden>
+      <img src="assets/columnas-referencia1.png" alt="">
+    </div>
   </div>
 </div>
 
@@ -1068,9 +1072,9 @@
   var doneCard = document.getElementById("doneCard");
   var resultBox = document.getElementById("resultBox");
   var redoBtn = document.getElementById("redoBtn");
-  var copyBtn = document.getElementById("copyBtn");
   var sendBtn = document.getElementById("sendBtn");
   var toast = document.getElementById("toast");
+  var sendConfirm = document.getElementById("sendConfirm");
 
   function especialidadesTexto(){
     var nombres = state.especialidades.filter(function(id){ return id !== 'otra'; })
@@ -1118,22 +1122,6 @@
 
   redoBtn.addEventListener("click", function(){ doneCard.hidden = true; form.hidden = false; });
 
-  copyBtn.addEventListener("click", function(){
-    var text = resultBox.textContent;
-    var done = function(){ copyBtn.textContent = "¡Copiado!"; setTimeout(function(){ copyBtn.textContent = "Copiar resumen"; }, 1800); };
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text, done); });
-    } else { fallbackCopy(text, done); }
-  });
-  function fallbackCopy(text, done){
-    var ta = document.createElement("textarea");
-    ta.value = text; ta.style.position="fixed"; ta.style.opacity="0";
-    document.body.appendChild(ta); ta.focus(); ta.select();
-    try{ document.execCommand("copy"); }catch(e){}
-    document.body.removeChild(ta);
-    done();
-  }
-
   sendBtn.addEventListener("click", function(){
     var negocio = document.getElementById("negocio").value.trim() || "(sin nombre)";
     var email = document.getElementById("email").value.trim();
@@ -1152,12 +1140,13 @@
     }).then(function(){
       toast.textContent = "Respuestas enviadas ✓";
       toast.className = "toast show ok";
+      sendConfirm.hidden = false;
     }).catch(function(){
       toast.textContent = "No se pudo enviar. Copiá el resumen y mandalo por WhatsApp.";
       toast.className = "toast show err";
     }).finally(function(){
       sendBtn.disabled = false;
-      sendBtn.textContent = "Contactar para aplicar este diseño";
+      sendBtn.textContent = "Enviar para crear mi página web";
     });
   });
 
