@@ -392,16 +392,29 @@
 
   /* mockup en vivo */
   .mockup{border:1px solid var(--line); border-radius:6px; overflow:hidden; margin-bottom:1.1rem; background:#fff;}
-  .mockup-nav{display:flex; align-items:center; justify-content:space-between; padding:14px 20px;}
+  .mockup-nav{display:flex; align-items:center; justify-content:space-between; padding:14px 20px; border-bottom:1px solid rgba(0,0,0,0.06); flex-wrap:wrap; gap:10px;}
   .mockup-logo{font-weight:700; font-size:16px;}
-  .mockup-menu{display:flex; gap:16px; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; opacity:0.75;}
-  .mockup-hero{padding:44px 26px; position:relative; overflow:hidden;}
+  .mockup-menu{display:flex; align-items:center; gap:18px; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; opacity:0.8;}
+  .mockup-navcta{font-size:10.5px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; padding:7px 14px; border-radius:2px; opacity:1 !important;}
+  .mockup-hero{padding:40px 26px; position:relative; overflow:hidden; display:flex; align-items:center; gap:28px; flex-wrap:wrap;}
   .mockup-shape{position:absolute; border-radius:3px; opacity:0.35; pointer-events:none;}
-  .mockup-hero-inner{position:relative; z-index:1; max-width:420px;}
-  .mockup-h1{font-size:clamp(1.6rem,5vw,2.3rem); line-height:1.06; margin:0 0 12px;}
-  .mockup-p{font-size:14px; line-height:1.6; margin:0 0 18px; max-width:38ch;}
-  .mockup-cta{display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; padding:11px 20px; border-radius:2px;}
+  .mockup-hero-inner{position:relative; z-index:1; max-width:380px; flex:1 1 260px;}
+  .mockup-eyebrow{display:flex; align-items:center; gap:8px; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.75; margin-bottom:12px;}
+  .mockup-eyebrow::before{content:""; width:16px; height:1px; background:currentColor;}
+  .mockup-h1{font-size:clamp(1.5rem,5vw,2.1rem); line-height:1.08; margin:0 0 12px;}
+  .mockup-p{font-size:13.5px; line-height:1.6; margin:0 0 18px; max-width:38ch; opacity:0.85;}
+  .mockup-cta-row{display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+  .mockup-cta{display:inline-block; font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; padding:11px 20px; border-radius:2px;}
+  .mockup-cta-ghost{display:inline-block; font-size:12px; font-weight:600; letter-spacing:0.03em; padding:10px 4px; border-bottom:1px solid currentColor; opacity:0.85;}
+  .mockup-visual{
+    position:relative; z-index:1; flex:0 0 auto; width:120px; height:120px; border-radius:6px;
+    display:flex; align-items:center; justify-content:center; font-size:1.7rem; font-weight:700;
+  }
   .mockup-hairline{height:1px; opacity:0.5;}
+  .mockup-services{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:1px; background:rgba(0,0,0,0.06);}
+  .mockup-service{padding:16px 18px; background:#fff;}
+  .mockup-service-title{font-size:12.5px; font-weight:700; display:block; margin-bottom:3px;}
+  .mockup-service-desc{font-size:11px; opacity:0.7; line-height:1.4; display:block;}
   .mockup-footer{padding:14px 20px; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.55;}
 
   .result-box{
@@ -1065,12 +1078,21 @@
     var hsl = hexToHsl(bgHex);
     return hsl.l > 55 ? "#181410" : "#F5F2EC";
   }
+  function brandInitials(){
+    var words = state.brandWord.trim().split(/\s+/).filter(Boolean);
+    if(!words.length) return "IU";
+    return (words[0][0] + (words[1] ? words[1][0] : (words[0][1]||''))).toUpperCase();
+  }
+
   function buildMockup(){
     var el = document.getElementById("mockup");
     var pal = state.paleta.colores; // [principal, secundario, acento, fondo]
     var principal = pal[0], secundario = pal[1], acento = pal[2], fondo = pal[3];
     var heroTextColor = pickTextColor(fondo);
     var navTextColor = pickTextColor(principal);
+    var acentoTextColor = pickTextColor(acento);
+    var tituloFF = 'font-family:' + state.tipo.tituloFamily + ';font-weight:' + state.tipo.tituloWeight + ';';
+    var cuerpoFF = 'font-family:' + state.tipo.cuerpoFamily + ';';
 
     var shapesHtml = "";
     if(state.detalles.indexOf("geometria") > -1){
@@ -1081,20 +1103,47 @@
     var hairline = state.detalles.indexOf("lineas") > -1
       ? '<div class="mockup-hairline" style="background:' + acento + ';"></div>' : '';
 
+    var especialidadPrincipal = state.especialidades.length ? especialidadesTexto().split(",")[0].trim() : "Derecho civil y comercial";
+
+    var serviciosBase = state.especialidades.length
+      ? state.especialidades.filter(function(id){ return id !== 'otra'; }).slice(0,3)
+          .map(function(id){ var e = DATA.especialidades.find(function(x){ return x.id===id; }); return e ? e.nombre : id; })
+      : ['Consultas iniciales','Seguimiento de causas','Asesoramiento continuo'];
+    if(serviciosBase.length < 3){
+      ['Consultas iniciales','Seguimiento de causas','Asesoramiento continuo'].forEach(function(s){
+        if(serviciosBase.length < 3 && serviciosBase.indexOf(s) === -1) serviciosBase.push(s);
+      });
+    }
+    var serviciosHtml = serviciosBase.map(function(nombre){
+      return '<div class="mockup-service">' +
+        '<span class="mockup-service-title" style="' + tituloFF + 'color:' + principal + ';">' + nombre + '</span>' +
+        '<span class="mockup-service-desc" style="' + cuerpoFF + '">Acompañamiento claro y a tiempo.</span>' +
+      '</div>';
+    }).join('');
+
     el.innerHTML =
-      '<div class="mockup-nav" style="background:' + principal + ';color:' + navTextColor + ';font-family:' + state.tipo.tituloFamily + ';font-weight:' + state.tipo.tituloWeight + ';">' +
-        '<span class="mockup-logo">' + state.brandWord + '</span>' +
-        '<span class="mockup-menu">Servicios · Nosotros · Contacto</span>' +
+      '<div class="mockup-nav" style="background:' + principal + ';color:' + navTextColor + ';">' +
+        '<span class="mockup-logo" style="' + tituloFF + '">' + state.brandWord + '</span>' +
+        '<span class="mockup-menu">' +
+          '<span>Servicios</span><span>Nosotros</span><span>Contacto</span>' +
+          '<span class="mockup-navcta" style="background:' + acento + ';color:' + acentoTextColor + ';' + cuerpoFF + '">Consultar</span>' +
+        '</span>' +
       '</div>' +
       hairline +
       '<div class="mockup-hero" style="background:' + fondo + ';color:' + heroTextColor + ';">' +
         shapesHtml +
         '<div class="mockup-hero-inner">' +
-          '<h3 class="mockup-h1" style="font-family:' + state.tipo.tituloFamily + ';font-weight:' + state.tipo.tituloWeight + ';">Asesoramiento legal claro, cuando lo necesitás.</h3>' +
-          '<p class="mockup-p" style="font-family:' + state.tipo.cuerpoFamily + ';">' + (state.especialidades.length ? especialidadesTexto() : 'Acompañamiento profesional en cada etapa de tu consulta.') + '</p>' +
-          '<span class="mockup-cta" style="background:' + acento + ';color:' + pickTextColor(acento) + ';font-family:' + state.tipo.cuerpoFamily + ';">Consultar ahora</span>' +
+          '<span class="mockup-eyebrow" style="' + cuerpoFF + '">' + especialidadPrincipal + '</span>' +
+          '<h3 class="mockup-h1" style="' + tituloFF + '">Asesoramiento legal claro, cuando lo necesitás.</h3>' +
+          '<p class="mockup-p" style="' + cuerpoFF + '">' + (state.especialidades.length ? especialidadesTexto() : 'Acompañamiento profesional en cada etapa de tu consulta.') + '</p>' +
+          '<div class="mockup-cta-row">' +
+            '<span class="mockup-cta" style="background:' + acento + ';color:' + acentoTextColor + ';' + cuerpoFF + '">Consultar ahora</span>' +
+            '<span class="mockup-cta-ghost" style="' + cuerpoFF + '">Conocé al estudio →</span>' +
+          '</div>' +
         '</div>' +
+        '<div class="mockup-visual" style="background:' + acento + ';color:' + acentoTextColor + ';' + tituloFF + '">' + brandInitials() + '</div>' +
       '</div>' +
+      '<div class="mockup-services">' + serviciosHtml + '</div>' +
       '<div class="mockup-footer" style="background:' + principal + ';color:' + navTextColor + ';">© ' + state.brandWord + '</div>';
   }
 
