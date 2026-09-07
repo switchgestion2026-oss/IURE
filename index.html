@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4LEW9896BN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4LEW9896BN');
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
@@ -70,7 +78,7 @@
           Estrategia, identidad y presencia digital para profesionales del derecho.
         </p>
         <div data-reveal data-delay="260" style="opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);display:flex;align-items:center;gap:clamp(16px,3vw,34px);flex-wrap:wrap;margin-top:38px">
-          <a href="#contacto" style="display:flex;align-items:center;gap:12px;background:#B8946A;color:#0F1923;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:16px 26px;border-radius:2px;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-2px)">
+<a href="{{ waGeneralHref }}" target="_blank" rel="noopener" onClick="{{ waGeneralTrack }}" style="display:flex;align-items:center;gap:12px;background:#B8946A;color:#0F1923;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:16px 26px;border-radius:2px;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-2px)">
             Hablar con IURE <span style="font-family:'Barlow',sans-serif;font-size:15px">→</span>
           </a>
           <a href="#servicios" style="display:flex;align-items:center;gap:14px;color:rgba(245,242,236,.7);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase" style-hover="color:#F5F2EC">
@@ -646,6 +654,20 @@ class Component extends DCLogic {
 
   renderVals() {
     const v = {};
+    const waLink = (text) => 'https://wa.me/5492284203462?text=' + text;
+    const waTrack = (area) => () => { try { gtag('event', 'click_whatsapp', { area }); } catch (e) {} };
+    v.waGeneralHref = waLink('Hola%2C%20quisiera%20hacer%20una%20consulta.');
+    v.waGeneralTrack = waTrack('general');
+    v.waRedesHref = waLink('Hola%2C%20consulto%20por%20Redes%20sociales');
+    v.waRedesTrack = waTrack('redes-sociales');
+    v.waIdentidadHref = waLink('Hola%2C%20consulto%20por%20Identidad%20visual');
+    v.waIdentidadTrack = waTrack('identidad-visual');
+    v.waWebHref = waLink('Hola%2C%20consulto%20por%20Dise%C3%B1o%20web');
+    v.waWebTrack = waTrack('diseno-web');
+    v.waEstrategiaHref = waLink('Hola%2C%20consulto%20por%20Estrategia%20digital');
+    v.waEstrategiaTrack = waTrack('estrategia-digital');
+    v.waContenidoHref = waLink('Hola%2C%20consulto%20por%20Contenido');
+    v.waContenidoTrack = waTrack('contenido');
     [0, 1, 2, 3].forEach(i => {
       v['momentStyle' + i] = this.momentStyle(i);
       v['pickMoment' + i] = () => this.setState({ moment: i });
