@@ -629,6 +629,79 @@
   requestAnimationFrame(autoScroll);
 })();
 </script>
+<script>
+(function(){
+  var track = document.getElementById('projTrack');
+  if(!track) return;
+  var originalCards = Array.prototype.slice.call(track.children);
+  originalCards.map(function(c){ return c.cloneNode(true); }).forEach(function(c){ track.appendChild(c); });
+  originalCards.map(function(c){ return c.cloneNode(true); }).forEach(function(c){ track.appendChild(c); });
+  var allCards = Array.prototype.slice.call(track.children);
+  var gap = parseFloat(getComputedStyle(track).gap || 0);
+  var setWidth = originalCards.reduce(function(sum, c){ return sum + c.offsetWidth + gap; }, 0);
+  track.scrollLeft = setWidth;
+
+  var steerDir = 0;
+  var manualUntil = 0;
+  var BASE = 0.45;
+  var FAST = 2.4;
+
+  function autoScroll(){
+    var now = Date.now();
+    if(now > manualUntil){
+      var dir = steerDir !== 0 ? steerDir : 1;
+      var speed = steerDir !== 0 ? FAST : BASE;
+      track.scrollLeft += dir * speed;
+    }
+    if(track.scrollLeft < setWidth * 0.5){ track.scrollLeft += setWidth; }
+    if(track.scrollLeft > setWidth * 1.5){ track.scrollLeft -= setWidth; }
+    updateActive();
+    requestAnimationFrame(autoScroll);
+  }
+
+  function updateActive(){
+    var trackRect = track.getBoundingClientRect();
+    var center = trackRect.left + trackRect.width / 2;
+    var closest = null, closestDist = Infinity;
+    allCards.forEach(function(card){
+      var r = card.getBoundingClientRect();
+      var dist = Math.abs((r.left + r.width / 2) - center);
+      if(dist < closestDist){ closestDist = dist; closest = card; }
+    });
+    allCards.forEach(function(card){ card.classList.toggle('active', card === closest); });
+  }
+
+  document.querySelectorAll('.proj-hover-zone').forEach(function(zone){
+    var dir = parseFloat(zone.dataset.dir);
+    zone.addEventListener('mouseenter', function(){ steerDir = dir; });
+    zone.addEventListener('mouseleave', function(){ steerDir = 0; });
+  });
+
+  allCards.forEach(function(card){
+    card.addEventListener('click', function(e){
+      if(!card.classList.contains('active')){
+        e.preventDefault();
+        manualUntil = Date.now() + 1900;
+        var trackRect = track.getBoundingClientRect();
+        var cardRect = card.getBoundingClientRect();
+        var delta = (cardRect.left + cardRect.width / 2) - (trackRect.left + trackRect.width / 2);
+        track.scrollTo({ left: track.scrollLeft + delta, behavior: 'smooth' });
+      }
+    });
+  });
+
+  document.querySelectorAll('.proj-arrow').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var dir = parseFloat(btn.dataset.dir);
+      var cardWidth = originalCards[0].offsetWidth + gap;
+      manualUntil = Date.now() + 1900;
+      track.scrollTo({ left: track.scrollLeft + dir * cardWidth, behavior: 'smooth' });
+    });
+  });
+
+  requestAnimationFrame(autoScroll);
+})();
+</script>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showChatbot&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;chatDefaultOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;enableMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
 class Component extends DCLogic {
