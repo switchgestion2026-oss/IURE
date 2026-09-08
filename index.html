@@ -720,11 +720,88 @@ class Component extends DCLogic {
     this.tick();
     let n = 0;
     this.timer = setInterval(() => { this.tick(); if (++n > 60) clearInterval(this.timer); }, 250);
+    this.initProjCarousel();
   }
   componentWillUnmount() {
     clearInterval(this.timer);
     window.removeEventListener('scroll', this.tick);
     window.removeEventListener('resize', this.tick);
+    if (this.projRaf) cancelAnimationFrame(this.projRaf);
+  }
+
+  initProjCarousel() {
+    const track = document.getElementById('projTrack');
+    if (!track || track.dataset.projInit) return;
+    track.dataset.projInit = '1';
+    const showcase = track.closest('.proj-showcase');
+
+    const originalCards = Array.prototype.slice.call(track.children);
+    originalCards.map(c => c.cloneNode(true)).forEach(c => track.appendChild(c));
+    originalCards.map(c => c.cloneNode(true)).forEach(c => track.appendChild(c));
+    const allCards = Array.prototype.slice.call(track.children);
+    const gap = parseFloat(getComputedStyle(track).gap || 0);
+    const setWidth = originalCards.reduce((sum, c) => sum + c.offsetWidth + gap, 0);
+    track.scrollLeft = setWidth;
+
+    let steerDir = 0;
+    let manualUntil = 0;
+    const BASE = 0.45;
+    const FAST = 2.4;
+
+    const updateActive = () => {
+      const trackRect = track.getBoundingClientRect();
+      const center = trackRect.left + trackRect.width / 2;
+      let closest = null, closestDist = Infinity;
+      allCards.forEach(card => {
+        const r = card.getBoundingClientRect();
+        const dist = Math.abs((r.left + r.width / 2) - center);
+        if (dist < closestDist) { closestDist = dist; closest = card; }
+      });
+      allCards.forEach(card => card.classList.toggle('active', card === closest));
+    };
+
+    const autoScroll = () => {
+      const now = Date.now();
+      if (now > manualUntil) {
+        const dir = steerDir !== 0 ? steerDir : 1;
+        const speed = steerDir !== 0 ? FAST : BASE;
+        track.scrollLeft += dir * speed;
+      }
+      if (track.scrollLeft < setWidth * 0.5) track.scrollLeft += setWidth;
+      if (track.scrollLeft > setWidth * 1.5) track.scrollLeft -= setWidth;
+      updateActive();
+      this.projRaf = requestAnimationFrame(autoScroll);
+    };
+
+    showcase.querySelectorAll('.proj-hover-zone').forEach(zone => {
+      const dir = parseFloat(zone.dataset.dir);
+      zone.addEventListener('mouseenter', () => { steerDir = dir; });
+      zone.addEventListener('mouseleave', () => { steerDir = 0; });
+    });
+
+    allCards.forEach(card => {
+      card.addEventListener('click', e => {
+        if (!card.classList.contains('active')) {
+          e.preventDefault();
+          manualUntil = Date.now() + 1900;
+          const trackRect = track.getBoundingClientRect();
+          const cardRect = card.getBoundingClientRect();
+          const delta = (cardRect.left + cardRect.width / 2) - (trackRect.left + trackRect.width / 2);
+          track.scrollTo({ left: track.scrollLeft + delta, behavior: 'smooth' });
+        }
+      });
+    });
+
+    showcase.querySelectorAll('.proj-arrow').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const dir = parseFloat(btn.dataset.dir);
+        const cardWidth = originalCards[0].offsetWidth + gap;
+        manualUntil = Date.now() + 1900;
+        track.scrollTo({ left: track.scrollLeft + dir * cardWidth, behavior: 'smooth' });
+      });
+    });
+
+    this.projRaf = requestAnimationFrame(autoScroll);
   }
 
   tick() {
