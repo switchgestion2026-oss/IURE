@@ -84,7 +84,17 @@
       </a>
       <nav class="nav-desktop" style="display:flex;gap:clamp(14px,2.2vw,30px);margin-left:auto;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.19em;text-transform:uppercase">
         <a href="#top" style="color:#F5F2EC;padding-bottom:4px;border-bottom:1px solid #B8946A">Inicio</a>
-        <a href="#servicios" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Servicios</a>
+        <div style="position:relative">
+          <div onClick="{{ toggleServiciosMenu }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:5px;color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">
+            Servicios <span style="{{ serviciosMenuIconStyle }}">▾</span>
+          </div>
+          <div style="{{ serviciosMenuPanelStyle }}">
+            <a href="#servicios" style="padding:10px 14px;color:rgba(245,242,236,.75);white-space:nowrap" style-hover="color:#B8946A">Redes Sociales</a>
+            <a href="#servicios" style="padding:10px 14px;color:rgba(245,242,236,.75);white-space:nowrap" style-hover="color:#B8946A">Diseño Web</a>
+            <a href="google-ads.html" style="padding:10px 14px;color:rgba(245,242,236,.75);white-space:nowrap" style-hover="color:#B8946A">Google Ads</a>
+            <a href="#servicios" style="padding:10px 14px;color:rgba(245,242,236,.75);white-space:nowrap" style-hover="color:#B8946A">Meta</a>
+          </div>
+        </div>
         <a href="#proceso" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Cómo trabajamos</a>
         <a href="casos.html" target="_blank" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Casos</a>
         <a href="nosotros.html" target="_blank" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Nosotros</a>
@@ -708,7 +718,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showChatbot&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;chatDefaultOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;enableMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
 class Component extends DCLogic {
-  state = { moment: null, faq: null, chatOpen: null, chatChoice: null, sent: false, showConfirm: false, sending: false, service: null, sections: {} };
+  state = { moment: null, faq: null, chatOpen: null, chatChoice: null, sent: false, showConfirm: false, sending: false, service: null, sections: {}, serviciosMenuOpen: false };
 
   get reduced() {
     return !this.motionOn || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -954,6 +964,11 @@ class Component extends DCLogic {
     v.servicesIconStyle = this.sectionIconStyle('servicios');
     v.servicesToggleLabel = this.sectionLabel('servicios', 'Ver servicios', 'Ocultar servicios');
     v.toggleServicios = this.toggleSection('servicios');
+
+    v.serviciosMenuIconStyle = "display:inline-block;font-size:9px;transition:transform .3s ease;transform:rotate(" + (this.state.serviciosMenuOpen ? '180deg' : '0deg') + ')';
+    v.serviciosMenuPanelStyle = 'position:absolute;top:calc(100% + 14px);left:0;min-width:190px;background:rgba(15,25,35,.98);border:1px solid rgba(184,148,106,.3);box-shadow:0 24px 50px rgba(0,0,0,.45);display:flex;flex-direction:column;padding:6px;z-index:95;font-size:10.5px;letter-spacing:.14em;transition:opacity .25s ease,transform .25s ease;' +
+      (this.state.serviciosMenuOpen ? 'opacity:1;transform:translateY(0);pointer-events:auto' : 'opacity:0;transform:translateY(-6px);pointer-events:none');
+    v.toggleServiciosMenu = () => this.setState(s => ({ serviciosMenuOpen: !s.serviciosMenuOpen }));
 
     v.casosBodyStyle = this.sectionBodyStyle('casos');
     v.casosIconStyle = this.sectionIconStyle('casos');
