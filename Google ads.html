@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IURE — Google Ads para Abogados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #0F1923; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #B8946A; text-decoration: none; }
+  a:hover { color: #F5F2EC; }
+  input, textarea, button, select { font-family: 'Barlow', sans-serif; }
+  ::selection { background: #B8946A; color: #0F1923; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media (max-width: 860px) {
+  .g2 { grid-template-columns: 1fr !important; }
+  .nav-desktop { display: none !important; }
+}
+</style>
+</helmet>
+<div style="background:#0F1923;font-family:'Barlow',sans-serif;color:#F5F2EC;overflow-x:hidden">
+  <header style="position:sticky;top:0;z-index:80;background:rgba(15,25,35,.95);border-bottom:1px solid rgba(184,148,106,.16)">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);height:76px;display:flex;align-items:center;gap:clamp(18px,4vw,56px)">
+      <a href="index.html" style="display:block;line-height:1">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;letter-spacing:.06em;color:#B8946A;line-height:1">IURE</div>
+        <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.3em;color:rgba(245,242,236,.55);margin-top:2px">MARKETING JURÍDICO</div>
+      </a>
+      <nav class="nav-desktop" style="display:flex;gap:clamp(14px,2.2vw,30px);margin-left:auto;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.19em;text-transform:uppercase">
+        <a href="index.html" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Inicio</a>
+        <div style="position:relative">
+          <div onClick="{{ toggleServiciosMenu }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:5px;color:#F5F2EC;padding-bottom:4px;border-bottom:1px solid #B8946A">
+            Servicios <span style="{{ serviciosMenuIconStyle }}">▾</span>
+          </div>
+          <div style="{{ serviciosMenuPanelStyle }}">
+            <a href="index.html#servicios" style="padding:10px 14px;color:rgba(245,242,236,.75);white-space:nowrap" style-hover="color:#B8946A">Redes Sociales</a>
+            <a href="index.html#servicios" style="padding:10px 14px;color:rgba(245,242,236,.75);white-space:nowrap" style-hover="color:#B8946A">Diseño Web</a>
+            <a href="google-ads.html" style="padding:10px 14px;color:#B8946A;white-space:nowrap">Google Ads</a>
+            <a href="index.html#servicios" style="padding:10px 14px;color:rgba(245,242,236,.75);white-space:nowrap" style-hover="color:#B8946A">Meta</a>
+          </div>
+        </div>
+        <a href="index.html#proceso" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Cómo trabajamos</a>
+        <a href="index.html#casos" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Casos</a>
+        <a href="index.html#nosotros" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">Nosotros</a>
+        <a href="#faq" style="color:rgba(245,242,236,.6);padding-bottom:4px;border-bottom:1px solid transparent" style-hover="color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.6)">FAQ</a>
+      </nav>
+      <a href="#contacto" style="border:1px solid #B8946A;color:#B8946A;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:11px 22px;border-radius:2px;transition:background .3s,color .3s" style-hover="background:#B8946A;color:#0F1923">Contacto</a>
+    </div>
+  </header>
+
+  <section style="position:relative;padding:clamp(56px,8vw,104px) 0 clamp(48px,6vw,84px);overflow:hidden">
+    <div style="position:absolute;top:-8%;right:-6%;width:52%;height:120%;background:radial-gradient(60% 50% at 60% 40%, rgba(184,148,106,.13), transparent 70%);pointer-events:none"></div>
+    <div class="g2" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(320px,1fr) minmax(300px,1.05fr);gap:clamp(24px,4vw,56px);align-items:center;position:relative">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A;display:flex;align-items:center;gap:12px">
+          <span style="width:26px;height:1px;background:#B8946A;display:block"></span>Google Ads para abogados
+        </div>
+        <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(40px,5.6vw,80px);line-height:.94;letter-spacing:-.01em;text-transform:uppercase;margin:22px 0 0;text-wrap:balance">
+          Que te encuentren<br>cuando alguien<br><span style="color:#B8946A">busca un abogado.</span>
+        </h1>
+        <p style="font-weight:300;font-size:clamp(16px,1.3vw,19px);line-height:1.6;color:rgba(245,242,236,.66);max-width:38ch;margin:26px 0 0">
+          Campañas armadas por especialidad y zona, con una landing dedicada y seguimiento real de cada consulta — no solo de los clics.
+        </p>
+        <div style="display:flex;align-items:center;gap:clamp(16px,3vw,34px);flex-wrap:wrap;margin-top:38px">
+          <a href="#contacto" style="display:flex;align-items:center;gap:12px;background:#B8946A;color:#0F1923;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:16px 26px;border-radius:2px;transition:transform .3s" style-hover="transform:translateY(-2px)">
+            Quiero una campaña <span style="font-family:'Barlow',sans-serif;font-size:15px">→</span>
+          </a>
+          <a href="#sistema" style="display:flex;align-items:center;gap:14px;color:rgba(245,242,236,.7);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase" style-hover="color:#F5F2EC">
+            Ver cómo funciona <span style="width:clamp(28px,5vw,64px);height:1px;background:rgba(184,148,106,.7);display:block"></span>
+          </a>
+        </div>
+      </div>
+      <div style="position:relative;min-height:clamp(320px,40vw,540px);display:flex;align-items:center;justify-content:center">
+        <img src="assets/personaje-revelacion.webp" alt="Escultura clásica levantándose una venda de los ojos frente a un panel de Google Ads" style="display:block;width:100%;max-width:640px;filter:drop-shadow(0 40px 70px rgba(0,0,0,.55))">
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid rgba(184,148,106,.14);padding:clamp(64px,8vw,116px) 0">
+    <div style="max-width:900px;margin:0 auto;padding:0 clamp(20px,4vw,48px);text-align:center">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">El costo de no hacer nada</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,52px);line-height:1;text-transform:uppercase;margin:14px 0 0">Cada mes sin Ads,<br>así se ve.</h2>
+      <p style="font-weight:300;font-size:15px;line-height:1.6;color:rgba(245,242,236,.6);margin:16px auto 0;max-width:44ch">Cada vez que sumás, es una consulta que tu estudio no recibió este mes.</p>
+      <div style="margin-top:clamp(36px,5vw,56px);display:flex;flex-direction:column;align-items:center;gap:28px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(64px,10vw,140px);line-height:1;color:#B8946A">{{ counterCount }}</div>
+        <div onClick="{{ incrementCounter }}" style="cursor:pointer;background:#B8946A;color:#0F1923;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:16px 28px;border-radius:2px;transition:transform .3s" style-hover="transform:translateY(-2px)">Sumar consulta perdida</div>
+        <p style="font-weight:300;font-size:16px;line-height:1.6;color:rgba(245,242,236,.75);max-width:52ch;min-height:52px;margin:0">{{ counterReasonText }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid rgba(184,148,106,.14);padding:clamp(64px,8vw,120px) 0">
+    <div class="g2" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(280px,.85fr) minmax(320px,1.3fr);gap:clamp(32px,5vw,72px);align-items:start">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">El problema</div>
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,4vw,54px);line-height:.96;text-transform:uppercase;margin:16px 0 0">La mayoría de<br>las campañas fallan<br>por lo mismo.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div style="padding:0 clamp(16px,2vw,28px);border-left:1px solid rgba(184,148,106,.22)">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(38px,4vw,54px);line-height:1;color:#B8946A">01</div>
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:18px;letter-spacing:.02em;text-transform:uppercase;margin:14px 0 10px">Sin landing dedicada</h3>
+          <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(245,242,236,.55);margin:0">El anuncio lleva a la home del estudio, no a una página pensada para esa búsqueda puntual.</p>
+        </div>
+        <div style="padding:clamp(28px,3vw,44px) clamp(16px,2vw,28px) 0;border-left:1px solid rgba(184,148,106,.22)">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(38px,4vw,54px);line-height:1;color:#B8946A">02</div>
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:18px;letter-spacing:.02em;text-transform:uppercase;margin:14px 0 10px">Sin seguimiento real</h3>
+          <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(245,242,236,.55);margin:0">Se mide el clic, no la llamada ni el WhatsApp que ese clic terminó generando.</p>
+        </div>
+        <div style="padding:clamp(56px,5vw,80px) clamp(16px,2vw,28px) 0;border-left:1px solid rgba(184,148,106,.22)">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(38px,4vw,54px);line-height:1;color:#B8946A">03</div>
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:18px;letter-spacing:.02em;text-transform:uppercase;margin:14px 0 10px">Palabras clave genéricas</h3>
+          <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(245,242,236,.55);margin:0">Se paga por "abogado" en vez de "abogado laboral" + tu ciudad — la diferencia entre curiosos y clientes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sistema" style="border-top:1px solid rgba(184,148,106,.14);padding:clamp(64px,8vw,120px) 0">
+    <div class="g2" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(240px,.72fr) minmax(320px,1.6fr);gap:clamp(28px,4vw,64px);align-items:start">
+      <div style="position:relative;align-self:stretch;min-height:260px">
+        <img src="assets/personaje-grafico.webp" alt="Escultura clásica señalando un gráfico de resultados ascendente" style="display:block;width:100%;max-width:480px;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))">
+      </div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Cómo lo hacemos</div>
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:.98;text-transform:uppercase;margin:16px 0 0">Un sistema,<br>no una campaña suelta.</h2>
+        <div style="display:grid;gap:0;margin-top:clamp(28px,3.6vw,40px);border-top:1px solid rgba(184,148,106,.16)">
+          <div style="display:grid;grid-template-columns:44px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid rgba(184,148,106,.16)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;color:#B8946A">01</div>
+            <div>
+              <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:18px;letter-spacing:.02em;text-transform:uppercase;margin:0 0 6px">Investigación</h3>
+              <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(245,242,236,.55);margin:0">Definimos las palabras clave por especialidad y zona que realmente traen consultas calificadas.</p>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:44px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid rgba(184,148,106,.16)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;color:#B8946A">02</div>
+            <div>
+              <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:18px;letter-spacing:.02em;text-transform:uppercase;margin:0 0 6px">Landing dedicada</h3>
+              <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(245,242,236,.55);margin:0">Cada campaña apunta a una página propia, sin menú ni distracciones, pensada para un solo objetivo.</p>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:44px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid rgba(184,148,106,.16)">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;color:#B8946A">03</div>
+            <div>
+              <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:18px;letter-spacing:.02em;text-transform:uppercase;margin:0 0 6px">Seguimiento</h3>
+              <p style="font-weight:300;font-size:14.5px;line-height:1.6;color:rgba(245,242,236,.55);margin:0">Medimos costo por consulta real — llamada, WhatsApp o formulario — no solo clics.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#F5F2EC;color:#0F1923;padding:clamp(56px,7vw,96px) 0">
+    <div style="max-width:900px;margin:0 auto;padding:0 clamp(20px,4vw,48px);text-align:center">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#9A7847">Resultados</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(26px,3vw,40px);line-height:1.05;text-transform:uppercase;margin:14px 0 0;color:#0F1923">Todavía no publicamos cifras propias.</h2>
+      <p style="font-weight:300;font-size:15.5px;line-height:1.65;color:rgba(15,25,35,.62);margin:16px auto 0;max-width:52ch">Preferimos mostrar números reales de nuestras campañas antes que ejemplos genéricos. Esta sección se actualiza en cuanto tengamos los primeros resultados propios.</p>
+    </div>
+  </section>
+
+  <section id="faq" style="padding:clamp(64px,8vw,116px) 0;border-top:1px solid rgba(184,148,106,.14)">
+    <div class="g2" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(220px,.65fr) minmax(320px,1.7fr);gap:clamp(28px,4vw,64px);align-items:start">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">FAQ</div>
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(28px,3.2vw,44px);line-height:.98;text-transform:uppercase;margin:16px 0 0">Sobre Google<br>Ads.</h2>
+      </div>
+      <div style="border-top:1px solid rgba(184,148,106,.16)">
+        <div style="border-bottom:1px solid rgba(184,148,106,.16)">
+          <div onClick="{{ adsFaqToggle0 }}" style="display:flex;gap:20px;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer" style-hover="color:#B8946A">
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(17px,1.6vw,21px);letter-spacing:.02em;text-transform:uppercase;margin:0">¿Cuánto cuesta una campaña?</h3>
+            <span style="{{ adsFaqIcon0 }}">+</span>
+          </div>
+          <div style="{{ adsFaqBody0 }}"><p style="font-weight:300;font-size:15px;line-height:1.7;color:rgba(245,242,236,.58);margin:0 0 22px;max-width:64ch">El presupuesto de la plataforma lo define cada estudio según su zona y especialidad — lo definimos juntas antes de arrancar, sin sorpresas.</p></div>
+        </div>
+        <div style="border-bottom:1px solid rgba(184,148,106,.16)">
+          <div onClick="{{ adsFaqToggle1 }}" style="display:flex;gap:20px;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer" style-hover="color:#B8946A">
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(17px,1.6vw,21px);letter-spacing:.02em;text-transform:uppercase;margin:0">¿En cuánto tiempo llegan consultas?</h3>
+            <span style="{{ adsFaqIcon1 }}">+</span>
+          </div>
+          <div style="{{ adsFaqBody1 }}"><p style="font-weight:300;font-size:15px;line-height:1.7;color:rgba(245,242,236,.58);margin:0 0 22px;max-width:64ch">A diferencia de las redes, Ads genera visibilidad casi inmediata — las primeras consultas suelen llegar en la primera o segunda semana de campaña activa.</p></div>
+        </div>
+        <div style="border-bottom:1px solid rgba(184,148,106,.16)">
+          <div onClick="{{ adsFaqToggle2 }}" style="display:flex;gap:20px;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer" style-hover="color:#B8946A">
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(17px,1.6vw,21px);letter-spacing:.02em;text-transform:uppercase;margin:0">¿En qué se diferencia de la gestión de redes?</h3>
+            <span style="{{ adsFaqIcon2 }}">+</span>
+          </div>
+          <div style="{{ adsFaqBody2 }}"><p style="font-weight:300;font-size:15px;line-height:1.7;color:rgba(245,242,236,.58);margin:0 0 22px;max-width:64ch">Redes construye posicionamiento a mediano plazo. Ads capta a alguien que ya está buscando un abogado ahora mismo. Se complementan, no se reemplazan.</p></div>
+        </div>
+        <div style="border-bottom:1px solid rgba(184,148,106,.16)">
+          <div onClick="{{ adsFaqToggle3 }}" style="display:flex;gap:20px;align-items:center;justify-content:space-between;padding:22px 0;cursor:pointer" style-hover="color:#B8946A">
+            <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(17px,1.6vw,21px);letter-spacing:.02em;text-transform:uppercase;margin:0">¿Necesito tener ya una página web?</h3>
+            <span style="{{ adsFaqIcon3 }}">+</span>
+          </div>
+          <div style="{{ adsFaqBody3 }}"><p style="font-weight:300;font-size:15px;line-height:1.7;color:rgba(245,242,236,.58);margin:0 0 22px;max-width:64ch">No es obligatorio — podemos armar una landing dedicada solo para la campaña, sin tocar tu sitio principal.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" style="background:#F5F2EC;color:#0F1923;padding:clamp(64px,8vw,116px) 0">
+    <div class="g2" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(260px,.85fr) minmax(320px,1.15fr);gap:clamp(32px,5vw,64px);align-items:center">
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:22px">
+        <img src="assets/personaje-notificacion.webp" alt="Escultura clásica sosteniendo un teléfono con una notificación de consulta entrante" style="width:100%;max-width:340px;filter:drop-shadow(0 30px 50px rgba(15,25,35,.16))">
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#9A7847">Hablemos</div>
+          <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(28px,3.2vw,42px);line-height:1;text-transform:uppercase;margin:14px 0 0;color:#0F1923">Empecemos por tu<br>zona y tu especialidad.</h2>
+        </div>
+      </div>
+      <form onSubmit="{{ onSubmit }}" style="display:grid;gap:16px;border:1px solid rgba(15,25,35,.14);padding:clamp(24px,3vw,36px);background:#FFFDF9">
+        <label style="display:grid;gap:4px">
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(15,25,35,.5)">Nombre</span>
+          <input type="text" placeholder="Tu nombre y apellido" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:6px 0;font-size:15px;font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
+        </label>
+        <label style="display:grid;gap:4px">
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(15,25,35,.5)">Especialidad y ciudad</span>
+          <input type="text" placeholder="Laboral, Tandil…" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:6px 0;font-size:15px;font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
+        </label>
+        <label style="display:grid;gap:4px">
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(15,25,35,.5)">WhatsApp</span>
+          <input type="text" placeholder="Tu número" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:6px 0;font-size:15px;font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
+        </label>
+        <button type="submit" style="margin-top:6px;justify-self:start;background:#0F1923;color:#F5F2EC;border:0;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:14px 24px;border-radius:2px;cursor:pointer;transition:background .3s" style-hover="background:#B8946A;color:#0F1923">{{ submitLabel }}</button>
+      </form>
+    </div>
+  </section>
+
+  <footer style="background:#0F1923;border-top:1px solid rgba(184,148,106,.16);padding:clamp(44px,5vw,72px) 0 36px">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(24px,3.2vw,44px);line-height:1;text-transform:uppercase;color:#F5F2EC;max-width:22ch">El diseño también <span style="color:#B8946A">comunica.</span></div>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-end;margin-top:clamp(30px,4vw,54px);padding-top:24px;border-top:1px solid rgba(184,148,106,.14)">
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;letter-spacing:.06em;color:#B8946A;line-height:1">IURE</div>
+          <div style="font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:.3em;color:rgba(245,242,236,.45);margin-top:3px">MARKETING JURÍDICO</div>
+        </div>
+        <div style="display:flex;gap:24px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase">
+          <a href="index.html#servicios" style="color:rgba(245,242,236,.55)" style-hover="color:#B8946A">Servicios</a>
+          <a href="index.html#casos" style="color:rgba(245,242,236,.55)" style-hover="color:#B8946A">Casos</a>
+          <a href="#faq" style="color:rgba(245,242,236,.55)" style-hover="color:#B8946A">FAQ</a>
+          <a href="#contacto" style="color:rgba(245,242,236,.55)" style-hover="color:#B8946A">Contacto</a>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.16em;color:rgba(245,242,236,.32)">© 2026 IURE</div>
+      </div>
+    </div>
+  </footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { adsFaq: null, counterCount: 0, serviciosMenuOpen: false, sent: false };
+
+  reasons() {
+    return [
+      'No aparecen cuando alguien busca "abogado laboral" + su ciudad en Google.',
+      'Publican en redes sin ninguna estrategia detrás.',
+      'Todavía dependen 100% del boca en boca.',
+      'No tienen ninguna campaña de Google Ads activa.',
+      'Su web (si tienen) no genera ni un mensaje por WhatsApp al mes.',
+      'Contrataron un CM genérico que nunca leyó una ley.',
+      'No están en Google Maps con reseñas ni horarios actualizados.',
+      'Cuando alguien le pregunta a ChatGPT "qué abogado me recomendás", no aparecen.',
+      'Creen que el marketing jurídico es solo para estudios grandes.'
+    ];
+  }
+
+  adsFaqBody(i) {
+    const on = this.state.adsFaq === i;
+    return 'overflow:hidden;max-height:' + (on ? '320px' : '0') + ';opacity:' + (on ? 1 : 0) +
+      ';transition:max-height .5s cubic-bezier(.2,.7,.2,1),opacity .4s ease';
+  }
+  adsFaqIcon(i) {
+    const on = this.state.adsFaq === i;
+    return "font-family:'Barlow',sans-serif;font-size:20px;font-weight:300;color:#B8946A;line-height:1;transition:transform .35s ease;transform:rotate(" + (on ? '45deg' : '0deg') + ')';
+  }
+
+  renderVals() {
+    const v = {};
+    const reasons = this.reasons();
+    v.counterCount = this.state.counterCount;
+    v.counterReasonText = this.state.counterCount === 0
+      ? 'Sumá una consulta perdida y descubrí por qué pasa.'
+      : reasons[(this.state.counterCount - 1) % reasons.length];
+    v.incrementCounter = () => this.setState(s => ({ counterCount: s.counterCount + 1 }));
+
+    [0, 1, 2, 3].forEach(i => {
+      v['adsFaqBody' + i] = this.adsFaqBody(i);
+      v['adsFaqIcon' + i] = this.adsFaqIcon(i);
+      v['adsFaqToggle' + i] = () => this.setState(s => ({ adsFaq: s.adsFaq === i ? null : i }));
+    });
+
+    v.serviciosMenuIconStyle = "display:inline-block;font-size:9px;transition:transform .3s ease;transform:rotate(" + (this.state.serviciosMenuOpen ? '180deg' : '0deg') + ')';
+    v.serviciosMenuPanelStyle = 'position:absolute;top:calc(100% + 14px);left:0;min-width:190px;background:rgba(15,25,35,.98);border:1px solid rgba(184,148,106,.3);box-shadow:0 24px 50px rgba(0,0,0,.45);display:flex;flex-direction:column;padding:6px;z-index:95;font-size:10.5px;letter-spacing:.14em;transition:opacity .25s ease,transform .25s ease;' +
+      (this.state.serviciosMenuOpen ? 'opacity:1;transform:translateY(0);pointer-events:auto' : 'opacity:0;transform:translateY(-6px);pointer-events:none');
+    v.toggleServiciosMenu = () => this.setState(s => ({ serviciosMenuOpen: !s.serviciosMenuOpen }));
+
+    v.submitLabel = this.state.sent ? 'Mensaje enviado ✓' : 'Enviar consulta →';
+    v.onSubmit = e => { e.preventDefault(); this.setState({ sent: true }); };
+    return v;
+  }
+}
+</script>
+</body>
+</html>
