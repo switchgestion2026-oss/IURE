@@ -270,15 +270,27 @@
         <input type="hidden" name="origen" value="Google Ads">
         <label style="display:grid;gap:4px">
           <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(15,25,35,.5)">Nombre</span>
-          <input type="text" name="nombre" placeholder="Tu nombre y apellido" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:6px 0;font-size:15px;font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
+          <input type="text" name="nombre" autocomplete="name" placeholder="Tu nombre y apellido" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:6px 0;font-size:15px;font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
         </label>
         <label style="display:grid;gap:4px">
-          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(15,25,35,.5)">Especialidad y ciudad</span>
-          <input type="text" name="especialidad" placeholder="Laboral, Tandil…" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:6px 0;font-size:15px;font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(15,25,35,.5)">Especialidad</span>
+          <select name="especialidad" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:6px 0;font-size:15px;font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
+            <option value="">Elegí una opción</option>
+            <option value="Accidentes / Lesiones">Accidentes / Lesiones</option>
+            <option value="Derecho Laboral">Derecho Laboral</option>
+            <option value="Derecho Penal">Derecho Penal</option>
+            <option value="Divorcios y Familia">Divorcios y Familia</option>
+            <option value="Sucesiones y Herencias">Sucesiones y Herencias</option>
+            <option value="Otra">Otra</option>
+          </select>
+        </label>
+        <label style="display:grid;gap:4px">
+          <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(15,25,35,.5)">Ciudad</span>
+          <input type="text" name="ciudad" autocomplete="address-level2" placeholder="Tu ciudad" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:6px 0;font-size:15px;font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
         </label>
         <label style="display:grid;gap:4px">
           <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(15,25,35,.5)">WhatsApp</span>
-          <input type="text" name="whatsapp" placeholder="Tu número" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:6px 0;font-size:15px;font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
+          <input type="tel" name="whatsapp" autocomplete="tel" placeholder="Tu número" style="border:0;border-bottom:1px solid rgba(15,25,35,.25);background:transparent;padding:6px 0;font-size:15px;font-weight:300;color:#0F1923;outline:none" style-focus="border-bottom:1px solid #B8946A">
         </label>
         <button type="submit" style="{{ submitBtnStyle }}" style-hover="background:#B8946A;color:#0F1923">{{ submitLabel }}</button>
       </form>
