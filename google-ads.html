@@ -127,9 +127,9 @@
   </section>
 
   <section id="sistema" style="border-top:1px solid rgba(184,148,106,.14);padding:clamp(64px,8vw,120px) 0">
-    <div class="g2" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(240px,.72fr) minmax(320px,1.6fr);gap:clamp(28px,4vw,64px);align-items:start">
+    <div class="g2" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(300px,1.05fr) minmax(320px,1.35fr);gap:clamp(28px,4vw,64px);align-items:start">
       <div style="position:relative;align-self:stretch;min-height:260px">
-        <img src="assets/personaje-grafico.webp" alt="Escultura clásica señalando un gráfico de resultados ascendente" style="display:block;width:100%;max-width:640px;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))">
+        <img src="assets/personaje-grafico.webp" alt="Escultura clásica señalando un gráfico de resultados ascendente" style="display:block;width:100%;max-width:760px;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))">
       </div>
       <div>
         <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Cómo lo hacemos</div>
@@ -226,18 +226,27 @@
             <input type="number" placeholder="Ej: 400000" onInput="{{ setPresupuesto }}" style="border:0;border-bottom:1px solid rgba(245,242,236,.3);background:transparent;color:#F5F2EC;padding:8px 0;font-size:15px;font-weight:300;outline:none">
           </label>
           <div style="{{ resultEstimarStyle }}">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px">
+            <div style="margin-top:8px">
+              <div style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,242,236,.45)">Personas buscando activamente que van a ver tu anuncio, por mes</div>
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:44px;color:#B8946A">{{ clicsEstimados }}</div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px;border-top:1px solid rgba(184,148,106,.16);padding-top:20px">
               <div>
-                <div style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,242,236,.45)">Clics estimados/mes</div>
-                <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:32px;color:#B8946A">{{ clicsEstimados }}</div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px;color:#F5F2EC">83%</div>
+                <div style="font-weight:300;font-size:11px;line-height:1.4;color:rgba(245,242,236,.5);margin-top:4px">usa Google todos los días para buscar información</div>
               </div>
               <div>
-                <div style="font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,242,236,.45)">Consultas estimadas/mes</div>
-                <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:32px;color:#B8946A">{{ consultasEstimadas }}</div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px;color:#F5F2EC">82%</div>
+                <div style="font-weight:300;font-size:11px;line-height:1.4;color:rgba(245,242,236,.5);margin-top:4px">pasa por Google antes de elegir a quién contratar</div>
+              </div>
+              <div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px;color:#F5F2EC">67%</div>
+                <div style="font-weight:300;font-size:11px;line-height:1.4;color:rgba(245,242,236,.5);margin-top:4px">termina eligiendo otra marca por lo que encuentra en Google</div>
               </div>
             </div>
+            <p style="font-weight:300;font-size:11px;line-height:1.5;color:rgba(245,242,236,.35);margin:14px 0 0">Fuente: Google/YouTube, encuesta Ipsos.</p>
           </div>
-          <p style="font-weight:300;font-size:12px;line-height:1.6;color:rgba(245,242,236,.4);margin:8px 0 0">Estimación orientativa según CPC de mercado 2026 y una tasa de conversión conservadora (3-6%). No reemplaza el diagnóstico real de tu cuenta — depende de tu nivel de calidad, tu landing y tu segmentación.</p>
+          <p style="font-weight:300;font-size:12px;line-height:1.6;color:rgba(245,242,236,.4);margin:8px 0 0">Estimación orientativa según CPC de mercado 2026. Cuántas de esas personas terminan contactándote depende de tu landing, tu segmentación y tu nivel de calidad — ahí es donde trabajamos.</p>
         </div>
       </div>
 
@@ -257,14 +266,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section style="background:#F5F2EC;color:#0F1923;padding:clamp(56px,7vw,96px) 0">
-    <div style="max-width:900px;margin:0 auto;padding:0 clamp(20px,4vw,48px);text-align:center">
-      <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#9A7847">Resultados</div>
-      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(26px,3vw,40px);line-height:1.05;text-transform:uppercase;margin:14px 0 0;color:#0F1923">Todavía no publicamos cifras propias.</h2>
-      <p style="font-weight:300;font-size:15.5px;line-height:1.65;color:rgba(15,25,35,.62);margin:16px auto 0;max-width:52ch">Preferimos mostrar números reales de nuestras campañas antes que ejemplos genéricos. Esta sección se actualiza en cuanto tengamos los primeros resultados propios.</p>
     </div>
   </section>
 
@@ -423,9 +424,6 @@ class Component extends DCLogic {
     const cpc = this.cpcPorEspecialidad()[this.state.especialidad];
     const clicsEst = this.state.presupuesto ? Math.floor(this.state.presupuesto / cpc) : null;
     v.clicsEstimados = clicsEst !== null ? clicsEst : '—';
-    v.consultasEstimadas = clicsEst !== null
-      ? Math.round(clicsEst * 0.03) + '–' + Math.round(clicsEst * 0.06)
-      : '—';
     v.resultEstimarStyle = clicsEst !== null ? 'border-top:1px solid rgba(184,148,106,.16);padding-top:18px;margin-top:4px' : 'display:none';
 
     v.setInversion = e => this.setState({ inversion: e.target.value ? Number(e.target.value) : null });
