@@ -93,7 +93,9 @@
       <div style="margin-top:clamp(36px,5vw,56px);display:flex;flex-direction:column;align-items:center;gap:28px">
         <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(64px,10vw,140px);line-height:1;color:#B8946A">{{ counterCount }}</div>
         <div onClick="{{ incrementCounter }}" style="cursor:pointer;background:#B8946A;color:#0F1923;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:16px 28px;border-radius:2px;transition:transform .3s" style-hover="transform:translateY(-2px)">Sumar consulta perdida</div>
-        <p style="font-weight:300;font-size:16px;line-height:1.6;color:rgba(245,242,236,.75);max-width:52ch;min-height:52px;margin:0">{{ counterReasonText }}</p>
+        <div style="border-left:3px solid #B8946A;background:rgba(184,148,106,.08);padding:16px 22px;max-width:56ch;min-height:60px;display:flex;align-items:center;text-align:left">
+          <p style="font-weight:500;font-size:18px;line-height:1.5;color:#F5F2EC;margin:0">{{ counterReasonText }}</p>
+        </div>
       </div>
     </div>
   </section>
