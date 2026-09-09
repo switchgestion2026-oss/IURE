@@ -220,6 +220,7 @@
               <option value="familia" style="background:#0F1923">Divorcios y Familia</option>
               <option value="sucesiones" style="background:#0F1923">Sucesiones y Herencias</option>
             </select>
+            <span style="font-family:'DM Mono',monospace;font-size:11px;color:#B8946A">CPC aplicado: {{ cpcAplicado }}</span>
           </label>
           <label style="display:grid;gap:6px">
             <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,242,236,.5)">Presupuesto mensual (ARS)</span>
@@ -244,7 +245,7 @@
                 <div style="font-weight:300;font-size:11px;line-height:1.4;color:rgba(245,242,236,.5);margin-top:4px">termina eligiendo otra marca por lo que encuentra en Google</div>
               </div>
             </div>
-            <p style="font-weight:300;font-size:11px;line-height:1.5;color:rgba(245,242,236,.35);margin:14px 0 0">Fuente: Google/YouTube, encuesta Ipsos.</p>
+            <p style="font-weight:300;font-size:11px;line-height:1.5;color:rgba(245,242,236,.35);margin:14px 0 0">Fuente: Google/YouTube, encuesta Ipsos. CPC de Accidentes de Tránsito según campaña propia (Neuquén); resto según datos de mercado 2026.</p>
           </div>
           <p style="font-weight:300;font-size:12px;line-height:1.6;color:rgba(245,242,236,.4);margin:8px 0 0">Estimación orientativa según CPC de mercado 2026. Cuántas de esas personas terminan contactándote depende de tu landing, tu segmentación y tu nivel de calidad — ahí es donde trabajamos.</p>
         </div>
@@ -369,7 +370,7 @@ class Component extends DCLogic {
     calcMode: 'estimar', especialidad: 'accidentes', presupuesto: null, inversion: null, clics: null };
 
   cpcPorEspecialidad() {
-    return { accidentes: 5000, laboral: 4250, penal: 3500, familia: 2500, sucesiones: 2100 };
+    return { accidentes: 950, laboral: 4250, penal: 3500, familia: 2500, sucesiones: 2100 };
   }
 
   reasons() {
@@ -422,6 +423,7 @@ class Component extends DCLogic {
     v.setEspecialidad = e => this.setState({ especialidad: e.target.value });
     v.setPresupuesto = e => this.setState({ presupuesto: e.target.value ? Number(e.target.value) : null });
     const cpc = this.cpcPorEspecialidad()[this.state.especialidad];
+    v.cpcAplicado = '$' + cpc.toLocaleString('es-AR') + ' ARS';
     const clicsEst = this.state.presupuesto ? Math.floor(this.state.presupuesto / cpc) : null;
     v.clicsEstimados = clicsEst !== null ? clicsEst : '—';
     v.resultEstimarStyle = clicsEst !== null ? 'border-top:1px solid rgba(184,148,106,.16);padding-top:18px;margin-top:4px' : 'display:none';
