@@ -127,7 +127,7 @@
   <section id="sistema" style="border-top:1px solid rgba(184,148,106,.14);padding:clamp(64px,8vw,120px) 0">
     <div class="g2" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(240px,.72fr) minmax(320px,1.6fr);gap:clamp(28px,4vw,64px);align-items:start">
       <div style="position:relative;align-self:stretch;min-height:260px">
-        <img src="assets/personaje-grafico.webp" alt="Escultura clásica señalando un gráfico de resultados ascendente" style="display:block;width:100%;max-width:480px;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))">
+        <img src="assets/personaje-grafico.webp" alt="Escultura clásica señalando un gráfico de resultados ascendente" style="display:block;width:100%;max-width:640px;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))">
       </div>
       <div>
         <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Cómo lo hacemos</div>
@@ -254,7 +254,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { adsFaq: null, counterCount: 0, serviciosMenuOpen: false, sent: false };
+  state = { adsFaq: null, counterCount: 1054, hasClicked: false, serviciosMenuOpen: false, sent: false };
 
   reasons() {
     return [
@@ -284,10 +284,10 @@ class Component extends DCLogic {
     const v = {};
     const reasons = this.reasons();
     v.counterCount = this.state.counterCount;
-    v.counterReasonText = this.state.counterCount === 0
+    v.counterReasonText = !this.state.hasClicked
       ? 'Sumá una consulta perdida y descubrí por qué pasa.'
-      : reasons[(this.state.counterCount - 1) % reasons.length];
-    v.incrementCounter = () => this.setState(s => ({ counterCount: s.counterCount + 1 }));
+      : reasons[(this.state.counterCount - 1055) % reasons.length];
+    v.incrementCounter = () => this.setState(s => ({ counterCount: s.counterCount + 1, hasClicked: true }));
 
     [0, 1, 2, 3].forEach(i => {
       v['adsFaqBody' + i] = this.adsFaqBody(i);
