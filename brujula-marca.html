@@ -1,14 +1,6 @@
 <!doctype html>
 <html lang="es">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4LEW9896BN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-4LEW9896BN');
-</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#0F1923">
@@ -49,6 +41,9 @@
   .wrap{max-width:780px; margin:0 auto; padding:2.5rem 1.25rem 6rem;}
   @media(max-width:600px){ .wrap{padding:1.8rem 1rem 5rem;} }
 
+  .header-visual{display:flex; justify-content:center; margin-bottom:1.6rem;}
+  .header-visual img{width:min(130px,32vw); height:auto; filter:drop-shadow(0 16px 28px rgba(0,0,0,0.45));}
+
   .eyebrow{
     font-family:var(--font-label);
     font-size:11px;
@@ -87,14 +82,16 @@
     background:rgba(245,242,236,0.04);
     padding:1.2rem 1.3rem 1.4rem;
   }
+  .preview-header{display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:0 0 0.75rem;}
   .preview-label{
     font-family:var(--font-label);
     font-size:10.5px;
     letter-spacing:0.1em;
     text-transform:uppercase;
     color:var(--crema-soft);
-    margin:0 0 0.75rem;
+    margin:0;
   }
+  .preview-visual{width:52px; height:52px; object-fit:contain; flex-shrink:0; filter:drop-shadow(0 8px 16px rgba(0,0,0,0.4));}
   .preview-body{display:flex; flex-wrap:wrap; gap:1.4rem; align-items:center;}
   .preview-swatches{display:flex; gap:0; border-radius:2px; overflow:hidden; height:2.6rem; flex:0 0 auto; box-shadow:0 0 0 1px var(--crema-line);}
   .preview-swatches span{width:1.7rem; height:100%; display:block;}
@@ -440,12 +437,18 @@
 </head>
 <body>
 <div class="wrap">
+  <div class="header-visual">
+    <img src="assets/Brujula.webp" alt="Brújula de marca" loading="lazy">
+  </div>
   <p class="eyebrow">Iure Marketing Jurídico · identidad visual</p>
   <h1>¿Cómo se ve tu marca?</h1>
   <p class="lede">Todavía no tenés una identidad visual definida — <strong>este cuestionario es el punto de partida</strong>. Son pocas preguntas, casi todo a elección múltiple. No hay respuesta correcta: cada clic es una pista para diseñar tu marca.</p>
 
   <div class="preview" id="preview">
-    <p class="preview-label">Tu perfil, en construcción</p>
+    <div class="preview-header">
+      <p class="preview-label">Tu perfil, en construcción</p>
+      <img class="preview-visual" src="assets/desing.webp" alt="" loading="lazy">
+    </div>
     <div class="preview-body" id="previewBody">
       <div class="preview-empty-swatch"></div>
       <span class="preview-word brand-word" style="font-family:var(--font-title);">Tu Estudio</span>
@@ -558,6 +561,22 @@
           <input type="text" id="espOtherInput" placeholder="Especificá tu especialidad...">
         </div>
       </div>
+    </section>
+
+    <section class="q">
+      <div class="q-head">
+        <span class="q-num">Opcional</span>
+        <h2 class="q-title">Fotos y material para tu web</h2>
+        <p class="q-hint">No hace falta para enviar el formulario — podés mandarlo ahora o después.</p>
+      </div>
+      <div class="static-note" style="margin-top:0;">
+        <strong>¿Qué foto sirve para qué?</strong><br>
+        · Sección "Sobre mí": una foto tuya profesional, de frente o trabajando.<br>
+        · Sección principal (portada): la imagen grande de entrada — puede ser vos, tu oficina o el edificio.<br>
+        · Estudio / lugar de trabajo: interior, sala de espera, fachada.<br>
+        · Logo, si ya tenés uno.
+      </div>
+      <a href="https://forms.gle/Lu8jeNvFZA69w1t66" target="_blank" rel="noopener" class="submit-btn" style="display:inline-block;text-decoration:none;margin-top:14px;">Subir fotos y archivos</a>
     </section>
 
     <div class="submit-row">
