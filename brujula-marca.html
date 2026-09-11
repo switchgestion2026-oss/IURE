@@ -38,7 +38,7 @@
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
   }
-  .wrap{max-width:780px; margin:0 auto; padding:2.5rem 1.25rem 6rem;}
+  .wrap{max-width:1400px; margin:0 auto; padding:2.5rem 3rem 6rem;}
   @media(max-width:600px){ .wrap{padding:1.8rem 1rem 5rem;} }
 
   .hero-row{display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;}
@@ -108,6 +108,25 @@
     color:var(--oro-dark);
   }
   .preview-placeholder{color:var(--crema-soft); font-size:0.9rem; font-style:italic;}
+
+  .sticky-top{position:sticky; top:0; z-index:20; background:var(--noche); padding-bottom:1.2rem; margin-bottom:1rem; border-bottom:1px solid var(--crema-line);}
+
+  .progress-wrap{margin-top:0.4rem;}
+  .progress-label{font-family:var(--font-label); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--crema-soft); margin:0 0 0.5rem;}
+  .progress-track{height:5px; background:rgba(245,242,236,0.14); border-radius:3px; overflow:hidden;}
+  .progress-fill{height:100%; width:11%; background:var(--oro); transition:width .25s ease;}
+
+  .step-nav{margin-top:2.6rem; display:flex; gap:0.8rem; align-items:center; flex-wrap:wrap;}
+  .step-btn{
+    font-family:var(--font-body); font-weight:600; font-size:14px;
+    padding:12px 22px; border-radius:var(--radius); cursor:pointer; min-height:44px;
+    transition:opacity .15s, border-color .15s, color .15s;
+  }
+  .step-back{background:none; border:1px solid var(--crema-line); color:var(--crema-soft);}
+  .step-back:hover{border-color:var(--oro); color:var(--oro);}
+  .step-next{background:var(--oro); border:1px solid var(--oro); color:var(--noche);}
+  .step-next:hover{opacity:0.85;}
+  .step-next:disabled{opacity:0.35; cursor:not-allowed;}
 
   /* section */
   section.q{margin:2.6rem 0;}
@@ -207,14 +226,14 @@
   .esp-grid{display:flex; flex-wrap:wrap; gap:0.6rem;}
 
   /* type combos */
-  .type-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:0.8rem;}
+  .type-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(190px,1fr)); gap:0.6rem;}
   .type-card{
     position:relative;
     border:1px solid var(--line);
     border-top:3px solid var(--tcard-accent, var(--line));
     border-radius:var(--radius);
     background:var(--crema);
-    padding:1.1rem 1.2rem;
+    padding:0.7rem 0.8rem;
     cursor:pointer;
     text-align:left;
     transition:border-color .15s, box-shadow .15s, background .15s, color .15s;
@@ -246,18 +265,18 @@
   }
   .type-card.selected.tono-match::before{ background:var(--oro); color:var(--noche); }
   .type-tag{
-    font-family:var(--font-body); font-size:13px; font-weight:700; letter-spacing:0.005em;
-    color:var(--tcard-accent, var(--oro-dark)); display:flex; align-items:center; gap:7px; margin-bottom:2px;
+    font-family:var(--font-body); font-size:11px; font-weight:700; letter-spacing:0.005em;
+    color:var(--tcard-accent, var(--oro-dark)); display:flex; align-items:center; gap:6px; margin-bottom:2px;
   }
-  .type-tag-dot{width:9px; height:9px; border-radius:50%; background:var(--tcard-accent, var(--line)); flex-shrink:0;}
+  .type-tag-dot{width:7px; height:7px; border-radius:50%; background:var(--tcard-accent, var(--line)); flex-shrink:0;}
   .type-category{
-    font-family:var(--font-label); font-size:9.5px; letter-spacing:0.08em; text-transform:uppercase;
-    color:var(--ink-soft); display:block; margin:0 0 10px 16px;
+    font-family:var(--font-label); font-size:8px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--ink-soft); display:block; margin:0 0 6px 13px;
   }
-  .type-sample{font-size:2.5rem; line-height:1.02; display:block;}
-  .type-phrase{font-size:14.5px; line-height:1.4; color:var(--ink); display:block; margin-top:6px;}
-  .type-name{font-family:var(--font-body); font-size:12.5px; font-weight:600; color:var(--ink-soft); display:block; margin-top:8px;}
-  .type-body-sample{margin-top:10px; font-size:13.5px; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:9px;}
+  .type-sample{font-size:1.6rem; line-height:1.02; display:block;}
+  .type-phrase{font-size:11.5px; line-height:1.35; color:var(--ink); display:block; margin-top:4px;}
+  .type-name{font-family:var(--font-body); font-size:10.5px; font-weight:600; color:var(--ink-soft); display:block; margin-top:5px;}
+  .type-body-sample{margin-top:6px; font-size:11px; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:6px;}
   .type-body-sample b{color:var(--ink); font-weight:600;}
   .type-card:focus-visible{outline:2px solid var(--oro); outline-offset:2px;}
 
@@ -438,28 +457,36 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="hero-row">
-    <div class="hero-text">
-      <p class="eyebrow">Iure Marketing Jurídico · identidad visual</p>
-      <h1>¿Cómo se ve tu marca?</h1>
-      <p class="lede">Todavía no tenés una identidad visual definida — <strong>este cuestionario es el punto de partida</strong>. Son pocas preguntas, casi todo a elección múltiple. No hay respuesta correcta: cada clic es una pista para diseñar tu marca.</p>
-    </div>
-    <img class="hero-brujula" src="assets/Brujula.webp" alt="Brújula de marca" loading="lazy">
-  </div>
-
-  <div class="preview" id="preview">
-    <img class="preview-visual" src="assets/desing.webp" alt="" loading="lazy">
-    <div class="preview-content">
-      <p class="preview-label">Tu perfil, en construcción</p>
-      <div class="preview-body" id="previewBody">
-        <div class="preview-empty-swatch"></div>
-        <span class="preview-word brand-word" style="font-family:var(--font-title);">Tu Estudio</span>
-        <p class="preview-placeholder">Empezá a elegir abajo y acá vas viendo cómo se arma tu estilo.</p>
+  <div class="sticky-top" id="stickyTop">
+    <div class="hero-row">
+      <div class="hero-text">
+        <p class="eyebrow">Iure Marketing Jurídico · identidad visual</p>
+        <h1>¿Cómo se ve tu marca?</h1>
+        <p class="lede">Todavía no tenés una identidad visual definida — <strong>este cuestionario es el punto de partida</strong>. Son pocas preguntas, casi todo a elección múltiple. No hay respuesta correcta: cada clic es una pista para diseñar tu marca.</p>
       </div>
+      <img class="hero-brujula" src="assets/Brujula.webp" alt="Brújula de marca" loading="lazy">
+    </div>
+
+    <div class="preview" id="preview">
+      <img class="preview-visual" src="assets/desing.webp" alt="" loading="lazy">
+      <div class="preview-content">
+        <p class="preview-label">Tu perfil, en construcción</p>
+        <div class="preview-body" id="previewBody">
+          <div class="preview-empty-swatch"></div>
+          <span class="preview-word brand-word" style="font-family:var(--font-title);">Tu Estudio</span>
+          <p class="preview-placeholder">Empezá a elegir abajo y acá vas viendo cómo se arma tu estilo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-wrap">
+      <p class="progress-label" id="progressLabel">Paso 1 de 9</p>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
     </div>
   </div>
 
   <form id="form">
+    <div class="steps-wrap" id="stepsWrap">
     <section class="q">
       <div class="q-head">
         <span class="q-num">01 / 08</span>
@@ -581,11 +608,14 @@
       </div>
       <a href="https://forms.gle/Lu8jeNvFZA69w1t66" target="_blank" rel="noopener" class="submit-btn" style="display:inline-block;text-decoration:none;margin-top:14px;">Subir fotos y archivos</a>
     </section>
-
-    <div class="submit-row">
-      <button type="submit" class="submit-btn" id="submitBtn">Ver mi perfil visual</button>
-      <p class="submit-note" id="submitNote">Faltan: adjetivos, paleta, tipografía, estilo y tono.</p>
     </div>
+
+    <div class="step-nav">
+      <button type="button" class="step-btn step-back" id="backBtn">← Atrás</button>
+      <button type="button" class="step-btn step-next" id="nextBtn">Siguiente →</button>
+      <button type="submit" class="submit-btn" id="submitBtn" hidden>Ver mi perfil visual</button>
+    </div>
+    <p class="submit-note" id="submitNote"></p>
   </form>
 
   <div class="done-card" id="doneCard" hidden>
@@ -1072,6 +1102,14 @@
 
   var submitBtn = document.getElementById("submitBtn");
   var submitNote = document.getElementById("submitNote");
+  var backBtn = document.getElementById("backBtn");
+  var nextBtn = document.getElementById("nextBtn");
+  var progressLabel = document.getElementById("progressLabel");
+  var progressFill = document.getElementById("progressFill");
+  var stepsWrap = document.getElementById("stepsWrap");
+  var steps = Array.prototype.slice.call(stepsWrap.children);
+  var currentStep = 0;
+
   function missing(){
     var faltan = [];
     if(!state.adjetivos.length) faltan.push("adjetivos");
@@ -1081,12 +1119,41 @@
     if(!state.tono) faltan.push("tono");
     return faltan;
   }
-  function updateSubmitState(){
-    var faltan = missing();
-    submitNote.textContent = faltan.length ? ("Falta elegir: " + faltan.join(", ") + ".") : "Todo listo para enviar.";
-    submitNote.classList.remove("error");
+  function stepValid(i){
+    if(i===1) return !!state.tono;
+    if(i===2) return !!state.paleta;
+    if(i===3) return !!state.tipo;
+    if(i===4) return !!state.adjetivos.length;
+    if(i===5) return !!state.estilo;
+    return true;
   }
-  updateSubmitState();
+  function showStep(i){
+    currentStep = i;
+    steps.forEach(function(s, idx){ s.hidden = idx !== i; });
+    progressLabel.textContent = "Paso " + (i+1) + " de " + steps.length;
+    progressFill.style.width = (((i+1) / steps.length) * 100) + "%";
+    backBtn.hidden = i === 0;
+    var isLast = i === steps.length - 1;
+    nextBtn.hidden = isLast;
+    submitBtn.hidden = !isLast;
+    nextBtn.disabled = !stepValid(i);
+    submitNote.textContent = "";
+    submitNote.classList.remove("error");
+    window.scrollTo({top: 0, behavior:'smooth'});
+  }
+  backBtn.addEventListener("click", function(){ if(currentStep > 0) showStep(currentStep - 1); });
+  nextBtn.addEventListener("click", function(){
+    if(!stepValid(currentStep)){
+      submitNote.textContent = "Elegí una opción para continuar.";
+      submitNote.classList.add("error");
+      return;
+    }
+    if(currentStep < steps.length - 1) showStep(currentStep + 1);
+  });
+  function updateSubmitState(){
+    nextBtn.disabled = !stepValid(currentStep);
+  }
+  showStep(0);
 
   /* ---------------------------------------------------------
      MOCKUP EN VIVO (pantalla final)
