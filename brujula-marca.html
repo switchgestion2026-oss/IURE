@@ -41,8 +41,9 @@
   .wrap{max-width:780px; margin:0 auto; padding:2.5rem 1.25rem 6rem;}
   @media(max-width:600px){ .wrap{padding:1.8rem 1rem 5rem;} }
 
-  .hero-row{display:flex; align-items:center; gap:1rem; flex-wrap:wrap;}
-  .hero-brujula{width:min(190px,40vw); height:auto; flex-shrink:0; margin-left:auto; filter:drop-shadow(0 16px 28px rgba(0,0,0,0.45));}
+  .hero-row{display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;}
+  .hero-text{flex:1 1 320px; min-width:0;}
+  .hero-brujula{width:min(240px,44vw); height:auto; flex-shrink:0; margin-left:auto; filter:drop-shadow(0 16px 28px rgba(0,0,0,0.45));}
 
   .eyebrow{
     font-family:var(--font-label);
@@ -77,10 +78,6 @@
   /* live preview (mientras completa) */
   .preview{
     margin:2rem 0 2.6rem;
-    border:1px solid var(--crema-line);
-    border-radius:var(--radius);
-    background:rgba(245,242,236,0.04);
-    padding:1.2rem 1.3rem 1.4rem;
     display:flex;
     align-items:center;
     gap:1.5rem;
@@ -441,12 +438,14 @@
 </head>
 <body>
 <div class="wrap">
-  <p class="eyebrow">Iure Marketing Jurídico · identidad visual</p>
   <div class="hero-row">
-    <h1>¿Cómo se ve tu marca?</h1>
+    <div class="hero-text">
+      <p class="eyebrow">Iure Marketing Jurídico · identidad visual</p>
+      <h1>¿Cómo se ve tu marca?</h1>
+      <p class="lede">Todavía no tenés una identidad visual definida — <strong>este cuestionario es el punto de partida</strong>. Son pocas preguntas, casi todo a elección múltiple. No hay respuesta correcta: cada clic es una pista para diseñar tu marca.</p>
+    </div>
     <img class="hero-brujula" src="assets/Brujula.webp" alt="Brújula de marca" loading="lazy">
   </div>
-  <p class="lede">Todavía no tenés una identidad visual definida — <strong>este cuestionario es el punto de partida</strong>. Son pocas preguntas, casi todo a elección múltiple. No hay respuesta correcta: cada clic es una pista para diseñar tu marca.</p>
 
   <div class="preview" id="preview">
     <img class="preview-visual" src="assets/desing.webp" alt="" loading="lazy">
