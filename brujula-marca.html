@@ -38,8 +38,8 @@
   @media (prefers-reduced-motion: reduce){
     *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
   }
-  .wrap{max-width:1400px; margin:0 auto; padding:2.5rem 3rem 6rem;}
-  @media(max-width:600px){ .wrap{padding:1.8rem 1rem 5rem;} }
+  .wrap{max-width:1400px; margin:0 auto; padding:2.5rem 3rem 7.5rem;}
+  @media(max-width:600px){ .wrap{padding:1.8rem 1rem 8rem;} }
 
   .hero-row{display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;}
   .hero-text{flex:1 1 320px; min-width:0;}
@@ -124,7 +124,15 @@
   .progress-track{height:5px; background:rgba(245,242,236,0.14); border-radius:3px; overflow:hidden;}
   .progress-fill{height:100%; width:11%; background:var(--oro); transition:width .25s ease;}
 
-  .step-nav{margin-top:2.6rem; display:flex; gap:0.8rem; align-items:center; flex-wrap:wrap;}
+  .step-nav{
+    position:fixed; left:0; right:0; bottom:0; z-index:30;
+    background:var(--noche);
+    border-top:1px solid var(--crema-line);
+    padding:0.9rem 3rem;
+    display:flex; gap:0.8rem; align-items:center; flex-wrap:wrap;
+  }
+  .step-nav .submit-note{flex-basis:100%; margin:0;}
+  @media(max-width:600px){ .step-nav{padding:0.8rem 1rem;} }
   .step-btn{
     font-family:var(--font-body); font-weight:600; font-size:14px;
     padding:12px 22px; border-radius:var(--radius); cursor:pointer; min-height:44px;
@@ -135,6 +143,9 @@
   .step-next{background:var(--oro); border:1px solid var(--oro); color:var(--noche);}
   .step-next:hover{opacity:0.85;}
   .step-next:disabled{opacity:0.35; cursor:not-allowed;}
+
+  .steps-wrap{padding-bottom:6rem;}
+  @media(max-width:600px){ .steps-wrap{padding-bottom:7rem;} }
 
   /* section */
   section.q{margin:2.6rem 0;}
@@ -626,8 +637,8 @@
       <button type="button" class="step-btn step-back" id="backBtn">← Atrás</button>
       <button type="button" class="step-btn step-next" id="nextBtn">Siguiente →</button>
       <button type="submit" class="submit-btn" id="submitBtn" hidden>Ver mi perfil visual</button>
+      <p class="submit-note" id="submitNote"></p>
     </div>
-    <p class="submit-note" id="submitNote"></p>
   </form>
 
   <div class="done-card" id="doneCard" hidden>
