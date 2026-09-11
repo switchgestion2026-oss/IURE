@@ -104,10 +104,18 @@
     font-size:11px;
     padding:0.25rem 0.6rem;
     border-radius:var(--radius);
-    background:var(--oro-tint);
-    color:var(--oro-dark);
+    background:var(--pv-accent, var(--oro-tint));
+    color:var(--pv-accent-text, var(--oro-dark));
   }
   .preview-placeholder{color:var(--crema-soft); font-size:0.9rem; font-style:italic;}
+  .preview-type-sample{display:flex; flex-direction:column; gap:0.3rem; margin-top:0.5rem; width:100%;}
+  .preview-type-sub{font-size:1.05rem; font-weight:700; color:var(--pv-accent, var(--crema));}
+  .preview-type-lower{font-size:0.85rem; color:var(--crema-soft); text-transform:lowercase;}
+  .preview-type-upper{font-size:0.72rem; letter-spacing:0.05em; color:var(--crema-soft); text-transform:uppercase;}
+  .preview-icons{display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem; width:100%;}
+  .preview-icons svg{width:20px; height:20px; stroke:var(--pv-accent, var(--oro)); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;}
+  .preview-contact{display:flex; flex-direction:column; gap:0.15rem; margin-top:0.5rem; width:100%;}
+  .preview-contact-line{font-size:0.8rem; color:var(--crema-soft); letter-spacing:0.01em;}
 
   .sticky-top{position:sticky; top:0; z-index:20; background:var(--noche); padding-top:0.8rem; padding-bottom:1rem; margin:1.5rem 0 1rem; border-bottom:1px solid var(--crema-line);}
 
@@ -496,9 +504,13 @@
       <div class="field">
         <input type="text" id="negocio" maxlength="80" placeholder="Ej: Estudio Pérez, García Abogados...">
       </div>
-      <div class="field" style="margin-bottom:0;">
+      <div class="field">
         <label for="email" style="display:block;font-size:12.5px;font-weight:500;margin-bottom:0.35rem;color:var(--crema-soft);">Email de contacto <span style="font-weight:400;opacity:0.65;">(opcional)</span></label>
         <input type="email" id="email" maxlength="120" placeholder="nombre@estudio.com">
+      </div>
+      <div class="field" style="margin-bottom:0;">
+        <label for="whatsapp" style="display:block;font-size:12.5px;font-weight:500;margin-bottom:0.35rem;color:var(--crema-soft);">WhatsApp <span style="font-weight:400;opacity:0.65;">(opcional)</span></label>
+        <input type="tel" id="whatsapp" maxlength="20" placeholder="Ej: 2284 123456">
       </div>
     </section>
 
@@ -1040,11 +1052,28 @@
   espOtherInput.addEventListener("input", function(e){ state.espOtro = e.target.value; });
 
   document.getElementById("negocio").addEventListener("input", refreshBrandWord);
+  document.getElementById("email").addEventListener("input", function(){ update(); });
+  document.getElementById("whatsapp").addEventListener("input", function(){ update(); });
 
   /* ---------------------------------------------------------
      LIVE PREVIEW (mientras completa)
   --------------------------------------------------------- */
   var previewBody = document.getElementById("previewBody");
+  var previewEl = document.getElementById("preview");
+  function applyPaletteToPreview(){
+    if(!state.paleta || !state.paleta.colores || !state.paleta.colores.length){
+      previewEl.style.removeProperty("--pv-accent");
+      previewEl.style.removeProperty("--pv-accent-text");
+      return;
+    }
+    var cols = state.paleta.colores.slice().sort(function(a,b){ return hexToHsl(b).l - hexToHsl(a).l; });
+    var light = cols[0], dark = cols[cols.length-1];
+    var accent = state.paleta.colores.filter(function(c){ return c!==light && c!==dark; })[0] || dark;
+    var hsl = hexToHsl(accent);
+    var accentOnDark = hsl.l < 45 ? hslToHex(hsl.h, Math.min(hsl.s+10,90), 62) : accent;
+    previewEl.style.setProperty("--pv-accent", accentOnDark);
+    previewEl.style.setProperty("--pv-accent-text", pickTextColor(accentOnDark));
+  }
   function applyPaletteAndTonoToTypography(){
     if(!tiposEl) return;
     if(state.paleta && state.paleta.colores && state.paleta.colores.length){
@@ -1085,18 +1114,73 @@
     word.style.fontFamily = state.tipo ? state.tipo.tituloFamily : "var(--font-title)";
     word.style.fontWeight = state.tipo ? state.tipo.tituloWeight : 700;
     previewBody.appendChild(word);
-    if(state.adjetivos.length || state.estilo || state.tono){
+
+    if(state.tipo){
+      var typeSample = document.createElement("div"); typeSample.className = "preview-type-sample";
+      var sub = document.createElement("span"); sub.className = "preview-type-line preview-type-sub";
+      sub.style.fontFamily = state.tipo.tituloFamily;
+      sub.textContent = "Estudio Jurídico";
+      typeSample.appendChild(sub);
+      var lower = document.createElement("span"); lower.className = "preview-type-line preview-type-lower";
+      lower.style.fontFamily = state.tipo.cuerpoFamily;
+      lower.textContent = TYPE_PHRASE.toLowerCase();
+      typeSample.appendChild(lower);
+      var upper = document.createElement("span"); upper.className = "preview-type-line preview-type-upper";
+      upper.style.fontFamily = state.tipo.cuerpoFamily;
+      upper.textContent = TYPE_PHRASE.toUpperCase();
+      typeSample.appendChild(upper);
+      previewBody.appendChild(typeSample);
+    }
+
+    if(state.adjetivos.length || state.estilo || state.tono || state.detalles.length){
       var chips = document.createElement("div"); chips.className = "preview-chips";
       state.adjetivos.forEach(function(a){ var c=document.createElement("span"); c.className="preview-chip"; c.textContent=a; chips.appendChild(c); });
       if(state.estilo){ var c2=document.createElement("span"); c2.className="preview-chip"; c2.textContent=state.estilo.nombre; chips.appendChild(c2); }
       if(state.tono){ var c3=document.createElement("span"); c3.className="preview-chip"; c3.textContent=state.tono; chips.appendChild(c3); }
+      state.detalles.forEach(function(id){
+        var d = DATA.detalles.find(function(x){ return x.id===id; });
+        if(d){ var c4=document.createElement("span"); c4.className="preview-chip"; c4.textContent=d.nombre; chips.appendChild(c4); }
+      });
       previewBody.appendChild(chips);
     } else if(!state.paleta && !state.tipo){
       var p = document.createElement("p"); p.className="preview-placeholder";
       p.textContent = "Empezá a elegir abajo y acá vas viendo cómo se arma tu estilo.";
       previewBody.appendChild(p);
     }
+
+    var emailVal = document.getElementById("email").value.trim();
+    var whatsappVal = document.getElementById("whatsapp").value.trim();
+    if(emailVal || whatsappVal){
+      var contact = document.createElement("div"); contact.className = "preview-contact";
+      var contactFam = state.tipo ? state.tipo.cuerpoFamily : "var(--font-body)";
+      if(emailVal){
+        var eLine = document.createElement("span"); eLine.className = "preview-contact-line";
+        eLine.style.fontFamily = contactFam; eLine.textContent = emailVal;
+        contact.appendChild(eLine);
+      }
+      if(whatsappVal){
+        var wLine = document.createElement("span"); wLine.className = "preview-contact-line";
+        wLine.style.fontFamily = contactFam; wLine.textContent = "WhatsApp " + whatsappVal;
+        contact.appendChild(wLine);
+      }
+      previewBody.appendChild(contact);
+    }
+
+    if(state.especialidades.length){
+      var iconsRow = document.createElement("div"); iconsRow.className = "preview-icons";
+      state.especialidades.forEach(function(id){
+        if(id === 'otra' || !ICONS[id]) return;
+        var esp = DATA.especialidades.find(function(x){ return x.id===id; });
+        var svgWrap = document.createElement("span");
+        svgWrap.title = esp ? esp.nombre : id;
+        svgWrap.innerHTML = '<svg viewBox="0 0 24 24">' + ICONS[id] + '</svg>';
+        iconsRow.appendChild(svgWrap);
+      });
+      if(iconsRow.children.length) previewBody.appendChild(iconsRow);
+    }
+
     applyPaletteAndTonoToTypography();
+    applyPaletteToPreview();
     updateSubmitState();
   }
 
@@ -1189,9 +1273,11 @@
   function buildSummary(){
     var negocio = document.getElementById("negocio").value.trim() || "(sin nombre)";
     var email = document.getElementById("email").value.trim();
+    var whatsapp = document.getElementById("whatsapp").value.trim();
     var lines = [
       "PERFIL VISUAL — " + negocio,
       "Email de contacto: " + (email || "(sin especificar)"),
+      "WhatsApp: " + (whatsapp || "(sin especificar)"),
       "Especialidad/es: " + especialidadesTexto(),
       "Adjetivos de marca: " + state.adjetivos.join(", "),
       "Paleta elegida: " + state.paleta.nombre + " (" + state.paleta.mood + ") — " + state.paleta.colores.join(" / "),
@@ -1222,6 +1308,7 @@
   sendBtn.addEventListener("click", function(){
     var negocio = document.getElementById("negocio").value.trim() || "(sin nombre)";
     var email = document.getElementById("email").value.trim();
+    var whatsapp = document.getElementById("whatsapp").value.trim();
     sendBtn.disabled = true;
     sendBtn.textContent = "Enviando...";
     fetch(APPS_SCRIPT_URL, {
@@ -1231,6 +1318,7 @@
       body: new URLSearchParams({
         nombre: negocio,
         email: email,
+        whatsapp: whatsapp,
         especialidad: especialidadesTexto(),
         mensaje: resultBox.textContent
       })
