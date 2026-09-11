@@ -41,8 +41,8 @@
   .wrap{max-width:780px; margin:0 auto; padding:2.5rem 1.25rem 6rem;}
   @media(max-width:600px){ .wrap{padding:1.8rem 1rem 5rem;} }
 
-  .header-visual{display:flex; justify-content:center; margin-bottom:1.6rem;}
-  .header-visual img{width:min(130px,32vw); height:auto; filter:drop-shadow(0 16px 28px rgba(0,0,0,0.45));}
+  .hero-row{display:flex; align-items:center; gap:1rem; flex-wrap:wrap;}
+  .hero-brujula{width:min(190px,40vw); height:auto; flex-shrink:0; filter:drop-shadow(0 16px 28px rgba(0,0,0,0.45));}
 
   .eyebrow{
     font-family:var(--font-label);
@@ -81,17 +81,21 @@
     border-radius:var(--radius);
     background:rgba(245,242,236,0.04);
     padding:1.2rem 1.3rem 1.4rem;
+    display:flex;
+    align-items:center;
+    gap:1.5rem;
+    flex-wrap:wrap;
   }
-  .preview-header{display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:0 0 0.75rem;}
+  .preview-content{flex:1 1 220px; min-width:0;}
   .preview-label{
     font-family:var(--font-label);
     font-size:10.5px;
     letter-spacing:0.1em;
     text-transform:uppercase;
     color:var(--crema-soft);
-    margin:0;
+    margin:0 0 0.75rem;
   }
-  .preview-visual{width:52px; height:52px; object-fit:contain; flex-shrink:0; filter:drop-shadow(0 8px 16px rgba(0,0,0,0.4));}
+  .preview-visual{width:min(230px,44vw); height:auto; object-fit:contain; flex-shrink:0; filter:drop-shadow(0 20px 34px rgba(0,0,0,0.45));}
   .preview-body{display:flex; flex-wrap:wrap; gap:1.4rem; align-items:center;}
   .preview-swatches{display:flex; gap:0; border-radius:2px; overflow:hidden; height:2.6rem; flex:0 0 auto; box-shadow:0 0 0 1px var(--crema-line);}
   .preview-swatches span{width:1.7rem; height:100%; display:block;}
@@ -437,22 +441,22 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="header-visual">
-    <img src="assets/Brujula.webp" alt="Brújula de marca" loading="lazy">
-  </div>
   <p class="eyebrow">Iure Marketing Jurídico · identidad visual</p>
-  <h1>¿Cómo se ve tu marca?</h1>
+  <div class="hero-row">
+    <h1>¿Cómo se ve tu marca?</h1>
+    <img class="hero-brujula" src="assets/Brujula.webp" alt="Brújula de marca" loading="lazy">
+  </div>
   <p class="lede">Todavía no tenés una identidad visual definida — <strong>este cuestionario es el punto de partida</strong>. Son pocas preguntas, casi todo a elección múltiple. No hay respuesta correcta: cada clic es una pista para diseñar tu marca.</p>
 
   <div class="preview" id="preview">
-    <div class="preview-header">
+    <img class="preview-visual" src="assets/desing.webp" alt="" loading="lazy">
+    <div class="preview-content">
       <p class="preview-label">Tu perfil, en construcción</p>
-      <img class="preview-visual" src="assets/desing.webp" alt="" loading="lazy">
-    </div>
-    <div class="preview-body" id="previewBody">
-      <div class="preview-empty-swatch"></div>
-      <span class="preview-word brand-word" style="font-family:var(--font-title);">Tu Estudio</span>
-      <p class="preview-placeholder">Empezá a elegir abajo y acá vas viendo cómo se arma tu estilo.</p>
+      <div class="preview-body" id="previewBody">
+        <div class="preview-empty-swatch"></div>
+        <span class="preview-word brand-word" style="font-family:var(--font-title);">Tu Estudio</span>
+        <p class="preview-placeholder">Empezá a elegir abajo y acá vas viendo cómo se arma tu estilo.</p>
+      </div>
     </div>
   </div>
 
