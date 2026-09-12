@@ -663,7 +663,7 @@
     </section>
     </div>
 
-    <div class="step-nav">
+    <div class="step-nav" id="stepNav">
       <button type="button" class="step-btn step-back" id="backBtn">← Atrás</button>
       <button type="button" class="step-btn step-next" id="nextBtn">Siguiente →</button>
       <button type="submit" class="submit-btn" id="submitBtn" hidden>Ver mi perfil visual</button>
@@ -1398,6 +1398,7 @@
   var toast = document.getElementById("toast");
   var sendConfirm = document.getElementById("sendConfirm");
   var stickyTopEl = document.getElementById("stickyTop");
+  var stepNavEl = document.getElementById("stepNav");
 
   function especialidadesTexto(){
     var nombres = state.especialidades.filter(function(id){ return id !== 'otra'; })
@@ -1443,10 +1444,11 @@
     form.hidden = true;
     doneCard.hidden = false;
     stickyTopEl.hidden = true;
+    stepNavEl.hidden = true;
     window.scrollTo({top: 0, behavior:'smooth'});
   });
 
-  redoBtn.addEventListener("click", function(){ doneCard.hidden = true; form.hidden = false; stickyTopEl.hidden = false; });
+  redoBtn.addEventListener("click", function(){ doneCard.hidden = true; form.hidden = false; stickyTopEl.hidden = false; stepNavEl.hidden = false; });
 
   sendBtn.addEventListener("click", function(){
     var negocio = document.getElementById("negocio").value.trim() || "(sin nombre)";
