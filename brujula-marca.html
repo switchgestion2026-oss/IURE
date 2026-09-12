@@ -83,7 +83,7 @@
   .ai-prompt-box{font-family:var(--font-label); font-size:12px; line-height:1.6; color:var(--crema); background:var(--noche); border:1px solid var(--crema-line); border-radius:var(--radius); padding:0.8rem 0.9rem; white-space:pre-wrap; max-height:220px; overflow-y:auto; margin-bottom:0.7rem;}
   .ai-copy-btn{font-family:var(--font-body); font-weight:600; font-size:13px; background:none; border:1px solid var(--crema-line); color:var(--crema); padding:9px 14px; border-radius:var(--radius); cursor:pointer; margin-bottom:1rem;}
   .ai-copy-btn:hover{border-color:var(--oro); color:var(--oro);}
-  .ai-paste{width:100%; min-height:110px; font-family:inherit; font-size:14px; padding:10px 12px; border-radius:var(--radius); border:1px solid var(--line); background:var(--crema); color:var(--ink); resize:vertical;}
+  .ai-paste, .ai-context{width:100%; min-height:110px; font-family:inherit; font-size:14px; padding:10px 12px; border-radius:var(--radius); border:1px solid var(--line); background:var(--crema); color:var(--ink); resize:vertical;}
   .ai-apply-btn{font-family:var(--font-body); font-weight:600; font-size:14px; background:var(--oro); border:1px solid var(--oro); color:var(--noche); padding:11px 20px; border-radius:var(--radius); cursor:pointer; margin-top:0.8rem;}
   .ai-apply-btn:hover{opacity:0.85;}
   .ai-status{font-size:13px; margin-top:0.6rem;}
@@ -504,7 +504,9 @@
   <div class="ai-shortcut" id="aiShortcut" hidden>
     <button type="button" class="ai-toggle" id="aiToggle">⚡ ¿Preferís que tu IA responda por vos?</button>
     <div class="ai-panel" id="aiPanel" hidden>
-      <p class="ai-hint">Copiá este prompt, pegalo en ChatGPT, Claude o Gemini, respondele lo que te pregunte y pegá acá abajo lo que te devuelva.</p>
+      <p class="ai-hint">Contale a tu IA sobre tu estudio para que el resultado no sea genérico. Pegá tu bio de Instagram, el texto de "Nosotros" de tu web, o escribí 2-3 líneas: a qué te dedicás y cómo hablás con tus clientes.</p>
+      <textarea class="ai-context" id="aiContext" rows="4" placeholder="Ej: Somos un estudio de familia y sucesiones en Olavarría, trato cercano, hablamos simple, sin tecnicismos..."></textarea>
+      <p class="ai-hint">Copiá este prompt (ya incluye lo que escribiste arriba), pegalo en ChatGPT, Claude o Gemini, y pegá la respuesta abajo.</p>
       <div class="ai-prompt-box" id="aiPromptBox"></div>
       <button type="button" class="ai-copy-btn" id="aiCopyBtn">Copiar prompt</button>
       <textarea class="ai-paste" id="aiPaste" rows="6" placeholder="Pegá acá la respuesta de tu IA..."></textarea>
@@ -1104,18 +1106,24 @@
     var detalles = DATA.detalles.map(function(d){ return d.nombre; }).join(", ");
     var especialidades = DATA.especialidades.filter(function(e){ return !e.isOther; }).map(function(e){ return e.nombre; }).join(", ");
     var nombreEstudio = document.getElementById("negocio").value.trim() || "(no especificado)";
-    return "Sos un asesor de identidad de marca para estudios jurídicos.\n\nMi estudio se llama: " + nombreEstudio + ".\n\nSi tenés información pública sobre este estudio o sobre el profesional a cargo (sitio web, redes sociales, reseñas, notas de prensa, lo que sea que conozcas), usala como base. Si no tenés información confiable sobre este estudio en particular, no inventes datos falsos sobre él — simplemente decidí los siguientes campos con tu criterio profesional, como lo harías para un estudio jurídico serio y cercano al cliente.\n\nEn cualquier caso, elegí SIEMPRE una opción de cada lista cerrada de abajo — nunca inventes opciones nuevas ni dejes un campo sin responder — y devolveme la respuesta EXACTAMENTE en este formato:\n\nNOMBRE: " + nombreEstudio + "\nTONO: (una opción de: " + tonos + ")\nPALETA: (una opción de: " + paletas + ")\nTIPOGRAFIA: (una opción de: " + tipos + ")\nADJETIVOS: (hasta 3 opciones separadas por coma, de: " + adjetivos + ")\nESTILO: (una opción de: " + estilos + ")\nDETALLES: (una o más opciones separadas por coma, de: " + detalles + ")\nESPECIALIDADES: (una o más opciones separadas por coma, de: " + especialidades + ")";
+    var contexto = document.getElementById("aiContext") ? document.getElementById("aiContext").value.trim() : "";
+    var bloqueContexto = contexto
+      ? "Info sobre mi estudio: " + contexto + "\n\n"
+      : "No tengo más información para darte sobre este estudio en particular. Si no sabés nada de él, no inventes datos falsos — decidí con tu criterio profesional como harías para un estudio jurídico serio y cercano al cliente, aclarando que al no tener info específica el perfil va a ser genérico.\n\n";
+    return "Sos un asesor de identidad de marca para estudios jurídicos.\n\nMi estudio se llama: " + nombreEstudio + ".\n\n" + bloqueContexto + "Elegí SIEMPRE una opción de cada lista cerrada de abajo — nunca inventes opciones nuevas ni dejes un campo sin responder — y devolveme la respuesta EXACTAMENTE en este formato:\n\nNOMBRE: " + nombreEstudio + "\nTONO: (una opción de: " + tonos + ")\nPALETA: (una opción de: " + paletas + ")\nTIPOGRAFIA: (una opción de: " + tipos + ")\nADJETIVOS: (hasta 3 opciones separadas por coma, de: " + adjetivos + ")\nESTILO: (una opción de: " + estilos + ")\nDETALLES: (una o más opciones separadas por coma, de: " + detalles + ")\nESPECIALIDADES: (una o más opciones separadas por coma, de: " + especialidades + ")";
   }
 
   var aiShortcut = document.getElementById("aiShortcut");
   var aiToggle = document.getElementById("aiToggle");
   var aiPanel = document.getElementById("aiPanel");
+  var aiContext = document.getElementById("aiContext");
   var aiPromptBox = document.getElementById("aiPromptBox");
   var aiCopyBtn = document.getElementById("aiCopyBtn");
   var aiPaste = document.getElementById("aiPaste");
   var aiApplyBtn = document.getElementById("aiApplyBtn");
   var aiStatus = document.getElementById("aiStatus");
   aiPromptBox.textContent = buildAIPrompt();
+  aiContext.addEventListener("input", function(){ aiPromptBox.textContent = buildAIPrompt(); });
 
   aiToggle.addEventListener("click", function(){ aiPanel.hidden = !aiPanel.hidden; });
   aiCopyBtn.addEventListener("click", function(){
@@ -1178,6 +1186,7 @@
       resultBox.textContent = buildSummary();
       form.hidden = true;
       doneCard.hidden = false;
+      stickyTopEl.hidden = true;
       window.scrollTo({top: 0, behavior:"smooth"});
     }
   });
@@ -1388,6 +1397,7 @@
   var sendBtn = document.getElementById("sendBtn");
   var toast = document.getElementById("toast");
   var sendConfirm = document.getElementById("sendConfirm");
+  var stickyTopEl = document.getElementById("stickyTop");
 
   function especialidadesTexto(){
     var nombres = state.especialidades.filter(function(id){ return id !== 'otra'; })
@@ -1432,10 +1442,11 @@
     resultBox.textContent = buildSummary();
     form.hidden = true;
     doneCard.hidden = false;
-    window.scrollTo({top: doneCard.offsetTop - 20, behavior:'smooth'});
+    stickyTopEl.hidden = true;
+    window.scrollTo({top: 0, behavior:'smooth'});
   });
 
-  redoBtn.addEventListener("click", function(){ doneCard.hidden = true; form.hidden = false; });
+  redoBtn.addEventListener("click", function(){ doneCard.hidden = true; form.hidden = false; stickyTopEl.hidden = false; });
 
   sendBtn.addEventListener("click", function(){
     var negocio = document.getElementById("negocio").value.trim() || "(sin nombre)";
