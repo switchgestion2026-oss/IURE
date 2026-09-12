@@ -75,6 +75,21 @@
   }
   .lede strong{color:var(--crema); font-weight:600;}
 
+  .ai-shortcut{margin:1.6rem 0 0;}
+  .ai-toggle{font-family:var(--font-body); font-weight:600; font-size:13.5px; background:none; border:1px solid var(--oro); color:var(--oro); padding:10px 16px; border-radius:var(--radius); cursor:pointer;}
+  .ai-toggle:hover{opacity:0.85;}
+  .ai-panel{margin-top:1rem; border:1px solid var(--crema-line); border-radius:var(--radius); padding:1.1rem 1.2rem; background:rgba(245,242,236,0.04);}
+  .ai-hint{font-size:13px; color:var(--crema-soft); margin:0 0 0.8rem;}
+  .ai-prompt-box{font-family:var(--font-label); font-size:12px; line-height:1.6; color:var(--crema); background:var(--noche); border:1px solid var(--crema-line); border-radius:var(--radius); padding:0.8rem 0.9rem; white-space:pre-wrap; max-height:220px; overflow-y:auto; margin-bottom:0.7rem;}
+  .ai-copy-btn{font-family:var(--font-body); font-weight:600; font-size:13px; background:none; border:1px solid var(--crema-line); color:var(--crema); padding:9px 14px; border-radius:var(--radius); cursor:pointer; margin-bottom:1rem;}
+  .ai-copy-btn:hover{border-color:var(--oro); color:var(--oro);}
+  .ai-paste{width:100%; min-height:110px; font-family:inherit; font-size:14px; padding:10px 12px; border-radius:var(--radius); border:1px solid var(--line); background:var(--crema); color:var(--ink); resize:vertical;}
+  .ai-apply-btn{font-family:var(--font-body); font-weight:600; font-size:14px; background:var(--oro); border:1px solid var(--oro); color:var(--noche); padding:11px 20px; border-radius:var(--radius); cursor:pointer; margin-top:0.8rem;}
+  .ai-apply-btn:hover{opacity:0.85;}
+  .ai-status{font-size:13px; margin-top:0.6rem;}
+  .ai-status.ok{color:var(--oro);}
+  .ai-status.error{color:#D97A63;}
+
   /* live preview (mientras completa) */
   .preview{
     margin:2rem 0 2.6rem;
@@ -118,6 +133,7 @@
   .preview-contact-line{font-size:0.8rem; color:var(--crema-soft); letter-spacing:0.01em;}
 
   .sticky-top{position:sticky; top:0; z-index:20; background:var(--noche); padding-top:0.8rem; padding-bottom:1rem; margin:1.5rem 0 1rem; border-bottom:1px solid var(--crema-line);}
+  @media(max-width:600px){ .sticky-top{position:static;} }
 
   .progress-wrap{margin-top:0.4rem;}
   .progress-label{font-family:var(--font-label); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--crema-soft); margin:0 0 0.5rem;}
@@ -485,6 +501,18 @@
     <img class="hero-brujula" src="assets/Brujula.webp" alt="Brújula de marca" loading="lazy">
   </div>
 
+  <div class="ai-shortcut" id="aiShortcut" hidden>
+    <button type="button" class="ai-toggle" id="aiToggle">⚡ ¿Preferís que tu IA responda por vos?</button>
+    <div class="ai-panel" id="aiPanel" hidden>
+      <p class="ai-hint">Copiá este prompt, pegalo en ChatGPT, Claude o Gemini, respondele lo que te pregunte y pegá acá abajo lo que te devuelva.</p>
+      <div class="ai-prompt-box" id="aiPromptBox"></div>
+      <button type="button" class="ai-copy-btn" id="aiCopyBtn">Copiar prompt</button>
+      <textarea class="ai-paste" id="aiPaste" rows="6" placeholder="Pegá acá la respuesta de tu IA..."></textarea>
+      <button type="button" class="ai-apply-btn" id="aiApplyBtn">Aplicar respuestas</button>
+      <p class="ai-status" id="aiStatus"></p>
+    </div>
+  </div>
+
   <div class="sticky-top" id="stickyTop">
     <div class="preview" id="preview">
       <img class="preview-visual" src="assets/desing.webp" alt="" loading="lazy">
@@ -810,13 +838,14 @@
     var v = document.getElementById("negocio").value.trim();
     state.brandWord = v || "IURE";
     document.querySelectorAll(".brand-word").forEach(function(el){ el.textContent = state.brandWord; });
+    if(aiPromptBox) aiPromptBox.textContent = buildAIPrompt();
   }
 
   /* ---- 01 adjetivos ---- */
   var adjetivosEl = document.getElementById("adjetivos");
   DATA.adjetivos.forEach(function(word){
     var b = document.createElement("button");
-    b.type = "button"; b.className = "chip-btn"; b.textContent = word;
+    b.type = "button"; b.className = "chip-btn"; b.textContent = word; b.dataset.id = word;
     b.addEventListener("click", function(){
       var i = state.adjetivos.indexOf(word);
       if(i > -1){ state.adjetivos.splice(i,1); b.classList.remove("selected"); }
@@ -1062,6 +1091,97 @@
   });
   espOtherInput.addEventListener("input", function(e){ state.espOtro = e.target.value; });
 
+  function norm(s){
+    return (s||"").toString().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim();
+  }
+
+  function buildAIPrompt(){
+    var tonos = DATA.tonos.join(", ");
+    var paletas = DATA.paletas.map(function(p){ return p.nombre; }).join(", ");
+    var tipos = DATA.tipos.filter(function(t){ return !t.isOther; }).map(function(t){ return t.nombre; }).join(", ");
+    var adjetivos = DATA.adjetivos.join(", ");
+    var estilos = DATA.estilos.filter(function(e){ return !e.isOther; }).map(function(e){ return e.nombre; }).join(", ");
+    var detalles = DATA.detalles.map(function(d){ return d.nombre; }).join(", ");
+    var especialidades = DATA.especialidades.filter(function(e){ return !e.isOther; }).map(function(e){ return e.nombre; }).join(", ");
+    var nombreEstudio = document.getElementById("negocio").value.trim() || "(no especificado)";
+    return "Sos un asesor de identidad de marca para estudios jurídicos.\n\nMi estudio se llama: " + nombreEstudio + ".\n\nSi tenés información pública sobre este estudio o sobre el profesional a cargo (sitio web, redes sociales, reseñas, notas de prensa, lo que sea que conozcas), usala como base. Si no tenés información confiable sobre este estudio en particular, no inventes datos falsos sobre él — simplemente decidí los siguientes campos con tu criterio profesional, como lo harías para un estudio jurídico serio y cercano al cliente.\n\nEn cualquier caso, elegí SIEMPRE una opción de cada lista cerrada de abajo — nunca inventes opciones nuevas ni dejes un campo sin responder — y devolveme la respuesta EXACTAMENTE en este formato:\n\nNOMBRE: " + nombreEstudio + "\nTONO: (una opción de: " + tonos + ")\nPALETA: (una opción de: " + paletas + ")\nTIPOGRAFIA: (una opción de: " + tipos + ")\nADJETIVOS: (hasta 3 opciones separadas por coma, de: " + adjetivos + ")\nESTILO: (una opción de: " + estilos + ")\nDETALLES: (una o más opciones separadas por coma, de: " + detalles + ")\nESPECIALIDADES: (una o más opciones separadas por coma, de: " + especialidades + ")";
+  }
+
+  var aiShortcut = document.getElementById("aiShortcut");
+  var aiToggle = document.getElementById("aiToggle");
+  var aiPanel = document.getElementById("aiPanel");
+  var aiPromptBox = document.getElementById("aiPromptBox");
+  var aiCopyBtn = document.getElementById("aiCopyBtn");
+  var aiPaste = document.getElementById("aiPaste");
+  var aiApplyBtn = document.getElementById("aiApplyBtn");
+  var aiStatus = document.getElementById("aiStatus");
+  aiPromptBox.textContent = buildAIPrompt();
+
+  aiToggle.addEventListener("click", function(){ aiPanel.hidden = !aiPanel.hidden; });
+  aiCopyBtn.addEventListener("click", function(){
+    navigator.clipboard.writeText(aiPromptBox.textContent).then(function(){
+      aiCopyBtn.textContent = "Copiado ✓";
+      setTimeout(function(){ aiCopyBtn.textContent = "Copiar prompt"; }, 1800);
+    });
+  });
+
+  function clickByList(container, list, value, multi){
+    if(!value) return;
+    var valores = multi ? value.split(",").map(function(v){ return norm(v); }) : [norm(value)];
+    valores.forEach(function(v){
+      if(!v) return;
+      var item = list.filter(function(x){ return !x.isOther; }).find(function(x){
+        return norm(x.nombre) === v || norm(x.nombre).indexOf(v) > -1 || v.indexOf(norm(x.nombre)) > -1;
+      });
+      if(!item) return;
+      var el = Array.prototype.filter.call(container.children, function(c){ return c.dataset.id === item.id; })[0];
+      if(el) el.click();
+    });
+  }
+
+  aiApplyBtn.addEventListener("click", function(){
+    var texto = aiPaste.value;
+    if(!texto.trim()){
+      aiStatus.textContent = "Pegá primero la respuesta de tu IA.";
+      aiStatus.className = "ai-status error";
+      return;
+    }
+    var campos = {};
+    texto.split(/\n+/).forEach(function(linea){
+      var m = linea.match(/^([^:]{2,25}):\s*(.+)$/);
+      if(m) campos[norm(m[1])] = m[2].trim();
+    });
+
+    if(campos["nombre"]){
+      var negocioInput = document.getElementById("negocio");
+      negocioInput.value = campos["nombre"];
+      negocioInput.dispatchEvent(new Event("input"));
+    }
+    if(campos["tono"]){
+      var idx = DATA.tonos.findIndex(function(t){ return norm(t) === norm(campos["tono"]); });
+      if(idx > -1) tonoEl.children[idx].click();
+    }
+    clickByList(paletasEl, DATA.paletas, campos["paleta"], false);
+    clickByList(tiposEl, DATA.tipos, campos["tipografia"], false);
+    clickByList(adjetivosEl, DATA.adjetivos.map(function(a){ return {id:a, nombre:a}; }), campos["adjetivos"], true);
+    clickByList(estilosEl, DATA.estilos, campos["estilo"], false);
+    clickByList(detallesEl, DATA.detalles, campos["detalles"], true);
+    clickByList(espEl, DATA.especialidades, campos["especialidades"], true);
+
+    var faltan = missing();
+    if(faltan.length){
+      aiStatus.textContent = "Se aplicó lo que se pudo reconocer. Falta completar a mano: " + faltan.join(", ") + ".";
+      aiStatus.className = "ai-status error";
+    } else {
+      aiStatus.textContent = "Respuestas aplicadas ✓";
+      aiStatus.className = "ai-status ok";
+      resultBox.textContent = buildSummary();
+      form.hidden = true;
+      doneCard.hidden = false;
+      window.scrollTo({top: 0, behavior:"smooth"});
+    }
+  });
+
   document.getElementById("negocio").addEventListener("input", refreshBrandWord);
   document.getElementById("email").addEventListener("input", function(){ update(); });
   document.getElementById("whatsapp").addEventListener("input", function(){ update(); });
@@ -1234,6 +1354,7 @@
     nextBtn.disabled = !stepValid(i);
     submitNote.textContent = "";
     submitNote.classList.remove("error");
+    aiShortcut.hidden = i === 0;
     window.scrollTo({top: 0, behavior:'smooth'});
   }
   backBtn.addEventListener("click", function(){ if(currentStep > 0) showStep(currentStep - 1); });
