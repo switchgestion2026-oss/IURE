@@ -132,8 +132,8 @@
   .preview-contact{display:flex; flex-direction:column; gap:0.15rem; margin-top:0.5rem; width:100%;}
   .preview-contact-line{font-size:0.8rem; color:var(--crema-soft); letter-spacing:0.01em;}
 
-  .sticky-top{position:sticky; top:0; z-index:20; background:var(--noche); padding-top:0.8rem; padding-bottom:1rem; margin:1.5rem 0 1rem; border-bottom:1px solid var(--crema-line);}
-  @media(max-width:600px){ .sticky-top{position:static;} }
+  .sticky-top{position:sticky; top:0; z-index:20; background:var(--noche); padding-top:0.8rem; padding-bottom:1rem; margin:1.5rem 0 1rem; border-bottom:1px solid var(--crema-line); max-height:46vh; overflow-y:auto;}
+  @media(max-width:600px){ .sticky-top{position:static; max-height:none; overflow-y:visible;} }
 
   .progress-wrap{margin-top:0.4rem;}
   .progress-label{font-family:var(--font-label); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--crema-soft); margin:0 0 0.5rem;}
