@@ -110,6 +110,38 @@
     .trio-item { flex-basis:100% !important; }
   }
 
+  /* ---- Proceso / Brújula / Pago (Diseño Web) ---- */
+  .proceso-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0; margin-top:40px; border-top:1px solid rgba(184,148,106,.16); }
+  .proceso-item { padding:26px 22px; border-bottom:1px solid rgba(184,148,106,.16); border-left:1px solid rgba(184,148,106,.16); }
+  .proceso-item .num { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:32px; color:#B8946A; line-height:1; }
+  .proceso-item h4 { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:16.5px; text-transform:uppercase; letter-spacing:.02em; margin:12px 0 8px; }
+  .proceso-item p { font-size:13.5px; line-height:1.6; color:#9AA3B2; margin:0; }
+
+  .brujula-box { margin-top:56px; border:1px solid rgba(184,148,106,.22); background:rgba(184,148,106,.05); padding:30px clamp(22px,4vw,40px); display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
+  .brujula-box h4 { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:19px; text-transform:uppercase; margin:0 0 6px; }
+  .brujula-box p { font-size:14px; color:#9AA3B2; margin:0; max-width:44ch; }
+  .brujula-btn { display:inline-flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.16em; color:#B8946A; border-bottom:1px solid rgba(184,148,106,.5); padding-bottom:6px; white-space:nowrap; }
+  .brujula-btn:hover { border-color:#B8946A; }
+
+  .ticket { position:relative; border:1px dashed rgba(184,148,106,.4); background:rgba(184,148,106,.05); padding:24px 26px; border-radius:2px; }
+  .ticket .dot { position:absolute; top:50%; transform:translateY(-50%); width:16px; height:16px; border-radius:50%; background:#0F1923; border:1px dashed rgba(184,148,106,.4); }
+  .ticket .dot.l { left:-8px; } .ticket .dot.r { right:-8px; }
+  .ticket .lbl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(245,242,236,.5); }
+  .ticket .val { font-weight:300; font-size:14.5px; color:#F5F2EC; margin-top:6px; }
+  .ticket .divider { height:0; border-top:1px dashed rgba(184,148,106,.3); margin:18px 0; }
+  .ticket .price { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:clamp(28px,3.2vw,38px); color:#B8946A; margin-top:4px; line-height:1; }
+
+  .pago-btn { display:flex; align-items:center; justify-content:center; gap:12px; width:100%; background:#B8946A; color:#0F1923; font-family:'DM Mono',monospace; font-weight:500; font-size:12px; letter-spacing:.18em; text-transform:uppercase; padding:17px 22px; border-radius:6px; margin-top:14px; transition:transform .3s; }
+  .pago-btn:hover { transform:translateY(-2px); color:#0F1923; }
+  .pago-note { font-weight:300; font-size:11.5px; color:rgba(245,242,236,.45); margin:10px 0 0; text-align:center; }
+  .pago-cols { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:36px; }
+  .medios-pago { display:block; height:64px; width:auto; margin:40px auto 0; opacity:.85; }
+  .garantias { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:36px; padding-top:22px; border-top:1px solid rgba(184,148,106,.16); }
+  .garantias .g-item { display:flex; align-items:center; gap:8px; }
+  .garantias .g-item span { font-family:'DM Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:rgba(245,242,236,.4); line-height:1.5; }
+
+  @media (max-width:700px){ .pago-cols{ grid-template-columns:1fr; } .garantias{ grid-template-columns:1fr; } }
+
   [data-reveal] { opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
   [data-reveal].in { opacity:1; transform:none; }
 </style>
@@ -298,6 +330,103 @@
           <div class="ig-despues">
             <div class="phone-lbl">DESPUÉS — @AIMO.DEMARCO.ABOGADAS</div>
             <div class="phone"><div class="screen"><img src="assets/ig-aimodemarco-despues.jpg" alt="Perfil Instagram Aimo & Demarco"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CÓMO ARMAMOS TU WEB ===== -->
+    <section class="block">
+      <div class="wrap">
+        <div class="block-head" data-reveal>
+          <div>
+            <div class="eyebrow"><span>CÓMO LO HACEMOS</span></div>
+            <h2>UN PROCESO CLARO, DE PRINCIPIO A FIN</h2>
+          </div>
+        </div>
+        <div class="proceso-grid" data-reveal>
+          <div class="proceso-item">
+            <div class="num">01</div>
+            <h4>Relevamiento</h4>
+            <p>Conversamos sobre tu estudio, tus servicios y qué querés transmitir.</p>
+          </div>
+          <div class="proceso-item">
+            <div class="num">02</div>
+            <h4>Identidad</h4>
+            <p>Si todavía no tenés tu marca definida, la armamos juntas antes de diseñar.</p>
+          </div>
+          <div class="proceso-item">
+            <div class="num">03</div>
+            <h4>Diseño y desarrollo</h4>
+            <p>Construimos el sitio a medida, con la estética que mejor representa tu estudio.</p>
+          </div>
+          <div class="proceso-item">
+            <div class="num">04</div>
+            <h4>Entrega</h4>
+            <p>Publicamos el sitio, te mostramos cómo administrarlo y queda online.</p>
+          </div>
+        </div>
+
+        <div class="brujula-box" data-reveal>
+          <div>
+            <h4>¿No tenés definida tu identidad de marca?</h4>
+            <p>Completá la Brújula de Marca — una guía rápida para definir paleta, tipografía y estilo antes de empezar el diseño.</p>
+          </div>
+          <a href="brujula-marca.html" class="brujula-btn">COMPLETAR BRÚJULA <span>→</span></a>
+        </div>
+
+        <div style="text-align:center;margin-top:56px">
+          <a href="https://wa.me/542284203462?text=Hola!%20Quiero%20armar%20mi%20p%C3%A1gina%20web" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;border:1px solid #B8946A;color:#B8946A;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:16px 30px;border-radius:2px;transition:background .3s,color .3s" onmouseover="this.style.background='#B8946A';this.style.color='#0F1923'" onmouseout="this.style.background='transparent';this.style.color='#B8946A'">
+            Hablá con nosotros <span>→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PAGO ===== -->
+    <section id="pago" class="block">
+      <div class="wrap">
+        <div class="eyebrow" data-reveal><span>PAGO SEGURO</span></div>
+        <h2 class="block-head" style="margin:14px 0 0;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(28px,3.6vw,46px);line-height:1" data-reveal>FINALIZÁ TU CONTRATACIÓN.</h2>
+        <p style="margin:16px 0 0;font-size:15px;color:#9AA3B2;max-width:52ch" data-reveal>Completá el pago de forma rápida, segura y confiable a través de Mercado Pago. Podés pagar la seña para reservar tu lugar, o el total del proyecto.</p>
+
+        <div class="pago-cols" data-reveal>
+          <div class="ticket">
+            <div class="dot l"></div><div class="dot r"></div>
+            <div class="lbl">Servicio jurídico</div>
+            <div class="val">Diseño y desarrollo de sitio web — Seña (50%)</div>
+            <div class="divider"></div>
+            <div class="lbl">Total a pagar</div>
+            <div class="price">$ 49.000</div>
+            <a href="https://mpago.la/1Ejr99E" target="_blank" rel="noopener" class="pago-btn">Pagar seña <span>→</span></a>
+            <p class="pago-note">Reservás tu lugar. El saldo ($49.000) se cobra al entregar el sitio.</p>
+          </div>
+          <div class="ticket">
+            <div class="dot l"></div><div class="dot r"></div>
+            <div class="lbl">Servicio jurídico</div>
+            <div class="val">Diseño y desarrollo de sitio web — Pago total</div>
+            <div class="divider"></div>
+            <div class="lbl">Total a pagar</div>
+            <div class="price">$ 98.000</div>
+            <a href="https://mpago.la/1134wQx" target="_blank" rel="noopener" class="pago-btn">Pagar total <span>→</span></a>
+            <p class="pago-note">Serás redirigido a Mercado Pago para completar el pago de forma segura.</p>
+          </div>
+        </div>
+
+        <img src="assets/medios-pago.webp" alt="Medios de pago aceptados: Visa, Mastercard, American Express, Mercado Pago" class="medios-pago">
+
+        <div class="garantias" data-reveal>
+          <div class="g-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B8946A" stroke-width="1.5" style="flex:none;opacity:.7"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            <span>Tus datos están protegidos</span>
+          </div>
+          <div class="g-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B8946A" stroke-width="1.5" style="flex:none;opacity:.7"><rect x="2" y="5" width="20" height="14" rx="1.5"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            <span>Múltiples medios de pago</span>
+          </div>
+          <div class="g-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B8946A" stroke-width="1.5" style="flex:none;opacity:.7"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>Plataforma segura y confiable</span>
           </div>
         </div>
       </div>
