@@ -1,17 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4LEW9896BN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-4LEW9896BN');
-</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Casos — IURE Marketing Jurídico</title>
+<title>Diseño Web — IURE Marketing Jurídico</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -26,49 +18,35 @@
   header .inner { height: 76px; display: flex; align-items: center; }
   .logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 30px; letter-spacing: .06em; color: #B8946A; line-height: 1; }
   .sub { font-family: 'DM Mono', monospace; font-size: 8.5px; letter-spacing: .3em; color: rgba(245,242,236,.55); margin-top: 2px; }
+  .header-inicio { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:rgba(245,242,236,.65); }
+  .header-inicio:hover { color:#B8946A; }
   footer { border-top: 1px solid rgba(184,148,106,.16); padding: 28px 0; font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: .16em; color: rgba(245,242,236,.32); }
 
-  /* ---- Casos portfolio ---- */
   .eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: .24em; color: #B8946A; display: flex; align-items: center; gap: 16px; }
   .eyebrow .rule { width: 44px; height: 1px; background: rgba(184,148,106,.5); }
   .eyebrow .dim { color: #7E8899; }
 
-  .hero { position: relative; padding: 120px 0 70px; border-bottom: 1px solid rgba(184,148,106,.12); }
-  .hero::before { content:''; position:absolute; inset:0; background: radial-gradient(1100px 420px at 22% -10%, rgba(184,148,106,.10), transparent 70%); pointer-events:none; }
-  .hero h1 { position:relative; font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:clamp(40px,6.6vw,90px); line-height:.96; letter-spacing:-.01em; margin:26px 0 0; max-width:16em; text-transform:none; }
+  .hero { position: relative; padding: 130px 0 80px; border-bottom: 1px solid rgba(184,148,106,.12); overflow:hidden; }
+  .hero::before { content:''; position:absolute; inset:0; background: radial-gradient(1200px 480px at 20% -10%, rgba(184,148,106,.16), transparent 70%); pointer-events:none; }
+  .hero::after { content:''; position:absolute; right:-10%; top:-20%; width:60%; height:140%; background: radial-gradient(closest-side, rgba(184,148,106,.10), transparent 75%); pointer-events:none; }
+  .hero h1 { position:relative; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:clamp(46px,7.4vw,104px); line-height:.94; letter-spacing:-.01em; margin:26px 0 0; max-width:17em; text-transform:uppercase; }
   .hero h1 span { color:#B8946A; }
-  .hero p { margin:26px 0 0; max-width:56ch; font-size:16.5px; line-height:1.65; color:#9AA3B2; }
-
-  .filters { display:flex; flex-wrap:wrap; gap:24px; align-items:center; margin-top:48px; padding-top:20px; border-top:1px solid rgba(184,148,106,.12); }
-  .filters .lbl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.2em; color:#5F6979; }
-  .filters button { background:none; border:0; padding:6px 0; cursor:pointer; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.16em; color:#7E8899; border-bottom:1px solid transparent; transition:color .25s, border-color .25s; }
-  .filters button:hover { color:#F5F2EC; }
-  .filters button.active { color:#F5F2EC; border-bottom-color:#B8946A; }
+  .hero p { position:relative; margin:28px 0 0; max-width:56ch; font-size:17px; line-height:1.65; color:#9AA3B2; }
+  .hero-cta { position:relative; display:flex; flex-wrap:wrap; gap:20px; margin-top:40px; }
+  .hero-cta a { display:inline-flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; }
+  .hero-cta .btn-solid { background:#B8946A; color:#0F1923; padding:16px 26px; transition:background .25s; }
+  .hero-cta .btn-solid:hover { background:#D8B788; color:#0F1923; }
+  .hero-cta .btn-line { color:rgba(245,242,236,.7); padding-bottom:8px; border-bottom:1px solid rgba(184,148,106,.4); }
+  .hero-cta .btn-line:hover { color:#F5F2EC; border-color:#B8946A; }
 
   section.block { padding: 90px 0; border-bottom: 1px solid rgba(184,148,106,.09); }
   .block-head { display:flex; justify-content:space-between; align-items:flex-end; gap:32px; flex-wrap:wrap; margin-bottom:52px; }
   .block-head h2 { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:clamp(28px,3.6vw,46px); line-height:1; margin:14px 0 0; text-transform:none; }
   .block-head .meta { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.12em; color:#7E8899; text-align:right; }
 
-  /* Notebook mockup */
-  .notebook { border:1px solid rgba(245,242,236,.14); border-radius:13px 13px 4px 4px; padding:11px 11px 18px; background:linear-gradient(178deg,#182230,#0C131C); box-shadow:0 40px 84px -52px rgba(0,0,0,.9); }
-  .notebook .screen { position:relative; aspect-ratio:16/10; overflow:hidden; border-radius:3px; background:#000; }
-  .notebook .screen iframe { position:absolute; top:0; left:0; width:1440px; height:900px; border:0; transform-origin:top left; pointer-events:none; }
-  .notebook .screen .fallback { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:20px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; color:#5F6979; background:#0B1119; }
-  .notebook .base { width:116%; margin-left:-8%; height:12px; clip-path:polygon(1.6% 0,98.4% 0,100% 100%,0 100%); background:linear-gradient(180deg,#1F2A38,#0B1118); border-radius:0 0 9px 9px; }
-  .notebook .hinge { margin-top:10px; height:3px; width:52px; margin-left:auto; margin-right:auto; border-radius:2px; background:rgba(245,242,236,.10); }
-
-  /* Trio */
-  .trio { display:flex; align-items:center; justify-content:center; gap:clamp(0px,1.2vw,16px); row-gap:56px; margin-top:20px; perspective:1700px; flex-wrap:wrap; }
-  .trio-item { flex:0 1 31%; min-width:220px; cursor:pointer; transition:flex-basis .5s ease, transform .5s ease, filter .5s ease; }
-  .trio-item.active { flex-basis:42%; transform:translateY(-6px); filter:brightness(1); z-index:5; }
-  .trio-item:not(.active) { filter:brightness(.62) saturate(.75); }
-  .trio-label { display:flex; align-items:center; justify-content:center; gap:10px; margin-top:16px; font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.16em; color:#7E8899; }
-  .trio-item.active .trio-label { color:#B8946A; }
-
-  /* Case rows (websites, detailed) */
+  /* Importancia de tener una web */
   .case-row { display:grid; grid-template-columns: 1fr 1.15fr; gap:64px; align-items:center; }
-  .case-num { font-family:'Barlow Condensed',sans-serif; font-size:70px; line-height:.8; font-weight:300; color:transparent; -webkit-text-stroke:1px rgba(184,148,106,.5); }
+  .case-row img { width:100%; display:block; filter:drop-shadow(0 30px 60px rgba(0,0,0,.5)); }
   .case-title { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:clamp(28px,3.2vw,42px); line-height:1.02; margin:22px 0 0; text-transform:none; }
   .case-tag { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.14em; color:#B8946A; margin-top:12px; }
   .case-desc { margin:20px 0 0; font-size:15.5px; line-height:1.7; color:#9AA3B2; max-width:52ch; }
@@ -76,76 +54,9 @@
   .case-list .lbl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.2em; color:#5F6979; padding-bottom:12px; border-bottom:1px solid rgba(245,242,236,.09); }
   .case-list .item { display:flex; gap:14px; padding:13px 0; border-bottom:1px solid rgba(245,242,236,.06); font-size:14.5px; color:#D8D3C8; }
   .case-list .item span { color:#B8946A; font-family:'DM Mono',monospace; font-size:11px; padding-top:2px; }
-  .case-cta { display:inline-flex; align-items:center; gap:10px; margin-top:30px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.18em; padding-bottom:7px; border-bottom:1px solid rgba(184,148,106,.4); }
-  .case-cta:hover { border-color:#B8946A; }
 
-  /* Instagram phone mockup — ANTES (chico, secundario) / DESPUÉS (grande, protagonista) */
-  .phone-wrap { display:flex; align-items:flex-end; justify-content:center; gap:clamp(20px,4vw,56px); flex-wrap:wrap; }
-  .phone { border:1px solid rgba(245,242,236,.18); border-radius:34px; padding:9px; background:linear-gradient(170deg,#1B2531,#0B1119); box-shadow:0 34px 68px -40px rgba(0,0,0,.9); width:100%; }
-  .phone .screen { position:relative; aspect-ratio:9/19; overflow:hidden; border-radius:26px; background:#000; }
-  .phone .screen img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
-  .phone .screen .fallback { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-align:center; padding:16px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.06em; color:#5F6979; background:#0B1119; }
-  .phone-lbl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.2em; text-align:center; margin-bottom:12px; }
-
-  .ig-case { display:flex; align-items:flex-end; justify-content:center; gap:clamp(24px,5vw,72px); }
-  .ig-antes { flex:1 1 0; min-width:0; width:100%; max-width:150px; }
-  .ig-antes .phone { border-radius:26px; filter:saturate(.25); opacity:.55; transition:filter .5s ease, opacity .5s ease; }
-  .ig-antes:hover .phone { filter:saturate(1); opacity:1; }
-  .ig-antes .phone .screen { border-radius:19px; }
-  .ig-antes .phone-lbl { color:#5F6979; }
-
-  .ig-despues { flex:1.6 1 0; min-width:0; width:100%; max-width:320px; position:relative; }
-  .ig-despues .phone-lbl { color:#C7A667; }
-  .ig-despues .phone { box-shadow:0 40px 80px -46px rgba(0,0,0,.95); }
-
-  .cta-final { display:flex; justify-content:space-between; align-items:flex-end; gap:44px; flex-wrap:wrap; padding:80px 0; }
-  .cta-final h2 { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:clamp(30px,4.2vw,54px); line-height:1; margin:0; max-width:18ch; text-transform:none; }
-  .cta-final p { margin:20px 0 0; max-width:48ch; font-size:15.5px; line-height:1.7; color:#9AA3B2; }
-  .cta-btn { display:inline-flex; align-items:center; gap:12px; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.18em; color:#0F1923; background:#B8946A; padding:18px 30px; transition:background .25s; }
-  .cta-btn:hover { background:#D8B788; color:#0F1923; }
-
-  @media (max-width: 860px) {
-    .case-row { grid-template-columns: 1fr; gap:40px; }
-    .phone-wrap { flex-direction:column; align-items:center; }
-    .trio-item { flex-basis:100% !important; }
-  }
-
-  /* ---- Proceso / Brújula / Pago (Diseño Web) ---- */
-  .proceso-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0; margin-top:40px; border-top:1px solid rgba(184,148,106,.16); }
-  .proceso-item { padding:26px 22px; border-bottom:1px solid rgba(184,148,106,.16); border-left:1px solid rgba(184,148,106,.16); }
-  .proceso-item .num { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:32px; color:#B8946A; line-height:1; }
-  .proceso-item h4 { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:16.5px; text-transform:uppercase; letter-spacing:.02em; margin:12px 0 8px; }
-  .proceso-item p { font-size:13.5px; line-height:1.6; color:#9AA3B2; margin:0; }
-
-  .brujula-box { margin-top:56px; border:1px solid rgba(184,148,106,.22); background:rgba(184,148,106,.05); padding:30px clamp(22px,4vw,40px); display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
-  .brujula-box h4 { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:19px; text-transform:uppercase; margin:0 0 6px; }
-  .brujula-box p { font-size:14px; color:#9AA3B2; margin:0; max-width:44ch; }
-  .brujula-btn { display:inline-flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.16em; color:#B8946A; border-bottom:1px solid rgba(184,148,106,.5); padding-bottom:6px; white-space:nowrap; }
-  .brujula-btn:hover { border-color:#B8946A; }
-
-  .ticket { position:relative; border:1px dashed rgba(184,148,106,.4); background:rgba(184,148,106,.05); padding:24px 26px; border-radius:2px; }
-  .ticket .dot { position:absolute; top:50%; transform:translateY(-50%); width:16px; height:16px; border-radius:50%; background:#0F1923; border:1px dashed rgba(184,148,106,.4); }
-  .ticket .dot.l { left:-8px; } .ticket .dot.r { right:-8px; }
-  .ticket .lbl { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(245,242,236,.5); }
-  .ticket .val { font-weight:300; font-size:14.5px; color:#F5F2EC; margin-top:6px; }
-  .ticket .divider { height:0; border-top:1px dashed rgba(184,148,106,.3); margin:18px 0; }
-  .ticket .price { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:clamp(28px,3.2vw,38px); color:#B8946A; margin-top:4px; line-height:1; }
-
-  .pago-btn { display:flex; align-items:center; justify-content:center; gap:12px; width:100%; background:#B8946A; color:#0F1923; font-family:'DM Mono',monospace; font-weight:500; font-size:12px; letter-spacing:.18em; text-transform:uppercase; padding:17px 22px; border-radius:6px; margin-top:14px; transition:transform .3s; }
-  .pago-btn:hover { transform:translateY(-2px); color:#0F1923; }
-  .pago-note { font-weight:300; font-size:11.5px; color:rgba(245,242,236,.45); margin:10px 0 0; text-align:center; }
-  .pago-cols { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:36px; }
-  .medios-pago { display:block; height:64px; width:auto; margin:40px auto 0; opacity:.85; }
-  .garantias { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:36px; padding-top:22px; border-top:1px solid rgba(184,148,106,.16); }
-  .garantias .g-item { display:flex; align-items:center; gap:8px; }
-  .garantias .g-item span { font-family:'DM Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:rgba(245,242,236,.4); line-height:1.5; }
-
-  @media (max-width:700px){ .pago-cols{ grid-template-columns:1fr; } .garantias{ grid-template-columns:1fr; } }
-
-  [data-reveal] { opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
-  [data-reveal].in { opacity:1; transform:none; }
-
-  .proj-showcase{position:relative; margin-top:48px;}
+  /* Carrusel de proyectos (portado de index.html) */
+  .proj-showcase{position:relative; margin-top:12px;}
   .proj-track-wrap{overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
   .proj-track{display:flex; align-items:center; gap:32px; overflow-x:auto; scrollbar-width:none; padding:44px 4vw;}
   .proj-track::-webkit-scrollbar{display:none;}
@@ -174,6 +85,51 @@
     .proj-arrow.prev{left:-18px;}
     .proj-arrow.next{right:-18px;}
   }
+
+  /* Cómo armamos tu web */
+  .proceso-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:clamp(20px,3vw,36px); }
+  .proceso-item { border-top:1px solid rgba(184,148,106,.2); padding-top:20px; }
+  .proceso-item .num { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:34px; line-height:1; color:#B8946A; }
+  .proceso-item h3 { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:19px; text-transform:none; margin:14px 0 8px; }
+  .proceso-item p { font-size:14.5px; line-height:1.62; color:#9AA3B2; margin:0; }
+
+  .brujula-box { margin-top:56px; border:1px solid rgba(184,148,106,.35); background:#F5F2EC; color:#0F1923; padding:clamp(28px,3.5vw,44px); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px; border-radius:4px; }
+  .brujula-box h3 { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:clamp(20px,2.4vw,28px); text-transform:none; margin:0 0 10px; color:#0F1923; }
+  .brujula-box p { margin:0; font-size:15px; line-height:1.6; color:rgba(15,25,35,.68); max-width:48ch; }
+  .brujula-btn { display:inline-flex; align-items:center; gap:10px; background:#0F1923; color:#F5F2EC; font-family:'DM Mono',monospace; font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; padding:15px 26px; white-space:nowrap; transition:background .25s; }
+  .brujula-btn:hover { background:#B8946A; color:#0F1923; }
+
+  .wa-box { margin-top:24px; border:1px solid rgba(184,148,106,.22); background:rgba(184,148,106,.05); padding:clamp(24px,3vw,34px); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px; }
+  .wa-box h3 { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:20px; text-transform:none; margin:0 0 8px; }
+  .wa-box p { margin:0; font-size:14.5px; line-height:1.6; color:#9AA3B2; max-width:46ch; }
+  .wa-btn { display:inline-flex; align-items:center; gap:10px; background:#25D366; color:#0F1923; font-family:'DM Mono',monospace; font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; padding:15px 26px; white-space:nowrap; transition:filter .25s; }
+  .wa-btn:hover { filter:brightness(1.08); color:#0F1923; }
+
+  /* Pago */
+  .pago-cols { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:28px; margin-top:20px; }
+  .ticket { position:relative; border:1px dashed rgba(184,148,106,.45); background:#141F2B; padding:34px 30px; }
+  .ticket .dot { position:absolute; top:50%; width:22px; height:22px; background:#0F1923; border-radius:50%; transform:translateY(-50%); }
+  .ticket .dot.l { left:-11px; }
+  .ticket .dot.r { right:-11px; }
+  .ticket .tk-lbl { font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.2em; color:#7E8899; text-transform:uppercase; }
+  .ticket .tk-amount { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:clamp(34px,4vw,48px); line-height:1; color:#F5F2EC; margin:12px 0 0; }
+  .ticket .tk-amount span { font-family:'DM Mono',monospace; font-size:13px; color:#B8946A; margin-left:6px; }
+  .ticket p.tk-desc { font-size:13.5px; line-height:1.6; color:#9AA3B2; margin:14px 0 0; }
+  .pago-btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; width:100%; margin-top:22px; background:#B8946A; color:#0F1923; font-family:'DM Mono',monospace; font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; padding:15px 20px; transition:background .25s; }
+  .pago-btn:hover { background:#D8B788; color:#0F1923; }
+  .pago-note { margin-top:32px; text-align:center; font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.1em; color:#5F6979; }
+  .medios-pago { height:192px; display:block; margin:18px auto 0; }
+  .garantias { display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(24px,4vw,52px); margin-top:44px; padding-top:32px; border-top:1px solid rgba(184,148,106,.12); }
+  .garantias .g-item { display:flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.1em; color:#9AA3B2; text-transform:uppercase; }
+  .garantias svg { width:18px; height:18px; stroke:#B8946A; fill:none; stroke-width:1.4; }
+
+  @media (max-width: 860px) {
+    .case-row { grid-template-columns: 1fr; gap:40px; }
+    .brujula-box, .wa-box { flex-direction:column; align-items:flex-start; }
+  }
+
+  [data-reveal] { opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+  [data-reveal].in { opacity:1; transform:none; }
 </style>
 </head>
 <body>
@@ -182,19 +138,17 @@
       <div class="logo">IURE</div>
       <div class="sub">MARKETING JURÍDICO</div>
     </a>
-    <a href="index.html" style="font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,242,236,.6)" onmouseover="this.style.color='#F5F2EC'" onmouseout="this.style.color='rgba(245,242,236,.6)'">← Inicio</a>
+    <a href="index.html" class="header-inicio">← Inicio</a>
   </div></header>
 
   <main>
     <section class="hero wrap">
-      <div class="eyebrow"><span>CASOS</span><span class="rule"></span><span class="dim">TRABAJO REAL</span></div>
-      <h1>ANTES ERA UNA PRESENCIA.<br><span>AHORA ES UNA MARCA.</span></h1>
-      <p>Una selección de identidades, sitios web y sistemas de comunicación desarrollados para profesionales del ámbito jurídico.</p>
-      <div class="filters">
-        <span class="lbl">FILTRAR</span>
-        <button type="button" class="active" data-filter="TODOS">TODOS</button>
-        <button type="button" data-filter="WEB">SITIOS WEB</button>
-        <button type="button" data-filter="REDES">REDES</button>
+      <div class="eyebrow"><span>DISEÑO WEB</span><span class="rule"></span><span class="dim">TU ESTUDIO, ONLINE</span></div>
+      <h1>TU WEB ES TU PRIMERA<br><span>CONSULTA GANADA O PERDIDA.</span></h1>
+      <p>Antes de escribirte, te buscan en Google. Una web profesional es lo que convierte esa búsqueda en un cliente — la que no la tiene, pierde la consulta sin saberlo.</p>
+      <div class="hero-cta">
+        <a href="#pago" class="btn-solid">Quiero mi web <span>→</span></a>
+        <a href="#proceso" class="btn-line">Ver cómo la armamos <span>→</span></a>
       </div>
     </section>
 
@@ -202,31 +156,24 @@
     <section class="block">
       <div class="wrap case-row" data-reveal>
         <div>
-          <div class="eyebrow"><span>POR QUÉ IMPORTA</span></div>
-          <h2 class="case-title" style="font-size:clamp(28px,3.6vw,46px);margin-top:16px">Tu web es la primera<br>impresión que da tu estudio.</h2>
-          <p class="case-desc" style="margin-top:22px;max-width:56ch">Antes de escribirte, la mayoría de las personas ya te buscó en Google. Si no encuentran nada, o encuentran algo desactualizado, la consulta se pierde ahí — sin que vos te enteres. Una web profesional no es un gasto estético: es lo que convierte esa búsqueda en una consulta real.</p>
+          <div class="case-tag">POR QUÉ IMPORTA</div>
+          <h3 class="case-title">TU WEB ES LA PRIMERA IMPRESIÓN QUE DA TU ESTUDIO.</h3>
+          <p class="case-desc">Antes de que alguien te escriba, ya te buscó y te miró. Sin un sitio propio, esa primera impresión queda en manos de un perfil de redes o de nada.</p>
           <div class="case-list">
-            <div class="lbl">LO QUE UNA WEB BIEN HECHA RESUELVE</div>
-            <div class="item"><span>01</span>Da confianza antes del primer contacto</div>
-            <div class="item"><span>02</span>Explica tus especialidades sin que tengas que repetirlo</div>
-            <div class="item"><span>03</span>Deriva a WhatsApp o formulario sin fricción</div>
+            <div class="lbl">LO QUE UNA WEB PROPIA TE DA</div>
+            <div class="item"><span>01</span>Un lugar donde te encuentran buscando en Google</div>
+            <div class="item"><span>02</span>Credibilidad profesional inmediata</div>
+            <div class="item"><span>03</span>Control total de tu imagen, sin depender de un algoritmo</div>
           </div>
         </div>
-        <div style="display:flex;align-items:center;justify-content:center">
-          <img src="assets/personaje-grafico.webp" alt="Escultura clásica señalando un gráfico de resultados ascendente" style="display:block;width:100%;max-width:420px;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))">
-        </div>
+        <img src="assets/personaje-grafico.webp" alt="Importancia de tener una web propia" loading="lazy">
       </div>
     </section>
 
     <!-- ===== SITIOS QUE YA PUSIMOS EN MARCHA ===== -->
     <section class="block">
       <div class="wrap">
-        <div class="block-head" data-reveal>
-          <div>
-            <div class="eyebrow"><span>PORTFOLIO</span></div>
-            <h2>SITIOS QUE YA PUSIMOS EN MARCHA</h2>
-          </div>
-        </div>
+        <div class="eyebrow" data-reveal><span>PORTFOLIO</span><span class="rule"></span><span class="dim">SITIOS QUE YA PUSIMOS EN MARCHA</span></div>
         <div class="proj-showcase" data-reveal>
           <div class="proj-hover-zone left" data-dir="-1"></div>
           <div class="proj-hover-zone right" data-dir="1"></div>
@@ -281,109 +228,91 @@
     </section>
 
     <!-- ===== CÓMO ARMAMOS TU WEB ===== -->
-    <section class="block">
+    <section class="block" id="proceso">
       <div class="wrap">
         <div class="block-head" data-reveal>
           <div>
-            <div class="eyebrow"><span>CÓMO LO HACEMOS</span></div>
-            <h2>UN PROCESO CLARO, DE PRINCIPIO A FIN</h2>
+            <div class="eyebrow"><span>PROCESO</span></div>
+            <h2>CÓMO ARMAMOS TU WEB</h2>
           </div>
         </div>
         <div class="proceso-grid" data-reveal>
           <div class="proceso-item">
             <div class="num">01</div>
-            <h4>Relevamiento</h4>
-            <p>Conversamos sobre tu estudio, tus servicios y qué querés transmitir.</p>
+            <h3>Relevamiento</h3>
+            <p>Vemos tu especialidad, tu identidad actual y qué necesitás transmitir.</p>
           </div>
           <div class="proceso-item">
             <div class="num">02</div>
-            <h4>Identidad</h4>
-            <p>Si todavía no tenés tu marca definida, la armamos juntas antes de diseñar.</p>
+            <h3>Diseño</h3>
+            <p>Armamos la propuesta visual y de contenido, a medida de tu estudio.</p>
           </div>
           <div class="proceso-item">
             <div class="num">03</div>
-            <h4>Diseño y desarrollo</h4>
-            <p>Construimos el sitio a medida, con la estética que mejor representa tu estudio.</p>
+            <h3>Ajustes</h3>
+            <p>Revisamos juntos y afinamos hasta que quede exactamente como querés.</p>
           </div>
           <div class="proceso-item">
             <div class="num">04</div>
-            <h4>Entrega</h4>
-            <p>Publicamos el sitio, te mostramos cómo administrarlo y queda online.</p>
+            <h3>Publicación</h3>
+            <p>Tu web queda online, lista para que te encuentren y te consulten.</p>
           </div>
         </div>
 
         <div class="brujula-box" data-reveal>
           <div>
-            <h4>¿No tenés definida tu identidad de marca?</h4>
+            <h3>¿No tenés definida tu identidad de marca?</h3>
             <p>Completá la Brújula de Marca — una guía rápida para definir paleta, tipografía y estilo antes de empezar el diseño.</p>
           </div>
-          <a href="brujula-marca.html" class="brujula-btn">COMPLETAR BRÚJULA <span>→</span></a>
+          <a href="brujula-marca.html" class="brujula-btn">Ir a la Brújula <span>→</span></a>
         </div>
 
-        <div style="text-align:center;margin-top:56px">
-          <a href="https://wa.me/542284203462?text=Hola!%20Quiero%20armar%20mi%20p%C3%A1gina%20web" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;border:1px solid #B8946A;color:#B8946A;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:16px 30px;border-radius:2px;transition:background .3s,color .3s" onmouseover="this.style.background='#B8946A';this.style.color='#0F1923'" onmouseout="this.style.background='transparent';this.style.color='#B8946A'">
-            Hablá con nosotros <span>→</span>
-          </a>
+        <div class="wa-box" data-reveal>
+          <div>
+            <h3>¿Tenés dudas antes de avanzar?</h3>
+            <p>Escribinos por WhatsApp y te contamos cómo funciona el proceso, los plazos y resolvemos lo que necesites — sin compromiso.</p>
+          </div>
+          <a href="https://wa.me/542284203462?text=Hola!%20Quiero%20armar%20mi%20p%C3%A1gina%20web" target="_blank" rel="noopener" class="wa-btn">Hablar por WhatsApp <span>→</span></a>
         </div>
       </div>
     </section>
 
     <!-- ===== PAGO ===== -->
-    <section id="pago" class="block">
+    <section class="block" id="pago">
       <div class="wrap">
-        <div class="eyebrow" data-reveal><span>PAGO SEGURO</span></div>
-        <h2 class="block-head" style="margin:14px 0 0;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(28px,3.6vw,46px);line-height:1" data-reveal>FINALIZÁ TU CONTRATACIÓN.</h2>
-        <p style="margin:16px 0 0;font-size:15px;color:#9AA3B2;max-width:52ch" data-reveal>Completá el pago de forma rápida, segura y confiable a través de Mercado Pago. Podés pagar la seña para reservar tu lugar, o el total del proyecto.</p>
+        <div class="block-head" data-reveal>
+          <div>
+            <div class="eyebrow"><span>INVERSIÓN</span></div>
+            <h2>ARMÁ TU WEB HOY</h2>
+          </div>
+          <div class="meta">Precio total: $98.000</div>
+        </div>
 
         <div class="pago-cols" data-reveal>
           <div class="ticket">
-            <div class="dot l"></div><div class="dot r"></div>
-            <div class="lbl">Servicio jurídico</div>
-            <div class="val">Diseño y desarrollo de sitio web — Seña (50%)</div>
-            <div class="divider"></div>
-            <div class="lbl">Total a pagar</div>
-            <div class="price">$ 49.000</div>
+            <span class="dot l"></span><span class="dot r"></span>
+            <div class="tk-lbl">SEÑA — 50%</div>
+            <div class="tk-amount">$49.000</div>
+            <p class="tk-desc">Reservás tu lugar y arrancamos a trabajar. El resto ($49.000) se abona cuando te entregamos la web.</p>
             <a href="https://mpago.la/1Ejr99E" target="_blank" rel="noopener" class="pago-btn">Pagar seña <span>→</span></a>
-            <p class="pago-note">Reservás tu lugar. El saldo ($49.000) se cobra al entregar el sitio.</p>
           </div>
           <div class="ticket">
-            <div class="dot l"></div><div class="dot r"></div>
-            <div class="lbl">Servicio jurídico</div>
-            <div class="val">Diseño y desarrollo de sitio web — Pago total</div>
-            <div class="divider"></div>
-            <div class="lbl">Total a pagar</div>
-            <div class="price">$ 98.000</div>
+            <span class="dot l"></span><span class="dot r"></span>
+            <div class="tk-lbl">PAGO TOTAL</div>
+            <div class="tk-amount">$98.000</div>
+            <p class="tk-desc">Pagás todo de una vez y no tenés que preocuparte por el saldo pendiente.</p>
             <a href="https://mpago.la/1134wQx" target="_blank" rel="noopener" class="pago-btn">Pagar total <span>→</span></a>
-            <p class="pago-note">Serás redirigido a Mercado Pago para completar el pago de forma segura.</p>
           </div>
         </div>
 
-        <img src="assets/medios-pago.webp" alt="Medios de pago aceptados: Visa, Mastercard, American Express, Mercado Pago" class="medios-pago">
+        <img class="medios-pago" src="assets/medios-pago.webp" alt="Medios de pago disponibles" loading="lazy">
+        <div class="pago-note">Serás redirigido a Mercado Pago para completar el pago de forma segura.</div>
 
-        <div class="garantias" data-reveal>
-          <div class="g-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B8946A" stroke-width="1.5" style="flex:none;opacity:.7"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-            <span>Tus datos están protegidos</span>
-          </div>
-          <div class="g-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B8946A" stroke-width="1.5" style="flex:none;opacity:.7"><rect x="2" y="5" width="20" height="14" rx="1.5"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-            <span>Múltiples medios de pago</span>
-          </div>
-          <div class="g-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B8946A" stroke-width="1.5" style="flex:none;opacity:.7"><path d="M20 6 9 17l-5-5"/></svg>
-            <span>Plataforma segura y confiable</span>
-          </div>
+        <div class="garantias">
+          <div class="g-item"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>Tus datos están protegidos</div>
+          <div class="g-item"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Múltiples medios de pago</div>
+          <div class="g-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Plataforma segura y confiable</div>
         </div>
-      </div>
-    </section>
-
-    <section class="wrap">
-      <div class="cta-final" data-reveal style="border-top:1px solid rgba(184,148,106,.12)">
-        <div>
-          <h2>¿TENÉS UN PROYECTO EN MENTE?</h2>
-          <p>Hablemos y llevemos tu presencia profesional al siguiente nivel.</p>
-        </div>
-        <a href="index.html#contacto" class="cta-btn">CONTACTAR <span>→</span></a>
       </div>
     </section>
   </main>
@@ -391,7 +320,13 @@
   <footer><div class="wrap">© 2026 IURE</div></footer>
 
 <script>
-  // Carrusel de sitios (portfolio)
+  // Reveal on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .1, rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+  // Carrusel de proyectos
   (function(){
     var track = document.getElementById('projTrack');
     if(!track) return;
@@ -404,7 +339,10 @@
     var setWidth = originalCards.reduce(function(sum, c){ return sum + c.offsetWidth + gap; }, 0);
     track.scrollLeft = setWidth;
 
-    var steerDir = 0, manualUntil = 0, BASE = 0.45, FAST = 2.4;
+    var steerDir = 0;
+    var manualUntil = 0;
+    var BASE = 0.45;
+    var FAST = 2.4;
 
     function updateActive(){
       var trackRect = track.getBoundingClientRect();
@@ -461,45 +399,6 @@
 
     requestAnimationFrame(autoScroll);
   })();
-
-  // Escala los iframes de 1440px a el ancho real del contenedor
-  function scaleFrames() {
-    document.querySelectorAll('[data-frame-box]').forEach(box => {
-      const f = box.querySelector('iframe');
-      const w = box.clientWidth;
-      if (f && w) f.style.transform = 'scale(' + (w / 1440) + ')';
-    });
-  }
-  window.addEventListener('resize', scaleFrames);
-  window.addEventListener('load', scaleFrames);
-  scaleFrames();
-  new ResizeObserver(scaleFrames).observe(document.body);
-
-  // Trío: click para traer al frente
-  function pickSite(i) {
-    document.querySelectorAll('.trio-item').forEach((el, idx) => {
-      el.classList.toggle('active', idx === i);
-    });
-    scaleFrames();
-  }
-
-  // Reveal on scroll
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: .1, rootMargin: '0px 0px -10% 0px' });
-  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
-
-  // Filtros
-  document.querySelectorAll('.filters button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      document.querySelectorAll('[data-cat]').forEach(sec => {
-        sec.style.display = (f === 'TODOS' || sec.dataset.cat === f) ? '' : 'none';
-      });
-    });
-  });
 </script>
 </body>
 </html>
