@@ -39,6 +39,11 @@
   .hero-cta .btn-line { color:rgba(245,242,236,.7); padding-bottom:8px; border-bottom:1px solid rgba(184,148,106,.4); }
   .hero-cta .btn-line:hover { color:#F5F2EC; border-color:#B8946A; }
 
+  .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(32px,5vw,64px); align-items:center; }
+  .hero-img { position:relative; }
+  .hero-img img { width:100%; display:block; border-radius:6px; box-shadow:0 40px 80px -30px rgba(0,0,0,.6); }
+  @media (max-width:960px) { .hero-grid { grid-template-columns:1fr; } .hero-img { order:-1; max-width:420px; margin:0 auto; } }
+
   section.block { padding: 90px 0; border-bottom: 1px solid rgba(184,148,106,.09); }
   .block-head { display:flex; justify-content:space-between; align-items:flex-end; gap:32px; flex-wrap:wrap; margin-bottom:52px; }
   .block-head h2 { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:clamp(28px,3.6vw,46px); line-height:1; margin:14px 0 0; text-transform:none; }
@@ -143,12 +148,19 @@
 
   <main>
     <section class="hero wrap">
-      <div class="eyebrow"><span>DISEÑO WEB</span><span class="rule"></span><span class="dim">TU ESTUDIO, ONLINE</span></div>
-      <h1>TU WEB ES TU PRIMERA<br><span>CONSULTA GANADA O PERDIDA.</span></h1>
-      <p>Antes de escribirte, te buscan en Google. Una web profesional es lo que convierte esa búsqueda en un cliente — la que no la tiene, pierde la consulta sin saberlo.</p>
-      <div class="hero-cta">
-        <a href="#pago" class="btn-solid">Quiero mi web <span>→</span></a>
-        <a href="#proceso" class="btn-line">Ver cómo la armamos <span>→</span></a>
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow"><span>DISEÑO WEB</span><span class="rule"></span><span class="dim">TU ESTUDIO, ONLINE</span></div>
+          <h1>TU WEB ES TU PRIMERA<br><span>CONSULTA GANADA O PERDIDA.</span></h1>
+          <p>Antes de escribirte, te buscan en Google. Una web profesional es lo que convierte esa búsqueda en un cliente — la que no la tiene, pierde la consulta sin saberlo.</p>
+          <div class="hero-cta">
+            <a href="#pago" class="btn-solid">Quiero mi web <span>→</span></a>
+            <a href="#proceso" class="btn-line">Ver cómo la armamos <span>→</span></a>
+          </div>
+        </div>
+        <div class="hero-img">
+          <img src="assets/paginaweb.webp" alt="Ejemplo de sitio web con estilo" loading="eager">
+        </div>
       </div>
     </section>
 
