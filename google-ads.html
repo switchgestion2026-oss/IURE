@@ -218,6 +218,21 @@
     </div>
   </section>
 
+  <section id="roi" style="border-top:1px solid rgba(184,148,106,.14);padding:clamp(64px,8vw,116px) 0">
+    <div style="max-width:820px;margin:0 auto;padding:0 clamp(20px,4vw,48px);text-align:center">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Cómo medimos el resultado</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,52px);line-height:1;text-transform:uppercase;margin:14px 0 0">No medimos likes.<br>Medimos consultas.</h2>
+      <p style="font-weight:300;font-size:15.5px;line-height:1.7;color:rgba(245,242,236,.62);margin:22px auto 0;max-width:60ch">
+        Lo que importa es cuánto te cuesta cada consulta real que entra por WhatsApp o formulario. La inversión mínima en pauta es <strong style="color:#F5F2EC">$80.000/mes</strong>, pero lo ideal es entre <strong style="color:#F5F2EC">$150.000 y $300.000</strong> — se calcula sobre una base de ~$5.000/día, el mínimo para conseguir al menos 10 clics diarios y que la plataforma optimice bien la campaña.
+      </p>
+      <div style="display:flex;justify-content:center;margin-top:32px">
+        <div style="border-left:3px solid #B8946A;background:rgba(184,148,106,.08);padding:16px 22px;max-width:56ch;text-align:left">
+          <p style="font-weight:500;font-size:16px;line-height:1.5;color:#F5F2EC;margin:0">Inversión → visitas → consultas → costo por consulta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="faq" style="padding:clamp(64px,8vw,116px) 0;border-top:1px solid rgba(184,148,106,.14)">
     <div class="g2" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(220px,.65fr) minmax(320px,1.7fr);gap:clamp(28px,4vw,64px);align-items:start">
       <div>
@@ -304,6 +319,42 @@
       <div onClick="{{ closeConfirm }}" style="margin-top:24px;display:inline-block;cursor:pointer;background:#0F1923;color:#F5F2EC;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:12px 22px;border-radius:2px">Cerrar</div>
     </div>
   </div>
+
+  <section id="pago" style="background:#F5F2EC;color:#0F1923;padding:clamp(64px,8vw,116px) 0;border-top:1px solid rgba(15,25,35,.08)">
+    <div class="g2" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(320px,1fr) minmax(300px,.95fr);gap:clamp(32px,5vw,64px);align-items:center">
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#9A7847;display:flex;align-items:center;gap:12px">
+          <span style="width:26px;height:1px;background:#9A7847;display:block"></span>Pago seguro
+        </div>
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(38px,5vw,64px);line-height:.96;text-transform:uppercase;margin:18px 0 0;color:#0F1923">
+          Finalizá tu<br><span style="color:#B8946A">contratación.</span>
+        </h2>
+        <p style="font-weight:300;font-size:15.5px;line-height:1.6;color:rgba(15,25,35,.6);max-width:42ch;margin:18px 0 0">
+          Completá el pago de forma rápida, segura y confiable a través de Mercado Pago.
+        </p>
+        <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:32px">
+          <a href="https://mpago.la/1E4MtdR" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;background:#0F1923;color:#F5F2EC;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:16px 26px;border-radius:2px;transition:transform .3s" style-hover="transform:translateY(-2px)">
+            Pagar ahora <span style="font-family:'Barlow',sans-serif;font-size:15px">→</span>
+          </a>
+          <img src="assets/logomp.webp" alt="Mercado Pago" style="height:24px;width:auto;display:block">
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px;padding-top:28px;border-top:1px solid rgba(15,25,35,.1)">
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;color:rgba(15,25,35,.55);line-height:1.5">Tus datos están protegidos</div>
+          </div>
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;color:rgba(15,25,35,.55);line-height:1.5">Múltiples medios de pago</div>
+          </div>
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;color:rgba(15,25,35,.55);line-height:1.5">Plataforma segura y confiable</div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative;min-height:clamp(280px,32vw,420px);display:flex;align-items:center;justify-content:center">
+        <img src="assets/pago.webp" alt="Escultura clásica junto al proceso de pago seguro" style="display:block;width:100%;max-width:520px;filter:drop-shadow(0 30px 60px rgba(15,25,35,.16))">
+      </div>
+    </div>
+  </section>
 
   <footer style="background:#0F1923;border-top:1px solid rgba(184,148,106,.16);padding:clamp(44px,5vw,72px) 0 36px">
     <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
