@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4LEW9896BN"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-4LEW9896BN');
+  window.loadGA = function(){
+    if (window.__gaLoaded) return;
+    window.__gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-4LEW9896BN';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-4LEW9896BN');
+  };
+  if (localStorage.getItem('cookie_consent') === 'accepted') { window.loadGA(); }
 </script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1052,6 +1059,30 @@ class Component extends DCLogic {
     return v;
   }
 }
+</script>
+<div id="cookieBanner" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:300;background:#0F1923;color:#F5F2EC;padding:16px 20px;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;font-family:'DM Mono',monospace;font-size:12px;border-top:1px solid rgba(184,148,106,.3)">
+  <span style="max-width:60ch">Usamos cookies para analizar el uso del sitio (Google Analytics). Podés aceptar o rechazar.</span>
+  <span style="display:flex;gap:10px">
+    <button id="cookieReject" style="background:transparent;border:1px solid rgba(245,242,236,.4);color:#F5F2EC;padding:8px 16px;border-radius:2px;cursor:pointer;font-family:inherit">Rechazar</button>
+    <button id="cookieAccept" style="background:#B8946A;border:0;color:#0F1923;padding:8px 16px;border-radius:2px;cursor:pointer;font-family:inherit">Aceptar</button>
+  </span>
+</div>
+<script>
+(function(){
+  if (!localStorage.getItem('cookie_consent')) {
+    var b = document.getElementById('cookieBanner');
+    if (b) b.style.display = 'flex';
+  }
+  document.getElementById('cookieAccept').addEventListener('click', function(){
+    localStorage.setItem('cookie_consent', 'accepted');
+    document.getElementById('cookieBanner').style.display = 'none';
+    if (window.loadGA) window.loadGA();
+  });
+  document.getElementById('cookieReject').addEventListener('click', function(){
+    localStorage.setItem('cookie_consent', 'rejected');
+    document.getElementById('cookieBanner').style.display = 'none';
+  });
+})();
 </script>
 </body>
 </html>
