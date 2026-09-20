@@ -1069,36 +1069,21 @@ class Component extends DCLogic {
 </div>
 <script>
 (function(){
- <script>
+<script>
 (function(){
-  var bannerHTML = null;
-  var original = document.getElementById('cookieBanner');
-  if (original) { bannerHTML = original.outerHTML; original.style.display = 'flex'; }
-
-  function attachHandlers(){
-    document.getElementById('cookieAccept').onclick = function(){
-      localStorage.setItem('cookie_consent', 'accepted');
-      var el = document.getElementById('cookieBanner');
-      if (el) el.remove();
-      if (window.loadGA) window.loadGA();
-    };
-    document.getElementById('cookieReject').onclick = function(){
-      localStorage.setItem('cookie_consent', 'rejected');
-      var el = document.getElementById('cookieBanner');
-      if (el) el.remove();
-    };
+  if (!localStorage.getItem('cookie_consent')) {
+    var b = document.getElementById('cookieBanner');
+    if (b) b.style.display = 'flex';
   }
-  attachHandlers();
-
-  var tries = 0;
-  var iv = setInterval(function(){
-    if (localStorage.getItem('cookie_consent') || tries++ > 20) { clearInterval(iv); return; }
-    if (!document.getElementById('cookieBanner') && bannerHTML) {
-      document.body.insertAdjacentHTML('beforeend', bannerHTML);
-      document.getElementById('cookieBanner').style.display = 'flex';
-      attachHandlers();
-    }
-  }, 300);
+  document.getElementById('cookieAccept').addEventListener('click', function(){
+    localStorage.setItem('cookie_consent', 'accepted');
+    document.getElementById('cookieBanner').style.display = 'none';
+    if (window.loadGA) window.loadGA();
+  });
+  document.getElementById('cookieReject').addEventListener('click', function(){
+    localStorage.setItem('cookie_consent', 'rejected');
+    document.getElementById('cookieBanner').style.display = 'none';
+  });
 })();
 </script>
     var b = document.getElementById('cookieBanner');
