@@ -1069,23 +1069,7 @@ class Component extends DCLogic {
 </div>
 <script>
 (function(){
-<script>
-(function(){
   if (!localStorage.getItem('cookie_consent')) {
-    var b = document.getElementById('cookieBanner');
-    if (b) b.style.display = 'flex';
-  }
-  document.getElementById('cookieAccept').addEventListener('click', function(){
-    localStorage.setItem('cookie_consent', 'accepted');
-    document.getElementById('cookieBanner').style.display = 'none';
-    if (window.loadGA) window.loadGA();
-  });
-  document.getElementById('cookieReject').addEventListener('click', function(){
-    localStorage.setItem('cookie_consent', 'rejected');
-    document.getElementById('cookieBanner').style.display = 'none';
-  });
-})();
-</script>
     var b = document.getElementById('cookieBanner');
     if (b) b.style.display = 'flex';
   }
