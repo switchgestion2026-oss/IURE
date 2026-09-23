@@ -370,7 +370,7 @@
           <div style="font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#9A7847">Recomendación</div>
           <div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:clamp(20px,2.2vw,28px);line-height:1.1;text-transform:uppercase;margin:10px 0 0">{{ momentCtaTitle }}</div>
           <p style="font-weight:300;font-size:15px;line-height:1.65;color:rgba(15,25,35,.66);margin:10px 0 0;max-width:52ch">{{ momentCtaBody }}</p>
-          <a href="#contacto" style="align-self:flex-start;margin-top:18px;background:#0F1923;color:#F5F2EC;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:14px 24px;border-radius:2px" style-hover="background:#B8946A;color:#0F1923">Quiero avanzar con esto →</a>
+          <a href="#agenda" style="align-self:flex-start;margin-top:18px;background:#0F1923;color:#F5F2EC;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:14px 24px;border-radius:2px" style-hover="background:#B8946A;color:#0F1923">Quiero avanzar con esto →</a>
         </div>
       </div>
     </div>
@@ -485,6 +485,28 @@
   </section>
 
 
+  <section id="agenda" style="padding:clamp(64px,8vw,116px) 0;border-top:1px solid rgba(184,148,106,.14)">
+    <div style="max-width:960px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Agendá una reunión</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,4vw,58px);line-height:.96;text-transform:uppercase;margin:18px 0 0">Elegí día y horario.<br><span style="color:#B8946A">Sin idas y vueltas.</span></h2>
+      <p style="font-weight:300;font-size:17px;line-height:1.7;color:rgba(245,242,236,.6);max-width:46ch;margin:20px 0 0">Una charla corta para conocer tu estudio y decirte qué conviene primero.</p>
+      <div style="margin-top:clamp(24px,3vw,40px);background:#FFFFFF;border:1px solid rgba(184,148,106,.3);border-radius:2px;overflow:hidden">
+        <iframe src="PEGAR_URL_EMBED" title="Agenda de reuniones IURE" loading="lazy" style="display:block;width:100%;height:clamp(640px,90vh,760px);border:0"></iframe>
+      </div>
+      <p style="font-weight:300;font-size:14px;color:rgba(245,242,236,.5);margin:16px 0 0">¿Ningún horario te sirve? <a href="{{ waGeneralHref }}" target="_blank" rel="noopener" onClick="{{ waGeneralTrack }}">Escribinos por WhatsApp</a></p>
+    </div>
+  </section>
+  <section id="agenda" style="padding:clamp(64px,8vw,116px) 0;border-top:1px solid rgba(184,148,106,.14)">
+    <div style="max-width:960px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Agendá una reunión</div>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,4vw,58px);line-height:.96;text-transform:uppercase;margin:18px 0 0">Elegí día y horario.<br><span style="color:#B8946A">Sin idas y vueltas.</span></h2>
+      <p style="font-weight:300;font-size:17px;line-height:1.7;color:rgba(245,242,236,.6);max-width:46ch;margin:20px 0 0">Una charla corta para conocer tu estudio y decirte qué conviene primero.</p>
+      <div style="margin-top:clamp(24px,3vw,40px);background:#FFFFFF;border:1px solid rgba(184,148,106,.3);border-radius:2px;overflow:hidden">
+        <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3YjGK_R2nSonjnOzYGLMZ7bb1bcgiP0wRJv-3Nz2W0hKaqQCKbBZ6-QQiOWaVO2hsmEDGNlif3?gv=true" title="Agenda de reuniones IURE" loading="lazy" style="display:block;width:100%;height:clamp(640px,90vh,760px);border:0"></iframe>
+      </div>
+      <p style="font-weight:300;font-size:14px;color:rgba(245,242,236,.5);margin:16px 0 0">¿Ningún horario te sirve? <a href="{{ waGeneralHref }}" target="_blank" rel="noopener" onClick="{{ waGeneralTrack }}">Escribinos por WhatsApp</a></p>
+    </div>
+  </section>
  <section id="contacto" style="background:#F5F2EC;color:#0F1923;padding:8px 4vw 20px">
     <div class="g2" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);width:100%;display:grid;grid-template-columns:minmax(220px,.5fr) minmax(420px,1.4fr);gap:clamp(16px,2.4vw,40px);align-items:center">
       <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)">
@@ -544,49 +566,11 @@
       </div>
     </div>
   </footer>
-  <div style="{{ chatPanelStyle }}">
-    <div style="display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid rgba(184,148,106,.2)">
-      <span style="width:26px;height:26px;border:1px solid rgba(184,148,106,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;color:#B8946A">I</span>
-      <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#F5F2EC">IURE</span>
-      <span onClick="{{ closeChat }}" style="margin-left:auto;cursor:pointer;color:rgba(245,242,236,.5);font-size:16px;line-height:1;padding:2px 4px" style-hover="color:#F5F2EC">×</span>
-    </div>
-    <div style="padding:16px 18px 18px;display:grid;gap:10px">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.02em;text-transform:uppercase;color:#F5F2EC">¿Qué necesitás mejorar?</div>
-      <div onClick="{{ pickChat0 }}" style="{{ chatOpt0 }}">
-        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#F5F2EC">Redes</div>
-        <div style="font-weight:300;font-size:13px;color:rgba(245,242,236,.5);margin-top:3px">Quiero mejorar mi comunicación.</div>
-      </div>
-      <div onClick="{{ pickChat1 }}" style="{{ chatOpt1 }}">
-        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#F5F2EC">Web</div>
-        <div style="font-weight:300;font-size:13px;color:rgba(245,242,236,.5);margin-top:3px">Quiero una página web.</div>
-      </div>
-      <div onClick="{{ pickChat2 }}" style="{{ chatOpt2 }}">
-        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#F5F2EC">Identidad</div>
-        <div style="font-weight:300;font-size:13px;color:rgba(245,242,236,.5);margin-top:3px">Necesito una identidad visual.</div>
-      </div>
-      <div onClick="{{ pickChat3 }}" style="{{ chatOpt3 }}">
-        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#F5F2EC">No sé por dónde empezar</div>
-        <div style="font-weight:300;font-size:13px;color:rgba(245,242,236,.5);margin-top:3px">Quiero hablar con alguien.</div>
-      </div>
-      <a href="https://wa.me/542284203462" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;padding:12px 14px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#F5F2EC;margin-top:4px" style-hover="color:#25D366">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.44.79 3.06 1.2 4.72 1.2h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2m0 1.67c2.24 0 4.35.87 5.93 2.46a8.23 8.23 0 012.42 5.85c0 4.55-3.71 8.26-8.28 8.26-1.44 0-2.86-.38-4.1-1.09l-.29-.17-3.11.82.83-3.03-.19-.31a8.19 8.19 0 01-1.26-4.38c0-4.56 3.71-8.41 8.28-8.41M8.53 6.83c-.16 0-.42.06-.64.31-.22.25-.85.83-.85 2.03 0 1.2.87 2.36.99 2.52.12.16 1.7 2.72 4.19 3.71 2.07.83 2.49.66 2.94.63.45-.04 1.46-.6 1.66-1.18.21-.58.21-1.07.15-1.18-.06-.1-.22-.16-.46-.28-.25-.13-1.46-.72-1.69-.8-.23-.08-.39-.13-.56.13-.16.25-.64.8-.79.97-.15.16-.29.18-.54.06-.25-.13-1.06-.39-2.02-1.24-.75-.66-1.25-1.48-1.4-1.73-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.12-.15.16-.25.25-.42.08-.16.04-.31-.02-.44-.06-.13-.56-1.36-.77-1.86-.2-.48-.41-.42-.56-.42h-.4"/></svg>
-        Escribinos por WhatsApp
-      </a>
-      <a href="#contacto" onClick="{{ closeChat }}" style="display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;padding:12px 14px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#F5F2EC;margin-top:4px" style-hover="color:#B8946A">
-        <span style="font-size:14px">✉</span> Escribinos por mail
-      </a>
-      <div style="{{ chatReplyStyle }}">
-        <p style="font-weight:300;font-size:13.5px;line-height:1.6;color:rgba(245,242,236,.72);margin:0">{{ chatReply }}</p>
-        <a href="{{ chatWaLink }}" target="_blank" rel="noopener" onClick="{{ closeChat }}" style="display:block;width:100%;box-sizing:border-box;text-align:center;margin-top:12px;background:#25D366;color:#0F1923;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:11px 18px;border-radius:2px">Continuar por WhatsApp →</a>
-      </div>
-    </div>
-  </div>
-  <a href="{{ waGeneralHref }}" target="_blank" rel="noopener" onClick="{{ waGeneralTrack }}" aria-label="Escribinos por WhatsApp" style="position:fixed;left:clamp(12px,2vw,26px);bottom:clamp(12px,2vw,26px);width:50px;height:50px;border-radius:50%;background:#B8946A;color:#0F1923;display:flex;align-items:center;justify-content:center;z-index:89;box-shadow:0 12px 30px rgba(0,0,0,.35)">
+
+  <a href="{{ waGeneralHref }}" target="_blank" rel="noopener" onClick="{{ waGeneralTrack }}" aria-label="Escribinos por WhatsApp" style="position:fixed;right:clamp(12px,2vw,26px);bottom:clamp(12px,2vw,26px);width:50px;height:50px;border-radius:50%;background:#B8946A;color:#0F1923;display:flex;align-items:center;justify-content:center;z-index:89;box-shadow:0 12px 30px rgba(0,0,0,.35)">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.486 2 2 6.486 2 12.004c0 1.85.508 3.63 1.475 5.196L2 22l4.938-1.462a9.945 9.945 0 0 0 5.066 1.379h.004c5.518 0 10.004-4.486 10.004-10.004C22.012 6.486 17.522 2 12.004 2zm0 18.16h-.003a8.126 8.126 0 0 1-4.15-1.14l-.298-.177-2.99.885.897-2.92-.194-.302a8.13 8.13 0 0 1-1.257-4.343c0-4.498 3.663-8.16 8.163-8.16 2.18 0 4.229.85 5.77 2.393a8.11 8.11 0 0 1 2.389 5.772c0 4.498-3.663 8.16-8.161 8.16z"/></svg>
   </a>
-  <div onClick="{{ openChat }}" style="{{ chatButtonStyle }}">
-    <span style="font-size:17px;line-height:1">✎</span>
-  </div>
+
   <div style="{{ confirmModalStyle }}">
     <div style="position:relative;width:min(100%,520px);aspect-ratio:1/1;background:url('assets/columnas-referencia1.png') center/contain no-repeat">
       <div style="position:absolute;left:22%;top:24%;width:56%;height:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6%;box-sizing:border-box">
