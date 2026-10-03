@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>IURE — Instructivo Google Ads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0F1923; --gold:#B8946A; --cream:#F5F2EC; --line:rgba(184,148,106,.16); --muted:rgba(245,242,236,.62); }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--cream); font-family:'Barlow',sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:var(--gold); text-decoration:none; }
+  .wrap { max-width:860px; margin:0 auto; padding:0 clamp(16px,4vw,40px); }
+  header { border-bottom:1px solid var(--line); }
+  header .wrap { height:72px; display:flex; align-items:center; }
+  .logo-t { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:28px; letter-spacing:.06em; color:var(--gold); line-height:1; }
+  .logo-s { font-family:'DM Mono',monospace; font-size:8.5px; letter-spacing:.3em; color:rgba(245,242,236,.55); margin-top:2px; }
+  .kicker { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); }
+  h1 { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:clamp(36px,6vw,64px); line-height:.95; text-transform:uppercase; margin:16px 0 0; }
+  h2 { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:clamp(26px,3.6vw,38px); text-transform:uppercase; margin:0; }
+  .intro { padding:clamp(48px,7vw,88px) 0 clamp(32px,4vw,48px); }
+  .intro p { font-weight:300; font-size:17px; line-height:1.6; color:var(--muted); max-width:54ch; margin:20px 0 0; }
+  .toc { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+  .toc a { border:1px solid var(--gold); padding:10px 18px; font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; border-radius:2px; }
+  .toc a:hover { background:var(--gold); color:var(--bg); }
+  .part { border-top:1px solid var(--line); padding:clamp(40px,6vw,72px) 0 8px; }
+  .part-head { margin-bottom:28px; }
+  .part-head p { font-weight:300; color:var(--muted); margin:10px 0 0; line-height:1.6; }
+  .step { display:grid; grid-template-columns:52px 1fr; gap:16px; padding:28px 0; border-bottom:1px solid var(--line); }
+  .num { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:30px; color:var(--gold); line-height:1; }
+  .step h3 { font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:20px; letter-spacing:.02em; text-transform:uppercase; margin:2px 0 8px; }
+  .step p, .step li { font-weight:300; font-size:15.5px; line-height:1.65; color:rgba(245,242,236,.78); margin:0; }
+  .step ul { margin:6px 0 0; padding-left:18px; }
+  .step strong { color:var(--cream); font-weight:500; }
+  .step img { display:block; width:100%; height:auto; margin-top:16px; border:1px solid var(--line); border-radius:3px; background:#000; }
+  .note { margin-top:12px; border-left:3px solid var(--gold); background:rgba(184,148,106,.08); padding:12px 16px; font-size:14.5px; }
+  .mail { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:12px; }
+  .mail code { font-family:'DM Mono',monospace; font-size:14px; background:rgba(245,242,236,.07); border:1px solid var(--line); padding:9px 12px; border-radius:2px; color:var(--cream); word-break:break-all; }
+  .mail button { cursor:pointer; background:var(--gold); color:var(--bg); border:0; font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; padding:11px 16px; border-radius:2px; }
+  .done { background:var(--cream); color:var(--bg); margin-top:clamp(40px,6vw,72px); padding:clamp(40px,6vw,64px) 0; }
+  .done h2 { color:var(--bg); }
+  .done p { font-weight:300; font-size:16px; line-height:1.6; color:rgba(15,25,35,.7); margin:12px 0 0; max-width:52ch; }
+  footer { padding:28px 0; font-family:'DM Mono',monospace; font-size:9.5px; letter-spacing:.16em; color:rgba(245,242,236,.35); }
+  @media (max-width:560px) { .step { grid-template-columns:1fr; gap:6px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html" style="display:block;line-height:1">
+      <div class="logo-t">IURE</div>
+      <div class="logo-s">MARKETING JURÍDICO</div>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="wrap">
+      <div class="kicker">Instructivo · Google Ads</div>
+      <h1>Creá tu cuenta<br>y danos acceso</h1>
+      <p>Son dos partes: primero creás tu cuenta de Google Ads (la campaña la armamos nosotros) y después nos sumás como administradores. Te lleva unos 10 minutos.</p>
+      <div class="toc">
+        <a href="#parte-1">1 · Crear la cuenta</a>
+        <a href="#parte-2">2 · Darnos acceso</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="part" id="parte-1">
+    <div class="wrap">
+      <div class="part-head">
+        <div class="kicker">Parte 1</div>
+        <h2>Crear la cuenta</h2>
+        <p>Entrá a <a href="https://ads.google.com" target="_blank" rel="noopener">ads.google.com</a> con tu cuenta de Gmail.</p>
+      </div>
+
+      <div class="step"><div class="num">01</div><div>
+        <h3>Empezá la configuración</h3>
+        <p>Tocá <strong>"Cree su primera campaña"</strong>.</p>
+        <img src="assets/instructivo-ads/paso-01.jpg" alt="Pantalla inicial de Google Ads con el botón Cree su primera campaña" loading="lazy">
+      </div></div>
+
+      <div class="step"><div class="num">02</div><div>
+        <h3>Datos de tu estudio</h3>
+        <ul>
+          <li>Completá el <strong>nombre de tu empresa</strong>.</li>
+          <li>Elegí <strong>"Su sitio web"</strong> e ingresá la URL de tu web.</li>
+          <li>Tocá <strong>Siguiente</strong>.</li>
+        </ul>
+        <img src="assets/instructivo-ads/paso-02.jpg" alt="Formulario con nombre de empresa y URL del sitio web" loading="lazy">
+      </div></div>
+
+      <div class="step"><div class="num">03</div><div>
+        <h3>Vincular cuentas</h3>
+        <p>Tocá <strong>Omitir</strong>.</p>
+        <img src="assets/instructivo-ads/paso-03.jpg" alt="Pantalla Vincula tu cuenta con el botón Omitir señalado" loading="lazy">
+      </div></div>
+
+      <div class="step"><div class="num">04</div><div>
+        <h3>Objetivo de la campaña</h3>
+        <p>Tocá <strong>Omitir</strong>.</p>
+        <img src="assets/instructivo-ads/paso-04.jpg" alt="Pantalla Elige tu objetivo con el botón Omitir señalado" loading="lazy">
+      </div></div>
+
+      <div class="step"><div class="num">05</div><div>
+        <h3>Tipo de campaña</h3>
+        <p>Tocá <strong>Omitir</strong>.</p>
+        <img src="assets/instructivo-ads/paso-05.jpg" alt="Pantalla Elija un tipo de campaña con el botón Omitir señalado" loading="lazy">
+      </div></div>
+
+      <div class="step"><div class="num">06</div><div>
+        <h3>Salir de la creación de campaña</h3>
+        <p>En el cartel, tocá <strong>"Salir de la creación de la campaña"</strong>. La campaña la armamos nosotros.</p>
+        <img src="assets/instructivo-ads/paso-06.jpg" alt="Cartel con la opción Salir de la creación de la campaña" loading="lazy">
+      </div></div>
+
+      <div class="step"><div class="num">07</div><div>
+        <h3>Configuración de la cuenta</h3>
+        <ul>
+          <li>País de facturación: <strong>Argentina</strong></li>
+          <li>Zona horaria: <strong>(GMT-03:00) hora de Buenos Aires</strong></li>
+          <li>Moneda: <strong>peso argentino (ARS)</strong></li>
+        </ul>
+        <p class="note">Revisalo bien: estos datos <strong>no se pueden cambiar después</strong>.</p>
+        <img src="assets/instructivo-ads/paso-07.jpg" alt="Configuración de país, zona horaria y moneda" loading="lazy">
+      </div></div>
+
+      <div class="step"><div class="num">08</div><div>
+        <h3>Forma de pago</h3>
+        <p>Elegí <strong>Prepago</strong> (por ejemplo, con Banelco o PagoMisCuentas) y completá tus datos fiscales.</p>
+        <p class="note">Cargá el mínimo que te pida Google (hoy ronda los ARS 5.000). El presupuesto real de la campaña lo definimos juntos después.</p>
+        <img src="assets/instructivo-ads/paso-08.jpg" alt="Selección de forma de pago Prepago" loading="lazy">
+      </div></div>
+
+      <div class="step"><div class="num">09</div><div>
+        <h3>Preguntas finales</h3>
+        <p>Marcá <strong>No</strong> en las dos preguntas y tocá <strong>Enviar</strong>.</p>
+        <img src="assets/instructivo-ads/paso-09.jpg" alt="Preguntas de ayuda personalizada y correos marcadas en No" loading="lazy">
+      </div></div>
+
+      <div class="step"><div class="num">10</div><div>
+        <h3>Cuenta creada</h3>
+        <p>Tocá <strong>Continuar</strong>.</p>
+        <img src="assets/instructivo-ads/paso-10.jpg" alt="Pantalla Se creó tu cuenta con el botón Continuar" loading="lazy">
+      </div></div>
+
+      <div class="step"><div class="num">11</div><div>
+        <h3>Verificación del anunciante</h3>
+        <p>Por ahora tocá <strong>Cancel</strong>. Esta verificación la hacemos más adelante.</p>
+        <img src="assets/instructivo-ads/paso-11.jpg" alt="Pantalla de verificación del anunciante con el botón Cancel señalado" loading="lazy">
+      </div></div>
+    </div>
+  </section>
+
+  <section class="part" id="parte-2">
+    <div class="wrap">
+      <div class="part-head">
+        <div class="kicker">Parte 2</div>
+        <h2>Darnos acceso</h2>
+      </div>
+
+      <div class="step"><div class="num">12</div><div>
+        <h3>Acceso y seguridad</h3>
+        <p>En el menú de la izquierda entrá a <strong>Administrador</strong> (ícono de engranaje) → <strong>Acceso y seguridad</strong>.</p>
+        <img src="assets/instructivo-ads/paso-12.jpg" alt="Menú Administrador con la opción Acceso y seguridad" loading="lazy">
+      </div></div>
+
+      <div class="step"><div class="num">13</div><div>
+        <h3>Agregar usuario</h3>
+        <p>Abrí la pestaña <strong>Usuarios</strong> y tocá el botón <strong>+</strong>.</p>
+        <img src="assets/instructivo-ads/paso-13.jpg" alt="Pestaña Usuarios con el botón más" loading="lazy">
+      </div></div>
+
+      <div class="step"><div class="num">14</div><div>
+        <h3>Invitarnos como administradores</h3>
+        <ul>
+          <li>Escribí este mail:</li>
+        </ul>
+        <div class="mail">
+          <code id="mail">switchgestion2026@gmail.com</code>
+          <button type="button" id="copy">Copiar</button>
+        </div>
+        <ul style="margin-top:12px">
+          <li>En nivel de acceso elegí <strong>Administrador</strong>.</li>
+          <li>Tocá <strong>Enviar invitación</strong>.</li>
+        </ul>
+        <img src="assets/instructivo-ads/paso-14.jpg" alt="Formulario de invitación con el mail, nivel Administrador y botón Enviar invitación" loading="lazy">
+      </div></div>
+    </div>
+  </section>
+
+  <section class="done">
+    <div class="wrap">
+      <div class="kicker" style="color:#9A7847">Listo</div>
+      <h2>¡Avisanos!</h2>
+      <p>Cuando mandes la invitación, escribinos por WhatsApp. La aceptamos y arrancamos con tu campaña.</p>
+      <a href="https://wa.me/5492284203462?text=Hola%21%20Ya%20les%20envi%C3%A9%20la%20invitaci%C3%B3n%20a%20mi%20cuenta%20de%20Google%20Ads." target="_blank" rel="noopener" style="display:inline-block;margin-top:24px;background:#0F1923;color:#F5F2EC;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:15px 24px;border-radius:2px">Avisar por WhatsApp →</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 IURE · Marketing Jurídico</div>
+</footer>
+
+<script>
+  document.getElementById('copy').addEventListener('click', function () {
+    var b = this, t = document.getElementById('mail').textContent;
+    var ok = function () { b.textContent = 'Copiado'; setTimeout(function () { b.textContent = 'Copiar'; }, 1800); };
+    if (navigator.clipboard) { navigator.clipboard.writeText(t).then(ok, function () {}); }
+  });
+</script>
+</body>
+</html>
