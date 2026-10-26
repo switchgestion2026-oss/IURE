@@ -329,6 +329,13 @@
             <div class="tk-lbl">PAGO TOTAL</div>
             <div class="tk-amount">$130.000</div>
             <p class="tk-desc">Pagás todo de una vez y no tenés que preocuparte por el saldo pendiente.</p>
+            <button type="button" class="pago-btn" style="border:0;cursor:pointer" onclick="var p=document.getElementById('alias-pago');p.style.display=p.style.display==='block'?'none':'block'">Pagar total <span>→</span></button>
+            <div id="alias-pago" style="display:none;margin-top:18px;text-align:center">
+              <p class="tk-desc" style="margin:0">Transferí desde Mercado Pago o tu banco al alias:</p>
+              <div class="tk-amount" style="font-size:clamp(22px,2.6vw,30px);margin-top:10px">paginas.web</div>
+              <button type="button" class="pago-btn" style="border:1px solid #B8946A;background:transparent;color:#B8946A;cursor:pointer;margin-top:14px" onclick="navigator.clipboard.writeText('paginas.web');this.textContent='¡Copiado!'">Copiar alias</button>
+              <p class="tk-desc">Después mandanos el comprobante por WhatsApp.</p>
+            </div>
           </div>
         </div>
 
