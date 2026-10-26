@@ -46,7 +46,9 @@
   .radial { display: grid !important; grid-template-columns: 1fr 1fr !important; grid-template-rows: none !important; gap: 20px !important; margin-top: 40px !important; }
   .radial-line, .radial-circle, .radial-center { display: none !important; }
   .radial-item { grid-column: auto !important; grid-row: auto !important; justify-self: stretch !important; margin: 0 !important; width: 100% !important; text-align: center !important; }
-  .radial-item-inner { flex-direction: column !important; text-align: center !important; }   .radial-item:nth-child(4) { order: 2 !important; }   .radial-item:nth-child(5) { order: 1 !important; }
+  .radial-item-inner { flex-direction: column !important; text-align: center !important; }
+  .radial-item:nth-child(4) { order: 2 !important; }
+  .radial-item:nth-child(5) { order: 1 !important; }
   .radial-item-inner > div { text-align: center !important; }
   .radial-item img { max-height: 140px !important; width: auto !important; max-width: 78% !important; margin: 0 auto !important; }
   .radial-mobile-title { display: block !important; }
@@ -116,7 +118,9 @@
     </div>
     <div style="{{ mobileNavPanelStyle }}">
       <a href="#top" onClick="{{ toggleMobileNav }}" style="padding:14px clamp(20px,4vw,48px);color:#F5F2EC;border-bottom:1px solid rgba(184,148,106,.12)">Inicio</a>
-      <a href="#servicios" onClick="{{ toggleMobileNav }}" style="padding:14px clamp(20px,4vw,48px);color:rgba(245,242,236,.75);border-bottom:1px solid rgba(184,148,106,.12)">Servicios</a>       <a href="casos.html" onClick="{{ toggleMobileNav }}" style="padding:14px clamp(20px,4vw,48px) 14px clamp(36px,6vw,64px);color:rgba(245,242,236,.6);font-size:9.5px;border-bottom:1px solid rgba(184,148,106,.12)">— Diseño Web</a> <a href="google-ads.html" onClick="{{ toggleMobileNav }}" style="padding:14px clamp(20px,4vw,48px) 14px clamp(36px,6vw,64px);color:rgba(245,242,236,.6);font-size:9.5px;border-bottom:1px solid rgba(184,148,106,.12)">— Google Ads</a>
+      <a href="#servicios" onClick="{{ toggleMobileNav }}" style="padding:14px clamp(20px,4vw,48px);color:rgba(245,242,236,.75);border-bottom:1px solid rgba(184,148,106,.12)">Servicios</a>
+      <a href="casos.html" onClick="{{ toggleMobileNav }}" style="padding:14px clamp(20px,4vw,48px) 14px clamp(36px,6vw,64px);color:rgba(245,242,236,.6);font-size:9.5px;border-bottom:1px solid rgba(184,148,106,.12)">— Diseño Web</a>
+      <a href="google-ads.html" onClick="{{ toggleMobileNav }}" style="padding:14px clamp(20px,4vw,48px) 14px clamp(36px,6vw,64px);color:rgba(245,242,236,.6);font-size:9.5px;border-bottom:1px solid rgba(184,148,106,.12)">— Google Ads</a>
       <a href="#proceso" onClick="{{ toggleMobileNav }}" style="padding:14px clamp(20px,4vw,48px);color:rgba(245,242,236,.75);border-bottom:1px solid rgba(184,148,106,.12)">Cómo trabajamos</a>
 
       <a href="nosotros.html" onClick="{{ toggleMobileNav }}" style="padding:14px clamp(20px,4vw,48px);color:rgba(245,242,236,.75);border-bottom:1px solid rgba(184,148,106,.12)">Nosotros</a>
