@@ -328,7 +328,13 @@
             <div class="tk-lbl">SEÑA — 50%</div>
             <div class="tk-amount">$65.000</div>
             <p class="tk-desc">Reservás tu lugar y arrancamos a trabajar. El resto ($65.000) se abona cuando te entregamos la web.</p>
-            <a href="https://mpago.la/28pQsvk" target="_blank" rel="noopener" class="pago-btn">Pagar seña <span>→</span></a>
+            <button type="button" class="pago-btn" style="border:0;cursor:pointer" onclick="var p=document.getElementById('alias-sena');p.style.display=p.style.display==='block'?'none':'block'">Pagar seña <span>→</span></button>
+            <div id="alias-sena" style="display:none;margin-top:18px;text-align:center">
+              <p class="tk-desc" style="margin:0">Transferí $65.000 desde Mercado Pago o tu banco al alias:</p>
+              <div class="tk-amount" style="font-size:clamp(22px,2.6vw,30px);margin-top:10px">paginas.web</div>
+              <button type="button" class="pago-btn" style="border:1px solid #B8946A;background:transparent;color:#B8946A;cursor:pointer;margin-top:14px" onclick="navigator.clipboard.writeText('paginas.web');this.textContent='¡Copiado!'">Copiar alias</button>
+              <p class="tk-desc">Después mandanos el comprobante por WhatsApp.</p>
+            </div>
           </div>
           <div class="ticket">
             <span class="dot l"></span><span class="dot r"></span>
@@ -346,7 +352,7 @@
         </div>
 
         <img class="medios-pago" src="assets/medios-pago.webp" alt="Medios de pago disponibles" loading="lazy">
-        <div class="pago-note">Serás redirigido a Mercado Pago para completar el pago de forma segura.</div>
+        <div class="pago-note">Pagás por transferencia desde Mercado Pago o tu banco, de forma segura.</div>
 
         <div class="garantias">
           <div class="g-item"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>Tus datos están protegidos</div>
