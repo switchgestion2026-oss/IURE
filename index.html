@@ -765,7 +765,7 @@ class Component extends DCLogic {
     function add(src,css){var i=d.createElement('img');i.src='assets/'+src;i.alt='';i.style.cssText='position:absolute;height:auto;user-select:none;'+css;w.appendChild(i);return i;}
     var a=add('halloween-esquina-izq.webp','left:0;width:clamp(110px,20vw,280px)');
     var b=add('halloween-esquina-der.webp','right:0;width:clamp(140px,26vw,380px)');
-    var c=add('halloween-columna.webp','right:0;width:170px');
+    var c=add('halloween-columna.webp','right:0;width:clamp(240px,30vw,440px)');
     var r=add('halloween-ruinas.webp','left:0;width:clamp(130px,20vw,260px)');
     function place(){
       var hero=d.getElementById('top'),foot=d.querySelector('footer');
