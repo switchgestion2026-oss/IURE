@@ -787,10 +787,10 @@ class Component extends DCLogic {
       if(h1&&h1.textContent.indexOf('miedo')<0){h1.innerHTML='Lo que da miedo<br>no es el derecho.<br><span style="color:#B8946A">Es no<br>comunicarlo.</span>';}
       var im=hero.querySelector('img');
       if(im)im.style.filter='drop-shadow(0 0 45px rgba(232,114,28,.55)) drop-shadow(0 40px 70px rgba(0,0,0,.55))';
-      if(im){var ir=im.getBoundingClientRect();p2.style.left=(ir.left+window.scrollX+ir.width*0.04)+'px';p2.style.top=(ir.top+y+ir.height*0.1)+'px';}
+      if(im){var ir=im.getBoundingClientRect();p2.style.left=(ir.left+window.scrollX+ir.width*0.04)+'px';p2.style.top=(ir.bottom+y-p2.offsetHeight)+'px';}
     }
     var p=add('halloween-calabaza.webp','left:clamp(130px,20vw,260px);width:clamp(70px,10vw,140px)');
-    var p2=add('halloween-calabaza.webp','width:clamp(70px,11vw,150px)');
+    var p2=add('halloween-calabaza.webp','width:clamp(110px,18vw,260px)');
     var st=d.createElement('style');
     st.textContent='@keyframes vuelo{0%{transform:translate(-20vw,0)}25%{transform:translate(20vw,-30px)}50%{transform:translate(55vw,20px)}75%{transform:translate(90vw,-25px)}100%{transform:translate(125vw,10px)}}';
     d.head.appendChild(st);
