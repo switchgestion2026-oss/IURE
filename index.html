@@ -774,9 +774,17 @@ class Component extends DCLogic {
       a.style.top=b.style.top=h+'px';
       c.style.top=(f+10)+'px';
       c.style.display=window.innerWidth<861?'none':'block';
-      r.style.top=(f-r.offsetHeight+4)+'px';
+r.style.top=(f-r.offsetHeight+4)+'px';
+p.style.top=(f-p.offsetHeight+4)+'px';
     }
-    [a,b,c,r].forEach(function(i){i.onload=place;});
+var p=add('halloween-calabaza.webp','left:clamp(130px,20vw,260px);width:clamp(70px,10vw,140px)');
+var st=d.createElement('style');
+st.textContent='@keyframes vuelo{0%{transform:translate(-20vw,0)}25%{transform:translate(20vw,-30px)}50%{transform:translate(55vw,20px)}75%{transform:translate(90vw,-25px)}100%{transform:translate(125vw,10px)}}';
+d.head.appendChild(st);
+[[90,'clamp(60px,9vw,130px)',0,14],[220,'clamp(45px,7vw,100px)',5,18],[150,'clamp(50px,8vw,115px)',9,16]].forEach(function(m){
+  add('halloween-murcielago.webp','left:0;top:'+m[0]+'px;width:'+m[1]+';animation:vuelo '+m[3]+'s linear '+m[2]+'s infinite');
+});
+[a,b,c,r,p].forEach(function(i){i.onload=place;});
     place();
     window.addEventListener('resize',place);
     setTimeout(place,1500);
