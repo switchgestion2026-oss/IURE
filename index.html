@@ -787,8 +787,10 @@ class Component extends DCLogic {
       if(h1&&h1.textContent.indexOf('miedo')<0){h1.innerHTML='Lo que da miedo<br>no es el derecho.<br><span style="color:#B8946A">Es no<br>comunicarlo.</span>';}
       var im=hero.querySelector('img');
       if(im)im.style.filter='drop-shadow(0 0 45px rgba(232,114,28,.55)) drop-shadow(0 40px 70px rgba(0,0,0,.55))';
+      if(im){var ir=im.getBoundingClientRect();p2.style.left=(ir.left+window.scrollX+ir.width*0.04)+'px';p2.style.top=(ir.top+y+ir.height*0.1)+'px';}
     }
     var p=add('halloween-calabaza.webp','left:clamp(130px,20vw,260px);width:clamp(70px,10vw,140px)');
+    var p2=add('halloween-calabaza.webp','width:clamp(70px,11vw,150px)');
     var st=d.createElement('style');
     st.textContent='@keyframes vuelo{0%{transform:translate(-20vw,0)}25%{transform:translate(20vw,-30px)}50%{transform:translate(55vw,20px)}75%{transform:translate(90vw,-25px)}100%{transform:translate(125vw,10px)}}';
     d.head.appendChild(st);
@@ -798,8 +800,11 @@ class Component extends DCLogic {
     var fog=d.createElement('div');
     fog.style.cssText='position:absolute;left:-4%;width:108%;height:240px;background:radial-gradient(ellipse at 20% 80%,rgba(245,242,236,.28),transparent 65%),radial-gradient(ellipse at 75% 60%,rgba(232,114,28,.22),transparent 65%);animation:niebla 18s ease-in-out infinite alternate';
     w.appendChild(fog);
-    st.textContent+='@keyframes niebla{from{transform:translateX(-4%)}to{transform:translateX(4%)}}';
-    [a,b,c,r,p].forEach(function(i){i.onload=place;});
+    fog.style.background='none';
+    fog.style.animation='none';
+    for(var k=0;k<5;k++){var s=d.createElement('div');s.style.cssText='position:absolute;bottom:-40px;left:'+(k*22-10)+'%;width:40%;height:200px;border-radius:50%;background:radial-gradient(closest-side,rgba('+(k%2?'232,114,28':'245,242,236')+',.32),transparent);filter:blur(22px);animation:humo '+(14+k*3)+'s ease-in-out '+(-k*4)+'s infinite';fog.appendChild(s);}
+    st.textContent+='@keyframes humo{0%{transform:translate(-12%,20px) scale(.9);opacity:0}30%{opacity:1}60%{transform:translate(14%,-50px) scale(1.25);opacity:.8}100%{transform:translate(30%,-110px) scale(1.5);opacity:0}}';
+    [a,b,c,r,p,p2].forEach(function(i){i.onload=place;});
     place();
     window.addEventListener('resize',place);
     setTimeout(place,1500);
