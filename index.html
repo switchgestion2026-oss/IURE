@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -24,7 +24,7 @@
 <x-dc>
 <helmet>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Diseño web y marketing para abogados | IURE Marketing Jurídico</title> <meta name="description" content="Diseño web y marketing para abogados y estudios jurídicos: identidad visual, redes sociales y presencia digital pensada para generar consultas."> <meta property="og:title" content="IURE — Marketing Jurídico"> <meta property="og:description" content="Estrategia, identidad y presencia digital para profesionales del derecho."> <meta property="og:type" content="website"> <meta property="og:image" content="https://iuremarketingabogados.com.ar/assets/personaje-david-celular.png"> <meta property="og:url" content="https://iuremarketingabogados.com.ar/">
+<title>IURE — Marketing Jurídico</title> <meta name="description" content="Estrategia, identidad visual y presencia digital para estudios jurídicos y abogados. Redes sociales, diseño web y contenido pensado para generar consultas."> <meta property="og:title" content="IURE — Marketing Jurídico"> <meta property="og:description" content="Estrategia, identidad y presencia digital para profesionales del derecho."> <meta property="og:type" content="website"> <meta property="og:image" content="https://iuremarketingabogados.com.ar/assets/personaje-david-celular.png"> <meta property="og:url" content="https://iuremarketingabogados.com.ar/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -47,6 +47,8 @@
   .radial-line, .radial-circle, .radial-center { display: none !important; }
   .radial-item { grid-column: auto !important; grid-row: auto !important; justify-self: stretch !important; margin: 0 !important; width: 100% !important; text-align: center !important; }
   .radial-item-inner { flex-direction: column !important; text-align: center !important; }
+  .radial-item:nth-child(4) { order: 2 !important; }
+  .radial-item:nth-child(5) { order: 1 !important; }
   .radial-item-inner > div { text-align: center !important; }
   .radial-item img { max-height: 140px !important; width: auto !important; max-width: 78% !important; margin: 0 auto !important; }
   .radial-mobile-title { display: block !important; }
@@ -196,7 +198,7 @@
       <div class="radial-item" onMouseEnter="{{ hoverService3 }}" onMouseLeave="{{ clearService }}" style="{{ itemStyle3 }}">
         <div class="radial-item-inner" style="display:flex;align-items:center;gap:clamp(14px,1.8vw,22px);flex-direction:row">
           <div style="text-align:left">
-            <div style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;color:#B8946A"><span>03</span><span style="width:18px;height:1px;background:#B8946A;display:block"></span></div>
+            <div style="display:flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;color:#B8946A"><span>04</span><span style="width:18px;height:1px;background:#B8946A;display:block"></span></div>
             <div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:20px;letter-spacing:.03em;text-transform:uppercase;color:#F5F2EC;margin-top:4px">Estrategia digital</div>
             <p style="font-weight:300;font-size:13.5px;line-height:1.55;color:rgba(245,242,236,.6);margin:8px 0 0;max-width:22ch">Ordenamos qué comunicar, cómo y para quién. Enfocamos recursos en lo que importa.</p>
             <a href="#servicios" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#B8946A">Ver más <span>→</span></a>
@@ -207,7 +209,7 @@
       <div class="radial-item" onMouseEnter="{{ hoverService2 }}" onMouseLeave="{{ clearService }}" style="{{ itemStyle2 }}">
         <div class="radial-item-inner" style="display:flex;align-items:center;gap:clamp(14px,1.8vw,22px);flex-direction:row-reverse">
           <div style="text-align:right">
-            <div style="display:flex;align-items:center;justify-content:flex-end;gap:8px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;color:#B8946A"><span style="width:18px;height:1px;background:#B8946A;display:block"></span><span>04</span></div>
+            <div style="display:flex;align-items:center;justify-content:flex-end;gap:8px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;color:#B8946A"><span style="width:18px;height:1px;background:#B8946A;display:block"></span><span>03</span></div>
             <div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:20px;letter-spacing:.03em;text-transform:uppercase;color:#F5F2EC;margin-top:4px">Diseño web</div>
             <p style="font-weight:300;font-size:13.5px;line-height:1.55;color:rgba(245,242,236,.6);margin:8px 0 0 auto;max-width:22ch">Sitios web profesionales, rápidos y pensados para convertir visitas en consultas.</p>
             <a href="#servicios" style="display:inline-flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:10px;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#B8946A">Ver más <span>→</span></a>
@@ -264,16 +266,6 @@
         <button class="proj-arrow prev" aria-label="Anterior" data-dir="-1"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
         <div class="proj-track-wrap">
           <div class="proj-track" id="projTrack">
-            <a class="proj-card" href="https://abogadajalenska.com/" target="_blank" rel="noopener">
-              <span class="proj-dots"><span style="background:#B8946A"></span><span style="background:#F5F2EC"></span><span style="background:#0F1923"></span></span>
-              <img class="proj-logo" src="assets/Jalenska.webp" alt="Abogada Jalenska">
-              <span class="proj-info"><span class="proj-name">Abogada Jalenska</span><span class="proj-visit">Ver sitio →</span></span>
-            </a>
-            <a class="proj-card" href="https://estudiomessiez.com.ar/" target="_blank" rel="noopener">
-              <span class="proj-dots"><span style="background:#B8946A"></span><span style="background:#F5F2EC"></span><span style="background:#0F1923"></span></span>
-              <img class="proj-logo" src="assets/messiesz.webp" alt="Estudio Messiez">
-              <span class="proj-info"><span class="proj-name">Estudio Messiez</span><span class="proj-visit">Ver sitio →</span></span>
-            </a>
             <a class="proj-card" href="https://estudiojuridicocejas.com.ar/" target="_blank" rel="noopener">
               <span class="proj-dots"><span style="background:#B8946A"></span><span style="background:#F5F2EC"></span><span style="background:#0F1923"></span></span>
               <img class="proj-logo" src="assets/logo-cejas.webp" alt="Estudio Jurídico Cejas">
@@ -308,6 +300,11 @@
                 <span class="proj-dots"><span style="background:#B8946A"></span><span style="background:#F5F2EC"></span><span style="background:#0F1923"></span></span>
                 <img class="proj-logo" src="assets/logo-lembeye.webp" alt="Lembeye y Asociados">
                 <span class="proj-info"><span class="proj-name">Lembeye y Asociados</span><span class="proj-visit">Ver sitio →</span></span>
+              </a>
+              <a class="proj-card" href="https://abogadajalenska.com/" target="_blank" rel="noopener">
+                <span class="proj-dots"><span style="background:#B8946A"></span><span style="background:#F5F2EC"></span><span style="background:#0F1923"></span></span>
+                <img class="proj-logo" src="assets/Jalenska.webp" alt="Abogada Jalenska">
+                <span class="proj-info"><span class="proj-name">Abogada Jalenska</span><span class="proj-visit">Ver sitio →</span></span>
               </a>
               <a class="proj-card" href="https://sileolegalestudiojuridico.com.ar/" target="_blank" rel="noopener">
                 <span class="proj-dots"><span style="background:#B8946A"></span><span style="background:#F5F2EC"></span><span style="background:#0F1923"></span></span>
@@ -762,6 +759,13 @@ class Component extends DCLogic {
     var d=document,w=d.createElement('div');
     w.style.cssText='position:absolute;top:0;left:0;width:100%;height:0;pointer-events:none;z-index:60;overflow:visible';
     d.body.appendChild(w);
+    var bar=d.createElement('a');
+    bar.href='https://wa.me/5492284203462?text=Hola%2C%20quisiera%20hacer%20una%20consulta.';
+    bar.target='_blank';
+    bar.rel='noopener';
+    bar.textContent='🎃 Esta noche hasta los estudios se ponen de terror · Escribinos →';
+    bar.style.cssText='display:block;text-align:center;background:#E8721C;color:#0F1923;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:9px 12px';
+    d.body.insertBefore(bar,d.body.firstChild);
     function add(src,css){var i=d.createElement('img');i.src='assets/'+src;i.alt='';i.style.cssText='position:absolute;height:auto;user-select:none;'+css;w.appendChild(i);return i;}
     var a=add('halloween-esquina-izq.webp','left:0;width:clamp(110px,20vw,280px)');
     var b=add('halloween-esquina-der.webp','right:0;width:clamp(140px,26vw,380px)');
@@ -774,17 +778,26 @@ class Component extends DCLogic {
       a.style.top=b.style.top=h+'px';
       c.style.top=(f+10)+'px';
       c.style.display=window.innerWidth<861?'none':'block';
-r.style.top=(f-r.offsetHeight+4)+'px';
-p.style.top=(f-p.offsetHeight+4)+'px';
+      r.style.top=(f-r.offsetHeight+4)+'px';
+      p.style.top=(f-p.offsetHeight+4)+'px';
+      fog.style.top=(hero.getBoundingClientRect().bottom+y-240)+'px';
+      var h1=hero.querySelector('h1');
+      if(h1&&h1.textContent.indexOf('miedo')<0){h1.innerHTML='Lo que da miedo<br>no es el derecho.<br><span style="color:#B8946A">Es no<br>comunicarlo.</span>';}
+      var im=hero.querySelector('img');
+      if(im)im.style.filter='drop-shadow(0 0 45px rgba(232,114,28,.55)) drop-shadow(0 40px 70px rgba(0,0,0,.55))';
     }
-var p=add('halloween-calabaza.webp','left:clamp(130px,20vw,260px);width:clamp(70px,10vw,140px)');
-var st=d.createElement('style');
-st.textContent='@keyframes vuelo{0%{transform:translate(-20vw,0)}25%{transform:translate(20vw,-30px)}50%{transform:translate(55vw,20px)}75%{transform:translate(90vw,-25px)}100%{transform:translate(125vw,10px)}}';
-d.head.appendChild(st);
-[[90,'clamp(60px,9vw,130px)',0,14],[220,'clamp(45px,7vw,100px)',5,18],[150,'clamp(50px,8vw,115px)',9,16]].forEach(function(m){
-  add('halloween-murcielago.webp','left:0;top:'+m[0]+'px;width:'+m[1]+';animation:vuelo '+m[3]+'s linear '+m[2]+'s infinite');
-});
-[a,b,c,r,p].forEach(function(i){i.onload=place;});
+    var p=add('halloween-calabaza.webp','left:clamp(130px,20vw,260px);width:clamp(70px,10vw,140px)');
+    var st=d.createElement('style');
+    st.textContent='@keyframes vuelo{0%{transform:translate(-20vw,0)}25%{transform:translate(20vw,-30px)}50%{transform:translate(55vw,20px)}75%{transform:translate(90vw,-25px)}100%{transform:translate(125vw,10px)}}';
+    d.head.appendChild(st);
+    [[90,'clamp(60px,9vw,130px)',0,14],[220,'clamp(45px,7vw,100px)',5,18],[150,'clamp(50px,8vw,115px)',9,16]].forEach(function(m){
+      add('halloween-murcielago.webp','left:0;top:'+m[0]+'px;width:'+m[1]+';animation:vuelo '+m[3]+'s linear '+m[2]+'s infinite');
+    });
+    var fog=d.createElement('div');
+    fog.style.cssText='position:absolute;left:-4%;width:108%;height:240px;background:radial-gradient(ellipse at 20% 80%,rgba(245,242,236,.10),transparent 60%),radial-gradient(ellipse at 75% 60%,rgba(232,114,28,.10),transparent 60%);animation:niebla 18s ease-in-out infinite alternate';
+    w.appendChild(fog);
+    st.textContent+='@keyframes niebla{from{transform:translateX(-4%)}to{transform:translateX(4%)}}';
+    [a,b,c,r,p].forEach(function(i){i.onload=place;});
     place();
     window.addEventListener('resize',place);
     setTimeout(place,1500);
