@@ -127,6 +127,22 @@
       <a href="faq.html" onClick="{{ toggleMobileNav }}" style="padding:14px clamp(20px,4vw,48px);color:rgba(245,242,236,.75)">FAQ</a>
     </div>
   </header>
+  <section id="cyber-hero" style="display:none;position:relative;overflow:hidden;background:#F8EEE5;color:#231A14">
+    <div class="g2" style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:minmax(300px,1.05fr) minmax(300px,1fr);align-items:center;gap:clamp(0px,2vw,32px)">
+      <img class="cy-img" src="assets/cyber.webp" alt="Esculturas clásicas con anteojos de sol, de compras online" style="display:block;width:100%;height:auto">
+      <div style="padding:clamp(8px,3vw,48px) clamp(20px,4vw,56px) clamp(36px,5vw,64px);text-align:center">
+        <div style="display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.6vw,20px);font-family:'DM Mono',monospace;font-weight:500;font-size:clamp(11px,1.2vw,16px);letter-spacing:.4em;text-transform:uppercase;color:#231A14"><span style="width:clamp(24px,4vw,56px);height:2px;background:#B8946A;display:block"></span>Cyber Monday<span style="width:clamp(24px,4vw,56px);height:2px;background:#B8946A;display:block"></span></div>
+        <h1 style="font-family:'Playfair Display',Georgia,serif;font-weight:800;font-size:clamp(44px,6.2vw,96px);line-height:.98;letter-spacing:-.01em;margin:clamp(14px,2vw,26px) 0 0;color:#231A14"><span style="font-style:italic">Descuentos</span><br>exclusivos</h1>
+        <p style="font-family:'Barlow',sans-serif;font-weight:400;font-size:clamp(16px,1.55vw,22px);line-height:1.5;color:rgba(35,26,20,.82);max-width:30ch;margin:clamp(14px,2vw,24px) auto 0">Potenciá tu estudio con soluciones digitales a un precio único.</p>
+        <a href="#cyber" style="display:inline-block;margin-top:clamp(20px,2.6vw,34px);background:linear-gradient(180deg,#C9A24F,#9A7330);color:#fff;font-family:'Barlow',sans-serif;font-weight:500;font-size:clamp(16px,1.5vw,20px);padding:clamp(13px,1.4vw,18px) clamp(28px,3.4vw,46px);border-radius:999px;box-shadow:0 10px 24px rgba(154,115,48,.35)">Ver promociones →</a>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:clamp(26px,3.4vw,46px);font-family:'Barlow',sans-serif;font-size:clamp(12px,1.15vw,16px);color:#231A14">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><svg viewBox="0 0 24 24" fill="none" stroke="#2A2420" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:clamp(30px,3.2vw,42px);height:clamp(30px,3.2vw,42px)"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg>Web profesional</div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><svg viewBox="0 0 24 24" fill="none" stroke="#2A2420" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:clamp(30px,3.2vw,42px);height:clamp(30px,3.2vw,42px)"><path d="M3 10v4h3l8 4V6L6 10H3z"/><path d="M17 9a4 4 0 0 1 0 6M7 14l1 5h2l-1-4.5"/></svg>Publicidad digital</div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><svg viewBox="0 0 24 24" fill="none" stroke="#2A2420" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width:clamp(30px,3.2vw,42px);height:clamp(30px,3.2vw,42px)"><rect x="3" y="14" width="4" height="6"/><rect x="10" y="10" width="4" height="10"/><rect x="17" y="4" width="4" height="16"/></svg>Gestión de redes</div>
+        </div>
+      </div>
+    </div>
+  </section>
   <section id="top" style="position:relative;padding:clamp(56px,8vw,104px) 0 0;overflow:hidden">
     <div style="position:absolute;top:-8%;right:-6%;width:52%;height:120%;background:radial-gradient(60% 50% at 60% 40%, rgba(184,148,106,.13), transparent 70%);pointer-events:none"></div>
     <div class="g2" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(320px,1fr) minmax(300px,1.05fr);gap:clamp(24px,4vw,56px);align-items:center;position:relative">
@@ -843,13 +859,21 @@ class Component extends DCLogic {
   var fin=new Date('2026-11-04T23:59:59-03:00'),ini=new Date('2026-11-02T00:00:00-03:00'),ya=new Date();
   if(ya<ini||ya>fin)return;
   var css=document.createElement('style');
-  css.textContent='#cyber{display:block !important}';
+  css.textContent='#cyber{display:block !important}#top{display:none !important}#cyber-hero{display:block !important}@media(max-width:860px){#cyber-hero .cy-img{-webkit-mask-image:linear-gradient(180deg,#000 85%,transparent);mask-image:linear-gradient(180deg,#000 85%,transparent)}}@media(min-width:861px){#cyber-hero .cy-img{-webkit-mask-image:linear-gradient(90deg,#000 90%,transparent);mask-image:linear-gradient(90deg,#000 90%,transparent)}}';
   document.head.appendChild(css);
+  var fl=document.createElement('link');
+  fl.rel='stylesheet';
+  fl.href='https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,800;1,800&display=swap';
+  document.head.appendChild(fl);
   window.addEventListener('load',function(){
     var d=document,bar=d.createElement('a');
     bar.href='#cyber';
     bar.style.cssText='display:block;text-align:center;background:#0F1923;border-bottom:1px solid #B8946A;color:#B8946A;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:9px 12px';
     d.body.insertBefore(bar,d.body.firstChild);
+    function inicio(){d.querySelectorAll('a[href="#top"]').forEach(function(l){l.setAttribute('href','#');});}
+    inicio();
+    setTimeout(inicio,1500);
+    setTimeout(inicio,4000);
     function z(n){return (n<10?'0':'')+n;}
     function tick(){
       var s=Math.max(0,Math.floor((fin-new Date())/1000)),dd=Math.floor(s/86400),hh=Math.floor(s%86400/3600),mm=Math.floor(s%3600/60),ss=s%60;
