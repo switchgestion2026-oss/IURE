@@ -30,6 +30,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   html { scroll-behavior: smooth; }
+.hw{display:inline-block;overflow:hidden;vertical-align:top;padding:.14em 0 .06em;margin:-.14em 0 -.06em}
+.hw>span{display:inline-block;animation:hw-up .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i)*70ms + 150ms)}
+@keyframes hw-up{from{transform:translateY(110%)}}
+@media (prefers-reduced-motion:reduce){.hw>span{animation:none}}
   body { margin: 0; background: #0F1923; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   * { box-sizing: border-box; }
   a { color: #B8946A; text-decoration: none; }
@@ -150,8 +154,8 @@
         <div data-reveal style="opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A;display:flex;align-items:center;gap:12px">
           <span style="width:26px;height:1px;background:#B8946A;display:block"></span>Tu estudio también comunica
         </div>
-        <h1 data-reveal data-delay="90" style="opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(44px,6.4vw,92px);line-height:.9;letter-spacing:-.01em;text-transform:uppercase;margin:22px 0 0;text-wrap:balance">
-          No necesitás<br>publicar más.<br><span style="color:#B8946A">Necesitás<br>comunicar mejor.</span>
+        <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(44px,6.4vw,92px);line-height:.9;letter-spacing:-.01em;text-transform:uppercase;margin:22px 0 0;text-wrap:balance">
+          <span class="hw"><span style="--i:0">No</span></span> <span class="hw"><span style="--i:1">necesitás</span></span><br><span class="hw"><span style="--i:2">publicar</span></span> <span class="hw"><span style="--i:3">más.</span></span><br><span style="color:#B8946A"><span class="hw"><span style="--i:4">Necesitás</span></span><br><span class="hw"><span style="--i:5">comunicar</span></span> <span class="hw"><span style="--i:6">mejor.</span></span></span>
         </h1>
         <p data-reveal data-delay="180" style="opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-weight:300;font-size:clamp(16px,1.3vw,19px);line-height:1.6;color:rgba(245,242,236,.66);max-width:34ch;margin:26px 0 0">
           Estrategia, identidad y presencia digital para profesionales del derecho.
