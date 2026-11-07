@@ -34,6 +34,22 @@
 .hw>span{display:inline-block;animation:hw-up .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i)*70ms + 150ms)}
 @keyframes hw-up{from{transform:translateY(110%)}}
 @media (prefers-reduced-motion:reduce){.hw>span{animation:none}}
+.rs{display:none;position:relative;height:420vh}
+.rs-in{position:sticky;top:76px;height:calc(100vh - 76px);min-height:520px;overflow:hidden}
+.rs-step{position:absolute;inset:0 0 90px 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;opacity:0;transform:translateY(28px);transition:opacity .5s ease,transform .7s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.rs-step.on{opacity:1;transform:none;pointer-events:auto}
+.rs-num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(160px,24vw,360px);line-height:.85;color:#B8946A;letter-spacing:-.02em;text-align:right}
+.rs-tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:rgba(245,242,236,.55)}
+.rs-h{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(36px,4.6vw,66px);line-height:.96;text-transform:uppercase;margin:16px 0 0}
+.rs-p{font-weight:300;font-size:clamp(16px,1.3vw,19px);line-height:1.65;color:rgba(245,242,236,.66);max-width:32ch;margin:20px 0 0}
+.rs-bar{position:absolute;left:0;right:0;bottom:24px}
+.rs-track{position:relative;height:1px;background:rgba(184,148,106,.22)}
+.rs-fill{position:absolute;left:0;top:0;height:1px;width:0;background:#B8946A}
+.rs-ticks{display:grid;grid-template-columns:repeat(5,1fr);text-align:center;margin-top:14px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.2em;color:rgba(245,242,236,.35)}
+.rs-ticks span{transition:color .4s ease}
+.rs-ticks span.done{color:#B8946A}
+@media (min-width:861px){.rs{display:block}.tl-wrap{display:none}}
+@media (prefers-reduced-motion:reduce){.rs{display:none!important}.tl-wrap{display:block!important}.rs-step{transition:none}}
   body { margin: 0; background: #0F1923; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   * { box-sizing: border-box; }
   a { color: #B8946A; text-decoration: none; }
@@ -93,7 +109,7 @@
 }
 </style>
 </helmet>
-<div style="background:#0F1923;font-family:'Barlow',sans-serif;color:#F5F2EC;overflow-x:hidden;width:100%">
+<div style="background:#0F1923;font-family:'Barlow',sans-serif;color:#F5F2EC;overflow-x:clip;width:100%">
   <header style="position:sticky;top:0;z-index:80;background:rgba(15,25,35,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(184,148,106,.16)">
     <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);height:76px;display:flex;align-items:center;gap:clamp(18px,4vw,56px)">
       <a href="#top" style="display:block;line-height:1">
@@ -465,36 +481,46 @@
     <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
       <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#B8946A">Cómo trabajamos</div>
       <h2 data-reveal data-delay="80" style="opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,4vw,58px);line-height:.96;text-transform:uppercase;margin:18px 0 clamp(38px,5vw,64px);max-width:20ch">Un proceso claro,<br>sin sorpresas.</h2>
-      <div data-timeline style="position:relative">
+      <div class="rs" data-scene>
+        <div class="rs-in">
+          <div class="rs-step on" data-step><div class="rs-num" aria-hidden="true">I</div><div><div class="rs-tag">Paso I de V</div><h3 class="rs-h">Diagnóstico</h3><p class="rs-p">Miramos tu práctica, tu audiencia y lo que hoy comunicás.</p></div></div>
+          <div class="rs-step" data-step><div class="rs-num" aria-hidden="true">II</div><div><div class="rs-tag">Paso II de V</div><h3 class="rs-h">Estrategia</h3><p class="rs-p">Definimos qué decir, en qué canales y con qué tono.</p></div></div>
+          <div class="rs-step" data-step><div class="rs-num" aria-hidden="true">III</div><div><div class="rs-tag">Paso III de V</div><h3 class="rs-h">Diseño</h3><p class="rs-p">Armamos el sistema visual y las piezas base de tu marca.</p></div></div>
+          <div class="rs-step" data-step><div class="rs-num" aria-hidden="true">IV</div><div><div class="rs-tag">Paso IV de V</div><h3 class="rs-h">Aprobación</h3><p class="rs-p">Nada se publica sin que lo veas y lo apruebes antes.</p></div></div>
+          <div class="rs-step" data-step><div class="rs-num" aria-hidden="true">V</div><div><div class="rs-tag">Paso V de V</div><h3 class="rs-h">Gestión y ajuste</h3><p class="rs-p">Publicamos, medimos y corregimos el rumbo mes a mes.</p></div></div>
+          <div class="rs-bar"><div class="rs-track"><div class="rs-fill" data-scene-fill></div></div><div class="rs-ticks"><span class="done" data-tick>I</span><span data-tick>II</span><span data-tick>III</span><span data-tick>IV</span><span data-tick>V</span></div></div>
+        </div>
+      </div>
+      <div class="tl-wrap" data-timeline style="position:relative">
         <div style="position:absolute;left:0;right:0;top:28px;height:1px;background:rgba(184,148,106,.18)"></div>
         <div data-timeline-fill style="position:absolute;left:0;top:28px;height:1px;width:0%;background:#B8946A;transition:width .25s linear"></div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(184px,1fr));gap:clamp(16px,2vw,28px);position:relative">
           <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">01</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">I</div>
             <div style="width:9px;height:9px;background:#B8946A;border-radius:50%;margin:14px 0 20px"></div>
             <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px">Diagnóstico</h3>
             <p style="font-weight:300;font-size:14.5px;line-height:1.62;color:rgba(245,242,236,.55);margin:0">Miramos tu práctica, tu audiencia y lo que hoy comunicás.</p>
           </div>
           <div data-reveal data-delay="90" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">02</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">II</div>
             <div style="width:9px;height:9px;background:#B8946A;border-radius:50%;margin:14px 0 20px"></div>
             <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px">Estrategia</h3>
             <p style="font-weight:300;font-size:14.5px;line-height:1.62;color:rgba(245,242,236,.55);margin:0">Definimos qué decir, en qué canales y con qué tono.</p>
           </div>
           <div data-reveal data-delay="180" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">03</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">III</div>
             <div style="width:9px;height:9px;background:#B8946A;border-radius:50%;margin:14px 0 20px"></div>
             <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px">Diseño</h3>
             <p style="font-weight:300;font-size:14.5px;line-height:1.62;color:rgba(245,242,236,.55);margin:0">Armamos el sistema visual y las piezas base de tu marca.</p>
           </div>
           <div data-reveal data-delay="270" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">04</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">IV</div>
             <div style="width:9px;height:9px;background:#B8946A;border-radius:50%;margin:14px 0 20px"></div>
             <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px">Aprobación</h3>
             <p style="font-weight:300;font-size:14.5px;line-height:1.62;color:rgba(245,242,236,.55);margin:0">Nada se publica sin que lo veas y lo apruebes antes.</p>
           </div>
           <div data-reveal data-delay="360" style="opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">05</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:34px;line-height:1;color:#B8946A;height:38px">V</div>
             <div style="width:9px;height:9px;background:#B8946A;border-radius:50%;margin:14px 0 20px"></div>
             <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:19px;letter-spacing:.03em;text-transform:uppercase;margin:0 0 8px">Gestión y ajuste</h3>
             <p style="font-weight:300;font-size:14.5px;line-height:1.62;color:rgba(245,242,236,.55);margin:0">Publicamos, medimos y corregimos el rumbo mes a mes.</p>
@@ -701,6 +727,18 @@ class Component extends DCLogic {
         const off = (r.top + r.height / 2 - vh / 2) * -f;
         el.style.transform = 'translate3d(0,' + off.toFixed(1) + 'px,0)';
       });
+    }
+    const sc = document.querySelector('[data-scene]');
+    if (sc && sc.offsetParent !== null) {
+      const sr = sc.getBoundingClientRect();
+      const dist = Math.max(sc.offsetHeight - (vh - 76), 1);
+      const sp = Math.max(0, Math.min(1, (76 - sr.top) / dist));
+      const steps = sc.querySelectorAll('[data-step]');
+      const si = Math.min(steps.length - 1, Math.floor(sp * steps.length));
+      steps.forEach((el, k) => el.classList.toggle('on', k === si));
+      sc.querySelectorAll('[data-tick]').forEach((el, k) => el.classList.toggle('done', k <= si));
+      const sf = sc.querySelector('[data-scene-fill]');
+      if (sf) sf.style.width = (sp * 100) + '%';
     }
     const tl = document.querySelector('[data-timeline]');
     const fill = tl && tl.querySelector('[data-timeline-fill]');
